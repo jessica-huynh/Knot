@@ -35,6 +35,18 @@ class OverviewViewController: UITableViewController {
         creditCardsBalanceLabel.text = "3129.67"
         investmentsBalanceLabel.text = "---"
     }
-
+    
+    /*
+    // MARK: - Table View Delegates
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
+    }
+     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? AccountDetailsViewController {
+            controller.accountType = segue.identifier
+        }
+    }
 }
 
