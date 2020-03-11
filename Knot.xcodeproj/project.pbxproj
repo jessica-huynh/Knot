@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8371C812418088600519346 /* AccountDetailsViewController.swift */; };
 		C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86AAD382418657B00168D3A /* ProfileViewModel.swift */; };
+		C89EDF1E24193ADF0075052D /* AccountCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = C89EDF1D24193ADF0075052D /* AccountCard.xib */; };
+		C89EDF2024193E460075052D /* AccountCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EDF1F24193E460075052D /* AccountCard.swift */; };
+		C89EDF222419528C0075052D /* AccountCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EDF212419528C0075052D /* AccountCardViewController.swift */; };
 		C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA292416F336000195AC /* AppDelegate.swift */; };
 		C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA2B2416F336000195AC /* SceneDelegate.swift */; };
 		C8D7EA402416F5E7000195AC /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA3F2416F5E7000195AC /* OverviewViewController.swift */; };
@@ -21,6 +24,9 @@
 /* Begin PBXFileReference section */
 		C8371C812418088600519346 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		C86AAD382418657B00168D3A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C89EDF1D24193ADF0075052D /* AccountCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCard.xib; sourceTree = "<group>"; };
+		C89EDF1F24193E460075052D /* AccountCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCard.swift; sourceTree = "<group>"; };
+		C89EDF212419528C0075052D /* AccountCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCardViewController.swift; sourceTree = "<group>"; };
 		C8D7EA262416F336000195AC /* Knot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D7EA292416F336000195AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D7EA2B2416F336000195AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,8 +52,17 @@
 		C84BEB68241851310022D84D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C89EDF1F24193E460075052D /* AccountCard.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C89EDF1A241939300075052D /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				C89EDF1D24193ADF0075052D /* AccountCard.xib */,
+			);
+			path = Nibs;
 			sourceTree = "<group>";
 		};
 		C8D7EA1D2416F336000195AC = {
@@ -74,8 +89,8 @@
 				C8D7EA372416F33D000195AC /* Info.plist */,
 				C8D7EA482416F5FC000195AC /* Models */,
 				C8D7EA3E2416F5E7000195AC /* ViewControllers */,
-				C8D7EA412416F5F6000195AC /* Resources */,
 				C84BEB68241851310022D84D /* Views */,
+				C8D7EA412416F5F6000195AC /* Resources */,
 			);
 			path = Knot;
 			sourceTree = "<group>";
@@ -86,6 +101,7 @@
 				C8D7EA3F2416F5E7000195AC /* OverviewViewController.swift */,
 				C8D7EA4924171AAD000195AC /* ProfileViewController.swift */,
 				C8371C812418088600519346 /* AccountDetailsViewController.swift */,
+				C89EDF212419528C0075052D /* AccountCardViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -96,6 +112,7 @@
 				C8D7EA442416F5F6000195AC /* Main.storyboard */,
 				C8D7EA422416F5F6000195AC /* LaunchScreen.storyboard */,
 				C8D7EA432416F5F6000195AC /* Assets.xcassets */,
+				C89EDF1A241939300075052D /* Nibs */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -169,6 +186,7 @@
 				C8D7EA472416F5F6000195AC /* Main.storyboard in Resources */,
 				C8D7EA462416F5F6000195AC /* Assets.xcassets in Resources */,
 				C8D7EA452416F5F6000195AC /* LaunchScreen.storyboard in Resources */,
+				C89EDF1E24193ADF0075052D /* AccountCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,12 +197,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C89EDF222419528C0075052D /* AccountCardViewController.swift in Sources */,
 				C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */,
 				C8D7EA402416F5E7000195AC /* OverviewViewController.swift in Sources */,
 				C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */,
 				C8D7EA4A24171AAD000195AC /* ProfileViewController.swift in Sources */,
 				C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */,
 				C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */,
+				C89EDF2024193E460075052D /* AccountCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
