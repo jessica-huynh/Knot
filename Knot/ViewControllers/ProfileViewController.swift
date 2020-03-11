@@ -24,7 +24,19 @@ class ProfileViewController: UITableViewController {
     }
     
     @IBAction func eraseAllData(_ sender: UIButton) {
-        
+        let alert = UIAlertController(title: "Are you sure you want to proceed?",
+                                      message: "This will remove all data including any linked account(s).",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? AccountCardViewController, let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+            let section = viewModel.sections[indexPath.section] as! Accounts
+            controller.account = section.accounts[indexPath.row]
+        }
     }
     
 }
