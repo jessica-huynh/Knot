@@ -23,4 +23,8 @@ class ProfileViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func eraseAllData(_ sender: UIButton) {
+        
+    }
+    
 }

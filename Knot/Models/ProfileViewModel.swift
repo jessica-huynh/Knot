@@ -25,7 +25,7 @@ protocol ProfileViewModelSection {
 class ProfileViewModel: NSObject {
     enum SectionType {
         case accounts
-        case miscButtons
+        case eraseData
     }
     
     var sections = [ProfileViewModelSection]()
@@ -40,7 +40,7 @@ class ProfileViewModel: NSObject {
         let accounts = [account1, account2, account3]
         
         sections.append(Accounts(accounts: accounts))
-        sections.append(MiscButtons())
+        sections.append(EraseDataButton())
     }
 }
 
@@ -64,10 +64,8 @@ extension ProfileViewModel: UITableViewDataSource {
             cell.textLabel?.text = section.accounts[indexPath.row].institution
             cell.detailTextLabel?.text = section.accounts[indexPath.row].accountNumber
             return cell
-        case .miscButtons:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicProfileCell", for: indexPath)
-            let section = section as! MiscButtons
-            cell.textLabel?.text = section.buttons[indexPath.row]
+        case .eraseData:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EraseDataCell", for: indexPath)
             return cell
         }
     }
@@ -98,10 +96,9 @@ class Accounts: ProfileViewModelSection {
     }
 }
 
-class MiscButtons: ProfileViewModelSection {
-    let buttons = ["Logout", "Plaid API"]
+class EraseDataButton: ProfileViewModelSection {
     var type: ProfileViewModel.SectionType {
-        return .miscButtons
+        return .eraseData
     }
     
     var title: String {
@@ -109,6 +106,6 @@ class MiscButtons: ProfileViewModelSection {
     }
     
     var rowCount: Int {
-        return buttons.count
+        return 1
     }
 }
