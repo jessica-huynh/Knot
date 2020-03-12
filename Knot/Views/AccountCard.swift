@@ -32,9 +32,7 @@ class AccountCard: UIView {
     private func commonInit() {
         Bundle.main.loadNibNamed("AccountCard", owner: self, options: nil)
         addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleRightMargin]
-        
+        contentView.frame = self.bounds    
     }
     
     override func draw(_ rect: CGRect) {
