@@ -17,11 +17,11 @@
                         <sections>
                             <tableViewSection id="5Cv-eg-bFI">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NetBalanceCell" rowHeight="150" id="GQP-bg-NHd">
-                                        <rect key="frame" x="20" y="18" width="374" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NetBalanceCell" rowHeight="130" id="GQP-bg-NHd">
+                                        <rect key="frame" x="20" y="18" width="374" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GQP-bg-NHd" id="1AJ-1x-qVd">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;net balance&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIW-L6-H07">
@@ -51,7 +51,7 @@
                             <tableViewSection id="XCB-gf-vEI">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BalanceGraphCell" rowHeight="220" id="D5P-uh-BTl">
-                                        <rect key="frame" x="20" y="204" width="374" height="220"/>
+                                        <rect key="frame" x="20" y="184" width="374" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D5P-uh-BTl" id="rkd-fM-QAI">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="220"/>
@@ -59,7 +59,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimeFrameCell" rowHeight="50" id="neq-hy-srV">
-                                        <rect key="frame" x="20" y="424" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="404" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="neq-hy-srV" id="KYP-Fz-POg">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -71,7 +71,7 @@
                             <tableViewSection headerTitle="Summary" id="dNR-ZZ-qRT">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CashBalanceCell" id="rfG-x0-zL9">
-                                        <rect key="frame" x="20" y="530" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="510" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rfG-x0-zL9" id="le5-sM-Vmq">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
@@ -102,7 +102,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CreditCardsCell" id="UVn-IE-Hsi">
-                                        <rect key="frame" x="20" y="573.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="553.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UVn-IE-Hsi" id="GYd-Ue-faI">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
@@ -133,7 +133,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InvestmentsCell" id="FRU-XR-lgR">
-                                        <rect key="frame" x="20" y="617" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="597" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FRU-XR-lgR" id="cf1-1z-hLQ">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
@@ -165,15 +165,18 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Latest Transactions" id="dAV-VU-Ol4">
+                            <tableViewSection headerTitle="Last Transactions" id="dAV-VU-Ol4">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LatestTransactionsCell" rowHeight="100" id="Phm-gk-1Fn">
-                                        <rect key="frame" x="20" y="716.5" width="374" height="100"/>
+                                        <rect key="frame" x="20" y="696.5" width="374" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Phm-gk-1Fn" id="gDR-RO-9Rf">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="cac-Hu-VUt" kind="show" identifier="Transactions" id="Jde-iO-u1P"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -215,11 +218,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AccountBalanceCell" id="4TQ-pF-teh" customClass="AccountBalanceCell" customModule="Knot" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountBalanceCell" id="4TQ-pF-teh" customClass="AccountBalanceCell" customModule="Knot" customModuleProvider="target">
                                 <rect key="frame" x="20" y="55.5" width="374" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4TQ-pF-teh" id="oeB-ut-Swr">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="71"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;institution&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAO-lV-zEU">
@@ -235,7 +238,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;balance&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBL-e8-F4m">
-                                            <rect key="frame" x="253" y="25" width="82" height="21"/>
+                                            <rect key="frame" x="272" y="25" width="82" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -265,7 +268,6 @@
                                     <outlet property="balanceLabel" destination="CBL-e8-F4m" id="mPS-37-duu"/>
                                     <outlet property="institutionLabel" destination="oAO-lV-zEU" id="xh4-7L-iDV"/>
                                     <outlet property="logo" destination="764-1g-aYt" id="c0Q-NC-zIU"/>
-                                    <segue destination="8Ay-50-JkU" kind="show" id="6eS-yt-2VK"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" id="5nd-YT-yQJ" customClass="TransactionCell" customModule="Knot" customModuleProvider="target">
@@ -419,18 +421,18 @@
             <objects>
                 <viewController id="8Ay-50-JkU" customClass="AccountCardViewController" customModule="Knot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hHW-wo-uyn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCI-4M-mRx">
-                                <rect key="frame" x="179.5" y="408" width="55" height="30"/>
+                                <rect key="frame" x="179.5" y="381" width="55" height="30"/>
                                 <state key="normal" title="DELETE"/>
                                 <connections>
                                     <action selector="deleteAccount:" destination="8Ay-50-JkU" eventType="touchUpInside" id="w4Y-l8-x8L"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLc-xx-atH" customClass="AccountCard" customModule="Knot" customModuleProvider="target">
-                                <rect key="frame" x="41" y="123" width="332" height="190"/>
+                                <rect key="frame" x="41" y="96" width="332" height="190"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -442,7 +444,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added on &lt;date&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdj-iZ-fzs">
-                                <rect key="frame" x="140" y="353" width="134" height="21"/>
+                                <rect key="frame" x="140" y="326" width="134" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -467,7 +469,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MV3-Yc-P2i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1877" y="771"/>
+            <point key="canvasLocation" x="3568" y="-4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n1W-9s-e0k">
@@ -511,7 +513,6 @@
         <image name="person" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6eS-yt-2VK"/>
         <segue reference="0wW-bV-W4u"/>
     </inferredMetricsTieBreakers>
 </document>

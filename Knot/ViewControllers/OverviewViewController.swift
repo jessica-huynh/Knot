@@ -45,7 +45,11 @@ class OverviewViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? AccountDetailsViewController {
-            controller.accountType = segue.identifier
+            controller.navTitle = segue.identifier
+            
+            if segue.identifier == "All Transactions" {
+                controller.showAccounts = false
+            }
         }
     }
 }

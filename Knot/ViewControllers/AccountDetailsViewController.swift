@@ -10,13 +10,19 @@ import UIKit
 
 class AccountDetailsViewController: UITableViewController {
     
-    var accountType: String?
+    var navTitle: String?
+    var showAccounts = true
     let viewModel = AccountDetailsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = accountType!
+        title = navTitle!
+        
+        if !showAccounts {
+            viewModel.hideAccounts()
+        }
+        
         tableView?.dataSource = viewModel
     }
 

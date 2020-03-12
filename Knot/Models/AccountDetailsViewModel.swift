@@ -23,7 +23,7 @@ protocol AccountDetailsViewModelSection {
 }
 
 class AccountDetailsViewModel: NSObject {
-    enum SectionType {
+    enum SectionType: Int {
         case accounts
         case transactions
     }
@@ -45,6 +45,15 @@ class AccountDetailsViewModel: NSObject {
         
         sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
         sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
+    }
+    
+    func hideAccounts() {
+        for section in sections {
+            if section.type == .accounts {
+                sections.remove(at: section.type.rawValue)
+                return
+            }
+        }
     }
 }
 

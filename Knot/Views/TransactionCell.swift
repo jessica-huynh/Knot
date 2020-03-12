@@ -18,11 +18,15 @@ class TransactionCell: UITableViewCell {
     
     func configure(for transaction: Transaction) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EE, MMMM d"
+        dateFormatter.dateFormat = "EE, MMM d, YYYY"
         dateLabel.text = dateFormatter.string(from: transaction.date)
         
         descriptionLabel.text = transaction.description
         amountLabel.text = "$\(transaction.amount)"
+        
+        if transaction.description == "Walmart" {
+            sideBar.backgroundColor = UIColor.systemRed
+        }
     }
 
 }
