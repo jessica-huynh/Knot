@@ -39,8 +39,8 @@ class ProfileViewModel: NSObject {
         let account3 = Account(institution: "Simplii", accountNumber: "**** **** 2906")
         let accounts = [account1, account2, account3]
         
-        sections.append(Accounts(accounts: accounts))
-        sections.append(EraseDataButton())
+        sections.append(ProfileViewModelAccounts(accounts: accounts))
+        sections.append(ProfileViewModelEraseData())
     }
 }
 
@@ -60,7 +60,7 @@ extension ProfileViewModel: UITableViewDataSource {
         switch section.type {
         case .accounts:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccountNumberCell", for: indexPath)
-            let section = section as! Accounts
+            let section = section as! ProfileViewModelAccounts
             cell.textLabel?.text = section.accounts[indexPath.row].institution
             cell.detailTextLabel?.text = section.accounts[indexPath.row].accountNumber
             return cell
@@ -76,7 +76,7 @@ extension ProfileViewModel: UITableViewDataSource {
 }
 
 // MARK: - View Model Data
-class Accounts: ProfileViewModelSection {
+class ProfileViewModelAccounts: ProfileViewModelSection {
     var accounts: [Account]
     
     var type: ProfileViewModel.SectionType {
@@ -96,7 +96,7 @@ class Accounts: ProfileViewModelSection {
     }
 }
 
-class EraseDataButton: ProfileViewModelSection {
+class ProfileViewModelEraseData: ProfileViewModelSection {
     var type: ProfileViewModel.SectionType {
         return .eraseData
     }
