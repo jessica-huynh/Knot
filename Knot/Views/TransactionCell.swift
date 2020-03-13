@@ -15,18 +15,5 @@ class TransactionCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    
-    func configure(for transaction: Transaction) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EE, MMM d, YYYY"
-        dateLabel.text = dateFormatter.string(from: transaction.date)
-        
-        descriptionLabel.text = transaction.description
-        amountLabel.text = "$\(transaction.amount)"
-        
-        if transaction.description == "Walmart" {
-            sideBar.backgroundColor = UIColor.systemRed
-        }
-    }
 
 }

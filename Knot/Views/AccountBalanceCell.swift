@@ -15,11 +15,5 @@ class AccountBalanceCell: UITableViewCell {
     @IBOutlet weak var institutionLabel: UILabel!
     @IBOutlet weak var accountTypeLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
-    
-    func configure(for account: Account) {
-        institutionLabel.text = account.institution
-        accountTypeLabel.text = "Chequing"
-        balanceLabel.text = "$123.45"
-    }
 
 }

@@ -47,12 +47,32 @@ class AccountDetailsViewModel: NSObject {
         sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
     }
     
+    // MARK: - View Configuration
     func hideAccounts() {
         for section in sections {
             if section.type == .accounts {
                 sections.remove(at: section.type.rawValue)
                 return
             }
+        }
+    }
+    
+    func configure(cell: AccountBalanceCell, using account: Account) {
+        cell.institutionLabel.text = account.institution
+        cell.accountTypeLabel.text = "Chequing"
+        cell.balanceLabel.text = "$123.45"
+    }
+    
+    func configure(cell: TransactionCell, using transaction: Transaction) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EE, MMM d, YYYY"
+        cell.dateLabel.text = dateFormatter.string(from: transaction.date)
+        
+        cell.descriptionLabel.text = transaction.description
+        cell.amountLabel.text = "$\(transaction.amount)"
+        
+        if transaction.description == "Walmart" {
+            cell.sideBar.backgroundColor = UIColor.systemRed
         }
     }
 }
@@ -74,12 +94,15 @@ extension AccountDetailsViewModel: UITableViewDataSource {
         case .accounts:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccountBalanceCell", for: indexPath) as! AccountBalanceCell
             let section = section as! AccountDetailsViewModelAccounts
-            cell.configure(for: section.accounts[indexPath.row])
+            
+            configure(cell: cell, using: section.accounts[indexPath.row])
             return cell
+            
         case .transactions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionCell
             let section = section as! AccountDetailsViewModelTransactions
-            cell.configure(for: section.transactions[indexPath.row])
+            
+            configure(cell: cell, using: section.transactions[indexPath.row])
             return cell
         }
     }
