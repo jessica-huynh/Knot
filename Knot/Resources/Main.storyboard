@@ -27,13 +27,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;net balance&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIW-L6-H07">
-                                                    <rect key="frame" x="51" y="5" width="272" height="53"/>
+                                                    <rect key="frame" x="51.5" y="5" width="271.5" height="53"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Net Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpi-YP-Tfm">
-                                                    <rect key="frame" x="138" y="60" width="98" height="22"/>
+                                                    <rect key="frame" x="138" y="60" width="98" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -53,29 +53,35 @@
                                                     </segments>
                                                 </segmentedControl>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Y1-oz-iPc" customClass="LineChartView" customModule="Charts">
-                                                    <rect key="frame" x="20" y="111" width="346" height="216"/>
+                                                    <rect key="frame" x="26" y="110.5" width="340" height="216"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;x point&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpI-CQ-ov3">
-                                                            <rect key="frame" x="126" y="98" width="94" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;balance&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="5x6-lI-QJ6">
+                                                            <rect key="frame" x="119" y="123" width="83" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;time&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpd-lg-3oD">
+                                                            <rect key="frame" x="119" y="106" width="83" height="20"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                                            <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="216" id="6h6-MM-hoP"/>
-                                                        <constraint firstAttribute="width" secondItem="6Y1-oz-iPc" secondAttribute="height" multiplier="179:108" constant="-12" id="J1z-ce-aMF"/>
-                                                        <constraint firstAttribute="width" constant="346" id="huA-cs-2z9"/>
+                                                        <constraint firstAttribute="width" secondItem="6Y1-oz-iPc" secondAttribute="height" multiplier="179:108" constant="-18" id="J1z-ce-aMF"/>
+                                                        <constraint firstAttribute="width" constant="340" id="huA-cs-2z9"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="LZB-oN-jGA" secondAttribute="bottom" constant="5" id="4CI-uQ-Tib"/>
                                                 <constraint firstItem="LZB-oN-jGA" firstAttribute="centerX" secondItem="1AJ-1x-qVd" secondAttribute="centerX" id="DPO-fX-puk"/>
-                                                <constraint firstItem="6Y1-oz-iPc" firstAttribute="centerX" secondItem="1AJ-1x-qVd" secondAttribute="centerX" constant="6" id="KJi-3o-D6f"/>
+                                                <constraint firstItem="6Y1-oz-iPc" firstAttribute="centerX" secondItem="1AJ-1x-qVd" secondAttribute="centerX" constant="9" id="KJi-3o-D6f"/>
                                                 <constraint firstItem="tIW-L6-H07" firstAttribute="centerX" secondItem="1AJ-1x-qVd" secondAttribute="centerX" id="N0y-TZ-jRK"/>
                                                 <constraint firstItem="tIW-L6-H07" firstAttribute="top" secondItem="1AJ-1x-qVd" secondAttribute="top" constant="5" id="Wvi-v1-k6f"/>
                                                 <constraint firstItem="cpi-YP-Tfm" firstAttribute="centerX" secondItem="1AJ-1x-qVd" secondAttribute="centerX" id="lDD-9Q-nxY"/>
@@ -268,11 +274,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="balanceChartView" destination="6Y1-oz-iPc" id="123-N5-ctD"/>
-                        <outlet property="balanceIndicatorLabel" destination="jpI-CQ-ov3" id="LvL-6G-0Y0"/>
+                        <outlet property="balanceIndicatorLabel" destination="5x6-lI-QJ6" id="MFN-9C-u0o"/>
                         <outlet property="cashBalanceLabel" destination="tNX-h0-L0T" id="ehW-qc-EHV"/>
                         <outlet property="creditCardsBalanceLabel" destination="1Hz-6U-R4n" id="WcX-KO-SEg"/>
                         <outlet property="investmentsBalanceLabel" destination="QVa-hC-UgM" id="Hhh-0K-w0i"/>
                         <outlet property="netBalanceLabel" destination="tIW-L6-H07" id="nLr-FU-MP7"/>
+                        <outlet property="timeIndicatorLabel" destination="kpd-lg-3oD" id="sja-gm-y9r"/>
                         <outlet property="transactionCollectionView" destination="uT3-Ra-0lx" id="Eg1-j8-cU0"/>
                     </connections>
                 </tableViewController>

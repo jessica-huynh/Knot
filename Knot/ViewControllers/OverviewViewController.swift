@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftUI
 import Charts
 
 class OverviewViewController: UITableViewController {
@@ -24,7 +23,8 @@ class OverviewViewController: UITableViewController {
     @IBOutlet weak var transactionCollectionView: UICollectionView!
     @IBOutlet weak var balanceChartView: LineChartView!
     @IBOutlet weak var balanceIndicatorLabel: UILabel!
-    
+    @IBOutlet weak var timeIndicatorLabel: UILabel!
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,12 +67,12 @@ class OverviewViewController: UITableViewController {
     func setupBalanceChart() {
         balanceChartView.delegate = self
         
-        let balance = [32050, 50000, 50000, 25000, 25000, 50000, 50000, 40000, 40000, 150000, 150000, 150000, 150000]
+        let balance = [32050, 500000, 500000, 250000, 250000, 500000, 500000, 400000, 400000, 1500000, 1500000, 1500000, 1500000]
         
         var lineChartEntry = [ChartDataEntry]()
-        
+
         for i in 0..<balance.count {
-            let value = ChartDataEntry(x: Double(i), y: Double(balance[i]))
+            let value = ChartDataEntry(x: Double(i), y: Double(balance[i]), data: "Mon")
             lineChartEntry.append(value)
         }
         
@@ -107,6 +107,7 @@ class OverviewViewController: UITableViewController {
         
         drawGradient(for: balanceData, using: UIColor.systemBlue, bottomColour: UIColor.white)
         balanceIndicatorLabel.alpha = 0
+        timeIndicatorLabel.alpha = 0
     }
     
     func drawGradient(for lineChart: LineChartDataSet, using topColour: UIColor, bottomColour: UIColor) {
@@ -150,23 +151,29 @@ extension OverviewViewController: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         
         let firstEntry = chartView.data?.dataSets[0].entryForIndex(0)
-        
+
         if entry == firstEntry {
-            balanceIndicatorLabel.center = CGPoint(x: 20, y: 0)
+            timeIndicatorLabel.center = CGPoint(x: highlight.xPx + 10, y: -18)
+            balanceIndicatorLabel.center = CGPoint(x: highlight.xPx + 10, y: -2)
         } else {
-            balanceIndicatorLabel.center = CGPoint(x: highlight.xPx, y: 0)
+            timeIndicatorLabel.center = CGPoint(x: highlight.xPx, y: -18)
+            balanceIndicatorLabel.center = CGPoint(x: highlight.xPx, y: -2)
         }
+ 
+        timeIndicatorLabel.text = entry.data as? String
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         if let balance = formatter.string(from: highlight.y as NSNumber) {
             balanceIndicatorLabel.text = "\(balance)"
         }
-        
+
+        timeIndicatorLabel.fadeIn()
         balanceIndicatorLabel.fadeIn()
     }
     
     func chartViewDidEndPanning(_ chartView: ChartViewBase) {
+        timeIndicatorLabel.fadeOut()
         balanceIndicatorLabel.fadeOut()
         chartView.highlightValue(nil)
     }
