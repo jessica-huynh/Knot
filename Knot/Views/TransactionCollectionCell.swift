@@ -21,7 +21,7 @@ class TransactionCollectionCell: UICollectionViewCell {
         
         self.contentView.layer.cornerRadius = 10
         self.contentView.layer.borderWidth = 1.0
-        self.contentView.layer.borderColor = UIColor.clear.cgColor
+        self.contentView.layer.borderColor = UIColor.lightGray.cgColor
         self.contentView.layer.masksToBounds = true
     }
 }
