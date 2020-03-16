@@ -51,19 +51,22 @@
                                                         <segment title="6M"/>
                                                         <segment title="1Y"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="chartSegmentChanged:" destination="1Lz-rZ-Lcl" eventType="valueChanged" id="OA9-lb-XhW"/>
+                                                    </connections>
                                                 </segmentedControl>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Y1-oz-iPc" customClass="LineChartView" customModule="Charts">
                                                     <rect key="frame" x="26" y="110.5" width="340" height="216"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;balance&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="5x6-lI-QJ6">
-                                                            <rect key="frame" x="119" y="123" width="83" height="21"/>
+                                                            <rect key="frame" x="0.0" y="17" width="83" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;time&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpd-lg-3oD">
-                                                            <rect key="frame" x="119" y="106" width="83" height="20"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="83" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                             <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -94,7 +97,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Summary" id="dNR-ZZ-qRT">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CashBalanceCell" id="rfG-x0-zL9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CashBalanceCell" rowHeight="43.5" id="rfG-x0-zL9">
                                         <rect key="frame" x="20" y="454" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rfG-x0-zL9" id="le5-sM-Vmq">
@@ -108,7 +111,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;cash bal&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNX-h0-L0T">
-                                                    <rect key="frame" x="250" y="12" width="85" height="20.5"/>
+                                                    <rect key="frame" x="250" y="11.5" width="85" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -125,7 +128,7 @@
                                             <segue destination="cac-Hu-VUt" kind="show" identifier="Cash" id="0wW-bV-W4u"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CreditCardsCell" id="UVn-IE-Hsi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CreditCardsCell" rowHeight="43.5" id="UVn-IE-Hsi">
                                         <rect key="frame" x="20" y="497.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UVn-IE-Hsi" id="GYd-Ue-faI">
@@ -156,7 +159,7 @@
                                             <segue destination="cac-Hu-VUt" kind="show" identifier="Credit Cards" id="IZR-bV-Bni"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InvestmentsCell" id="FRU-XR-lgR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InvestmentsCell" rowHeight="43.5" id="FRU-XR-lgR">
                                         <rect key="frame" x="20" y="541" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FRU-XR-lgR" id="cf1-1z-hLQ">
@@ -276,6 +279,7 @@
                         <outlet property="balanceChartView" destination="6Y1-oz-iPc" id="123-N5-ctD"/>
                         <outlet property="balanceIndicatorLabel" destination="5x6-lI-QJ6" id="MFN-9C-u0o"/>
                         <outlet property="cashBalanceLabel" destination="tNX-h0-L0T" id="ehW-qc-EHV"/>
+                        <outlet property="chartSegmentedControl" destination="LZB-oN-jGA" id="hbX-cw-gBB"/>
                         <outlet property="creditCardsBalanceLabel" destination="1Hz-6U-R4n" id="WcX-KO-SEg"/>
                         <outlet property="investmentsBalanceLabel" destination="QVa-hC-UgM" id="Hhh-0K-w0i"/>
                         <outlet property="netBalanceLabel" destination="tIW-L6-H07" id="nLr-FU-MP7"/>
