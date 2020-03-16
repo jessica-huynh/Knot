@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88E6559223F1D4C5EC31713B /* Pods_Knot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */; };
 		C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8371C812418088600519346 /* AccountDetailsViewController.swift */; };
 		C8502E6E241AA709007A6266 /* TransactionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */; };
 		C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */; };
@@ -14,9 +15,11 @@
 		C86D5EED24199A5300D70126 /* AccountDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EEC24199A5200D70126 /* AccountDetailsViewModel.swift */; };
 		C86D5EEF2419A72400D70126 /* AccountBalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EEE2419A72400D70126 /* AccountBalanceCell.swift */; };
 		C86D5EF12419A74C00D70126 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EF02419A74C00D70126 /* TransactionCell.swift */; };
+		C890B974241D96390087FC3E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C890B973241D96390087FC3E /* Podfile */; };
 		C89EDF1E24193ADF0075052D /* AccountCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = C89EDF1D24193ADF0075052D /* AccountCard.xib */; };
 		C89EDF2024193E460075052D /* AccountCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EDF1F24193E460075052D /* AccountCard.swift */; };
 		C89EDF222419528C0075052D /* AccountCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EDF212419528C0075052D /* AccountCardViewController.swift */; };
+		C8B47247241F0C2D00E9A85A /* UIView+FadeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B47246241F0C2D00E9A85A /* UIView+FadeAnimation.swift */; };
 		C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA292416F336000195AC /* AppDelegate.swift */; };
 		C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA2B2416F336000195AC /* SceneDelegate.swift */; };
 		C8D7EA402416F5E7000195AC /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA3F2416F5E7000195AC /* OverviewViewController.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56A52C795C5983EB7FD2594D /* Pods-Knot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knot.debug.xcconfig"; path = "Target Support Files/Pods-Knot/Pods-Knot.debug.xcconfig"; sourceTree = "<group>"; };
+		7B5DE0AB0712C7CB2F6E7713 /* Pods-Knot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knot.release.xcconfig"; path = "Target Support Files/Pods-Knot/Pods-Knot.release.xcconfig"; sourceTree = "<group>"; };
+		C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8371C812418088600519346 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCollectionCell.xib; sourceTree = "<group>"; };
 		C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionCell.swift; sourceTree = "<group>"; };
@@ -34,9 +40,11 @@
 		C86D5EEC24199A5200D70126 /* AccountDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewModel.swift; sourceTree = "<group>"; };
 		C86D5EEE2419A72400D70126 /* AccountBalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBalanceCell.swift; sourceTree = "<group>"; };
 		C86D5EF02419A74C00D70126 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		C890B973241D96390087FC3E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C89EDF1D24193ADF0075052D /* AccountCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCard.xib; sourceTree = "<group>"; };
 		C89EDF1F24193E460075052D /* AccountCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCard.swift; sourceTree = "<group>"; };
 		C89EDF212419528C0075052D /* AccountCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCardViewController.swift; sourceTree = "<group>"; };
+		C8B47246241F0C2D00E9A85A /* UIView+FadeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FadeAnimation.swift"; sourceTree = "<group>"; };
 		C8D7EA262416F336000195AC /* Knot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D7EA292416F336000195AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D7EA2B2416F336000195AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,12 +61,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88E6559223F1D4C5EC31713B /* Pods_Knot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52410FFDDF7E9826645AA51D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56A52C795C5983EB7FD2594D /* Pods-Knot.debug.xcconfig */,
+				7B5DE0AB0712C7CB2F6E7713 /* Pods-Knot.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BB7454907360854925E5CAF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C84BEB68241851310022D84D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,11 +105,22 @@
 			path = Nibs;
 			sourceTree = "<group>";
 		};
+		C8B47245241F0BD700E9A85A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C8B47246241F0C2D00E9A85A /* UIView+FadeAnimation.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C8D7EA1D2416F336000195AC = {
 			isa = PBXGroup;
 			children = (
+				C890B973241D96390087FC3E /* Podfile */,
 				C8D7EA282416F336000195AC /* Knot */,
 				C8D7EA272416F336000195AC /* Products */,
+				52410FFDDF7E9826645AA51D /* Pods */,
+				BB7454907360854925E5CAF5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +163,7 @@
 				C8D7EA442416F5F6000195AC /* Main.storyboard */,
 				C8D7EA422416F5F6000195AC /* LaunchScreen.storyboard */,
 				C8D7EA432416F5F6000195AC /* Assets.xcassets */,
+				C8B47245241F0BD700E9A85A /* Extensions */,
 				C89EDF1A241939300075052D /* Nibs */,
 			);
 			path = Resources;
@@ -147,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8D7EA3A2416F33D000195AC /* Build configuration list for PBXNativeTarget "Knot" */;
 			buildPhases = (
+				A617945303BAE40BC2379DD8 /* [CP] Check Pods Manifest.lock */,
 				C8D7EA222416F336000195AC /* Sources */,
 				C8D7EA232416F336000195AC /* Frameworks */,
 				C8D7EA242416F336000195AC /* Resources */,
+				21F482F9CD90A4B87BCE3F24 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8D7EA472416F5F6000195AC /* Main.storyboard in Resources */,
+				C890B974241D96390087FC3E /* Podfile in Resources */,
 				C8D7EA462416F5F6000195AC /* Assets.xcassets in Resources */,
 				C8D7EA452416F5F6000195AC /* LaunchScreen.storyboard in Resources */,
 				C89EDF1E24193ADF0075052D /* AccountCard.xib in Resources */,
@@ -207,6 +248,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21F482F9CD90A4B87BCE3F24 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Knot/Pods-Knot-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Knot/Pods-Knot-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Knot/Pods-Knot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A617945303BAE40BC2379DD8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Knot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C8D7EA222416F336000195AC /* Sources */ = {
@@ -224,6 +307,7 @@
 				C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */,
 				C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */,
 				C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */,
+				C8B47247241F0C2D00E9A85A /* UIView+FadeAnimation.swift in Sources */,
 				C89EDF2024193E460075052D /* AccountCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +431,7 @@
 		};
 		C8D7EA3B2416F33D000195AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56A52C795C5983EB7FD2594D /* Pods-Knot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -365,6 +450,7 @@
 		};
 		C8D7EA3C2416F33D000195AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B5DE0AB0712C7CB2F6E7713 /* Pods-Knot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

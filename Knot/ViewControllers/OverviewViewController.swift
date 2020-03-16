@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftUI
+import Charts
 
 class OverviewViewController: UITableViewController {
     
@@ -20,16 +22,14 @@ class OverviewViewController: UITableViewController {
     @IBOutlet weak var creditCardsBalanceLabel: UILabel!
     @IBOutlet weak var investmentsBalanceLabel: UILabel!
     @IBOutlet weak var transactionCollectionView: UICollectionView!
-    
+    @IBOutlet weak var balanceChartView: LineChartView!
+    @IBOutlet weak var balanceIndicatorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        transactionCollectionView.register(UINib(nibName: "TransactionCollectionCell", bundle: nil), forCellWithReuseIdentifier: "TransactionCollectionCell")
-        transactionCollectionView.dataSource = self
-        transactionCollectionView.delegate = self
-        transactionCollectionView.showsHorizontalScrollIndicator = false
-        
+        setupTransactionCollectionVew()
+        setupBalanceChart()
         updateLabels()
         
         let transaction1 = Transaction(description: "Uber", date: Date(), amount: 12.45)
@@ -47,7 +47,79 @@ class OverviewViewController: UITableViewController {
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
     }
+    
+    /*
+    @IBSegueAction func addSwiftUIView(_ coder: NSCoder) -> UIViewController? {
+        return UIHostingController(coder: coder, rootView: BalanceLineChartView(data: [8,30,54,32,12,37,7,63,43]))
+    }
+ */
 
+    // MARK: - Helper Functions
+    func setupTransactionCollectionVew() {
+        transactionCollectionView.dataSource = self
+        transactionCollectionView.delegate = self
+        transactionCollectionView.showsHorizontalScrollIndicator = false
+        transactionCollectionView.register(
+            UINib(nibName: "TransactionCollectionCell", bundle: nil),
+            forCellWithReuseIdentifier: "TransactionCollectionCell")
+    }
+    
+    func setupBalanceChart() {
+        balanceChartView.delegate = self
+        
+        let balance = [32050, 50000, 50000, 25000, 25000, 50000, 50000, 40000, 40000, 150000, 150000, 150000, 150000]
+        
+        var lineChartEntry = [ChartDataEntry]()
+        
+        for i in 0..<balance.count {
+            let value = ChartDataEntry(x: Double(i), y: Double(balance[i]))
+            lineChartEntry.append(value)
+        }
+        
+        let balanceData = LineChartDataSet(entries: lineChartEntry)
+        let data = LineChartData()
+        data.addDataSet(balanceData)
+        balanceChartView.data = data
+        
+        customizeBalanceChart()
+    }
+    
+    func customizeBalanceChart() {
+        let balanceData = balanceChartView.data!.dataSets[0] as! LineChartDataSet
+        
+        balanceData.colors = [UIColor.systemBlue]
+        balanceData.lineWidth = 2.0
+        balanceData.drawCirclesEnabled = false
+        balanceData.drawValuesEnabled = false
+        
+        balanceData.drawHorizontalHighlightIndicatorEnabled = false
+        balanceData.highlightColor = UIColor.gray
+        balanceData.highlightLineDashLengths = [2.0]
+        
+        balanceChartView.xAxis.enabled = false
+        balanceChartView.leftAxis.enabled = false
+        balanceChartView.rightAxis.drawGridLinesEnabled = false
+        balanceChartView.legend.enabled = false
+        balanceChartView.animate(yAxisDuration: 0.8, easingOption: ChartEasingOption.linear)
+        balanceChartView.animate(xAxisDuration: 0.8, easingOption: ChartEasingOption.linear)
+        balanceChartView.setScaleEnabled(false)
+        balanceChartView.highlightPerTapEnabled = false
+        
+        drawGradient(for: balanceData, using: UIColor.systemBlue, bottomColour: UIColor.white)
+        balanceIndicatorLabel.alpha = 0
+    }
+    
+    func drawGradient(for lineChart: LineChartDataSet, using topColour: UIColor, bottomColour: UIColor) {
+           let gradientColours = [topColour.cgColor, bottomColour.cgColor]
+           let colourLocations: [CGFloat] = [0.7, 0.0]
+           let gradient =
+               CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(),
+                               colors: gradientColours as CFArray,
+                               locations: colourLocations)!
+           lineChart.drawFilledEnabled = true
+           lineChart.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
+    }
+    
     func updateLabels() {
         netBalanceLabel.text = "$12,735.58"
         cashBalanceLabel.text = "$15,379.00"
@@ -73,6 +145,34 @@ class OverviewViewController: UITableViewController {
     }
 }
 
+// MARK: - Line Chart View Extension
+extension OverviewViewController: ChartViewDelegate {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        
+        let firstEntry = chartView.data?.dataSets[0].entryForIndex(0)
+        
+        if entry == firstEntry {
+            balanceIndicatorLabel.center = CGPoint(x: 20, y: 0)
+        } else {
+            balanceIndicatorLabel.center = CGPoint(x: highlight.xPx, y: 0)
+        }
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let balance = formatter.string(from: highlight.y as NSNumber) {
+            balanceIndicatorLabel.text = "\(balance)"
+        }
+        
+        balanceIndicatorLabel.fadeIn()
+    }
+    
+    func chartViewDidEndPanning(_ chartView: ChartViewBase) {
+        balanceIndicatorLabel.fadeOut()
+        chartView.highlightValue(nil)
+    }
+}
+
+
 // MARK: - Collection View Extension
 extension OverviewViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,4 +192,3 @@ extension OverviewViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
 }
-

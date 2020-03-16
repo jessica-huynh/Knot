@@ -1,0 +1,6 @@
+framework module Pods_Knot {
+  umbrella header "Pods-Knot-umbrella.h"
+
+  export *
+  module * { export * }
+}
