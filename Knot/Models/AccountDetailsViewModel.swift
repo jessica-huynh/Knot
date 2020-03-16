@@ -70,10 +70,6 @@ class AccountDetailsViewModel: NSObject {
         
         cell.descriptionLabel.text = transaction.description
         cell.amountLabel.text = "$\(transaction.amount)"
-        
-        if transaction.description == "Walmart" {
-            cell.sideBar.backgroundColor = UIColor.systemRed
-        }
     }
 }
 

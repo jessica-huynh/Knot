@@ -11,7 +11,6 @@ import UIKit
 class TransactionCell: UITableViewCell {
 
     //MARK: - Outlets
-    @IBOutlet weak var sideBar: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
