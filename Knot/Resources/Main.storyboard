@@ -38,25 +38,8 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LZB-oN-jGA">
-                                                    <rect key="frame" x="8" y="335" width="358" height="41"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="358" id="8sg-Rd-6Eh"/>
-                                                        <constraint firstAttribute="height" constant="40" id="YZu-51-g2N"/>
-                                                    </constraints>
-                                                    <segments>
-                                                        <segment title="1W"/>
-                                                        <segment title="1M"/>
-                                                        <segment title="3M"/>
-                                                        <segment title="6M"/>
-                                                        <segment title="1Y"/>
-                                                    </segments>
-                                                    <connections>
-                                                        <action selector="chartSegmentChanged:" destination="1Lz-rZ-Lcl" eventType="valueChanged" id="OA9-lb-XhW"/>
-                                                    </connections>
-                                                </segmentedControl>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Y1-oz-iPc" customClass="LineChartView" customModule="Charts">
-                                                    <rect key="frame" x="26" y="110.5" width="340" height="216"/>
+                                                    <rect key="frame" x="26" y="126.5" width="340" height="216"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;balance&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="5x6-lI-QJ6">
                                                             <rect key="frame" x="0.0" y="17" width="83" height="21"/>
@@ -74,21 +57,33 @@
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="216" id="6h6-MM-hoP"/>
-                                                        <constraint firstAttribute="width" secondItem="6Y1-oz-iPc" secondAttribute="height" multiplier="179:108" constant="-18" id="J1z-ce-aMF"/>
-                                                        <constraint firstAttribute="width" constant="340" id="huA-cs-2z9"/>
-                                                    </constraints>
                                                 </view>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LZB-oN-jGA">
+                                                    <rect key="frame" x="20" y="344" width="329" height="32"/>
+                                                    <segments>
+                                                        <segment title="1W"/>
+                                                        <segment title="1M"/>
+                                                        <segment title="3M"/>
+                                                        <segment title="6M"/>
+                                                        <segment title="1Y"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="chartSegmentChanged:" destination="1Lz-rZ-Lcl" eventType="valueChanged" id="OA9-lb-XhW"/>
+                                                    </connections>
+                                                </segmentedControl>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="LZB-oN-jGA" firstAttribute="top" secondItem="6Y1-oz-iPc" secondAttribute="bottom" constant="1.5" id="1V7-as-Vkj"/>
+                                                <constraint firstAttribute="trailing" secondItem="6Y1-oz-iPc" secondAttribute="trailing" constant="8" id="48P-Yp-BwZ"/>
                                                 <constraint firstAttribute="bottom" secondItem="LZB-oN-jGA" secondAttribute="bottom" constant="5" id="4CI-uQ-Tib"/>
-                                                <constraint firstItem="LZB-oN-jGA" firstAttribute="centerX" secondItem="1AJ-1x-qVd" secondAttribute="centerX" id="DPO-fX-puk"/>
+                                                <constraint firstAttribute="trailing" secondItem="LZB-oN-jGA" secondAttribute="trailing" constant="25" id="6AO-cv-9aR"/>
+                                                <constraint firstItem="6Y1-oz-iPc" firstAttribute="leading" secondItem="1AJ-1x-qVd" secondAttribute="leading" constant="26" id="7OD-nz-Zgq"/>
                                                 <constraint firstItem="6Y1-oz-iPc" firstAttribute="centerX" secondItem="1AJ-1x-qVd" secondAttribute="centerX" constant="9" id="KJi-3o-D6f"/>
                                                 <constraint firstItem="tIW-L6-H07" firstAttribute="centerX" secondItem="1AJ-1x-qVd" secondAttribute="centerX" id="N0y-TZ-jRK"/>
                                                 <constraint firstItem="tIW-L6-H07" firstAttribute="top" secondItem="1AJ-1x-qVd" secondAttribute="top" constant="5" id="Wvi-v1-k6f"/>
+                                                <constraint firstItem="LZB-oN-jGA" firstAttribute="leading" secondItem="1AJ-1x-qVd" secondAttribute="leading" constant="20" id="chp-fd-Uzd"/>
                                                 <constraint firstItem="cpi-YP-Tfm" firstAttribute="centerX" secondItem="1AJ-1x-qVd" secondAttribute="centerX" id="lDD-9Q-nxY"/>
-                                                <constraint firstItem="6Y1-oz-iPc" firstAttribute="top" secondItem="cpi-YP-Tfm" secondAttribute="bottom" constant="29" id="sPo-HG-5xI"/>
+                                                <constraint firstItem="6Y1-oz-iPc" firstAttribute="top" secondItem="cpi-YP-Tfm" secondAttribute="bottom" constant="45" id="sPo-HG-5xI"/>
                                                 <constraint firstItem="cpi-YP-Tfm" firstAttribute="top" secondItem="tIW-L6-H07" secondAttribute="bottom" constant="2" id="ufm-ow-l34"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -204,10 +199,6 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uT3-Ra-0lx">
                                                     <rect key="frame" x="5.5" y="-4" width="363" height="128"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="363" id="0ZE-qa-7B3"/>
-                                                        <constraint firstAttribute="height" constant="128" id="vXb-MC-0m7"/>
-                                                    </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dPJ-9r-c8l">
                                                         <size key="itemSize" width="100" height="120"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -250,6 +241,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="uT3-Ra-0lx" firstAttribute="centerX" secondItem="gDR-RO-9Rf" secondAttribute="centerX" id="7a9-yY-22G"/>
+                                                <constraint firstItem="uT3-Ra-0lx" firstAttribute="top" secondItem="gDR-RO-9Rf" secondAttribute="topMargin" constant="-15" id="BXr-36-3qy"/>
+                                                <constraint firstItem="uT3-Ra-0lx" firstAttribute="leading" secondItem="gDR-RO-9Rf" secondAttribute="leading" constant="5.5" id="cXw-bf-DGf"/>
                                                 <constraint firstItem="uT3-Ra-0lx" firstAttribute="centerY" secondItem="gDR-RO-9Rf" secondAttribute="centerY" id="tM9-jH-x7R"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -522,12 +515,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="LCI-4M-mRx" firstAttribute="centerY" secondItem="hHW-wo-uyn" secondAttribute="centerY" constant="-25" id="47L-Ez-7dw"/>
                             <constraint firstItem="LLc-xx-atH" firstAttribute="centerX" secondItem="hHW-wo-uyn" secondAttribute="centerX" id="HDN-1i-qOC"/>
                             <constraint firstItem="LCI-4M-mRx" firstAttribute="centerX" secondItem="hHW-wo-uyn" secondAttribute="centerX" id="JJO-8D-YCG"/>
-                            <constraint firstItem="vdj-iZ-fzs" firstAttribute="centerY" secondItem="hHW-wo-uyn" secondAttribute="centerY" constant="-84.5" id="Mdl-PU-5Vb"/>
-                            <constraint firstItem="LLc-xx-atH" firstAttribute="centerY" secondItem="hHW-wo-uyn" secondAttribute="centerY" constant="-230" id="YjK-rl-yZv"/>
+                            <constraint firstItem="vdj-iZ-fzs" firstAttribute="top" secondItem="LLc-xx-atH" secondAttribute="bottom" constant="40" id="SJB-QT-j5j"/>
                             <constraint firstItem="vdj-iZ-fzs" firstAttribute="centerX" secondItem="hHW-wo-uyn" secondAttribute="centerX" id="j9j-5y-IDg"/>
+                            <constraint firstItem="LCI-4M-mRx" firstAttribute="top" secondItem="vdj-iZ-fzs" secondAttribute="bottom" constant="34" id="jRE-P5-ots"/>
+                            <constraint firstItem="LLc-xx-atH" firstAttribute="top" secondItem="5jP-oi-93y" secondAttribute="top" constant="40" id="krW-1k-Ze9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5jP-oi-93y"/>
                     </view>
