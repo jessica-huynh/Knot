@@ -58,7 +58,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LZB-oN-jGA">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LZB-oN-jGA" customClass="ChartSegmentedControl" customModule="Knot" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="344" width="329" height="32"/>
                                                     <segments>
                                                         <segment title="1W"/>
@@ -67,6 +67,7 @@
                                                         <segment title="6M"/>
                                                         <segment title="1Y"/>
                                                     </segments>
+                                                    <color key="selectedSegmentTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
                                                         <action selector="chartSegmentChanged:" destination="1Lz-rZ-Lcl" eventType="valueChanged" id="OA9-lb-XhW"/>
                                                     </connections>

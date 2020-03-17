@@ -23,6 +23,7 @@
 		C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */; };
 		C8B584B224201A7500DA28D9 /* OverviewViewController+BalanceChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B124201A7500DA28D9 /* OverviewViewController+BalanceChart.swift */; };
 		C8B584B424201C9100DA28D9 /* OverviewViewController+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B324201C9100DA28D9 /* OverviewViewController+Transactions.swift */; };
+		C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */; };
 		C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA292416F336000195AC /* AppDelegate.swift */; };
 		C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA2B2416F336000195AC /* SceneDelegate.swift */; };
 		C8D7EA402416F5E7000195AC /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA3F2416F5E7000195AC /* OverviewViewController.swift */; };
@@ -51,6 +52,7 @@
 		C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceChartDataSet.swift; sourceTree = "<group>"; };
 		C8B584B124201A7500DA28D9 /* OverviewViewController+BalanceChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OverviewViewController+BalanceChart.swift"; sourceTree = "<group>"; };
 		C8B584B324201C9100DA28D9 /* OverviewViewController+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OverviewViewController+Transactions.swift"; sourceTree = "<group>"; };
+		C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSegmentedControl.swift; sourceTree = "<group>"; };
 		C8D7EA262416F336000195AC /* Knot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D7EA292416F336000195AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D7EA2B2416F336000195AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				C86D5EEE2419A72400D70126 /* AccountBalanceCell.swift */,
 				C86D5EF02419A74C00D70126 /* TransactionCell.swift */,
 				C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */,
+				C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				C86D5EED24199A5300D70126 /* AccountDetailsViewModel.swift in Sources */,
 				C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */,
 				C8D7EA4A24171AAD000195AC /* ProfileViewController.swift in Sources */,
+				C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */,
 				C86D5EEF2419A72400D70126 /* AccountBalanceCell.swift in Sources */,
 				C8B584B224201A7500DA28D9 /* OverviewViewController+BalanceChart.swift in Sources */,
 				C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */,
