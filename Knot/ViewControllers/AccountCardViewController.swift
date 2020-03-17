@@ -28,6 +28,10 @@ class AccountCardViewController: UIViewController {
     @IBAction func deleteAccount(_ sender: UIButton) {
     }
     
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func updateCard() {
         accountCard.institutionLabel.text = account?.institution
         accountCard.accountTypeLabel.text = "Chequing"
