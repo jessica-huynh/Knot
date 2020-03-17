@@ -36,16 +36,3 @@ class ChartSegmentedControl: UISegmentedControl {
         setTitleTextAttributes([.foregroundColor: tintColor!, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular), NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue], for: .selected)
     }
 }
-
-extension UIImage {
-    convenience init(color: UIColor, size: CGSize) {
-        UIGraphicsBeginImageContextWithOptions(size, false, 1)
-        color.set()
-        let context = UIGraphicsGetCurrentContext()!
-        context.fill(CGRect(origin: .zero, size: size))
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-
-        self.init(data: image.pngData()!)!
-    }
-}

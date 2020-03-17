@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88E6559223F1D4C5EC31713B /* Pods_Knot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */; };
+		C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */; };
 		C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8371C812418088600519346 /* AccountDetailsViewController.swift */; };
 		C8502E6E241AA709007A6266 /* TransactionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */; };
 		C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */; };
@@ -37,6 +38,7 @@
 		56A52C795C5983EB7FD2594D /* Pods-Knot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knot.debug.xcconfig"; path = "Target Support Files/Pods-Knot/Pods-Knot.debug.xcconfig"; sourceTree = "<group>"; };
 		7B5DE0AB0712C7CB2F6E7713 /* Pods-Knot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knot.release.xcconfig"; path = "Target Support Files/Pods-Knot/Pods-Knot.release.xcconfig"; sourceTree = "<group>"; };
 		C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SolidColour.swift"; sourceTree = "<group>"; };
 		C8371C812418088600519346 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCollectionCell.xib; sourceTree = "<group>"; };
 		C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionCell.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				C8B47246241F0C2D00E9A85A /* UIView+FadeAnimation.swift */,
+				C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */,
 				C8D7EA402416F5E7000195AC /* OverviewViewController.swift in Sources */,
 				C86D5EED24199A5300D70126 /* AccountDetailsViewModel.swift in Sources */,
+				C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */,
 				C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */,
 				C8D7EA4A24171AAD000195AC /* ProfileViewController.swift in Sources */,
 				C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */,
