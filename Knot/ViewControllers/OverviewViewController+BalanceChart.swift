@@ -113,6 +113,7 @@ extension OverviewViewController: ChartViewDelegate {
            lineChart.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
     }
     
+    // MARK: - Chart Delegate Functions
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         
         let firstEntry = chartView.data?.dataSets[0].entryForIndex(0)
