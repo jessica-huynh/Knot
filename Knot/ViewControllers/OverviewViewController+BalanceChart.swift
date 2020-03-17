@@ -11,6 +11,9 @@ import Charts
 
 extension OverviewViewController: ChartViewDelegate {
     @IBAction func chartSegmentChanged(_ sender: UISegmentedControl) {
+        timeIndicatorLabel.fadeOut()
+        balanceIndicatorLabel.fadeOut()
+        
         if let timePeriod = ChartTimePeriod(rawValue: chartSegmentedControl.selectedSegmentIndex) {
             
             var newChartData: BalanceChartDataSet
@@ -33,11 +36,12 @@ extension OverviewViewController: ChartViewDelegate {
             if !newChartData.isCustomized {
                 customizeBalanceChart()
                 newChartData.isCustomized = true
+            } else {
+                balanceChartView.animate(yAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
+                balanceChartView.animate(xAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
+                balanceChartView.notifyDataSetChanged()
+                highlightCurrentBalance()
             }
-            
-            balanceChartView.animate(yAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
-            balanceChartView.animate(xAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
-            balanceChartView.notifyDataSetChanged()
         }
     }
     
@@ -48,13 +52,13 @@ extension OverviewViewController: ChartViewDelegate {
         case .week:
             balances = [32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000]
         case .month:
-            balances = [320500, 500000, 500000, 250000, 250000, 800000, 32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000, 40000]
+            balances = [320500, 500000, 500000, 250000, 250000, 800000, 32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000, 400000]
         case .threeMonth:
             balances = [32050, 500000, 100000, 250000, 250000, 800000, 20000]
         case .sixMonth:
             balances = [32050, 500000, 500000, 250000, 250000, 800000, 616000]
         case .year:
-            balances = [32050, 500000, 900000, 250000, 250000, 800000, 152052]
+            balances = [3205000, 5000000, 9000000, 2500000, 2500000, 11800000, 11800000]
         }
         
         var lineChartEntry = [ChartDataEntry]()
@@ -87,10 +91,12 @@ extension OverviewViewController: ChartViewDelegate {
         
         balanceData.drawHorizontalHighlightIndicatorEnabled = false
         balanceData.highlightColor = UIColor.gray
+        balanceData.highlightLineWidth = 2
         balanceData.highlightLineDashLengths = [2.0]
         
         balanceChartView.xAxis.enabled = false
         balanceChartView.leftAxis.enabled = false
+        balanceChartView.rightAxis.enabled = false
         balanceChartView.rightAxis.drawGridLinesEnabled = false
         balanceChartView.legend.enabled = false
         balanceChartView.animate(yAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
@@ -100,6 +106,9 @@ extension OverviewViewController: ChartViewDelegate {
         drawGradient(for: balanceData, using: UIColor.systemBlue, bottomColour: UIColor.white)
         balanceIndicatorLabel.alpha = 0
         timeIndicatorLabel.alpha = 0
+
+        balanceChartView.notifyDataSetChanged()
+        highlightCurrentBalance()
     }
     
     func drawGradient(for lineChart: LineChartDataSet, using topColour: UIColor, bottomColour: UIColor) {
@@ -113,18 +122,17 @@ extension OverviewViewController: ChartViewDelegate {
            lineChart.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
     }
     
+    func highlightCurrentBalance() {
+        let xTouchPoint = balanceChartView.frame.width
+        let yTouchPoint = balanceChartView.frame.height
+        let highlight = balanceChartView.getHighlightByTouchPoint(CGPoint(x: xTouchPoint, y: yTouchPoint))
+        balanceChartView.highlightValue(highlight, callDelegate: true)
+    }
+    
     // MARK: - Chart Delegate Functions
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        
-        let firstEntry = chartView.data?.dataSets[0].entryForIndex(0)
-
-        if entry == firstEntry {
-            timeIndicatorLabel.center = CGPoint(x: highlight.xPx + 10, y: -18)
-            balanceIndicatorLabel.center = CGPoint(x: highlight.xPx + 10, y: -2)
-        } else {
-            timeIndicatorLabel.center = CGPoint(x: highlight.xPx, y: -18)
-            balanceIndicatorLabel.center = CGPoint(x: highlight.xPx, y: -2)
-        }
+        timeIndicatorLabel.center = CGPoint(x: highlight.xPx + 45, y: -7)
+        balanceIndicatorLabel.center = CGPoint(x: highlight.xPx + 45, y: 10)
  
         timeIndicatorLabel.text = entry.data as? String
         
