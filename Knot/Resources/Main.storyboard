@@ -259,6 +259,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="K N O T" id="0eu-ha-V6q">
+                        <barButtonItem key="backBarButtonItem" title=" " id="jAp-ou-KBH"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="person" catalog="system" id="EaX-xM-UQy">
                             <connections>
                                 <action selector="profileButtonTapped:" destination="1Lz-rZ-Lcl" id="AIK-5a-2g4"/>
@@ -471,6 +472,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profile" id="R55-qg-XpV">
+                        <barButtonItem key="backBarButtonItem" title=" " id="ouW-0g-eVX"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="BMr-sF-xtj">
                             <connections>
                                 <action selector="closeButtonTapped:" destination="qAh-Cf-VP6" id="8vC-hq-Wfp"/>
