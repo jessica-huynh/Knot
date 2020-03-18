@@ -41,22 +41,6 @@
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Y1-oz-iPc" customClass="LineChartView" customModule="Charts">
                                                     <rect key="frame" x="-7" y="113.5" width="339" height="229"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;balance&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="5x6-lI-QJ6">
-                                                            <rect key="frame" x="257" y="17" width="82" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;time&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpd-lg-3oD">
-                                                            <rect key="frame" x="257" y="0.0" width="82" height="20"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                                            <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LZB-oN-jGA" customClass="ChartSegmentedControl" customModule="Knot" customModuleProvider="target">
@@ -274,13 +258,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="balanceChartView" destination="6Y1-oz-iPc" id="123-N5-ctD"/>
-                        <outlet property="balanceIndicatorLabel" destination="5x6-lI-QJ6" id="MFN-9C-u0o"/>
                         <outlet property="cashBalanceLabel" destination="tNX-h0-L0T" id="ehW-qc-EHV"/>
                         <outlet property="chartSegmentedControl" destination="LZB-oN-jGA" id="hbX-cw-gBB"/>
                         <outlet property="creditCardsBalanceLabel" destination="1Hz-6U-R4n" id="WcX-KO-SEg"/>
                         <outlet property="investmentsBalanceLabel" destination="QVa-hC-UgM" id="Hhh-0K-w0i"/>
                         <outlet property="netBalanceLabel" destination="tIW-L6-H07" id="nLr-FU-MP7"/>
-                        <outlet property="timeIndicatorLabel" destination="kpd-lg-3oD" id="sja-gm-y9r"/>
                         <outlet property="transactionCollectionView" destination="uT3-Ra-0lx" id="Eg1-j8-cU0"/>
                     </connections>
                 </tableViewController>

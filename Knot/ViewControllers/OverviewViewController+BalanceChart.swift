@@ -39,6 +39,21 @@ extension OverviewViewController: ChartViewDelegate {
     func setupBalanceChart() {
         balanceChartView.delegate = self
         
+        balanceIndicatorLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 82, height: 21))
+        balanceIndicatorLabel.font = UIFont.systemFont(ofSize: 14)
+        balanceIndicatorLabel.textColor = UIColor.systemGray
+        balanceIndicatorLabel.adjustsFontSizeToFitWidth = true
+        balanceChartView.addSubview(balanceIndicatorLabel)
+        
+        timeIndicatorLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 82, height: 21))
+        timeIndicatorLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
+        timeIndicatorLabel.textColor = UIColor.systemBlue
+        timeIndicatorLabel.adjustsFontSizeToFitWidth = true
+        balanceChartView.addSubview(timeIndicatorLabel)
+        
+        balanceIndicatorLabel.alpha = 0
+        timeIndicatorLabel.alpha = 0
+        
         let data = LineChartData()
         data.addDataSet(balanceChartData_1w)
         balanceChartView.data = data
@@ -86,9 +101,6 @@ extension OverviewViewController: ChartViewDelegate {
     func drawChart() {
         balanceChartView.animate(yAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
         balanceChartView.animate(xAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
-        
-        balanceIndicatorLabel.alpha = 0
-        timeIndicatorLabel.alpha = 0
 
         balanceChartView.notifyDataSetChanged()
         highlightCurrentBalance()

@@ -11,6 +11,8 @@ import Charts
 
 class OverviewViewController: UITableViewController {
     var transactions: [Transaction]!
+    var balanceIndicatorLabel: UILabel!
+    var timeIndicatorLabel: UILabel!
     
     lazy var balanceChartData_1w = balanceChartData(for: ChartTimePeriod.week)
     lazy var balanceChartData_1m = balanceChartData(for: ChartTimePeriod.month)
@@ -33,8 +35,6 @@ class OverviewViewController: UITableViewController {
     @IBOutlet weak var investmentsBalanceLabel: UILabel!
     @IBOutlet weak var transactionCollectionView: UICollectionView!
     @IBOutlet weak var balanceChartView: LineChartView!
-    @IBOutlet weak var balanceIndicatorLabel: UILabel!
-    @IBOutlet weak var timeIndicatorLabel: UILabel!
     @IBOutlet weak var chartSegmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
