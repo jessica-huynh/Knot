@@ -40,6 +40,9 @@ class OverviewViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
         setupTransactionCollectionVew()
         setupBalanceChart()
         updateLabels()
