@@ -10,41 +10,6 @@ import Foundation
 import Charts
 
 extension OverviewViewController: ChartViewDelegate {
-    @IBAction func chartSegmentChanged(_ sender: UISegmentedControl) {
-        timeIndicatorLabel.fadeOut()
-        balanceIndicatorLabel.fadeOut()
-        
-        if let timePeriod = ChartTimePeriod(rawValue: chartSegmentedControl.selectedSegmentIndex) {
-            
-            var newChartData: BalanceChartDataSet
-            
-            switch timePeriod {
-            case ChartTimePeriod.week:
-                newChartData = balanceChartData_1w
-            case ChartTimePeriod.month:
-                newChartData = balanceChartData_1m
-            case ChartTimePeriod.threeMonth:
-                newChartData = balanceChartData_3m
-            case ChartTimePeriod.sixMonth:
-                newChartData = balanceChartData_6m
-            case ChartTimePeriod.year:
-                newChartData = balanceChartData_1y
-            }
-            
-            balanceChartView.data?.dataSets[0] = newChartData
-            
-            if !newChartData.isCustomized {
-                customizeBalanceChart()
-                newChartData.isCustomized = true
-            } else {
-                balanceChartView.animate(yAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
-                balanceChartView.animate(xAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
-                balanceChartView.notifyDataSetChanged()
-                highlightCurrentBalance()
-            }
-        }
-    }
-    
     func balanceChartData(for timePeriod: ChartTimePeriod) -> BalanceChartDataSet {
         let balances: [Double]
         
@@ -77,38 +42,34 @@ extension OverviewViewController: ChartViewDelegate {
         let data = LineChartData()
         data.addDataSet(balanceChartData_1w)
         balanceChartView.data = data
-        customizeBalanceChart()
+        
+        customize(balanceChart: balanceChartView)
+        customize(lineChartDataSet: balanceChartData_1w)
         balanceChartData_1w.isCustomized = true
+        drawChart()
     }
     
-    func customizeBalanceChart() {
-        let balanceData = balanceChartView.data!.dataSets[0] as! LineChartDataSet
+    func customize(balanceChart: LineChartView) {
+        balanceChart.xAxis.enabled = false
+        balanceChart.leftAxis.enabled = false
+        balanceChart.rightAxis.enabled = false
+        balanceChart.rightAxis.drawGridLinesEnabled = false
+        balanceChart.legend.enabled = false
+        balanceChart.setScaleEnabled(false)
+    }
+    
+    func customize(lineChartDataSet: LineChartDataSet) {
+        lineChartDataSet.colors = [UIColor.systemBlue]
+        lineChartDataSet.lineWidth = 2.0
+        lineChartDataSet.drawCirclesEnabled = false
+        lineChartDataSet.drawValuesEnabled = false
         
-        balanceData.colors = [UIColor.systemBlue]
-        balanceData.lineWidth = 2.0
-        balanceData.drawCirclesEnabled = false
-        balanceData.drawValuesEnabled = false
+        lineChartDataSet.drawHorizontalHighlightIndicatorEnabled = false
+        lineChartDataSet.highlightColor = UIColor.gray
+        lineChartDataSet.highlightLineWidth = 2
+        lineChartDataSet.highlightLineDashLengths = [2.0]
         
-        balanceData.drawHorizontalHighlightIndicatorEnabled = false
-        balanceData.highlightColor = UIColor.gray
-        balanceData.highlightLineWidth = 2
-        balanceData.highlightLineDashLengths = [2.0]
-        
-        balanceChartView.xAxis.enabled = false
-        balanceChartView.leftAxis.enabled = false
-        balanceChartView.rightAxis.enabled = false
-        balanceChartView.rightAxis.drawGridLinesEnabled = false
-        balanceChartView.legend.enabled = false
-        balanceChartView.animate(yAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
-        balanceChartView.animate(xAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
-        balanceChartView.setScaleEnabled(false)
-        
-        drawGradient(for: balanceData, using: UIColor.systemBlue, bottomColour: UIColor.white)
-        balanceIndicatorLabel.alpha = 0
-        timeIndicatorLabel.alpha = 0
-
-        balanceChartView.notifyDataSetChanged()
-        highlightCurrentBalance()
+        drawGradient(for: lineChartDataSet, using: UIColor.systemBlue, bottomColour: UIColor.white)
     }
     
     func drawGradient(for lineChart: LineChartDataSet, using topColour: UIColor, bottomColour: UIColor) {
@@ -122,11 +83,55 @@ extension OverviewViewController: ChartViewDelegate {
            lineChart.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
     }
     
+    func drawChart() {
+        balanceChartView.animate(yAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
+        balanceChartView.animate(xAxisDuration: 0.2, easingOption: ChartEasingOption.linear)
+        
+        balanceIndicatorLabel.alpha = 0
+        timeIndicatorLabel.alpha = 0
+
+        balanceChartView.notifyDataSetChanged()
+        highlightCurrentBalance()
+    }
+    
     func highlightCurrentBalance() {
         let xTouchPoint = balanceChartView.frame.width
         let yTouchPoint = balanceChartView.frame.height
         let highlight = balanceChartView.getHighlightByTouchPoint(CGPoint(x: xTouchPoint, y: yTouchPoint))
         balanceChartView.highlightValue(highlight, callDelegate: true)
+    }
+    
+    // MARK: - Actions
+    @IBAction func chartSegmentChanged(_ sender: UISegmentedControl) {
+        timeIndicatorLabel.fadeOut()
+        balanceIndicatorLabel.fadeOut()
+        
+        if let timePeriod = ChartTimePeriod(rawValue: chartSegmentedControl.selectedSegmentIndex) {
+            
+            var newChartData: BalanceChartDataSet
+            
+            switch timePeriod {
+            case ChartTimePeriod.week:
+                newChartData = balanceChartData_1w
+            case ChartTimePeriod.month:
+                newChartData = balanceChartData_1m
+            case ChartTimePeriod.threeMonth:
+                newChartData = balanceChartData_3m
+            case ChartTimePeriod.sixMonth:
+                newChartData = balanceChartData_6m
+            case ChartTimePeriod.year:
+                newChartData = balanceChartData_1y
+            }
+            
+            balanceChartView.data?.dataSets[0] = newChartData
+            
+            if !newChartData.isCustomized {
+                customize(lineChartDataSet: newChartData)
+                newChartData.isCustomized = true
+            }
+            
+            drawChart()
+        }
     }
     
     // MARK: - Chart Delegate Functions
