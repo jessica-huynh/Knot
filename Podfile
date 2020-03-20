@@ -3,5 +3,18 @@ target 'Knot' do
   use_frameworks!
 
   pod 'Charts'
+  pod 'Plaid'
+  pod 'Moya'
+
+  plugin 'cocoapods-keys', {
+    :project => "Knot",
+    :target => "Knot",
+    :keys => [
+      "publicKey",
+      "clientID",
+      "secret_sandbox",
+      "secret_development"
+    ]
+  }
 
 end
