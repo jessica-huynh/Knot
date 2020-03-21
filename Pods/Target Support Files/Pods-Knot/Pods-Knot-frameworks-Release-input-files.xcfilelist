@@ -1,2 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-Knot/Pods-Knot-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/Keys/Keys.framework
+${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
+${PODS_ROOT}/Plaid/LinkKit.framework
