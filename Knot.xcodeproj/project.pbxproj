@@ -143,12 +143,12 @@
 		C8D7EA1D2416F336000195AC = {
 			isa = PBXGroup;
 			children = (
-				C8AE60462425864500595773 /* .gitignore */,
-				C890B973241D96390087FC3E /* Podfile */,
 				C8D7EA282416F336000195AC /* Knot */,
 				C8D7EA272416F336000195AC /* Products */,
 				52410FFDDF7E9826645AA51D /* Pods */,
 				BB7454907360854925E5CAF5 /* Frameworks */,
+				C890B973241D96390087FC3E /* Podfile */,
+				C8AE60462425864500595773 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
