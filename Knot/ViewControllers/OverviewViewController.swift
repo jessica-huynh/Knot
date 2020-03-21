@@ -100,13 +100,10 @@ class OverviewViewController: UITableViewController {
             result in
             switch result {
             case .success(let response):
-                do {
-                    print(try response.mapJSON())
-                } catch {
-                    print(error)
-                }
+                print(try! response.mapJSON())
             case .failure(let error):
-                print(error)
+                print("Network request failed: \(error)")
+                print(try! error.response!.mapJSON())
             }
         }
     }
@@ -126,7 +123,7 @@ class OverviewViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    // MARK: Plaid Link setup
+    // MARK: - Plaid Link setup
     func presentPlaidLink() {
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(configuration: plaidManager.linkKitConfiguration, delegate: linkViewDelegate)
@@ -134,7 +131,6 @@ class OverviewViewController: UITableViewController {
         present(linkViewController, animated: true)
     }
     
-    // MARK: Start Plaid Link in update mode
     func presentPlaidLinkInUpdateMode() {
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate: linkViewDelegate)
