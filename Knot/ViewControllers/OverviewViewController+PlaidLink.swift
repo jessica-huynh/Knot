@@ -25,27 +25,27 @@ extension OverviewViewController {
                     for account in accounts {
                         switch account.type {
                         case .depository, .credit, .investment:
-                            self.accountMetadata.updateValue(accountMetadata, forKey: account.id)
-                            self.institutions.updateValue(institution, forKey: account.id)
+                            self.storageManager.accountMetadata.updateValue(accountMetadata, forKey: account.id)
+                            self.storageManager.institutions.updateValue(institution, forKey: account.id)
                         case .loan, .other:
                             break
                         }
                         
                         switch account.type {
                         case .depository:
-                            self.cashAccounts.append(account)
+                            self.storageManager.cashAccounts.append(account)
                         case .credit:
-                            self.creditAccounts.append(account)
+                            self.storageManager.creditAccounts.append(account)
                         case .investment:
-                            self.investmentAccounts.append(account)
+                            self.storageManager.investmentAccounts.append(account)
                         case .loan, .other:
                             break
                         }
                     }
                     
-                    print("CASH: \(self.cashAccounts)")
-                    print("CREDIT: \(self.creditAccounts)")
-                    print("INVESTMENT: \(self.investmentAccounts)")
+                    print("CASH: \(self.storageManager.cashAccounts)")
+                    print("CREDIT: \(self.storageManager.creditAccounts)")
+                    print("INVESTMENT: \(self.storageManager.investmentAccounts)")
                     
                     NotificationCenter.default.post(name: .didLinkAccount, object: nil)
                     

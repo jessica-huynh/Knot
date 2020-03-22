@@ -11,6 +11,7 @@
 		C805A8B224267DCB0091180F /* Institution.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B124267DCB0091180F /* Institution.swift */; };
 		C805A8B42426AC900091180F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B32426AC900091180F /* Account.swift */; };
 		C810D44224282AD200AEC207 /* AccountMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44124282AD200AEC207 /* AccountMetadata.swift */; };
+		C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44724282E6C00AEC207 /* StorageManager.swift */; };
 		C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */; };
 		C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8371C812418088600519346 /* AccountDetailsViewController.swift */; };
 		C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C12427D24900FC39E5 /* Balance.swift */; };
@@ -51,6 +52,7 @@
 		C805A8B124267DCB0091180F /* Institution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Institution.swift; sourceTree = "<group>"; };
 		C805A8B32426AC900091180F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		C810D44124282AD200AEC207 /* AccountMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountMetadata.swift; sourceTree = "<group>"; };
+		C810D44724282E6C00AEC207 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SolidColour.swift"; sourceTree = "<group>"; };
 		C8371C812418088600519346 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		C83EB0C12427D24900FC39E5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
+		C810D44324282C5100AEC207 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				C810D44724282E6C00AEC207 /* StorageManager.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		C84BEB68241851310022D84D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,10 +168,10 @@
 		C8AE6048242588FC00595773 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				C805A8B024267D910091180F /* Models */,
-				C805A8B52426B4D00091180F /* Responses */,
 				C8AE60492425890800595773 /* PlaidAPI.swift */,
 				C8AE604B2425899000595773 /* PlaidManager.swift */,
+				C805A8B024267D910091180F /* Models */,
+				C805A8B52426B4D00091180F /* Responses */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -202,6 +212,7 @@
 				C8D7EA292416F336000195AC /* AppDelegate.swift */,
 				C8D7EA2B2416F336000195AC /* SceneDelegate.swift */,
 				C8D7EA372416F33D000195AC /* Info.plist */,
+				C810D44324282C5100AEC207 /* Storage */,
 				C8AE6048242588FC00595773 /* API */,
 				C8D7EA482416F5FC000195AC /* Models */,
 				C8D7EA3E2416F5E7000195AC /* ViewControllers */,
@@ -369,6 +380,7 @@
 				C8AE604A2425890800595773 /* PlaidAPI.swift in Sources */,
 				C805A8B42426AC900091180F /* Account.swift in Sources */,
 				C89EDF222419528C0075052D /* AccountCardViewController.swift in Sources */,
+				C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */,
 				C83EB0C62427F60C00FC39E5 /* OverviewViewController+PlaidLink.swift in Sources */,
 				C86D5EF12419A74C00D70126 /* TransactionCell.swift in Sources */,
 				C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */,

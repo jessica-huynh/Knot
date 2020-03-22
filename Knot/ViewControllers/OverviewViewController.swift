@@ -12,13 +12,8 @@ import Moya
 
 class OverviewViewController: UITableViewController {
     let plaidManager = PlaidManager.instance
+    let storageManager = StorageManager.instance
     let provider = MoyaProvider<PlaidAPI>()
-    
-    var accountMetadata: [String : AccountMetadata] = [:]
-    var institutions: [String : Institution] = [:]
-    var cashAccounts: [Account] = []
-    var creditAccounts: [Account] = []
-    var investmentAccounts: [Account] = []
     
     var transactions: [Transaction]!
     var balanceIndicatorLabel: UILabel!
@@ -81,9 +76,9 @@ class OverviewViewController: UITableViewController {
     }
     
     func updateLabels() {
-        let cashBalance = calculateBalance(for: cashAccounts)
-        let creditBalance = calculateBalance(for: creditAccounts)
-        let investmentBalance = calculateBalance(for: investmentAccounts)
+        let cashBalance = calculateBalance(for: storageManager.cashAccounts)
+        let creditBalance = calculateBalance(for: storageManager.creditAccounts)
+        let investmentBalance = calculateBalance(for: storageManager.investmentAccounts)
         let netBalance = cashBalance - creditBalance + investmentBalance
         
         netBalanceLabel.text = netBalance.toCurrency()!
