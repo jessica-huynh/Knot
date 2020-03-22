@@ -15,6 +15,12 @@ class OverviewViewController: UITableViewController {
     let plaidManager = PlaidManager.instance
     let provider = MoyaProvider<PlaidAPI>()
     
+    var metadata: [String : ExchangeTokenResponse] = [:]
+    var institutions: [String : Institution] = [:]
+    var cashAccounts: [Account] = []
+    var creditAccounts: [Account] = []
+    var investmentAccounts: [Account] = []
+    
     var transactions: [Transaction]!
     var balanceIndicatorLabel: UILabel!
     var timeIndicatorLabel: UILabel!
@@ -95,12 +101,79 @@ class OverviewViewController: UITableViewController {
         }
     }
     
+    // MARK: - Plaid Link handlers
     func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
         provider.request(.exchangeTokens(publicToken: publicToken)) {
-            result in
+            [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let response):
-                print(try! response.mapJSON())
+                do {
+                    let exchangeTokenResponse = try ExchangeTokenResponse(data: response.data)
+                    
+                    if let data = try? JSONSerialization.data(
+                        withJSONObject: metadata!["institution"]!,
+                        options: []) {
+                        do {
+                            let institution = try Institution(data: data)
+                            self.setupAccounts(using: exchangeTokenResponse, for: institution)
+                            
+                        } catch {
+                            print("Could not parse JSON: \(error)")
+                        }
+                    }
+                } catch {
+                    print("Could not parse JSON: \(error)")
+                }
+                
+            case .failure(let error):
+                print("Network request failed: \(error)")
+                print(try! error.response!.mapJSON())
+            }
+        }
+    }
+    
+    func setupAccounts(using exchangeTokenResponse: ExchangeTokenResponse, for institution: Institution) {
+        provider.request(.getAccounts(accessToken: exchangeTokenResponse.accessToken)) {
+            [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let response):
+                do {
+                    let retrieveAccountsResponse = try GetAccountsResponse(data: response.data)
+                    let accounts = retrieveAccountsResponse.accounts
+                    
+                    for account in accounts {
+                        switch account.type {
+                        case .depository, .credit, .investment:
+                            self.metadata.updateValue(exchangeTokenResponse, forKey: account.id)
+                            self.institutions.updateValue(institution, forKey: account.id)
+                        case .loan, .other:
+                            break
+                        }
+                        
+                        switch account.type {
+                        case .depository:
+                            self.cashAccounts.append(account)
+                        case .credit:
+                            self.creditAccounts.append(account)
+                        case .investment:
+                            self.investmentAccounts.append(account)
+                        case .loan, .other:
+                            break
+                        }
+                    }
+                    
+                    print("CASH: \(self.cashAccounts)")
+                    print("CREDIT: \(self.creditAccounts)")
+                    print("INVESTMENT: \(self.investmentAccounts)")
+                    
+                } catch {
+                    print("Could not parse JSON: \(error)")
+                }
+                
             case .failure(let error):
                 print("Network request failed: \(error)")
                 print(try! error.response!.mapJSON())
