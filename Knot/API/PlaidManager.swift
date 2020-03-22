@@ -38,7 +38,6 @@ class PlaidManager {
         PLKPlaidLink.setup(with: linkKitConfiguration) { (success, error) in
             if success {
                 print("Plaid Link setup was successful")
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PLDPlaidLinkSetupFinished"), object: self)
             }
             else if let error = error {
                 print("Unable to setup Plaid Link due to: \(error.localizedDescription)")
