@@ -12,11 +12,13 @@ struct Account: Codable, CustomStringConvertible {
     let id, name, subtype: String
     let type: AccountType
     let mask, officialName: String?
+    let balance: Balance
     
     enum CodingKeys: String, CodingKey {
         case name, mask, type, subtype
         case id = "account_id"
         case officialName = "official_name"
+        case balance = "balances"
     }
     
     enum AccountType: String, Codable, Equatable {
@@ -24,7 +26,7 @@ struct Account: Codable, CustomStringConvertible {
     }
     
     var description: String {
-        return "Account ID: \(id), name: \(name), type: \(type)"
+        return "Account ID: \(id), name: \(name), type: \(type), balance: \(balance.current)"
     }
 }
 
