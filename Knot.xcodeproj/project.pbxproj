@@ -13,6 +13,8 @@
 		C80FA7BF2426B65800FDB934 /* ExchangeTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80FA7BE2426B65800FDB934 /* ExchangeTokenResponse.swift */; };
 		C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */; };
 		C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8371C812418088600519346 /* AccountDetailsViewController.swift */; };
+		C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C12427D24900FC39E5 /* Balance.swift */; };
+		C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */; };
 		C8502E6E241AA709007A6266 /* TransactionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */; };
 		C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */; };
 		C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86AAD382418657B00168D3A /* ProfileViewModel.swift */; };
@@ -50,6 +52,8 @@
 		C80FA7BE2426B65800FDB934 /* ExchangeTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTokenResponse.swift; sourceTree = "<group>"; };
 		C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SolidColour.swift"; sourceTree = "<group>"; };
 		C8371C812418088600519346 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
+		C83EB0C12427D24900FC39E5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
+		C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
 		C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCollectionCell.xib; sourceTree = "<group>"; };
 		C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionCell.swift; sourceTree = "<group>"; };
 		C86AAD382418657B00168D3A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 			children = (
 				C805A8B124267DCB0091180F /* Institution.swift */,
 				C805A8B32426AC900091180F /* Account.swift */,
+				C83EB0C12427D24900FC39E5 /* Balance.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 			children = (
 				C8B47246241F0C2D00E9A85A /* UIView+FadeAnimation.swift */,
 				C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */,
+				C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -373,8 +379,10 @@
 				C86D5EEF2419A72400D70126 /* AccountBalanceCell.swift in Sources */,
 				C8B584B224201A7500DA28D9 /* OverviewViewController+BalanceChart.swift in Sources */,
 				C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */,
+				C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */,
 				C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */,
 				C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */,
+				C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */,
 				C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */,
 				C8B47247241F0C2D00E9A85A /* UIView+FadeAnimation.swift in Sources */,
 				C80FA7BF2426B65800FDB934 /* ExchangeTokenResponse.swift in Sources */,
