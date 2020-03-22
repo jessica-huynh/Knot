@@ -14,6 +14,7 @@ enum PlaidAPI {
     static let environment = PlaidManager.instance.environment
     
     case exchangeTokens(publicToken: String)
+    case getAccounts(accessToken: String)
 }
 
 extension PlaidAPI: TargetType {
@@ -25,6 +26,8 @@ extension PlaidAPI: TargetType {
         switch self {
         case .exchangeTokens(_):
             return "/item/public_token/exchange"
+        case .getAccounts(_):
+            return "/accounts/get"
         }
     }
 
@@ -38,13 +41,20 @@ extension PlaidAPI: TargetType {
 
     public var task: Task {
         switch self {
-        case let .exchangeTokens(publicToken):
+        case .exchangeTokens(let publicToken):
             return .requestParameters(
                 parameters: [
                     "client_id": PlaidAPI.clientID,
                     "secret": PlaidAPI.secret,
                     "public_token": publicToken],
                 encoding: JSONEncoding.default)
+        case .getAccounts(let accessToken):
+            return .requestParameters(
+            parameters: [
+                "client_id": PlaidAPI.clientID,
+                "secret": PlaidAPI.secret,
+                "access_token": accessToken],
+            encoding: JSONEncoding.default)
         }
     }
 
