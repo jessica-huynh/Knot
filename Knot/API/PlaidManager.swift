@@ -12,6 +12,7 @@ import Keys
 
 class PlaidManager {
     static let instance = PlaidManager()
+    
     let publicKey: String, clientID: String, secret: String, environment: Environment
     
     enum Environment: String {
@@ -29,7 +30,7 @@ class PlaidManager {
         let keys = KnotKeys()
         publicKey = keys.publicKey
         clientID = keys.clientID
-        environment = .sandbox
+        environment = .sandbox // Change Plaid environment from here
         secret = (environment == .sandbox) ? keys.secret_sandbox : keys.secret_development
     }
     
