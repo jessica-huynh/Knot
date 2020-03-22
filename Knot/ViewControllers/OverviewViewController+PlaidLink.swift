@@ -11,8 +11,8 @@ import UIKit
 import LinkKit
 
 extension OverviewViewController {
-    func setupAccounts(using exchangeTokenResponse: ExchangeTokenResponse, for institution: Institution) {
-        provider.request(.getAccounts(accessToken: exchangeTokenResponse.accessToken)) {
+    func setupAccounts(using accountMetadata: AccountMetadata, for institution: Institution) {
+        provider.request(.getAccounts(accessToken: accountMetadata.accessToken)) {
             [weak self] result in
             guard let self = self else { return }
             
@@ -25,7 +25,7 @@ extension OverviewViewController {
                     for account in accounts {
                         switch account.type {
                         case .depository, .credit, .investment:
-                            self.metadata.updateValue(exchangeTokenResponse, forKey: account.id)
+                            self.accountMetadata.updateValue(accountMetadata, forKey: account.id)
                             self.institutions.updateValue(institution, forKey: account.id)
                         case .loan, .other:
                             break
@@ -69,14 +69,14 @@ extension OverviewViewController {
             switch result {
             case .success(let response):
                 do {
-                    let exchangeTokenResponse = try ExchangeTokenResponse(data: response.data)
+                    let accountMetadata = try AccountMetadata(data: response.data)
                     
                     if let data = try? JSONSerialization.data(
                         withJSONObject: metadata!["institution"]!,
                         options: []) {
                         do {
                             let institution = try Institution(data: data)
-                            self.setupAccounts(using: exchangeTokenResponse, for: institution)
+                            self.setupAccounts(using: accountMetadata, for: institution)
                             
                         } catch {
                             print("Could not parse JSON: \(error)")

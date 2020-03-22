@@ -14,7 +14,7 @@ class OverviewViewController: UITableViewController {
     let plaidManager = PlaidManager.instance
     let provider = MoyaProvider<PlaidAPI>()
     
-    var metadata: [String : ExchangeTokenResponse] = [:]
+    var accountMetadata: [String : AccountMetadata] = [:]
     var institutions: [String : Institution] = [:]
     var cashAccounts: [Account] = []
     var creditAccounts: [Account] = []
@@ -84,7 +84,7 @@ class OverviewViewController: UITableViewController {
         let cashBalance = calculateBalance(for: cashAccounts)
         let creditBalance = calculateBalance(for: creditAccounts)
         let investmentBalance = calculateBalance(for: investmentAccounts)
-        let netBalance = cashBalance + creditBalance + investmentBalance
+        let netBalance = cashBalance - creditBalance + investmentBalance
         
         netBalanceLabel.text = netBalance.toCurrency()!
         cashBalanceLabel.text = cashBalance.toCurrency()!

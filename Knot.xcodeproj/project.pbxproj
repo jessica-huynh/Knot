@@ -10,7 +10,7 @@
 		88E6559223F1D4C5EC31713B /* Pods_Knot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */; };
 		C805A8B224267DCB0091180F /* Institution.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B124267DCB0091180F /* Institution.swift */; };
 		C805A8B42426AC900091180F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B32426AC900091180F /* Account.swift */; };
-		C80FA7BF2426B65800FDB934 /* ExchangeTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80FA7BE2426B65800FDB934 /* ExchangeTokenResponse.swift */; };
+		C810D44224282AD200AEC207 /* AccountMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44124282AD200AEC207 /* AccountMetadata.swift */; };
 		C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */; };
 		C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8371C812418088600519346 /* AccountDetailsViewController.swift */; };
 		C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C12427D24900FC39E5 /* Balance.swift */; };
@@ -50,7 +50,7 @@
 		C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C805A8B124267DCB0091180F /* Institution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Institution.swift; sourceTree = "<group>"; };
 		C805A8B32426AC900091180F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		C80FA7BE2426B65800FDB934 /* ExchangeTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTokenResponse.swift; sourceTree = "<group>"; };
+		C810D44124282AD200AEC207 /* AccountMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountMetadata.swift; sourceTree = "<group>"; };
 		C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SolidColour.swift"; sourceTree = "<group>"; };
 		C8371C812418088600519346 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		C83EB0C12427D24900FC39E5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
@@ -121,6 +121,7 @@
 				C805A8B124267DCB0091180F /* Institution.swift */,
 				C805A8B32426AC900091180F /* Account.swift */,
 				C83EB0C12427D24900FC39E5 /* Balance.swift */,
+				C810D44124282AD200AEC207 /* AccountMetadata.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -128,7 +129,6 @@
 		C805A8B52426B4D00091180F /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				C80FA7BE2426B65800FDB934 /* ExchangeTokenResponse.swift */,
 				C8E221DF2426D758008624F9 /* GetAccountsResponse.swift */,
 			);
 			path = Responses;
@@ -384,12 +384,12 @@
 				C8B584B224201A7500DA28D9 /* OverviewViewController+BalanceChart.swift in Sources */,
 				C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */,
 				C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */,
+				C810D44224282AD200AEC207 /* AccountMetadata.swift in Sources */,
 				C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */,
 				C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */,
 				C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */,
 				C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */,
 				C8B47247241F0C2D00E9A85A /* UIView+FadeAnimation.swift in Sources */,
-				C80FA7BF2426B65800FDB934 /* ExchangeTokenResponse.swift in Sources */,
 				C8B584B424201C9100DA28D9 /* OverviewViewController+Transactions.swift in Sources */,
 				C8E221E02426D758008624F9 /* GetAccountsResponse.swift in Sources */,
 				C89EDF2024193E460075052D /* AccountCard.swift in Sources */,
