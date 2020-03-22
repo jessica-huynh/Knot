@@ -33,11 +33,13 @@ class AccountCardViewController: UIViewController {
     }
     
     func updateCard() {
+        /*
         accountCard.institutionLabel.text = account?.institution
         accountCard.accountTypeLabel.text = "Chequing"
         accountCard.accountNumberLabel.text = account?.accountNumber
         accountCard.nameLabel.text = "Jane Doe"
-        //accountCard.logoImage.image = UIImage(named: "Logo")
+        accountCard.logoImage.image = UIImage(named: "Logo")
+        */
     }
 
 }

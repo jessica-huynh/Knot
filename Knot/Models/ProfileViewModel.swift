@@ -9,13 +9,6 @@
 import Foundation
 import UIKit
 
-// Temp account data model
-struct Account {
-    let institution: String
-    let accountNumber: String
-}
-
-
 protocol ProfileViewModelSection {
     var type: ProfileViewModel.SectionType { get }
     var title: String { get }
@@ -33,13 +26,9 @@ class ProfileViewModel: NSObject {
     override init() {
         super.init()
 
-        // Fake account data
-        let account1 = Account(institution: "Scotiabank", accountNumber: "**** **** 4316")
-        let account2 = Account(institution: "Tangerine", accountNumber: "**** **** 8625")
-        let account3 = Account(institution: "Simplii", accountNumber: "**** **** 2906")
-        let accounts = [account1, account2, account3]
+        //let accounts: [Account]
         
-        sections.append(ProfileViewModelAccounts(accounts: accounts))
+        //sections.append(ProfileViewModelAccounts(accounts: accounts))
         sections.append(ProfileViewModelEraseData())
     }
 }
@@ -60,9 +49,10 @@ extension ProfileViewModel: UITableViewDataSource {
         switch section.type {
         case .accounts:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccountNumberCell", for: indexPath)
-            let section = section as! ProfileViewModelAccounts
-            cell.textLabel?.text = section.accounts[indexPath.row].institution
-            cell.detailTextLabel?.text = section.accounts[indexPath.row].accountNumber
+            //let section = section as! ProfileViewModelAccounts
+            
+            //cell.textLabel?.text = section.accounts[indexPath.row].institution
+            //cell.detailTextLabel?.text = section.accounts[indexPath.row].accountNumber
             return cell
         case .eraseData:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EraseDataCell", for: indexPath)

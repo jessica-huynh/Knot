@@ -33,17 +33,14 @@ class AccountDetailsViewModel: NSObject {
     override init() {
         super.init()
 
-        // Fake account data
-        let account1 = Account(institution: "Scotiabank", accountNumber: "**** **** 4316")
-        let account2 = Account(institution: "Tangerine", accountNumber: "**** **** 8625")
-        let accounts = [account1, account2]
+        //let accounts: [Account]
         
         let transaction1 = Transaction(description: "Uber", date: Date(), amount: 12.45)
         let transaction2 = Transaction(description: "Walmart", date: Date(), amount: 38.12)
         let transaction3 = Transaction(description: "Transfer", date: Date(), amount: -50.00)
         let transactions = [transaction1, transaction2, transaction3]
         
-        sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
+        //sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
         sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
     }
     
@@ -58,7 +55,7 @@ class AccountDetailsViewModel: NSObject {
     }
     
     func configure(cell: AccountBalanceCell, using account: Account) {
-        cell.institutionLabel.text = account.institution
+        //cell.institutionLabel.text = account.institution
         cell.accountTypeLabel.text = "Chequing"
         cell.balanceLabel.text = "$123.45"
     }
