@@ -9,7 +9,7 @@
 import Foundation
 
 struct Institution: Codable {
-    let name, id: String?
+    let name, id: String
 
     enum CodingKeys: String, CodingKey {
         case name
