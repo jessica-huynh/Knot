@@ -116,6 +116,8 @@ class OverviewViewController: UITableViewController {
             } else if segue.identifier == "All Transactions" {
                 // Not going to show any accounts, so account type is `nil`:
                 controller.viewModel = AccountDetailsViewModel(for: nil)
+                // Do not give option to add account from All Transactions scene:
+                controller.navigationItem.rightBarButtonItem = nil
             }
         }
     }
