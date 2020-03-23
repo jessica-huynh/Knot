@@ -16,8 +16,8 @@ class TransactionCollectionCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     func configure(for transaction: Transaction) {
-        amountLabel.text = "$\(transaction.amount)"
-        descriptionLabel.text = transaction.description
+        //amountLabel.text = "$\(transaction.amount)"
+        //descriptionLabel.text = transaction.description
         
         self.contentView.layer.cornerRadius = 10
         self.contentView.layer.borderWidth = 1.0

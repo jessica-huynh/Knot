@@ -9,13 +9,6 @@
 import Foundation
 import UIKit
 
-// Temp transaction data model
-struct Transaction {
-    let description: String
-    let date: Date
-    let amount: Double
-}
-
 protocol AccountDetailsViewModelSection {
     var type: AccountDetailsViewModel.SectionType { get }
     var title: String { get }
@@ -49,16 +42,13 @@ class AccountDetailsViewModel: NSObject {
             break
         }
         
-        let transaction1 = Transaction(description: "Uber", date: Date(), amount: 12.45)
-        let transaction2 = Transaction(description: "Walmart", date: Date(), amount: 38.12)
-        let transaction3 = Transaction(description: "Transfer", date: Date(), amount: -50.00)
-        let transactions = [transaction1, transaction2, transaction3]
+        //let transactions = [transaction1, transaction2, transaction3]
         
         if let accounts = accounts {
             sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
         }
     
-        sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
+        //sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
     }
     
     // MARK: - View Configuration
@@ -69,12 +59,14 @@ class AccountDetailsViewModel: NSObject {
     }
     
     func configure(cell: TransactionCell, using transaction: Transaction) {
+        /*
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EE, MMM d, YYYY"
         cell.dateLabel.text = dateFormatter.string(from: transaction.date)
         
         cell.descriptionLabel.text = transaction.description
         cell.amountLabel.text = "$\(transaction.amount)"
+         */
     }
 }
 

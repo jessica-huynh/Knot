@@ -15,7 +15,6 @@ class HomeViewController: UITableViewController {
     let storageManager = StorageManager.instance
     let provider = MoyaProvider<PlaidAPI>()
     
-    var transactions: [Transaction]!
     var balanceIndicatorLabel: UILabel!
     var timeIndicatorLabel: UILabel!
     
@@ -52,14 +51,6 @@ class HomeViewController: UITableViewController {
         setupTransactionCollectionVew()
         setupBalanceChart()
         updateLabels()
-        
-        let transaction1 = Transaction(description: "Uber", date: Date(), amount: 12.45)
-        let transaction2 = Transaction(description: "Walmart", date: Date(), amount: 38.12)
-        let transaction3 = Transaction(description: "Transfer", date: Date(), amount: -50.00)
-        let transaction4 = Transaction(description: "Transfer", date: Date(), amount: -50.00)
-        let transaction5 = Transaction(description: "Transfer", date: Date(), amount: -50.00)
-        let transaction6 = Transaction(description: "Transfer", date: Date(), amount: -50.00)
-        transactions = [transaction1, transaction2, transaction3, transaction4, transaction5, transaction6, transaction1]
     }
     
     // MARK: - Actions

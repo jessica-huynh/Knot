@@ -21,8 +21,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let maxTransactionsDisplayed = 6
-        return (transactions.count > maxTransactionsDisplayed ?
-                maxTransactionsDisplayed + 1 : maxTransactionsDisplayed)
+        return (storageManager.transactions.count > maxTransactionsDisplayed ?
+            maxTransactionsDisplayed + 1 : storageManager.transactions.count)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -33,7 +33,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TransactionCollectionCell", for: indexPath) as! TransactionCollectionCell
-        cell.configure(for: transactions[indexPath.item])
+        cell.configure(for: storageManager.transactions[indexPath.item])
         return cell
     }
 }

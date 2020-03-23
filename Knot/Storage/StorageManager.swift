@@ -16,6 +16,7 @@ class StorageManager {
     var cashAccounts: [Account] = []
     var creditAccounts: [Account] = []
     var investmentAccounts: [Account] = []
+    var transactions: [Transaction] = []
     
     private init() {
         // Load from CoreData here
