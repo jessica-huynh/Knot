@@ -11,7 +11,7 @@
         <!--Overview-->
         <scene sceneID="YJk-U4-iHD">
             <objects>
-                <tableViewController id="1Lz-rZ-Lcl" userLabel="Overview" customClass="OverviewViewController" customModule="Knot" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="1Lz-rZ-Lcl" userLabel="Overview" customClass="HomeViewController" customModule="Knot" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Vcg-e9-jh7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

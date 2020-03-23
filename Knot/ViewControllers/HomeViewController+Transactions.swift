@@ -1,5 +1,5 @@
 //
-//  OverviewViewController+Transactions.swift
+//  HomeViewController+Transactions.swift
 //  Knot
 //
 //  Created by Jessica Huynh on 2020-03-16.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension OverviewViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func setupTransactionCollectionVew() {
         transactionCollectionView.dataSource = self
         transactionCollectionView.delegate = self

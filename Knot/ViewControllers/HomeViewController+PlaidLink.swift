@@ -1,5 +1,5 @@
 //
-//  OverviewViewController+PlaidLink.swift
+//  HomeViewController+PlaidLink.swift
 //  Knot
 //
 //  Created by Jessica Huynh on 2020-03-22.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import LinkKit
 
-extension OverviewViewController {
+extension HomeViewController {
     func setupAccounts(using accountMetadata: AccountMetadata, for institution: Institution) {
         provider.request(.getAccounts(accessToken: accountMetadata.accessToken)) {
             [weak self] result in
@@ -43,6 +43,7 @@ extension OverviewViewController {
                         }
                     }
                     
+                    print("\nAccess token: \(accountMetadata.accessToken)\n")
                     print("CASH: \(self.storageManager.cashAccounts)")
                     print("CREDIT: \(self.storageManager.creditAccounts)")
                     print("INVESTMENT: \(self.storageManager.investmentAccounts)")
@@ -125,7 +126,7 @@ extension OverviewViewController {
 }
 
 // MARK: - PLKPlaidLinkViewDelegate Protocol
-extension OverviewViewController : PLKPlaidLinkViewDelegate{
+extension HomeViewController : PLKPlaidLinkViewDelegate{
     func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSucceedWithPublicToken publicToken: String, metadata: [String : Any]?) {
         dismiss(animated: true) {
             // Handle success, e.g. by storing publicToken with your service

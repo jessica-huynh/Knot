@@ -1,5 +1,5 @@
 //
-//  OverviewViewController.swift
+//  HomeViewController.swift
 //  Knot
 //
 //  Created by Jessica Huynh on 2020-03-09.
@@ -10,7 +10,7 @@ import UIKit
 import Charts
 import Moya
 
-class OverviewViewController: UITableViewController {
+class HomeViewController: UITableViewController {
     let plaidManager = PlaidManager.instance
     let storageManager = StorageManager.instance
     let provider = MoyaProvider<PlaidAPI>()
