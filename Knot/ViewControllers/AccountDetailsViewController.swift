@@ -18,4 +18,7 @@ class AccountDetailsViewController: UITableViewController {
         title = navTitle
         tableView?.dataSource = viewModel
     }
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+    }
 }

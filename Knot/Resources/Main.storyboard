@@ -379,7 +379,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="lfC-Tn-d7y">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vg8-nq-NKQ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vg8-nq-NKQ">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="cac-Hu-VUt" id="j2K-1J-vfd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZF-9Z-Qi9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
