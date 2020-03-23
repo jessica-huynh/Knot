@@ -30,20 +30,20 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Institution&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHh-C4-qfa">
-                    <rect key="frame" x="43" y="39" width="307" height="24"/>
+                    <rect key="frame" x="43" y="39" width="276" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="307" id="ZFC-Zd-LwE"/>
-                        <constraint firstAttribute="width" secondItem="nHh-C4-qfa" secondAttribute="height" multiplier="307:24" id="y7w-ec-X3y"/>
+                        <constraint firstAttribute="width" constant="276" id="ZFC-Zd-LwE"/>
+                        <constraint firstAttribute="width" secondItem="nHh-C4-qfa" secondAttribute="height" multiplier="307:24" constant="-31" id="y7w-ec-X3y"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;account type&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xP3-WO-A5Q">
-                    <rect key="frame" x="43" y="71" width="307" height="20"/>
+                    <rect key="frame" x="43" y="71" width="276" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="307" id="1SN-0a-9nz"/>
-                        <constraint firstAttribute="width" secondItem="xP3-WO-A5Q" secondAttribute="height" multiplier="307:20" id="iza-oS-zji"/>
+                        <constraint firstAttribute="width" constant="276" id="1SN-0a-9nz"/>
+                        <constraint firstAttribute="width" secondItem="xP3-WO-A5Q" secondAttribute="height" multiplier="307:20" constant="-31" id="iza-oS-zji"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -60,10 +60,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;account #&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohK-WP-6ud">
-                    <rect key="frame" x="43" y="108" width="307" height="21"/>
+                    <rect key="frame" x="43" y="108" width="276" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="307" id="5yD-9q-ghZ"/>
-                        <constraint firstAttribute="width" secondItem="ohK-WP-6ud" secondAttribute="height" multiplier="307:21" id="PTO-ww-abd"/>
+                        <constraint firstAttribute="width" constant="276" id="5yD-9q-ghZ"/>
+                        <constraint firstAttribute="width" secondItem="ohK-WP-6ud" secondAttribute="height" multiplier="307:21" constant="-31" id="PTO-ww-abd"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
@@ -76,13 +76,13 @@
             <constraints>
                 <constraint firstItem="nHh-C4-qfa" firstAttribute="centerY" secondItem="0aM-F7-L5h" secondAttribute="centerY" constant="-56" id="1WY-lw-wA2"/>
                 <constraint firstItem="ohK-WP-6ud" firstAttribute="centerY" secondItem="0aM-F7-L5h" secondAttribute="centerY" constant="11.5" id="3Ir-5K-j0q"/>
-                <constraint firstItem="xP3-WO-A5Q" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="17" id="8tM-4r-6JW"/>
+                <constraint firstItem="xP3-WO-A5Q" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="1.5" id="8tM-4r-6JW"/>
                 <constraint firstItem="aBh-lP-nJg" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="134.5" id="DDs-Yd-rAW"/>
-                <constraint firstItem="nHh-C4-qfa" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="17" id="GJA-w8-9mu"/>
+                <constraint firstItem="nHh-C4-qfa" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="1.5" id="GJA-w8-9mu"/>
                 <constraint firstItem="xP3-WO-A5Q" firstAttribute="centerY" secondItem="0aM-F7-L5h" secondAttribute="centerY" constant="-26" id="NY2-Ay-LwG"/>
                 <constraint firstItem="9Kb-Tr-7oe" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="-17" id="NuB-MW-1Bf"/>
                 <constraint firstItem="aBh-lP-nJg" firstAttribute="centerY" secondItem="0aM-F7-L5h" secondAttribute="centerY" constant="54" id="Y9O-EZ-66s"/>
-                <constraint firstItem="ohK-WP-6ud" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="17" id="fPE-YA-59z"/>
+                <constraint firstItem="ohK-WP-6ud" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="1.5" id="fPE-YA-59z"/>
                 <constraint firstItem="9Kb-Tr-7oe" firstAttribute="centerY" secondItem="0aM-F7-L5h" secondAttribute="centerY" constant="58.5" id="rau-uC-hgm"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>

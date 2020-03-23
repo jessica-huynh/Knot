@@ -10,7 +10,7 @@ import UIKit
 
 class AccountCardViewController: UIViewController {
 
-    var account: Account?
+    var account: Account!
     
     // MARK: - Outlets
     @IBOutlet weak var accountCard: AccountCard!
@@ -33,13 +33,19 @@ class AccountCardViewController: UIViewController {
     }
     
     func updateCard() {
-        /*
-        accountCard.institutionLabel.text = account?.institution
-        accountCard.accountTypeLabel.text = "Chequing"
-        accountCard.accountNumberLabel.text = account?.accountNumber
+        accountCard.institutionLabel.text = StorageManager.instance.institutions[account.id]!.name
+        accountCard.accountTypeLabel.text = account.officialName ?? account.name
+        
+        if let mask = account.mask {
+            accountCard.accountNumberLabel.text = "**** **** **** \(mask)"
+        } else {
+            accountCard.accountNumberLabel.text = ""
+        }
+        
+        
+        // TODO
         accountCard.nameLabel.text = "Jane Doe"
         accountCard.logoImage.image = UIImage(named: "Logo")
-        */
     }
 
 }
