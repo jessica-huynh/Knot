@@ -16,6 +16,8 @@ protocol ProfileViewModelSection {
 }
 
 class ProfileViewModel: NSObject {
+    let storageManager = StorageManager.instance
+    
     enum SectionType {
         case accounts
         case eraseData
@@ -25,10 +27,10 @@ class ProfileViewModel: NSObject {
     
     override init() {
         super.init()
-
-        //let accounts: [Account]
         
-        //sections.append(ProfileViewModelAccounts(accounts: accounts))
+        let accounts = storageManager.cashAccounts + storageManager.creditAccounts + storageManager.investmentAccounts
+
+        sections.append(ProfileViewModelAccounts(accounts: accounts))
         sections.append(ProfileViewModelEraseData())
     }
 }
@@ -49,11 +51,18 @@ extension ProfileViewModel: UITableViewDataSource {
         switch section.type {
         case .accounts:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccountNumberCell", for: indexPath)
-            //let section = section as! ProfileViewModelAccounts
+            let section = section as! ProfileViewModelAccounts
+            let account = section.accounts[indexPath.row]
             
-            //cell.textLabel?.text = section.accounts[indexPath.row].institution
-            //cell.detailTextLabel?.text = section.accounts[indexPath.row].accountNumber
+            cell.textLabel?.text = (storageManager.institutions[account.id]?.name)
+            
+            if let mask = account.mask {
+                cell.textLabel?.text! += " (\(mask))"
+            }
+            
+            cell.detailTextLabel?.text = section.accounts[indexPath.row].name
             return cell
+            
         case .eraseData:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EraseDataCell", for: indexPath)
             return cell
