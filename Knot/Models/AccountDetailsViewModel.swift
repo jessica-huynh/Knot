@@ -23,6 +23,8 @@ protocol AccountDetailsViewModelSection {
 }
 
 class AccountDetailsViewModel: NSObject {
+    let storageManager = StorageManager.instance
+    
     enum SectionType: Int {
         case accounts
         case transactions
@@ -30,34 +32,40 @@ class AccountDetailsViewModel: NSObject {
     
     var sections = [AccountDetailsViewModelSection]()
     
-    override init() {
-        super.init()
-
-        //let accounts: [Account]
+    init(for accountType: Account.AccountType?) {
+        var accounts: [Account]?
+        
+        switch accountType {
+        case .investment:
+            accounts = storageManager.investmentAccounts
+        case .credit:
+            accounts = storageManager.creditAccounts
+        case .depository:
+            accounts = storageManager.cashAccounts
+        case .loan, .other:
+            print("WARNING: Not currently supporting loan/other account types.")
+        case .none:
+            // No account type given means we are only going to show transactions.
+            break
+        }
         
         let transaction1 = Transaction(description: "Uber", date: Date(), amount: 12.45)
         let transaction2 = Transaction(description: "Walmart", date: Date(), amount: 38.12)
         let transaction3 = Transaction(description: "Transfer", date: Date(), amount: -50.00)
         let transactions = [transaction1, transaction2, transaction3]
         
-        //sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
+        if let accounts = accounts {
+            sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
+        }
+    
         sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
     }
     
     // MARK: - View Configuration
-    func hideAccounts() {
-        for section in sections {
-            if section.type == .accounts {
-                sections.remove(at: section.type.rawValue)
-                return
-            }
-        }
-    }
-    
     func configure(cell: AccountBalanceCell, using account: Account) {
-        //cell.institutionLabel.text = account.institution
-        cell.accountTypeLabel.text = "Chequing"
-        cell.balanceLabel.text = "$123.45"
+        cell.institutionLabel.text = storageManager.institutions[account.id]?.name
+        cell.accountTypeLabel.text = account.name
+        cell.balanceLabel.text = account.balance.current.toCurrency()!
     }
     
     func configure(cell: TransactionCell, using transaction: Transaction) {
@@ -117,9 +125,6 @@ class AccountDetailsViewModelAccounts: AccountDetailsViewModelSection {
         return "Accounts"
     }
     
-    var balance: Double {
-        return 7489.45
-    }
     var rowCount: Int {
         return accounts.count
     }

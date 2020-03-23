@@ -107,8 +107,15 @@ class OverviewViewController: UITableViewController {
         if let controller = segue.destination as? AccountDetailsViewController {
             controller.navTitle = segue.identifier
             
-            if segue.identifier == "All Transactions" {
-                controller.showAccounts = false
+            if segue.identifier == "Cash" {
+                controller.viewModel = AccountDetailsViewModel(for: .depository)
+            } else if segue.identifier == "Credit Cards" {
+                controller.viewModel = AccountDetailsViewModel(for: .credit)
+            } else if segue.identifier == "Investments" {
+                controller.viewModel = AccountDetailsViewModel(for: .investment)
+            } else if segue.identifier == "All Transactions" {
+                // Not going to show any accounts, so account type is `nil`:
+                controller.viewModel = AccountDetailsViewModel(for: nil)
             }
         }
     }
