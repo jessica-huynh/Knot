@@ -9,14 +9,20 @@
 import Foundation
 
 struct Transaction: Codable {
-    let id, accountID, name, date: String
+    let id, accountID, name, date_ISO: String
     let amount: Double
     let pending: Bool
+    var date: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: date_ISO)!
+    }
 
     enum CodingKeys: String, CodingKey {
-        case name, date, amount, pending
+        case name, amount, pending
         case id = "transaction_id"
         case accountID = "account_id"
+        case date_ISO = "date"
     }
 }
 
