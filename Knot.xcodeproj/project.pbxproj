@@ -23,6 +23,7 @@
 		C86D5EED24199A5300D70126 /* AccountDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EEC24199A5200D70126 /* AccountDetailsViewModel.swift */; };
 		C86D5EEF2419A72400D70126 /* AccountBalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EEE2419A72400D70126 /* AccountBalanceCell.swift */; };
 		C86D5EF12419A74C00D70126 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EF02419A74C00D70126 /* TransactionCell.swift */; };
+		C86EBF0E24296DCB00EE3E27 /* GetTransactionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86EBF0D24296DCB00EE3E27 /* GetTransactionsResponse.swift */; };
 		C890B974241D96390087FC3E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C890B973241D96390087FC3E /* Podfile */; };
 		C897CBE0242933BD00B2D150 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897CBDF242933BD00B2D150 /* Transaction.swift */; };
 		C89EDF1E24193ADF0075052D /* AccountCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = C89EDF1D24193ADF0075052D /* AccountCard.xib */; };
@@ -65,6 +66,7 @@
 		C86D5EEC24199A5200D70126 /* AccountDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewModel.swift; sourceTree = "<group>"; };
 		C86D5EEE2419A72400D70126 /* AccountBalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBalanceCell.swift; sourceTree = "<group>"; };
 		C86D5EF02419A74C00D70126 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		C86EBF0D24296DCB00EE3E27 /* GetTransactionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransactionsResponse.swift; sourceTree = "<group>"; };
 		C890B973241D96390087FC3E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C897CBDF242933BD00B2D150 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		C89EDF1D24193ADF0075052D /* AccountCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCard.xib; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				C8E221DF2426D758008624F9 /* GetAccountsResponse.swift */,
+				C86EBF0D24296DCB00EE3E27 /* GetTransactionsResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */,
 				C8B47247241F0C2D00E9A85A /* UIView+FadeAnimation.swift in Sources */,
 				C8B584B424201C9100DA28D9 /* HomeViewController+Transactions.swift in Sources */,
+				C86EBF0E24296DCB00EE3E27 /* GetTransactionsResponse.swift in Sources */,
 				C897CBE0242933BD00B2D150 /* Transaction.swift in Sources */,
 				C8E221E02426D758008624F9 /* GetAccountsResponse.swift in Sources */,
 				C89EDF2024193E460075052D /* AccountCard.swift in Sources */,

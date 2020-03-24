@@ -45,6 +45,7 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidLinkAccount(_:)), name: .didLinkAccount, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidUpdateTransactions(_:)), name: .didUpdateTransactions, object: nil)
         
         navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -62,10 +63,6 @@ class HomeViewController: UITableViewController {
     }
     
     // MARK: - Helper Functions
-    @objc func onDidLinkAccount(_ notification:Notification) {
-        updateLabels()
-    }
-    
     func updateLabels() {
         let cashBalance = calculateBalance(for: storageManager.cashAccounts)
         let creditBalance = calculateBalance(for: storageManager.creditAccounts)
@@ -113,9 +110,18 @@ class HomeViewController: UITableViewController {
         }
     }
     
+    // MARK: - Notification Selectors
+    @objc func onDidLinkAccount(_ notification:Notification) {
+        updateLabels()
+    }
+    
+    @objc func onDidUpdateTransactions(_ notification:Notification) {
+        transactionCollectionView.reloadData()
+    }
 }
 
 // MARK: - Notification Names
 extension Notification.Name {
     static let didLinkAccount = Notification.Name("didLinkAccount")
+    static let didUpdateTransactions = Notification.Name("didUpdateTransactions")
 }

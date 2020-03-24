@@ -15,6 +15,7 @@ enum PlaidAPI {
     
     case exchangeTokens(publicToken: String)
     case getAccounts(accessToken: String)
+    case getTransactions(accessToken: String, startDate: String = "2010-01-01", endDate: String = "3000-12-31")
 }
 
 extension PlaidAPI: TargetType {
@@ -28,6 +29,8 @@ extension PlaidAPI: TargetType {
             return "/item/public_token/exchange"
         case .getAccounts(_):
             return "/accounts/get"
+        case .getTransactions:
+            return "/transactions/get"
         }
     }
 
@@ -54,6 +57,16 @@ extension PlaidAPI: TargetType {
                 "client_id": PlaidAPI.clientID,
                 "secret": PlaidAPI.secret,
                 "access_token": accessToken],
+            encoding: JSONEncoding.default)
+        case .getTransactions(let accessToken, let startDate, let endDate):
+            return .requestParameters(
+            parameters: [
+                "client_id": PlaidAPI.clientID,
+                "secret": PlaidAPI.secret,
+                "access_token": accessToken,
+                "start_date": startDate,
+                "end_date": endDate,
+                "options": ["count": 500]],
             encoding: JSONEncoding.default)
         }
     }

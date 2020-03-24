@@ -16,10 +16,18 @@ class StorageManager {
     var cashAccounts: [Account] = []
     var creditAccounts: [Account] = []
     var investmentAccounts: [Account] = []
-    var transactions: [Transaction] = []
+    var transactions: [String : [Transaction]] = [:]
+    
+    var allTransactions: [Transaction] = []
     
     private init() {
         // Load from CoreData here
     }
     
+    func updateAllTransactions() {
+        let combinedTransactionLists = transactions.values
+        for transactionList in combinedTransactionLists {
+            allTransactions += transactionList
+        }
+    }
 }
