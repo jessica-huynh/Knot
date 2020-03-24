@@ -124,13 +124,12 @@ class PlaidManager {
                     print(transactions)
                     for transaction in transactions {
                         if let oldTransactions = self.storageManager.transactions[transaction.accountID] {
-                            self.storageManager.transactions.updateValue([transaction] + oldTransactions, forKey: transaction.accountID)
+                            self.storageManager.transactions.updateValue(oldTransactions + [transaction], forKey: transaction.accountID)
                         } else {
                             self.storageManager.transactions.updateValue([transaction], forKey: transaction.accountID)
                         }
                     }
                     
-                    self.storageManager.updateAllTransactions()
                     NotificationCenter.default.post(name: .didUpdateTransactions, object: nil)
                     
                 } catch {
