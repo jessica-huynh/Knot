@@ -16,7 +16,8 @@ class TransactionCollectionCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     func configure(for transaction: Transaction) {
-        amountLabel.text = transaction.amount.toCurrency()!
+        let absAmount = abs(transaction.amount)
+        amountLabel.text = absAmount.toCurrency()!
         descriptionLabel.text = transaction.name
         
         self.contentView.layer.cornerRadius = 10
