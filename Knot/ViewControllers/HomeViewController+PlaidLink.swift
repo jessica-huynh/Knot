@@ -11,56 +11,6 @@ import UIKit
 import LinkKit
 
 extension HomeViewController {
-    func setupAccounts(using accountMetadata: AccountMetadata, for institution: Institution) {
-        provider.request(.getAccounts(accessToken: accountMetadata.accessToken)) {
-            [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let response):
-                do {
-                    let retrieveAccountsResponse = try GetAccountsResponse(data: response.data)
-                    let accounts = retrieveAccountsResponse.accounts
-                    
-                    for account in accounts {
-                        switch account.type {
-                        case .depository, .credit, .investment:
-                            self.storageManager.accountMetadata.updateValue(accountMetadata, forKey: account.id)
-                            self.storageManager.institutions.updateValue(institution, forKey: account.id)
-                        case .loan, .other:
-                            break
-                        }
-                        
-                        switch account.type {
-                        case .depository:
-                            self.storageManager.cashAccounts.append(account)
-                        case .credit:
-                            self.storageManager.creditAccounts.append(account)
-                        case .investment:
-                            self.storageManager.investmentAccounts.append(account)
-                        case .loan, .other:
-                            break
-                        }
-                    }
-                    
-                    print("\nAccess token: \(accountMetadata.accessToken)\n")
-                    print("CASH: \(self.storageManager.cashAccounts)")
-                    print("CREDIT: \(self.storageManager.creditAccounts)")
-                    print("INVESTMENT: \(self.storageManager.investmentAccounts)")
-                    
-                    NotificationCenter.default.post(name: .didLinkAccount, object: nil)
-                    
-                } catch {
-                    print("Could not parse JSON: \(error)")
-                }
-                
-            case .failure(let error):
-                print("Network request failed: \(error)")
-                print(try! error.response!.mapJSON())
-            }
-        }
-    }
-    
     // MARK: - Plaid Link handlers
     func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
         provider.request(.exchangeTokens(publicToken: publicToken)) {
@@ -77,7 +27,8 @@ extension HomeViewController {
                         options: []) {
                         do {
                             let institution = try Institution(data: data)
-                            self.setupAccounts(using: accountMetadata, for: institution)
+                            self.plaidManager.setupAccounts(using: accountMetadata, for: institution)
+                            self.plaidManager.getTransactions(using: accountMetadata.accessToken)
                             
                         } catch {
                             print("Could not parse JSON: \(error)")
