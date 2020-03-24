@@ -60,9 +60,7 @@ class PlaidManager {
     }
     
     // MARK: - API call helper functions
-    func setupAccounts(using accountMetadata: AccountMetadata, for institution: Institution) {
-        let accountMetadata = accountMetadata.with(dateAdded: Date())
-        
+    func setupAccounts(using accountMetadata: AccountMetadata, for institution: Institution) {        
         provider.request(.getAccounts(accessToken: accountMetadata.accessToken)) {
             [weak self] result in
             guard let self = self else { return }
@@ -123,6 +121,7 @@ class PlaidManager {
                     let response = try GetTransactionsResponse(data: response.data)
                     let transactions = response.transactions
                     
+                    print(transactions)
                     for transaction in transactions {
                         if let oldTransactions = self.storageManager.transactions[transaction.accountID] {
                             self.storageManager.transactions.updateValue([transaction] + oldTransactions, forKey: transaction.accountID)
