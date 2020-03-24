@@ -15,4 +15,14 @@ class TransactionCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
 
+    func configure(using transaction: Transaction) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: transaction.date)
+        dateFormatter.dateFormat = "EE, MMM dd, YYYY"
+
+        dateLabel.text = dateFormatter.string(from: date!)
+        descriptionLabel.text = transaction.name
+        amountLabel.text = transaction.amount.toCurrency()!
+    }
 }

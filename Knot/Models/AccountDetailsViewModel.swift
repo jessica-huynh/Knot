@@ -37,36 +37,14 @@ class AccountDetailsViewModel: NSObject {
             accounts = storageManager.cashAccounts
         case .loan, .other:
             print("WARNING: Not currently supporting loan/other account types.")
+            return
         case .none:
             // No account type given means we are only going to show transactions.
-            break
+            sections.append(AccountDetailsViewModelTransactions(transactions: storageManager.allTransactions))
+            return
         }
         
-        //let transactions = [transaction1, transaction2, transaction3]
-        
-        if let accounts = accounts {
-            sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
-        }
-    
-        //sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
-    }
-    
-    // MARK: - View Configuration
-    func configure(cell: AccountBalanceCell, using account: Account) {
-        cell.institutionLabel.text = storageManager.institutions[account.id]?.name
-        cell.accountTypeLabel.text = account.name
-        cell.balanceLabel.text = account.balance.current.toCurrency()!
-    }
-    
-    func configure(cell: TransactionCell, using transaction: Transaction) {
-        /*
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EE, MMM d, YYYY"
-        cell.dateLabel.text = dateFormatter.string(from: transaction.date)
-        
-        cell.descriptionLabel.text = transaction.description
-        cell.amountLabel.text = "$\(transaction.amount)"
-         */
+        sections.append(AccountDetailsViewModelAccounts(accounts: accounts!))
     }
 }
 
@@ -88,14 +66,14 @@ extension AccountDetailsViewModel: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccountBalanceCell", for: indexPath) as! AccountBalanceCell
             let section = section as! AccountDetailsViewModelAccounts
             
-            configure(cell: cell, using: section.accounts[indexPath.row])
+            cell.configure(using: section.accounts[indexPath.row])
             return cell
             
         case .transactions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionCell
             let section = section as! AccountDetailsViewModelTransactions
             
-            configure(cell: cell, using: section.transactions[indexPath.row])
+            cell.configure(using: section.transactions[indexPath.row])
             return cell
         }
     }

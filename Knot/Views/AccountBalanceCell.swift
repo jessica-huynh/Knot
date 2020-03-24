@@ -16,4 +16,9 @@ class AccountBalanceCell: UITableViewCell {
     @IBOutlet weak var accountTypeLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
 
+    func configure(using account: Account) {
+        institutionLabel.text = StorageManager.instance.institutions[account.id]?.name
+        accountTypeLabel.text = account.name
+        balanceLabel.text = account.balance.current.toCurrency()!
+    }
 }
