@@ -32,4 +32,13 @@ class StorageManager {
     private init() {
         // Load from CoreData here
     }
+    
+    func accountType(for accountID: String) -> Account.AccountType {
+        for account in cashAccounts {
+            if account.id == accountID {
+                return .depository
+            }
+        }
+        return .credit
+    }
 }
