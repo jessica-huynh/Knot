@@ -34,9 +34,12 @@ class HomeViewController: UITableViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var netBalanceLabel: UILabel!
+    @IBOutlet weak var cashCell: UITableViewCell!
     @IBOutlet weak var cashBalanceLabel: UILabel!
+    @IBOutlet weak var creditCardsCell: UITableViewCell!
     @IBOutlet weak var creditCardsBalanceLabel: UILabel!
     @IBOutlet weak var transactionCollectionView: UICollectionView!
+    @IBOutlet weak var noTransactionsFoundLabel: UILabel!
     @IBOutlet weak var balanceChartView: LineChartView!
     @IBOutlet weak var chartSegmentedControl: UISegmentedControl!
     
@@ -45,12 +48,16 @@ class HomeViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidLinkAccount(_:)), name: .didLinkAccount, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onDidUpdateTransactions(_:)), name: .didUpdateTransactions, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onCashAccountsIsEmptyChanged(_:)), name: .cashIsEmptyChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onCreditCardAccountIsEmptyChanged(_:)), name: .creditCardsIsEmptyChanged, object: nil)
         
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        setupTransactionCollectionVew()
         setupBalanceChart()
         updateLabels()
+        resetBalanceCell(for: .depository)
+        resetBalanceCell(for: .credit)
+        setupTransactionCollectionVew()
     }
     
     // MARK: - Actions
@@ -81,12 +88,41 @@ class HomeViewController: UITableViewController {
         return balance
     }
     
-    /*
+    func resetBalanceCell(for accountType: Account.AccountType) {
+        var accounts: [Account]
+        var balanceLabel: UILabel!
+        var balanceCell: UITableViewCell!
+
+        if accountType == .depository {
+            accounts = storageManager.cashAccounts
+            balanceLabel = cashBalanceLabel
+            balanceCell = cashCell
+        } else {
+            accounts = storageManager.creditAccounts
+            balanceLabel = creditCardsBalanceLabel
+            balanceCell = creditCardsCell
+        }
+        
+        if accounts.isEmpty {
+            balanceLabel.text = "---\t"
+            balanceCell.accessoryType = .none
+            balanceCell.contentView.alpha = 0.3
+        } else {
+            balanceCell.accessoryType = .disclosureIndicator
+            balanceCell.contentView.alpha = 1
+        }
+    }
+    
      // MARK: - Table View Delegates
      override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-     return nil
+        if indexPath == IndexPath(row: 0, section: 1) && storageManager.cashAccounts.isEmpty {
+            return nil
+        } else if indexPath == IndexPath(row: 1, section: 1) && storageManager.creditAccounts.isEmpty {
+            return nil
+        }
+        return indexPath
      }
-     */
+     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? AccountDetailsViewController {
@@ -111,7 +147,17 @@ class HomeViewController: UITableViewController {
     }
     
     @objc func onDidUpdateTransactions(_ notification:Notification) {
+        noTransactionsFoundLabel.isHidden =
+            storageManager.allTransactions.isEmpty ? false : true
         transactionCollectionView.reloadData()
+    }
+    
+    @objc func onCashAccountsIsEmptyChanged(_ notification:Notification) {
+        resetBalanceCell(for: .depository)
+    }
+    
+    @objc func onCreditCardAccountIsEmptyChanged(_ notification:Notification) {
+        resetBalanceCell(for: .credit)
     }
 }
 
@@ -119,4 +165,6 @@ class HomeViewController: UITableViewController {
 extension Notification.Name {
     static let didLinkAccount = Notification.Name("didLinkAccount")
     static let didUpdateTransactions = Notification.Name("didUpdateTransactions")
+    static let cashIsEmptyChanged = Notification.Name("noCashAccounts")
+    static let creditCardsIsEmptyChanged = Notification.Name("noCreditCardAccounts")
 }

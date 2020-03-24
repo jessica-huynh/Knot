@@ -13,8 +13,25 @@ class StorageManager {
     
     var accountMetadata: [String : AccountMetadata] = [:]
     var institutions: [String : Institution] = [:]
-    var cashAccounts: [Account] = []
-    var creditAccounts: [Account] = []
+    
+    var cashAccounts: [Account] = [] {
+        didSet {
+            if (oldValue.isEmpty && !cashAccounts.isEmpty)
+                || (!oldValue.isEmpty && cashAccounts.isEmpty) {
+                NotificationCenter.default.post(name: .cashIsEmptyChanged, object: nil)
+            }
+        }
+    }
+    
+    var creditAccounts: [Account] = [] {
+        didSet {
+            if (oldValue.isEmpty && !creditAccounts.isEmpty)
+                || (!oldValue.isEmpty && creditAccounts.isEmpty) {
+                NotificationCenter.default.post(name: .creditCardsIsEmptyChanged, object: nil)
+            }
+        }
+    }
+    
     var transactions: [String : [Transaction]] = [:]
     
     var allTransactions: [Transaction] {

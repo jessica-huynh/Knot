@@ -195,6 +195,13 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Transactions Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bav-c5-uxe">
+                                                    <rect key="frame" x="25" y="-4" width="364" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="uT3-Ra-0lx" firstAttribute="top" secondItem="gDR-RO-9Rf" secondAttribute="top" constant="-4" id="nIF-Kj-DP0"/>
@@ -228,9 +235,12 @@
                     <connections>
                         <outlet property="balanceChartView" destination="6Y1-oz-iPc" id="123-N5-ctD"/>
                         <outlet property="cashBalanceLabel" destination="tNX-h0-L0T" id="ehW-qc-EHV"/>
+                        <outlet property="cashCell" destination="rfG-x0-zL9" id="dZS-MD-ecX"/>
                         <outlet property="chartSegmentedControl" destination="LZB-oN-jGA" id="hbX-cw-gBB"/>
                         <outlet property="creditCardsBalanceLabel" destination="1Hz-6U-R4n" id="WcX-KO-SEg"/>
+                        <outlet property="creditCardsCell" destination="UVn-IE-Hsi" id="f5X-Nd-IcY"/>
                         <outlet property="netBalanceLabel" destination="tIW-L6-H07" id="nLr-FU-MP7"/>
+                        <outlet property="noTransactionsFoundLabel" destination="bav-c5-uxe" id="Fed-lC-wUO"/>
                         <outlet property="transactionCollectionView" destination="uT3-Ra-0lx" id="Eg1-j8-cU0"/>
                     </connections>
                 </tableViewController>
@@ -339,6 +349,23 @@
                                     <outlet property="dateLabel" destination="T8E-e3-7qP" id="4Fe-lp-lw8"/>
                                     <outlet property="descriptionLabel" destination="RiF-FP-lvN" id="gXb-6Z-zDk"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoTransactionsFoundCell" textLabel="gdd-ud-A0G" style="IBUITableViewCellStyleDefault" id="uNU-se-bdu" customClass="TransactionCell" customModule="Knot" customModuleProvider="target">
+                                <rect key="frame" x="20" y="197.5" width="374" height="71"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uNU-se-bdu" id="mUc-Sr-F3R">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No Transactions Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gdd-ud-A0G">
+                                            <rect key="frame" x="20" y="0.0" width="334" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>

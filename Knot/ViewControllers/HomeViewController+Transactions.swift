@@ -17,6 +17,10 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         transactionCollectionView.register(
             UINib(nibName: "TransactionCollectionCell", bundle: nil),
             forCellWithReuseIdentifier: "TransactionCollectionCell")
+        
+        if !storageManager.allTransactions.isEmpty {
+            noTransactionsFoundLabel.isHidden = true
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

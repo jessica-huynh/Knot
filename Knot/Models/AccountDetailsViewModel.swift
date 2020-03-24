@@ -69,7 +69,14 @@ extension AccountDetailsViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 && sections[section].rowCount == 0 {
+            return 1
+        }
         return sections[section].rowCount
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,9 +91,13 @@ extension AccountDetailsViewModel: UITableViewDataSource {
             return cell
             
         case .transactions:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionCell
             let section = section as! AccountDetailsViewModelTransactions
+            if section.transactions.isEmpty {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "NoTransactionsFoundCell", for: indexPath) as! TransactionCell
+                return cell
+            }
             
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionCell
             cell.configure(using: section.transactions[indexPath.row])
             return cell
         }
