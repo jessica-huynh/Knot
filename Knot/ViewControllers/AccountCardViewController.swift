@@ -20,7 +20,11 @@ class AccountCardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dateAddedLabel.text = "Added on Jan 11, 2020"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EE, MMM dd, YYYY"
+        let dateAdded = dateFormatter.string(from: StorageManager.instance.accountMetadata[account.id]!.dateAdded!)
+        dateAddedLabel.text = "Added on \(dateAdded)"
+        
         updateCard()
     }
     
@@ -41,7 +45,6 @@ class AccountCardViewController: UIViewController {
         } else {
             accountCard.accountNumberLabel.text = ""
         }
-        
         
         // TODO
         accountCard.nameLabel.text = "Jane Doe"
