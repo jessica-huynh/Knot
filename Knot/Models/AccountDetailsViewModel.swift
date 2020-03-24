@@ -26,7 +26,9 @@ class AccountDetailsViewModel: NSObject {
     var sections = [AccountDetailsViewModelSection]()
     
     init(for accountType: Account.AccountType?) {
-        var accounts: [Account]?
+        super.init()
+        
+        var accounts: [Account]!
         
         switch accountType {
         case .investment:
@@ -44,7 +46,21 @@ class AccountDetailsViewModel: NSObject {
             return
         }
         
-        sections.append(AccountDetailsViewModelAccounts(accounts: accounts!))
+        sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
+        
+        let transactions = self.setupTransactions(for: accounts)
+        sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
+    }
+    
+    func setupTransactions(for accounts: [Account]) -> [Transaction] {
+        var transactions: [Transaction] = []
+        
+        for account in accounts {
+            transactions += storageManager.transactions[account.id] ?? []
+        }
+        
+        transactions.sort(by: >)
+        return transactions
     }
 }
 
