@@ -37,3 +37,7 @@ extension Transaction {
         self = try JSONDecoder().decode(Transaction.self, from: data)
     }
 }
+
+func > (lhs: Transaction, rhs: Transaction) -> Bool {
+    return lhs.date > rhs.date
+}

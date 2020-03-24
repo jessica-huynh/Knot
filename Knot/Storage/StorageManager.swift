@@ -24,6 +24,8 @@ class StorageManager {
         for transactionList in combinedTransactionLists {
             mergedTransactionList += transactionList
         }
+        
+        mergedTransactionList.sort(by: >)
         return mergedTransactionList
     }
     
