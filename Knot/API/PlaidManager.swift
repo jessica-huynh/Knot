@@ -73,10 +73,10 @@ class PlaidManager {
                     
                     for account in accounts {
                         switch account.type {
-                        case .depository, .credit, .investment:
+                        case .depository, .credit:
                             self.storageManager.accountMetadata.updateValue(accountMetadata, forKey: account.id)
                             self.storageManager.institutions.updateValue(institution, forKey: account.id)
-                        case .loan, .other:
+                        case .investment, .loan, .other:
                             break
                         }
                         
@@ -85,9 +85,7 @@ class PlaidManager {
                             self.storageManager.cashAccounts.append(account)
                         case .credit:
                             self.storageManager.creditAccounts.append(account)
-                        case .investment:
-                            self.storageManager.investmentAccounts.append(account)
-                        case .loan, .other:
+                        case .investment, .loan, .other:
                             break
                         }
                     }
@@ -95,7 +93,6 @@ class PlaidManager {
                     print("\nAccess token: \(accountMetadata.accessToken)\n")
                     print("CASH: \(self.storageManager.cashAccounts)")
                     print("CREDIT: \(self.storageManager.creditAccounts)")
-                    print("INVESTMENT: \(self.storageManager.investmentAccounts)")
                     
                     NotificationCenter.default.post(name: .didLinkAccount, object: nil)
                     

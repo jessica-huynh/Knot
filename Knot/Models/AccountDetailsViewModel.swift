@@ -31,13 +31,11 @@ class AccountDetailsViewModel: NSObject {
         var accounts: [Account]!
         
         switch accountType {
-        case .investment:
-            accounts = storageManager.investmentAccounts
         case .credit:
             accounts = storageManager.creditAccounts
         case .depository:
             accounts = storageManager.cashAccounts
-        case .loan, .other:
+        case .investment, .loan, .other:
             print("WARNING: Not currently supporting loan/other account types.")
             return
         case .none:

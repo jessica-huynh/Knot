@@ -36,7 +36,6 @@ class HomeViewController: UITableViewController {
     @IBOutlet weak var netBalanceLabel: UILabel!
     @IBOutlet weak var cashBalanceLabel: UILabel!
     @IBOutlet weak var creditCardsBalanceLabel: UILabel!
-    @IBOutlet weak var investmentsBalanceLabel: UILabel!
     @IBOutlet weak var transactionCollectionView: UICollectionView!
     @IBOutlet weak var balanceChartView: LineChartView!
     @IBOutlet weak var chartSegmentedControl: UISegmentedControl!
@@ -66,13 +65,11 @@ class HomeViewController: UITableViewController {
     func updateLabels() {
         let cashBalance = calculateBalance(for: storageManager.cashAccounts)
         let creditBalance = calculateBalance(for: storageManager.creditAccounts)
-        let investmentBalance = calculateBalance(for: storageManager.investmentAccounts)
-        let netBalance = cashBalance - creditBalance + investmentBalance
+        let netBalance = cashBalance - creditBalance
         
         netBalanceLabel.text = netBalance.toCurrency()!
         cashBalanceLabel.text = cashBalance.toCurrency()!
         creditCardsBalanceLabel.text = creditBalance.toCurrency()!
-        investmentsBalanceLabel.text = investmentBalance.toCurrency()!
     }
     
     func calculateBalance(for accounts: [Account]) -> Double {
@@ -99,8 +96,6 @@ class HomeViewController: UITableViewController {
                 controller.viewModel = AccountDetailsViewModel(for: .depository)
             } else if segue.identifier == "Credit Cards" {
                 controller.viewModel = AccountDetailsViewModel(for: .credit)
-            } else if segue.identifier == "Investments" {
-                controller.viewModel = AccountDetailsViewModel(for: .investment)
             } else if segue.identifier == "All Transactions" {
                 // Not going to show any accounts, so account type is `nil`:
                 controller.viewModel = AccountDetailsViewModel(for: nil)

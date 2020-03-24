@@ -139,43 +139,12 @@
                                             <segue destination="cac-Hu-VUt" kind="show" identifier="Credit Cards" id="IZR-bV-Bni"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InvestmentsCell" rowHeight="43.5" id="FRU-XR-lgR">
-                                        <rect key="frame" x="0.0" y="541" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FRU-XR-lgR" id="cf1-1z-hLQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Investments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yck-5C-C0H">
-                                                    <rect key="frame" x="30" y="11.5" width="93" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;invest bal&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVa-hC-UgM">
-                                                    <rect key="frame" x="281" y="11.5" width="94" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="yck-5C-C0H" firstAttribute="centerY" secondItem="cf1-1z-hLQ" secondAttribute="centerY" id="FkO-AE-ioU"/>
-                                                <constraint firstItem="QVa-hC-UgM" firstAttribute="trailing" secondItem="cf1-1z-hLQ" secondAttribute="trailingMargin" id="I4t-nv-r0o"/>
-                                                <constraint firstItem="yck-5C-C0H" firstAttribute="leading" secondItem="cf1-1z-hLQ" secondAttribute="leadingMargin" constant="10" id="cSX-aA-GmX"/>
-                                                <constraint firstItem="QVa-hC-UgM" firstAttribute="centerY" secondItem="cf1-1z-hLQ" secondAttribute="centerY" id="o00-cE-deW"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="cac-Hu-VUt" kind="show" identifier="Investments" id="wAv-pC-2Cp"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Last Transactions" id="dAV-VU-Ol4">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LatestTransactionsCell" rowHeight="120" id="Phm-gk-1Fn">
-                                        <rect key="frame" x="0.0" y="640.5" width="414" height="120"/>
+                                        <rect key="frame" x="0.0" y="597" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Phm-gk-1Fn" id="gDR-RO-9Rf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
@@ -261,7 +230,6 @@
                         <outlet property="cashBalanceLabel" destination="tNX-h0-L0T" id="ehW-qc-EHV"/>
                         <outlet property="chartSegmentedControl" destination="LZB-oN-jGA" id="hbX-cw-gBB"/>
                         <outlet property="creditCardsBalanceLabel" destination="1Hz-6U-R4n" id="WcX-KO-SEg"/>
-                        <outlet property="investmentsBalanceLabel" destination="QVa-hC-UgM" id="Hhh-0K-w0i"/>
                         <outlet property="netBalanceLabel" destination="tIW-L6-H07" id="nLr-FU-MP7"/>
                         <outlet property="transactionCollectionView" destination="uT3-Ra-0lx" id="Eg1-j8-cU0"/>
                     </connections>
@@ -388,7 +356,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZF-9Z-Qi9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="602.89855072463774" y="827.67857142857144"/>
+            <point key="canvasLocation" x="988" y="760"/>
         </scene>
         <!--Profile-->
         <scene sceneID="LYv-kz-DZi">

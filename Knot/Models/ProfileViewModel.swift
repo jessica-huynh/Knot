@@ -28,7 +28,7 @@ class ProfileViewModel: NSObject {
     override init() {
         super.init()
         
-        let accounts = storageManager.cashAccounts + storageManager.creditAccounts + storageManager.investmentAccounts
+        let accounts = storageManager.cashAccounts + storageManager.creditAccounts
 
         sections.append(ProfileViewModelAccounts(accounts: accounts))
         sections.append(ProfileViewModelEraseData())

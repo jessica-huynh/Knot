@@ -15,7 +15,6 @@ class StorageManager {
     var institutions: [String : Institution] = [:]
     var cashAccounts: [Account] = []
     var creditAccounts: [Account] = []
-    var investmentAccounts: [Account] = []
     var transactions: [String : [Transaction]] = [:]
     
     var allTransactions: [Transaction] {
