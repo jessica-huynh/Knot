@@ -8,21 +8,27 @@
 
 import Foundation
 
-struct Transaction: Codable {
-    let id, accountID, name, date_ISO: String
-    let amount: Double
+struct Transaction: Codable, CustomStringConvertible {
+    let id, accountID, name, _date: String
+    let _amount: Double
     let pending: Bool
+    var amount: Double { return _amount * -1 }
     var date: Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.date(from: date_ISO)!
+        return dateFormatter.date(from: _date)!
     }
 
     enum CodingKeys: String, CodingKey {
-        case name, amount, pending
+        case name, pending
         case id = "transaction_id"
         case accountID = "account_id"
-        case date_ISO = "date"
+        case _date = "date"
+        case _amount = "amount"
+    }
+    
+    var description: String {
+        return "Transaction ID: \(id), name: \(name), amount: \(amount.toCurrency()!), date: \(_date)\n"
     }
 }
 
