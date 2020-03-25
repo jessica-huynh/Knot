@@ -46,19 +46,8 @@ class AccountDetailsViewModel: NSObject {
         
         sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
         
-        let transactions = self.setupTransactions(for: accounts)
+        let transactions = self.storageManager.getTransactions(for: accounts)
         sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
-    }
-    
-    func setupTransactions(for accounts: [Account]) -> [Transaction] {
-        var transactions: [Transaction] = []
-        
-        for account in accounts {
-            transactions += storageManager.transactions[account.id] ?? []
-        }
-        
-        transactions.sort(by: >)
-        return transactions
     }
 }
 

@@ -57,4 +57,15 @@ class StorageManager {
         }
         return .credit
     }
+    
+    func getTransactions(for accounts: [Account]) -> [Transaction] {
+        var result: [Transaction] = []
+        
+        for account in accounts {
+            result += transactions[account.id] ?? []
+        }
+        
+        result.sort(by: >)
+        return result
+    }
 }
