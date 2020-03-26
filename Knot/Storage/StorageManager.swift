@@ -32,13 +32,11 @@ class StorageManager {
         }
     }
     
-    /// List of transactions for all accounts dated in the last 30 days.
-    var recentTransactions: [Transaction] = []
-    
     private init() {
         // Load from CoreData here
     }
     
+    // MARK: - Helper Functions
     func accountType(for accountID: String) -> Account.AccountType {
         for account in cashAccounts {
             if account.id == accountID {
@@ -48,10 +46,25 @@ class StorageManager {
         return .credit
     }
     
-    func getAccessToken(for accountID: String) -> String? {
+    func accessToken(for accountID: String) -> String? {
         for (accessToken, accountIDs) in accessTokens {
             if accountIDs.contains(accountID) {
                 return accessToken
+            }
+        }
+        return nil
+    }
+    
+    func account(for accountID: String) -> Account? {
+        for account in cashAccounts {
+            if account.id == accountID {
+                return account
+            }
+        }
+        
+        for account in creditAccounts {
+            if account.id == accountID {
+                return account
             }
         }
         return nil
