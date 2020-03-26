@@ -17,6 +17,7 @@ class PlaidManager {
     let storageManager = StorageManager.instance
     
     let publicKey: String, clientID: String, secret: String, environment: Environment
+    var state: State = .ready
     
     enum Environment: String {
         case sandbox, development
@@ -27,6 +28,11 @@ class PlaidManager {
             case .development: return .development
             }
         }
+    }
+    
+    enum State {
+        case ready
+        case loading
     }
     
     private init() {
@@ -57,5 +63,25 @@ class PlaidManager {
         configuration.clientName = (Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String)
         configuration.countryCodes = ["CA"]
         return configuration
+    }
+    
+    // MARK: - API request helper function
+    func request(for endpoint: PlaidAPI, onSuccess: @escaping (Response) throws -> Void) {
+        provider.request(endpoint) {
+            result in
+            
+            switch result {
+            case .success(let response):
+                do {
+                    try onSuccess(response)
+                } catch {
+                    print("Error: \(error)")
+                }
+                
+            case .failure(let error):
+                print("Network request failed: \(error)")
+                print(try! error.response!.mapJSON())
+            }
+        }
     }
 }

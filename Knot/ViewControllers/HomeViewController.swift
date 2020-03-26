@@ -17,6 +17,8 @@ class HomeViewController: UITableViewController {
     var balanceIndicatorLabel: UILabel!
     var timeIndicatorLabel: UILabel!
     
+    var recentTransactions: [Transaction] = []
+    
     lazy var balanceChartData_1w = balanceChartData(for: ChartTimePeriod.week)
     lazy var balanceChartData_1m = balanceChartData(for: ChartTimePeriod.month)
     lazy var balanceChartData_3m = balanceChartData(for: ChartTimePeriod.threeMonth)
@@ -45,8 +47,6 @@ class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidLinkAccount(_:)), name: .didLinkAccount, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidUpdateTransactions(_:)), name: .didUpdateTransactions, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onCashAccountsIsEmptyChanged(_:)), name: .cashIsEmptyChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onCreditCardAccountIsEmptyChanged(_:)), name: .creditCardsIsEmptyChanged, object: nil)
         
@@ -141,16 +141,6 @@ class HomeViewController: UITableViewController {
     }
     
     // MARK: - Notification Selectors
-    @objc func onDidLinkAccount(_ notification:Notification) {
-        updateLabels()
-    }
-    
-    @objc func onDidUpdateTransactions(_ notification:Notification) {
-        noTransactionsFoundLabel.isHidden =
-            storageManager.recentTransactions.isEmpty ? false : true
-        transactionCollectionView.reloadData()
-    }
-    
     @objc func onCashAccountsIsEmptyChanged(_ notification:Notification) {
         resetBalanceCell(for: .depository)
     }
@@ -162,8 +152,6 @@ class HomeViewController: UITableViewController {
 
 // MARK: - Notification Names
 extension Notification.Name {
-    static let didLinkAccount = Notification.Name("didLinkAccount")
-    static let didUpdateTransactions = Notification.Name("didUpdateTransactions")
     static let cashIsEmptyChanged = Notification.Name("noCashAccounts")
     static let creditCardsIsEmptyChanged = Notification.Name("noCreditCardAccounts")
 }

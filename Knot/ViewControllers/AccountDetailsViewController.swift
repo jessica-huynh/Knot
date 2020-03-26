@@ -15,10 +15,25 @@ class AccountDetailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedTransactions(_:)), name: .updatedTransactions, object: nil)
+        
         title = navTitle
-        tableView?.dataSource = viewModel
+        tableView.dataSource = viewModel
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
     }
+    
+    @objc func onUpdatedTransactions(_ notification:Notification) {
+        tableView.reloadData()
+    }
+}
+
+// MARK: - Notification Names
+extension Notification.Name {
+    static let updatedTransactions = Notification.Name("updatedTransactions")
 }

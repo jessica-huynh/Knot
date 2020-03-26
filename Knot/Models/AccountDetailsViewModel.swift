@@ -46,10 +46,33 @@ class AccountDetailsViewModel: NSObject {
         
         sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
         
-        //let transactions = PlaidManager.instance.getTransactions(for: accounts)
-        //PlaidManager.instance.getTransactions(for: accounts)
-        let transactions: [Transaction] = []
-        sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
+        getTransactions(for: accounts)
+    }
+    
+    // MARK:- Helper function
+    func getTransactions(for accounts: [Account]) {
+        var transactions: [Transaction] = []
+        let dispatch = DispatchGroup()
+        
+        for account in accounts {
+            dispatch.enter()
+            let accessToken = storageManager.getAccessToken(for: account.id)!
+            
+            PlaidManager.instance.request(for: .getTransactions(accessToken: accessToken, accountIDs: [account.id])) {
+                response in
+                
+                let response = try GetTransactionsResponse(data: response.data)
+                
+                transactions.append(contentsOf: response.transactions)
+                dispatch.leave()
+                
+                }
+        }
+        dispatch.notify(queue: .main) {
+            transactions.sort(by: >)
+            self.sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
+            NotificationCenter.default.post(name: .updatedTransactions, object: nil)
+        }
     }
 }
 

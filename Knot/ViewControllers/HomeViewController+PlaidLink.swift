@@ -11,11 +11,82 @@ import UIKit
 import LinkKit
 
 extension HomeViewController {
-    // MARK: - Plaid Link handlers
-    func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
-        plaidManager.handleSuccessfulLinking(using: publicToken, metadata: metadata)
+    func setupAccounts(using accessToken: String, for institution: Institution) {
+        storageManager.accessTokens.updateValue([], forKey: accessToken)
+        
+        plaidManager.request(for: .getAccounts(accessToken: accessToken)) {
+            [weak self] response in
+            guard let self = self else { return }
+            
+            let response = try GetAccountsResponse(data: response.data)
+            let accounts = response.accounts
+            
+            for account in accounts {
+                if account.type == .depository || account.type == .credit {
+                    self.storageManager.accessTokens[accessToken]!.append(account.id)
+                    self.storageManager.institutionsByID[account.id] = institution
+                }
+                
+                if account.type == .depository {
+                    self.storageManager.cashAccounts.append(account)
+                } else if account.type == .credit {
+                    self.storageManager.creditAccounts.append(account)
+                }
+            }
+            
+            print("\nAccess token: \(accessToken)\n")
+            print("CASH: \(self.storageManager.cashAccounts)")
+            print("CREDIT: \(self.storageManager.creditAccounts)")
+            
+            // If no valid accounts types were added, remove the access token from storage
+            if self.storageManager.accessTokens[accessToken]!.isEmpty {
+                self.storageManager.accessTokens.removeValue(forKey: accessToken)
+                // TODO: Notify user of no valid account types
+            } else {
+                self.updateLabels()
+                self.updateRecentTransactions(using: accessToken)
+            }
+        }
     }
     
+    func updateRecentTransactions(using accessToken: String) {
+        plaidManager.request(for: .getTransactions(accessToken: accessToken, accountIDs: storageManager.accessTokens[accessToken])) {
+            [weak self] response in
+            guard let self = self else { return }
+            
+            let response = try GetTransactionsResponse(data: response.data)
+            self.recentTransactions = response.transactions
+            
+            print(self.recentTransactions)
+            if !self.recentTransactions.isEmpty {
+                self.noTransactionsFoundLabel.isHidden = self.recentTransactions.isEmpty ? false : true
+                self.transactionCollectionView.reloadData()
+            }
+        }
+    }
+        
+    // MARK: - Plaid Link handlers
+    func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
+        plaidManager.request(for: .exchangeTokens(publicToken: publicToken)) {
+            [weak self] response in
+            guard let self = self else { return }
+            
+            let accountMetadata = try AccountMetadata(data: response.data)
+            
+            if let data = try? JSONSerialization.data(
+                withJSONObject: metadata!["institution"]!,
+                options: []) {
+                do {
+                    let institution = try Institution(data: data)
+                    self.setupAccounts(using: accountMetadata.accessToken, for: institution)
+                    
+                } catch {
+                    print("Could not parse JSON: \(error)")
+                }
+            }
+        }
+    }
+        
     func handleError(_ error: Error, metadata: [String : Any]?) {
         presentAlertViewWithTitle("Failure", message: "error: \(error.localizedDescription)\nmetadata: \(metadata ?? [:])")
     }
