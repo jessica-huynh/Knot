@@ -55,21 +55,16 @@ extension PlaidManager {
                     let accounts = response.accounts
                     
                     for account in accounts {
-                        switch account.type {
-                        case .depository, .credit:
+                        if account.type == .depository || account.type == .credit {
                             self.storageManager.accessTokens[accessToken]!.append(account.id)
                             self.storageManager.institutionsByID[account.id] = institution
-                        case .investment, .loan, .other:
-                            break
                         }
                         
-                        switch account.type {
-                        case .depository:
+                        
+                        if account.type == .depository {
                             self.storageManager.cashAccounts.append(account)
-                        case .credit:
+                        } else if account.type == .credit {
                             self.storageManager.creditAccounts.append(account)
-                        case .investment, .loan, .other:
-                            break
                         }
                     }
                     
