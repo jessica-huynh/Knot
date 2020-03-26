@@ -11,7 +11,6 @@ import Foundation
 /// Corresponds to Plaid's exchange token response
 struct AccountMetadata: Codable {
     let accessToken, itemID: String
-    var dateAdded: Date { return Date() }
 
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"

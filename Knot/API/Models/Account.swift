@@ -13,6 +13,7 @@ struct Account: Codable, CustomStringConvertible {
     let type: AccountType
     let mask, officialName: String?
     let balance: Balance
+    var dateAdded: Date { return Date() }
     
     enum CodingKeys: String, CodingKey {
         case name, mask, type, subtype
