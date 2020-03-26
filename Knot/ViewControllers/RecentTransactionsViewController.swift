@@ -25,13 +25,18 @@ class RecentTransactionsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recentTransactions.count
+        return recentTransactions.count + 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == recentTransactions.count {
+            return tableView.dequeueReusableCell(withIdentifier: "ReachedEndCell")!
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecentTransactionCell", for: indexPath) as! RecentTransactionCell
         cell.configure(using: recentTransactions[indexPath.row])
+        
         return cell
     }
     

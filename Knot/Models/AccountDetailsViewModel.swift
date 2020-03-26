@@ -79,8 +79,10 @@ extension AccountDetailsViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 && sections[section].rowCount == 0 {
+        if section == 1 && sections[section].rowCount == 0 { // TODO: Refactor for better readibility
             return 1
+        } else if section == 1 {
+            return sections[section].rowCount + 1
         }
         return sections[section].rowCount
     }
@@ -105,6 +107,10 @@ extension AccountDetailsViewModel: UITableViewDataSource {
             if section.transactions.isEmpty {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "NoTransactionsFoundCell", for: indexPath) as! TransactionCell
                 return cell
+            }
+            
+            if indexPath.row == section.transactions.count {
+                return tableView.dequeueReusableCell(withIdentifier: "ReachedEndCell")!
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionCell
