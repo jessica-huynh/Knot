@@ -11,8 +11,8 @@ import Foundation
 class StorageManager {
     static let instance = StorageManager()
     
-    var accountMetadata: [String : AccountMetadata] = [:]
-    var institutions: [String : Institution] = [:]
+    var accessTokens: [String : [String]] = [:]
+    var institutionsByID: [String : Institution] = [:]
     
     var cashAccounts: [Account] = [] {
         didSet {
@@ -32,18 +32,8 @@ class StorageManager {
         }
     }
     
-    var transactions: [String : [Transaction]] = [:]
-    
-    var allTransactions: [Transaction] {
-        let combinedTransactionLists = transactions.values
-        var mergedTransactionList: [Transaction] = []
-        for transactionList in combinedTransactionLists {
-            mergedTransactionList += transactionList
-        }
-        
-        mergedTransactionList.sort(by: >)
-        return mergedTransactionList
-    }
+    /// List of transactions for all accounts dated in the last 30 days.
+    var recentTransactions: [Transaction] = []
     
     private init() {
         // Load from CoreData here
@@ -58,14 +48,12 @@ class StorageManager {
         return .credit
     }
     
-    func getTransactions(for accounts: [Account]) -> [Transaction] {
-        var result: [Transaction] = []
-        
-        for account in accounts {
-            result += transactions[account.id] ?? []
+    func getAccessToken(for accountID: String) -> String? {
+        for (accessToken, accountIDs) in accessTokens {
+            if accountIDs.contains(accountID) {
+                return accessToken
+            }
         }
-        
-        result.sort(by: >)
-        return result
+        return nil
     }
 }

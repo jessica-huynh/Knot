@@ -54,7 +54,7 @@ extension ProfileViewModel: UITableViewDataSource {
             let section = section as! ProfileViewModelAccounts
             let account = section.accounts[indexPath.row]
             
-            cell.textLabel?.text = (storageManager.institutions[account.id]?.name)
+            cell.textLabel?.text = (storageManager.institutionsByID[account.id]?.name)
             
             if let mask = account.mask {
                 cell.textLabel?.text! += " (\(mask))"

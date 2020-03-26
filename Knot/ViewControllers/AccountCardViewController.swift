@@ -22,7 +22,7 @@ class AccountCardViewController: UIViewController {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EE, MMM dd, YYYY"
-        let dateAdded = dateFormatter.string(from: StorageManager.instance.accountMetadata[account.id]!.dateAdded)
+        let dateAdded = dateFormatter.string(from: account.dateAdded)
         dateAddedLabel.text = "Added on \(dateAdded)"
         
         updateCard()
@@ -37,7 +37,7 @@ class AccountCardViewController: UIViewController {
     }
     
     func updateCard() {
-        accountCard.institutionLabel.text = StorageManager.instance.institutions[account.id]!.name
+        accountCard.institutionLabel.text = StorageManager.instance.institutionsByID[account.id]!.name
         accountCard.accountTypeLabel.text = account.officialName ?? account.name
         
         if let mask = account.mask {

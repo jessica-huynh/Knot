@@ -18,15 +18,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             UINib(nibName: "TransactionCollectionCell", bundle: nil),
             forCellWithReuseIdentifier: "TransactionCollectionCell")
         
-        if !storageManager.allTransactions.isEmpty {
+        if !storageManager.recentTransactions.isEmpty {
             noTransactionsFoundLabel.isHidden = true
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let maxTransactionsDisplayed = 6
-        return (storageManager.allTransactions.count > maxTransactionsDisplayed ?
-            maxTransactionsDisplayed + 1 : storageManager.allTransactions.count)
+        return (storageManager.recentTransactions.count > maxTransactionsDisplayed ?
+            maxTransactionsDisplayed + 1 : storageManager.recentTransactions.count)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -37,7 +37,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TransactionCollectionCell", for: indexPath) as! TransactionCollectionCell
-        cell.configure(for: storageManager.allTransactions[indexPath.item])
+        cell.configure(for: storageManager.recentTransactions[indexPath.item])
         return cell
     }
 }

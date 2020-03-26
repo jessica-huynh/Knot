@@ -40,13 +40,15 @@ class AccountDetailsViewModel: NSObject {
             return
         case .none:
             // No account type given means we are only going to show transactions.
-            sections.append(AccountDetailsViewModelTransactions(transactions: storageManager.allTransactions))
+            sections.append(AccountDetailsViewModelTransactions(transactions: storageManager.recentTransactions))
             return
         }
         
         sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
         
-        let transactions = self.storageManager.getTransactions(for: accounts)
+        //let transactions = PlaidManager.instance.getTransactions(for: accounts)
+        //PlaidManager.instance.getTransactions(for: accounts)
+        let transactions: [Transaction] = []
         sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
     }
 }

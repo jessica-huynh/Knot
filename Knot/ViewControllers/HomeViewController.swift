@@ -13,7 +13,6 @@ import Moya
 class HomeViewController: UITableViewController {
     let plaidManager = PlaidManager.instance
     let storageManager = StorageManager.instance
-    let provider = MoyaProvider<PlaidAPI>()
     
     var balanceIndicatorLabel: UILabel!
     var timeIndicatorLabel: UILabel!
@@ -148,7 +147,7 @@ class HomeViewController: UITableViewController {
     
     @objc func onDidUpdateTransactions(_ notification:Notification) {
         noTransactionsFoundLabel.isHidden =
-            storageManager.allTransactions.isEmpty ? false : true
+            storageManager.recentTransactions.isEmpty ? false : true
         transactionCollectionView.reloadData()
     }
     
