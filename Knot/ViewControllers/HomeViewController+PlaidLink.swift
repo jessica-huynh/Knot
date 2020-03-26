@@ -13,36 +13,7 @@ import LinkKit
 extension HomeViewController {
     // MARK: - Plaid Link handlers
     func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
-        provider.request(.exchangeTokens(publicToken: publicToken)) {
-            [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let response):
-                do {
-                    let accountMetadata = try AccountMetadata(data: response.data)
-                    
-                    if let data = try? JSONSerialization.data(
-                        withJSONObject: metadata!["institution"]!,
-                        options: []) {
-                        do {
-                            let institution = try Institution(data: data)
-                            self.plaidManager.setupAccounts(using: accountMetadata, for: institution)
-                            self.plaidManager.getTransactions(using: accountMetadata.accessToken)
-                            
-                        } catch {
-                            print("Could not parse JSON: \(error)")
-                        }
-                    }
-                } catch {
-                    print("Could not parse JSON: \(error)")
-                }
-                
-            case .failure(let error):
-                print("Network request failed: \(error)")
-                print(try! error.response!.mapJSON())
-            }
-        }
+        plaidManager.handleSuccessfulLinking(using: publicToken, metadata: metadata)
     }
     
     func handleError(_ error: Error, metadata: [String : Any]?) {
