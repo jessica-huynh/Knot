@@ -131,12 +131,12 @@ class HomeViewController: UITableViewController {
                 controller.viewModel = AccountDetailsViewModel(for: .depository)
             } else if segue.identifier == "Credit Cards" {
                 controller.viewModel = AccountDetailsViewModel(for: .credit)
-            } else if segue.identifier == "All Transactions" {
-                // Not going to show any accounts, so account type is `nil`:
-                controller.viewModel = AccountDetailsViewModel(for: nil)
-                // Do not give option to add account from All Transactions scene:
-                controller.navigationItem.rightBarButtonItem = nil
             }
+        }
+        
+        if segue.identifier == "Recent Transactions" {
+            let controller = segue.destination as! RecentTransactionsViewController
+            controller.recentTransactions = recentTransactions
         }
     }
     

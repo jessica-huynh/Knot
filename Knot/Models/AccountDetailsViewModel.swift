@@ -25,7 +25,7 @@ class AccountDetailsViewModel: NSObject {
     
     var sections = [AccountDetailsViewModelSection]()
     
-    init(for accountType: Account.AccountType?) {
+    init(for accountType: Account.AccountType) {
         super.init()
         
         var accounts: [Account]!
@@ -37,10 +37,6 @@ class AccountDetailsViewModel: NSObject {
             accounts = storageManager.cashAccounts
         case .investment, .loan, .other:
             print("WARNING: Not currently supporting loan/other account types.")
-            return
-        case .none:
-            // No account type given means we are only going to show transactions.
-            sections.append(AccountDetailsViewModelTransactions(transactions: storageManager.recentTransactions))
             return
         }
         
@@ -56,7 +52,7 @@ class AccountDetailsViewModel: NSObject {
         
         for account in accounts {
             dispatch.enter()
-            let accessToken = storageManager.getAccessToken(for: account.id)!
+            let accessToken = storageManager.accessToken(for: account.id)!
             
             PlaidManager.instance.request(for: .getTransactions(accessToken: accessToken, accountIDs: [account.id])) {
                 response in

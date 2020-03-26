@@ -141,7 +141,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Last Transactions" id="dAV-VU-Ol4">
+                            <tableViewSection headerTitle="Recent Transactions" id="dAV-VU-Ol4">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LatestTransactionsCell" rowHeight="120" id="Phm-gk-1Fn">
                                         <rect key="frame" x="0.0" y="597" width="414" height="120"/>
@@ -182,7 +182,7 @@
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
                                                                         <connections>
-                                                                            <segue destination="cac-Hu-VUt" kind="show" identifier="All Transactions" id="X7T-Jn-BLl"/>
+                                                                            <segue destination="htG-jw-IIc" kind="show" identifier="Recent Transactions" id="v8p-va-l62"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -195,7 +195,7 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Transactions Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bav-c5-uxe">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Recent Activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bav-c5-uxe">
                                                     <rect key="frame" x="25" y="-4" width="364" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -383,7 +383,78 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZF-9Z-Qi9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="760"/>
+            <point key="canvasLocation" x="558" y="759"/>
+        </scene>
+        <!--Recent Transactions-->
+        <scene sceneID="Ktp-44-zqN">
+            <objects>
+                <tableViewController id="htG-jw-IIc" customClass="RecentTransactionsViewController" customModule="Knot" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="71" sectionHeaderHeight="18" sectionFooterHeight="18" id="aDY-WS-qyG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecentTransactionCell" id="N0a-Zs-Zha" customClass="RecentTransactionCell" customModule="Knot" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.5" width="374" height="71"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N0a-Zs-Zha" id="jDg-dO-3K1">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;description&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04J-cM-rQR">
+                                            <rect key="frame" x="13" y="16" width="107" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;date&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqX-UJ-WeP">
+                                            <rect key="frame" x="13" y="38" width="50" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;amount&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9It-jS-NtZ">
+                                            <rect key="frame" x="274" y="16" width="80" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;account&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSv-QZ-2RL">
+                                            <rect key="frame" x="279" y="38" width="75" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9It-jS-NtZ" firstAttribute="top" secondItem="jDg-dO-3K1" secondAttribute="topMargin" constant="5" id="4nm-pY-b3q"/>
+                                        <constraint firstItem="IqX-UJ-WeP" firstAttribute="leading" secondItem="jDg-dO-3K1" secondAttribute="leading" constant="13" id="HUW-g1-N9Q"/>
+                                        <constraint firstItem="9It-jS-NtZ" firstAttribute="trailing" secondItem="jDg-dO-3K1" secondAttribute="trailingMargin" id="Ht4-pd-Dc5"/>
+                                        <constraint firstItem="IqX-UJ-WeP" firstAttribute="top" secondItem="04J-cM-rQR" secondAttribute="bottom" constant="1" id="Xnd-hr-SdE"/>
+                                        <constraint firstItem="LSv-QZ-2RL" firstAttribute="trailing" secondItem="jDg-dO-3K1" secondAttribute="trailingMargin" id="Ynr-cE-bcR"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="LSv-QZ-2RL" secondAttribute="bottom" constant="4" id="d2x-cc-z9n"/>
+                                        <constraint firstItem="04J-cM-rQR" firstAttribute="leading" secondItem="jDg-dO-3K1" secondAttribute="leading" constant="13" id="kPg-z8-Slo"/>
+                                        <constraint firstItem="04J-cM-rQR" firstAttribute="top" secondItem="jDg-dO-3K1" secondAttribute="top" constant="16" id="wcs-NX-eZ9"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="accountLabel" destination="LSv-QZ-2RL" id="qgf-NT-xe8"/>
+                                    <outlet property="amountLabel" destination="9It-jS-NtZ" id="K3E-h1-vJE"/>
+                                    <outlet property="dateLabel" destination="IqX-UJ-WeP" id="RaB-Wz-aNe"/>
+                                    <outlet property="descriptionLabel" destination="04J-cM-rQR" id="Bp3-k7-MwV"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="htG-jw-IIc" id="EhO-pf-LPg"/>
+                            <outlet property="delegate" destination="htG-jw-IIc" id="aOW-9r-Azi"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Recent Transactions" id="86S-UP-fHg"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ee6-71-5La" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1458" y="759"/>
         </scene>
         <!--Profile-->
         <scene sceneID="LYv-kz-DZi">
@@ -572,6 +643,6 @@
         <image name="person" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="X7T-Jn-BLl"/>
+        <segue reference="IZR-bV-Bni"/>
     </inferredMetricsTieBreakers>
 </document>

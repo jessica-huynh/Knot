@@ -13,6 +13,9 @@
 		C810D44224282AD200AEC207 /* AccountMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44124282AD200AEC207 /* AccountMetadata.swift */; };
 		C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44724282E6C00AEC207 /* StorageManager.swift */; };
 		C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */; };
+		C836F7E3242D68D000B77515 /* ReachedEndCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C836F7E2242D68D000B77515 /* ReachedEndCell.xib */; };
+		C836F7E5242D691B00B77515 /* RecentTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */; };
+		C836F7E7242D6C6D00B77515 /* RecentTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836F7E6242D6C6D00B77515 /* RecentTransactionCell.swift */; };
 		C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8371C812418088600519346 /* AccountDetailsViewController.swift */; };
 		C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C12427D24900FC39E5 /* Balance.swift */; };
 		C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */; };
@@ -56,6 +59,9 @@
 		C810D44124282AD200AEC207 /* AccountMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountMetadata.swift; sourceTree = "<group>"; };
 		C810D44724282E6C00AEC207 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SolidColour.swift"; sourceTree = "<group>"; };
+		C836F7E2242D68D000B77515 /* ReachedEndCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReachedEndCell.xib; sourceTree = "<group>"; };
+		C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTransactionsViewController.swift; sourceTree = "<group>"; };
+		C836F7E6242D6C6D00B77515 /* RecentTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTransactionCell.swift; sourceTree = "<group>"; };
 		C8371C812418088600519346 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		C83EB0C12427D24900FC39E5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 				C89EDF1F24193E460075052D /* AccountCard.swift */,
 				C86D5EEE2419A72400D70126 /* AccountBalanceCell.swift */,
 				C86D5EF02419A74C00D70126 /* TransactionCell.swift */,
+				C836F7E6242D6C6D00B77515 /* RecentTransactionCell.swift */,
 				C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */,
 				C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */,
 			);
@@ -167,6 +174,7 @@
 			children = (
 				C89EDF1D24193ADF0075052D /* AccountCard.xib */,
 				C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */,
+				C836F7E2242D68D000B77515 /* ReachedEndCell.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 				C8D7EA4924171AAD000195AC /* ProfileViewController.swift */,
 				C8371C812418088600519346 /* AccountDetailsViewController.swift */,
 				C89EDF212419528C0075052D /* AccountCardViewController.swift */,
+				C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -330,6 +339,7 @@
 				C8D7EA462416F5F6000195AC /* Assets.xcassets in Resources */,
 				C8D7EA452416F5F6000195AC /* LaunchScreen.storyboard in Resources */,
 				C89EDF1E24193ADF0075052D /* AccountCard.xib in Resources */,
+				C836F7E3242D68D000B77515 /* ReachedEndCell.xib in Resources */,
 				C8502E6E241AA709007A6266 /* TransactionCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +400,7 @@
 				C83EB0C62427F60C00FC39E5 /* HomeViewController+PlaidLink.swift in Sources */,
 				C86D5EF12419A74C00D70126 /* TransactionCell.swift in Sources */,
 				C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */,
+				C836F7E5242D691B00B77515 /* RecentTransactionsViewController.swift in Sources */,
 				C8D7EA402416F5E7000195AC /* HomeViewController.swift in Sources */,
 				C86D5EED24199A5300D70126 /* AccountDetailsViewModel.swift in Sources */,
 				C805A8B224267DCB0091180F /* Institution.swift in Sources */,
@@ -411,6 +422,7 @@
 				C8B584B424201C9100DA28D9 /* HomeViewController+Transactions.swift in Sources */,
 				C86EBF0E24296DCB00EE3E27 /* GetTransactionsResponse.swift in Sources */,
 				C897CBE0242933BD00B2D150 /* Transaction.swift in Sources */,
+				C836F7E7242D6C6D00B77515 /* RecentTransactionCell.swift in Sources */,
 				C8E221E02426D758008624F9 /* GetAccountsResponse.swift in Sources */,
 				C89EDF2024193E460075052D /* AccountCard.swift in Sources */,
 			);

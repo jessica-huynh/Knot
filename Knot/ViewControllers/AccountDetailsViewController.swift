@@ -17,6 +17,9 @@ class AccountDetailsViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedTransactions(_:)), name: .updatedTransactions, object: nil)
         
+        let cellNib = UINib(nibName: "ReachedEndCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: "ReachedEndCell")
+        
         title = navTitle
         tableView.dataSource = viewModel
     }
