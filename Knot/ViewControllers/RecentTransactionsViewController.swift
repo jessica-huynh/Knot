@@ -41,6 +41,6 @@ class RecentTransactionsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-         return "Transactions of Last 7 Days"
+         return "Previous 7 Days"
      }
 }
