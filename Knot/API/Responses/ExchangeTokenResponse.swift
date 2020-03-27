@@ -1,5 +1,5 @@
 //
-//  AccountMetadata.swift
+//  ExchangeTokenResponse.swift
 //  Knot
 //
 //  Created by Jessica Huynh on 2020-03-21.
@@ -8,8 +8,7 @@
 
 import Foundation
 
-/// Corresponds to Plaid's exchange token response
-struct AccountMetadata: Codable {
+struct ExchangeTokenResponse: Codable {
     let accessToken, itemID: String
 
     enum CodingKeys: String, CodingKey {
@@ -18,8 +17,8 @@ struct AccountMetadata: Codable {
     }
 }
 
-extension AccountMetadata {
+extension ExchangeTokenResponse {
     init(data: Data) throws {
-        self = try JSONDecoder().decode(AccountMetadata.self, from: data)
+        self = try JSONDecoder().decode(ExchangeTokenResponse.self, from: data)
     }
 }

@@ -71,14 +71,14 @@ extension HomeViewController {
             [weak self] response in
             guard let self = self else { return }
             
-            let accountMetadata = try AccountMetadata(data: response.data)
+            let response = try ExchangeTokenResponse(data: response.data)
             
             if let data = try? JSONSerialization.data(
                 withJSONObject: metadata!["institution"]!,
                 options: []) {
                 do {
                     let institution = try Institution(data: data)
-                    self.setupAccounts(using: accountMetadata.accessToken, for: institution)
+                    self.setupAccounts(using: response.accessToken, for: institution)
                     
                 } catch {
                     print("Could not parse JSON: \(error)")

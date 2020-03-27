@@ -10,12 +10,12 @@
 		88E6559223F1D4C5EC31713B /* Pods_Knot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */; };
 		C805A8B224267DCB0091180F /* Institution.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B124267DCB0091180F /* Institution.swift */; };
 		C805A8B42426AC900091180F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B32426AC900091180F /* Account.swift */; };
-		C810D44224282AD200AEC207 /* AccountMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44124282AD200AEC207 /* AccountMetadata.swift */; };
 		C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44724282E6C00AEC207 /* StorageManager.swift */; };
 		C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */; };
 		C836F7E3242D68D000B77515 /* ReachedEndCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C836F7E2242D68D000B77515 /* ReachedEndCell.xib */; };
 		C836F7E5242D691B00B77515 /* RecentTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */; };
 		C836F7E7242D6C6D00B77515 /* RecentTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836F7E6242D6C6D00B77515 /* RecentTransactionCell.swift */; };
+		C836F7E9242D7A0800B77515 /* ExchangeTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836F7E8242D7A0800B77515 /* ExchangeTokenResponse.swift */; };
 		C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8371C812418088600519346 /* AccountDetailsViewController.swift */; };
 		C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C12427D24900FC39E5 /* Balance.swift */; };
 		C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */; };
@@ -56,12 +56,12 @@
 		C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C805A8B124267DCB0091180F /* Institution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Institution.swift; sourceTree = "<group>"; };
 		C805A8B32426AC900091180F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		C810D44124282AD200AEC207 /* AccountMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountMetadata.swift; sourceTree = "<group>"; };
 		C810D44724282E6C00AEC207 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SolidColour.swift"; sourceTree = "<group>"; };
 		C836F7E2242D68D000B77515 /* ReachedEndCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReachedEndCell.xib; sourceTree = "<group>"; };
 		C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTransactionsViewController.swift; sourceTree = "<group>"; };
 		C836F7E6242D6C6D00B77515 /* RecentTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTransactionCell.swift; sourceTree = "<group>"; };
+		C836F7E8242D7A0800B77515 /* ExchangeTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeTokenResponse.swift; sourceTree = "<group>"; };
 		C8371C812418088600519346 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		C83EB0C12427D24900FC39E5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
@@ -133,7 +133,6 @@
 				C805A8B124267DCB0091180F /* Institution.swift */,
 				C805A8B32426AC900091180F /* Account.swift */,
 				C83EB0C12427D24900FC39E5 /* Balance.swift */,
-				C810D44124282AD200AEC207 /* AccountMetadata.swift */,
 				C897CBDF242933BD00B2D150 /* Transaction.swift */,
 			);
 			path = Models;
@@ -142,6 +141,7 @@
 		C805A8B52426B4D00091180F /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				C836F7E8242D7A0800B77515 /* ExchangeTokenResponse.swift */,
 				C8E221DF2426D758008624F9 /* GetAccountsResponse.swift */,
 				C86EBF0D24296DCB00EE3E27 /* GetTransactionsResponse.swift */,
 			);
@@ -402,6 +402,7 @@
 				C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */,
 				C836F7E5242D691B00B77515 /* RecentTransactionsViewController.swift in Sources */,
 				C8D7EA402416F5E7000195AC /* HomeViewController.swift in Sources */,
+				C836F7E9242D7A0800B77515 /* ExchangeTokenResponse.swift in Sources */,
 				C86D5EED24199A5300D70126 /* AccountDetailsViewModel.swift in Sources */,
 				C805A8B224267DCB0091180F /* Institution.swift in Sources */,
 				C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */,
@@ -413,7 +414,6 @@
 				C8B584B224201A7500DA28D9 /* HomeViewController+BalanceChart.swift in Sources */,
 				C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */,
 				C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */,
-				C810D44224282AD200AEC207 /* AccountMetadata.swift in Sources */,
 				C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */,
 				C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */,
 				C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */,
