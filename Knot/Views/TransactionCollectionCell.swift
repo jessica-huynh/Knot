@@ -14,11 +14,13 @@ class TransactionCollectionCell: UICollectionViewCell {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var accountLabel: UILabel!
     
     func configure(for transaction: Transaction) {
         let absAmount = abs(transaction.amount)
         amountLabel.text = absAmount.toCurrency()!
         descriptionLabel.text = transaction.name
+        accountLabel.text = StorageManager.instance.account(for: transaction.accountID)?.name
         
         self.contentView.layer.cornerRadius = 10
         self.contentView.layer.borderWidth = 1.0
