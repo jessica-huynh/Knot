@@ -20,7 +20,8 @@ class AccountDetailsViewModel: NSObject {
     
     enum SectionType: Int {
         case accounts
-        case transactions
+        case pendingTransactions
+        case postedTransactions
     }
     
     var sections = [AccountDetailsViewModelSection]()
@@ -42,11 +43,11 @@ class AccountDetailsViewModel: NSObject {
         
         sections.append(AccountDetailsViewModelAccounts(accounts: accounts))
         
-        getTransactions(for: accounts)
+        getTransactions(for: accounts, with: accountType)
     }
     
     // MARK:- Helper function
-    func getTransactions(for accounts: [Account]) {
+    func getTransactions(for accounts: [Account], with accountType: Account.AccountType) {
         var transactions: [Transaction] = []
         let dispatch = DispatchGroup()
         
@@ -64,9 +65,22 @@ class AccountDetailsViewModel: NSObject {
                 
                 }
         }
+        
         dispatch.notify(queue: .main) {
             transactions.sort(by: >)
-            self.sections.append(AccountDetailsViewModelTransactions(transactions: transactions))
+            if accountType == .depository {
+                self.sections.append(AccountDetailsViewModelTransactions(title: "Transactions", transactions: transactions))
+            } else {
+                var pendingTransactions: [Transaction] = []
+                for index in 0...transactions.count - 1 {
+                    if transactions[index].pending {
+                        pendingTransactions.append(transactions.remove(at: index))
+                    }
+                }
+                self.sections.append(AccountDetailsViewModelPendingTransactions(transactions: pendingTransactions))
+                self.sections.append(AccountDetailsViewModelTransactions(title: "Posted Transactions", transactions: transactions))
+            }
+            
             NotificationCenter.default.post(name: .updatedTransactions, object: nil)
         }
     }
@@ -79,11 +93,18 @@ extension AccountDetailsViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 && sections[section].rowCount == 0 { // TODO: Refactor for better readibility
+        let sectionType = sections[section].type
+        
+        if sections[section].rowCount == 0 {
+            // Only 'Pending Transactions' and 'Posted Transactions' can have a
+            // row count of 0
             return 1
-        } else if section == 1 {
+        }
+        
+        if sectionType == .postedTransactions {
             return sections[section].rowCount + 1
         }
+        
         return sections[section].rowCount
     }
     
@@ -102,10 +123,10 @@ extension AccountDetailsViewModel: UITableViewDataSource {
             cell.configure(using: section.accounts[indexPath.row])
             return cell
             
-        case .transactions:
+        case .postedTransactions:
             let section = section as! AccountDetailsViewModelTransactions
             if section.transactions.isEmpty {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "NoTransactionsFoundCell", for: indexPath) as! TransactionCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "NoTransactionsFoundCell") as! TransactionCell
                 return cell
             }
             
@@ -113,7 +134,18 @@ extension AccountDetailsViewModel: UITableViewDataSource {
                 return tableView.dequeueReusableCell(withIdentifier: "ReachedEndCell")!
             }
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell") as! TransactionCell
+            cell.configure(using: section.transactions[indexPath.row])
+            return cell
+            
+        case .pendingTransactions:
+            let section = section as! AccountDetailsViewModelPendingTransactions
+            if section.transactions.isEmpty {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "NoPendingTransactionsCell") as! TransactionCell
+                return cell
+            }
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell") as! TransactionCell
             cell.configure(using: section.transactions[indexPath.row])
             return cell
         }
@@ -146,14 +178,32 @@ class AccountDetailsViewModelAccounts: AccountDetailsViewModelSection {
 }
 
 class AccountDetailsViewModelTransactions: AccountDetailsViewModelSection {
+    var title: String
     var transactions: [Transaction]
     
     var type: AccountDetailsViewModel.SectionType {
-        return .transactions
+        return .postedTransactions
+    }
+    
+    var rowCount: Int {
+        return transactions.count
+    }
+    
+    init(title: String, transactions: [Transaction]) {
+        self.title = title
+        self.transactions = transactions
+    }
+}
+
+class AccountDetailsViewModelPendingTransactions: AccountDetailsViewModelSection {
+    var transactions: [Transaction]
+    
+    var type: AccountDetailsViewModel.SectionType {
+        return .pendingTransactions
     }
     
     var title: String {
-        return "Transactions"
+        return "Pending Transactions"
     }
     
     var rowCount: Int {
