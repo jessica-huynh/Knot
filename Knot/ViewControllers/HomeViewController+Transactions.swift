@@ -9,10 +9,9 @@
 import Foundation
 import UIKit
 
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDataSource {
     func setupTransactionCollectionVew() {
         transactionCollectionView.dataSource = self
-        transactionCollectionView.delegate = self
         transactionCollectionView.showsHorizontalScrollIndicator = false
         transactionCollectionView.register(
             UINib(nibName: "TransactionCollectionCell", bundle: nil),
