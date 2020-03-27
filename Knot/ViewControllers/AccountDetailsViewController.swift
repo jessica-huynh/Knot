@@ -28,9 +28,6 @@ class AccountDetailsViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBAction func addButtonTapped(_ sender: Any) {
-    }
-    
     @objc func onUpdatedTransactions(_ notification:Notification) {
         tableView.reloadData()
     }

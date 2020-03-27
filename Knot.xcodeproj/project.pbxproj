@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88E6559223F1D4C5EC31713B /* Pods_Knot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */; };
+		C8049826242E58E300EA61F6 /* AccountCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8049825242E58E300EA61F6 /* AccountCollectionCell.xib */; };
 		C805A8B224267DCB0091180F /* Institution.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B124267DCB0091180F /* Institution.swift */; };
 		C805A8B42426AC900091180F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B32426AC900091180F /* Account.swift */; };
 		C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44724282E6C00AEC207 /* StorageManager.swift */; };
@@ -24,7 +25,7 @@
 		C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */; };
 		C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86AAD382418657B00168D3A /* ProfileViewModel.swift */; };
 		C86D5EED24199A5300D70126 /* AccountDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EEC24199A5200D70126 /* AccountDetailsViewModel.swift */; };
-		C86D5EEF2419A72400D70126 /* AccountBalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EEE2419A72400D70126 /* AccountBalanceCell.swift */; };
+		C86D5EEF2419A72400D70126 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EEE2419A72400D70126 /* AccountCell.swift */; };
 		C86D5EF12419A74C00D70126 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EF02419A74C00D70126 /* TransactionCell.swift */; };
 		C86EBF0E24296DCB00EE3E27 /* GetTransactionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86EBF0D24296DCB00EE3E27 /* GetTransactionsResponse.swift */; };
 		C890B974241D96390087FC3E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C890B973241D96390087FC3E /* Podfile */; };
@@ -40,6 +41,9 @@
 		C8B584B224201A7500DA28D9 /* HomeViewController+BalanceChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */; };
 		C8B584B424201C9100DA28D9 /* HomeViewController+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */; };
 		C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */; };
+		C8D041BB242E768000C144F3 /* AccountCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */; };
+		C8D041BD242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */; };
+		C8D041BF242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BE242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift */; };
 		C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA292416F336000195AC /* AppDelegate.swift */; };
 		C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA2B2416F336000195AC /* SceneDelegate.swift */; };
 		C8D7EA402416F5E7000195AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA3F2416F5E7000195AC /* HomeViewController.swift */; };
@@ -54,6 +58,7 @@
 		56A52C795C5983EB7FD2594D /* Pods-Knot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knot.debug.xcconfig"; path = "Target Support Files/Pods-Knot/Pods-Knot.debug.xcconfig"; sourceTree = "<group>"; };
 		7B5DE0AB0712C7CB2F6E7713 /* Pods-Knot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knot.release.xcconfig"; path = "Target Support Files/Pods-Knot/Pods-Knot.release.xcconfig"; sourceTree = "<group>"; };
 		C0CCF2BB4FC30F125AC328A0 /* Pods_Knot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8049825242E58E300EA61F6 /* AccountCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCollectionCell.xib; sourceTree = "<group>"; };
 		C805A8B124267DCB0091180F /* Institution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Institution.swift; sourceTree = "<group>"; };
 		C805A8B32426AC900091180F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		C810D44724282E6C00AEC207 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -70,7 +75,7 @@
 		C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionCell.swift; sourceTree = "<group>"; };
 		C86AAD382418657B00168D3A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C86D5EEC24199A5200D70126 /* AccountDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewModel.swift; sourceTree = "<group>"; };
-		C86D5EEE2419A72400D70126 /* AccountBalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBalanceCell.swift; sourceTree = "<group>"; };
+		C86D5EEE2419A72400D70126 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		C86D5EF02419A74C00D70126 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		C86EBF0D24296DCB00EE3E27 /* GetTransactionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransactionsResponse.swift; sourceTree = "<group>"; };
 		C890B973241D96390087FC3E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -86,6 +91,9 @@
 		C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+BalanceChart.swift"; sourceTree = "<group>"; };
 		C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Transactions.swift"; sourceTree = "<group>"; };
 		C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSegmentedControl.swift; sourceTree = "<group>"; };
+		C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionCell.swift; sourceTree = "<group>"; };
+		C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+DrawBorder.swift"; sourceTree = "<group>"; };
+		C8D041BE242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountDetailsViewModel+DataSources.swift"; sourceTree = "<group>"; };
 		C8D7EA262416F336000195AC /* Knot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D7EA292416F336000195AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D7EA2B2416F336000195AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,10 +168,11 @@
 			isa = PBXGroup;
 			children = (
 				C89EDF1F24193E460075052D /* AccountCard.swift */,
-				C86D5EEE2419A72400D70126 /* AccountBalanceCell.swift */,
+				C86D5EEE2419A72400D70126 /* AccountCell.swift */,
 				C86D5EF02419A74C00D70126 /* TransactionCell.swift */,
 				C836F7E6242D6C6D00B77515 /* RecentTransactionCell.swift */,
 				C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */,
+				C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */,
 				C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */,
 			);
 			path = Views;
@@ -175,6 +184,7 @@
 				C89EDF1D24193ADF0075052D /* AccountCard.xib */,
 				C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */,
 				C836F7E2242D68D000B77515 /* ReachedEndCell.xib */,
+				C8049825242E58E300EA61F6 /* AccountCollectionCell.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -196,6 +206,7 @@
 				C8B47246241F0C2D00E9A85A /* UIView+FadeAnimation.swift */,
 				C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */,
 				C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */,
+				C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -267,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				C86D5EEC24199A5200D70126 /* AccountDetailsViewModel.swift */,
+				C8D041BE242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift */,
 				C86AAD382418657B00168D3A /* ProfileViewModel.swift */,
 				C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */,
 			);
@@ -333,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8049826242E58E300EA61F6 /* AccountCollectionCell.xib in Resources */,
 				C8D7EA472416F5F6000195AC /* Main.storyboard in Resources */,
 				C8AE60472425864500595773 /* .gitignore in Resources */,
 				C890B974241D96390087FC3E /* Podfile in Resources */,
@@ -399,18 +412,21 @@
 				C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */,
 				C83EB0C62427F60C00FC39E5 /* HomeViewController+PlaidLink.swift in Sources */,
 				C86D5EF12419A74C00D70126 /* TransactionCell.swift in Sources */,
+				C8D041BD242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift in Sources */,
 				C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */,
 				C836F7E5242D691B00B77515 /* RecentTransactionsViewController.swift in Sources */,
+				C8D041BB242E768000C144F3 /* AccountCollectionCell.swift in Sources */,
 				C8D7EA402416F5E7000195AC /* HomeViewController.swift in Sources */,
 				C836F7E9242D7A0800B77515 /* ExchangeTokenResponse.swift in Sources */,
 				C86D5EED24199A5300D70126 /* AccountDetailsViewModel.swift in Sources */,
 				C805A8B224267DCB0091180F /* Institution.swift in Sources */,
+				C8D041BF242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift in Sources */,
 				C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */,
 				C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */,
 				C8D7EA4A24171AAD000195AC /* ProfileViewController.swift in Sources */,
 				C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */,
 				C8AE604C2425899000595773 /* PlaidManager.swift in Sources */,
-				C86D5EEF2419A72400D70126 /* AccountBalanceCell.swift in Sources */,
+				C86D5EEF2419A72400D70126 /* AccountCell.swift in Sources */,
 				C8B584B224201A7500DA28D9 /* HomeViewController+BalanceChart.swift in Sources */,
 				C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */,
 				C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */,
