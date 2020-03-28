@@ -16,7 +16,7 @@ class AccountDetailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidLinkAccount(_:)), name: .didLinkAccount, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedTransactions(_:)), name: .updatedTransactions, object: nil)
         
         let cellNib = UINib(nibName: "ReachedEndCell", bundle: nil)
@@ -35,7 +35,7 @@ class AccountDetailsViewController: UITableViewController {
         presentPlaidLink()
     }
     
-    @objc func onDidLinkAccount(_ notification:Notification) {
+    @objc func onUpdatedAccounts(_ notification:Notification) {
         viewModel = AccountDetailsViewModel(for: accountType)
         tableView.dataSource = viewModel
     }
