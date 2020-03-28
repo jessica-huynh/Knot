@@ -114,11 +114,10 @@ class HomeViewController: UITableViewController {
         var transactions: [Transaction] = []
         let dispatch = DispatchGroup()
         
-        for account in storageManager.accounts {
+        for (accessToken, accountIDs) in storageManager.accessTokens {
             dispatch.enter()
-            let accessToken = storageManager.accessToken(for: account.id)!
             
-            PlaidManager.instance.request(for: .getTransactions(accessToken: accessToken, accountIDs: [account.id])) {
+            PlaidManager.instance.request(for: .getTransactions(accessToken: accessToken, accountIDs: accountIDs)) {
                 response in
                 
                 let response = try GetTransactionsResponse(data: response.data)
