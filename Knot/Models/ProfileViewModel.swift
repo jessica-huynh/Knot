@@ -28,9 +28,7 @@ class ProfileViewModel: NSObject {
     override init() {
         super.init()
         
-        let accounts = storageManager.cashAccounts + storageManager.creditAccounts
-
-        sections.append(ProfileViewModelAccounts(accounts: accounts))
+        sections.append(ProfileViewModelAccounts(accounts: storageManager.accounts))
         sections.append(ProfileViewModelEraseData())
     }
 }
@@ -54,7 +52,7 @@ extension ProfileViewModel: UITableViewDataSource {
             let section = section as! ProfileViewModelAccounts
             let account = section.accounts[indexPath.row]
             
-            cell.textLabel?.text = (storageManager.institutionsByID[account.id]?.name)
+            cell.textLabel?.text = (account.institution.name)
             
             if let mask = account.mask {
                 cell.textLabel?.text! += " (\(mask))"

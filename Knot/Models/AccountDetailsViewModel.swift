@@ -53,9 +53,8 @@ class AccountDetailsViewModel: NSObject {
         
         for account in accounts {
             dispatch.enter()
-            let accessToken = storageManager.accessToken(for: account.id)!
             
-            PlaidManager.instance.request(for: .getTransactions(accessToken: accessToken, accountIDs: [account.id])) {
+            PlaidManager.instance.request(for: .getTransactions(accessToken: account.accessToken, accountIDs: [account.id])) {
                 response in
                 
                 let response = try GetTransactionsResponse(data: response.data)

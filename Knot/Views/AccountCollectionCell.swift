@@ -22,7 +22,7 @@ class AccountCollectionCell: UICollectionViewCell {
     func configure(for account: Account) {
         self.drawBorder()
         
-        institutionLabel.text = StorageManager.instance.institutionsByID[account.id]?.name
+        institutionLabel.text = account.institution.name
         nameLabel.text = account.name
         balanceLabel.text = account.balance.current.toCurrency()!
         

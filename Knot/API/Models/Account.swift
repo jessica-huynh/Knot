@@ -13,7 +13,10 @@ struct Account: Codable, CustomStringConvertible {
     let type: AccountType
     let mask, officialName: String?
     let balance: Balance
+    
     var dateAdded: Date = Date()
+    var institution: Institution { return StorageManager.instance.institutionsByID[self.id]! }
+    var accessToken: String { return StorageManager.instance.accessToken(for: self.id)! }
     
     enum CodingKeys: String, CodingKey {
         case name, mask, type, subtype
