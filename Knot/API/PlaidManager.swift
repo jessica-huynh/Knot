@@ -118,6 +118,11 @@ class PlaidManager {
             let accounts = response.accounts
             
             for account in accounts {
+                if self.storageManager.accounts.contains(where: { $0.id == account.id }) {
+                    print("\n----FOUND DUPLICATE ACCOUNT---\n")
+                    continue
+                }
+                print(account)
                 if account.type == .depository || account.type == .credit {
                     self.storageManager.accessTokens[accessToken]!.append(account.id)
                     self.storageManager.institutionsByID[account.id] = institution
@@ -134,7 +139,7 @@ class PlaidManager {
             print("CASH: \(self.storageManager.cashAccounts)")
             print("CREDIT: \(self.storageManager.creditAccounts)")
             
-            // If no valid accounts types were added, remove the access token from storage
+            // If no accounts types were added, remove the access token from storage
             if self.storageManager.accessTokens[accessToken]!.isEmpty {
                 self.storageManager.accessTokens.removeValue(forKey: accessToken)
                 // TODO: Notify user of no valid account types
