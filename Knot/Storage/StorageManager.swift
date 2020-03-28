@@ -11,6 +11,9 @@ import Foundation
 class StorageManager {
     static let instance = StorageManager()
     
+    // <key, value>: <access token, associated account IDs>
+    // Reduces number of requests to Plaid when fetching transactions for
+    // all acounts
     var accessTokens: [String : [String]] = [:]
     var institutionsByID: [String : Institution] = [:]
     
@@ -39,15 +42,6 @@ class StorageManager {
     }
     
     // MARK: - Helper Functions
-    func accountType(for accountID: String) -> Account.AccountType {
-        for account in cashAccounts {
-            if account.id == accountID {
-                return .depository
-            }
-        }
-        return .credit
-    }
-    
     func accessToken(for accountID: String) -> String? {
         for (accessToken, accountIDs) in accessTokens {
             if accountIDs.contains(accountID) {
@@ -73,9 +67,14 @@ class StorageManager {
     }
     
     func deleteAccount(account: Account) {
-        let oldAccountIDs = accessTokens[accessToken(for: account.id)!]!
+        let oldAccountIDs = accessTokens[account.accessToken]!
         let newAccountIDs = oldAccountIDs.filter { $0 != account.id }
-        accessTokens.updateValue(newAccountIDs, forKey: accessToken(for: account.id)!)
+        if !newAccountIDs.isEmpty {
+            accessTokens.updateValue(newAccountIDs, forKey: account.accessToken)
+        } else {
+            // If the account deleted was the last linked account for its access token
+            accessTokens.removeValue(forKey: account.accessToken)
+        }
         
         institutionsByID.removeValue(forKey: account.id)
         
@@ -84,5 +83,6 @@ class StorageManager {
         } else if account.type == .credit {
             creditAccounts.removeAll { $0.id == account.id }
         }
+        NotificationCenter.default.post(name: .updatedAccounts, object: self)
     }
 }
