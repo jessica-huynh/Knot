@@ -40,6 +40,7 @@ extension ProfileViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if sections[section].rowCount == 0 { return 1 }
         return sections[section].rowCount
     }
     
@@ -48,6 +49,10 @@ extension ProfileViewModel: UITableViewDataSource {
         
         switch section.type {
         case .accounts:
+            if section.rowCount == 0 {
+                return tableView.dequeueReusableCell(withIdentifier: "LinkAccountCell")!
+            }
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccountNumberCell", for: indexPath)
             let section = section as! ProfileViewModelAccounts
             let account = section.accounts[indexPath.row]

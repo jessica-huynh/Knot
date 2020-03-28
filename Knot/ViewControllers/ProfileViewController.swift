@@ -17,7 +17,7 @@ class ProfileViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
         
-        tableView?.dataSource = viewModel
+        tableView.dataSource = viewModel
     }
     
     deinit {
@@ -27,6 +27,10 @@ class ProfileViewController: UITableViewController {
     // MARK: - Actions
     @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func linkAccount(_ sender: Any) {
+        presentPlaidLink()
     }
     
     @IBAction func eraseAllData(_ sender: UIButton) {
@@ -47,7 +51,8 @@ class ProfileViewController: UITableViewController {
     
     @objc func onUpdatedAccounts(_ notification:Notification) {
         viewModel = ProfileViewModel()
-        tableView?.dataSource = viewModel
+        tableView.dataSource = viewModel
+        tableView.reloadData()
         
         // TODO: Handle if no accounts left
     }
