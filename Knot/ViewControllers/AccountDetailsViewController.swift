@@ -38,6 +38,7 @@ class AccountDetailsViewController: UITableViewController {
     @objc func onUpdatedAccounts(_ notification:Notification) {
         viewModel = AccountDetailsViewModel(for: accountType)
         tableView.dataSource = viewModel
+        tableView.reloadData()
     }
     
     @objc func onUpdatedTransactions(_ notification:Notification) {
