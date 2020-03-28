@@ -53,7 +53,5 @@ class ProfileViewController: UITableViewController {
         viewModel = ProfileViewModel()
         tableView.dataSource = viewModel
         tableView.reloadData()
-        
-        // TODO: Handle if no accounts left
     }
 }
