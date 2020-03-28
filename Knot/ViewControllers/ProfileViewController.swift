@@ -10,12 +10,18 @@ import UIKit
 
 class ProfileViewController: UITableViewController {
 
-    let viewModel = ProfileViewModel()
+    var viewModel = ProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
+        
         tableView?.dataSource = viewModel
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Actions
@@ -39,4 +45,10 @@ class ProfileViewController: UITableViewController {
         }
     }
     
+    @objc func onUpdatedAccounts(_ notification:Notification) {
+        viewModel = ProfileViewModel()
+        tableView?.dataSource = viewModel
+        
+        // TODO: Handle if no accounts left
+    }
 }

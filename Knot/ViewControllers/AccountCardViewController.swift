@@ -9,7 +9,7 @@
 import UIKit
 
 class AccountCardViewController: UIViewController {
-
+    let storageManager = StorageManager.instance
     var account: Account!
     
     // MARK: - Outlets
@@ -30,6 +30,9 @@ class AccountCardViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func deleteAccount(_ sender: UIButton) {
+        storageManager.deleteAccount(account: account)
+        NotificationCenter.default.post(name: .updatedAccounts, object: self)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {

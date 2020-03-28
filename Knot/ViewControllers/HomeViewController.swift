@@ -47,7 +47,7 @@ class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidLinkAccount(_:)), name: .didLinkAccount, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onCashAccountsIsEmptyChanged(_:)), name: .cashIsEmptyChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onCreditCardAccountIsEmptyChanged(_:)), name: .creditCardsIsEmptyChanged, object: nil)
         
@@ -110,19 +110,30 @@ class HomeViewController: UITableViewController {
         }
     }
     
-    func updateRecentTransactions(using accessToken: String) {
-        plaidManager.request(for: .getTransactions(accessToken: accessToken, accountIDs: storageManager.accessTokens[accessToken])) {
-            [weak self] response in
-            guard let self = self else { return }
+    func updateRecentTransactions() {
+        var transactions: [Transaction] = []
+        let dispatch = DispatchGroup()
+        
+        for account in storageManager.accounts {
+            dispatch.enter()
+            let accessToken = storageManager.accessToken(for: account.id)!
             
-            let response = try GetTransactionsResponse(data: response.data)
-            self.recentTransactions = response.transactions
-            
-            print(self.recentTransactions)
-            if !self.recentTransactions.isEmpty {
-                self.noTransactionsFoundLabel.isHidden = self.recentTransactions.isEmpty ? false : true
-                self.transactionCollectionView.reloadData()
-            }
+            PlaidManager.instance.request(for: .getTransactions(accessToken: accessToken, accountIDs: [account.id])) {
+                response in
+                
+                let response = try GetTransactionsResponse(data: response.data)
+                
+                transactions.append(contentsOf: response.transactions)
+                dispatch.leave()
+                
+                }
+        }
+        
+        dispatch.notify(queue: .main) {
+            transactions.sort(by: >)
+            self.recentTransactions = transactions
+            self.noTransactionsFoundLabel.isHidden = self.recentTransactions.isEmpty ? false : true
+            self.transactionCollectionView.reloadData()
         }
     }
     
@@ -155,15 +166,9 @@ class HomeViewController: UITableViewController {
     }
     
     // MARK: - Notification Selectors
-    @objc func onDidLinkAccount(_ notification:Notification) {
+    @objc func onUpdatedAccounts(_ notification:Notification) {
         updateLabels()
-        if let notificationInfo = notification.userInfo {
-            guard let accessToken = notificationInfo["accessToken"] as? String else {
-                print("WARNING: No access token available. Cannot update recent transactions. ")
-                return
-            }
-            updateRecentTransactions(using: accessToken)
-        }
+        updateRecentTransactions()
     }
     
     @objc func onCashAccountsIsEmptyChanged(_ notification:Notification) {
@@ -177,7 +182,7 @@ class HomeViewController: UITableViewController {
 
 // MARK: - Notification Names
 extension Notification.Name {
-    static let didLinkAccount = Notification.Name("didLinkAccount")
+    static let updatedAccounts = Notification.Name("didLinkAccount")
     static let cashIsEmptyChanged = Notification.Name("noCashAccounts")
     static let creditCardsIsEmptyChanged = Notification.Name("noCreditCardAccounts")
 }

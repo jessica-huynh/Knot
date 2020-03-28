@@ -32,6 +32,8 @@ class StorageManager {
         }
     }
     
+    var accounts: [Account] { return cashAccounts + creditAccounts }
+    
     private init() {
         // Load from CoreData here
     }
@@ -68,5 +70,19 @@ class StorageManager {
             }
         }
         return nil
+    }
+    
+    func deleteAccount(account: Account) {
+        let oldAccountIDs = accessTokens[accessToken(for: account.id)!]!
+        let newAccountIDs = oldAccountIDs.filter { $0 != account.id }
+        accessTokens.updateValue(newAccountIDs, forKey: accessToken(for: account.id)!)
+        
+        institutionsByID.removeValue(forKey: account.id)
+        
+        if account.type == .depository {
+            cashAccounts.removeAll { $0.id == account.id }
+        } else if account.type == .credit {
+            creditAccounts.removeAll { $0.id == account.id }
+        }
     }
 }
