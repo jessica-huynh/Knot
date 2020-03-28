@@ -30,9 +30,18 @@ class AccountCardViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func deleteAccount(_ sender: UIButton) {
-        storageManager.deleteAccount(account: account)
-        NotificationCenter.default.post(name: .updatedAccounts, object: self)
-        _ = navigationController?.popViewController(animated: true)
+        let alert = UIAlertController(title: "Delete Account",
+                                      message: "Are you sure you want to delete your account?",
+                                      preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Yes", style: .default) {
+            _ in
+            self.storageManager.deleteAccount(account: self.account)
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(deleteAction)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel))
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
@@ -40,7 +49,7 @@ class AccountCardViewController: UIViewController {
     }
     
     func updateCard() {
-        accountCard.institutionLabel.text = StorageManager.instance.institutionsByID[account.id]!.name
+        accountCard.institutionLabel.text = account.institution.name
         accountCard.accountTypeLabel.text = account.officialName ?? account.name
         
         if let mask = account.mask {
