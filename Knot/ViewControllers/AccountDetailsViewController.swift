@@ -10,22 +10,34 @@ import UIKit
 
 class AccountDetailsViewController: UITableViewController {
     var navTitle: String!
+    var accountType: Account.AccountType!
     var viewModel: AccountDetailsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidLinkAccount(_:)), name: .didLinkAccount, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedTransactions(_:)), name: .updatedTransactions, object: nil)
         
         let cellNib = UINib(nibName: "ReachedEndCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "ReachedEndCell")
         
         title = navTitle
+        viewModel = AccountDetailsViewModel(for: accountType)
         tableView.dataSource = viewModel
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        presentPlaidLink()
+    }
+    
+    @objc func onDidLinkAccount(_ notification:Notification) {
+        viewModel = AccountDetailsViewModel(for: accountType)
+        tableView.dataSource = viewModel
     }
     
     @objc func onUpdatedTransactions(_ notification:Notification) {

@@ -20,7 +20,6 @@
 		C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8371C812418088600519346 /* AccountDetailsViewController.swift */; };
 		C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C12427D24900FC39E5 /* Balance.swift */; };
 		C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */; };
-		C83EB0C62427F60C00FC39E5 /* HomeViewController+PlaidLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C52427F60C00FC39E5 /* HomeViewController+PlaidLink.swift */; };
 		C8502E6E241AA709007A6266 /* TransactionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */; };
 		C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */; };
 		C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86AAD382418657B00168D3A /* ProfileViewModel.swift */; };
@@ -44,6 +43,7 @@
 		C8D041BB242E768000C144F3 /* AccountCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */; };
 		C8D041BD242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */; };
 		C8D041BF242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BE242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift */; };
+		C8D041C1242EC70500C144F3 /* UIViewController+PlaidDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041C0242EC70500C144F3 /* UIViewController+PlaidDelegate.swift */; };
 		C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA292416F336000195AC /* AppDelegate.swift */; };
 		C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA2B2416F336000195AC /* SceneDelegate.swift */; };
 		C8D7EA402416F5E7000195AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA3F2416F5E7000195AC /* HomeViewController.swift */; };
@@ -70,7 +70,6 @@
 		C8371C812418088600519346 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		C83EB0C12427D24900FC39E5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
-		C83EB0C52427F60C00FC39E5 /* HomeViewController+PlaidLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+PlaidLink.swift"; sourceTree = "<group>"; };
 		C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCollectionCell.xib; sourceTree = "<group>"; };
 		C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionCell.swift; sourceTree = "<group>"; };
 		C86AAD382418657B00168D3A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionCell.swift; sourceTree = "<group>"; };
 		C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+DrawBorder.swift"; sourceTree = "<group>"; };
 		C8D041BE242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountDetailsViewModel+DataSources.swift"; sourceTree = "<group>"; };
+		C8D041C0242EC70500C144F3 /* UIViewController+PlaidDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+PlaidDelegate.swift"; sourceTree = "<group>"; };
 		C8D7EA262416F336000195AC /* Knot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D7EA292416F336000195AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D7EA2B2416F336000195AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -207,6 +207,7 @@
 				C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */,
 				C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */,
 				C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */,
+				C8D041C0242EC70500C144F3 /* UIViewController+PlaidDelegate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -251,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				C8D7EA3F2416F5E7000195AC /* HomeViewController.swift */,
-				C83EB0C52427F60C00FC39E5 /* HomeViewController+PlaidLink.swift */,
 				C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */,
 				C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */,
 				C8D7EA4924171AAD000195AC /* ProfileViewController.swift */,
@@ -410,7 +410,6 @@
 				C805A8B42426AC900091180F /* Account.swift in Sources */,
 				C89EDF222419528C0075052D /* AccountCardViewController.swift in Sources */,
 				C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */,
-				C83EB0C62427F60C00FC39E5 /* HomeViewController+PlaidLink.swift in Sources */,
 				C86D5EF12419A74C00D70126 /* TransactionCell.swift in Sources */,
 				C8D041BD242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift in Sources */,
 				C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */,
@@ -418,6 +417,7 @@
 				C8D041BB242E768000C144F3 /* AccountCollectionCell.swift in Sources */,
 				C8D7EA402416F5E7000195AC /* HomeViewController.swift in Sources */,
 				C836F7E9242D7A0800B77515 /* ExchangeTokenResponse.swift in Sources */,
+				C8D041C1242EC70500C144F3 /* UIViewController+PlaidDelegate.swift in Sources */,
 				C86D5EED24199A5300D70126 /* AccountDetailsViewModel.swift in Sources */,
 				C805A8B224267DCB0091180F /* Institution.swift in Sources */,
 				C8D041BF242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift in Sources */,

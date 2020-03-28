@@ -47,6 +47,7 @@ class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidLinkAccount(_:)), name: .didLinkAccount, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onCashAccountsIsEmptyChanged(_:)), name: .cashIsEmptyChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onCreditCardAccountIsEmptyChanged(_:)), name: .creditCardsIsEmptyChanged, object: nil)
         
@@ -60,9 +61,6 @@ class HomeViewController: UITableViewController {
     }
     
     // MARK: - Actions
-    @IBAction func profileButtonTapped(_ sender: UIBarButtonItem) {
-    }
-    
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         presentPlaidLink()
     }
@@ -112,6 +110,22 @@ class HomeViewController: UITableViewController {
         }
     }
     
+    func updateRecentTransactions(using accessToken: String) {
+        plaidManager.request(for: .getTransactions(accessToken: accessToken, accountIDs: storageManager.accessTokens[accessToken])) {
+            [weak self] response in
+            guard let self = self else { return }
+            
+            let response = try GetTransactionsResponse(data: response.data)
+            self.recentTransactions = response.transactions
+            
+            print(self.recentTransactions)
+            if !self.recentTransactions.isEmpty {
+                self.noTransactionsFoundLabel.isHidden = self.recentTransactions.isEmpty ? false : true
+                self.transactionCollectionView.reloadData()
+            }
+        }
+    }
+    
      // MARK: - Table View Delegates
      override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if indexPath == IndexPath(row: 0, section: 1) && storageManager.cashAccounts.isEmpty {
@@ -128,9 +142,9 @@ class HomeViewController: UITableViewController {
             controller.navTitle = segue.identifier
             
             if segue.identifier == "Cash" {
-                controller.viewModel = AccountDetailsViewModel(for: .depository)
+                controller.accountType = .depository
             } else if segue.identifier == "Credit Cards" {
-                controller.viewModel = AccountDetailsViewModel(for: .credit)
+                controller.accountType = .credit
             }
         }
         
@@ -141,6 +155,17 @@ class HomeViewController: UITableViewController {
     }
     
     // MARK: - Notification Selectors
+    @objc func onDidLinkAccount(_ notification:Notification) {
+        updateLabels()
+        if let notificationInfo = notification.userInfo {
+            guard let accessToken = notificationInfo["accessToken"] as? String else {
+                print("WARNING: No access token available. Cannot update recent transactions. ")
+                return
+            }
+            updateRecentTransactions(using: accessToken)
+        }
+    }
+    
     @objc func onCashAccountsIsEmptyChanged(_ notification:Notification) {
         resetBalanceCell(for: .depository)
     }
@@ -152,6 +177,7 @@ class HomeViewController: UITableViewController {
 
 // MARK: - Notification Names
 extension Notification.Name {
+    static let didLinkAccount = Notification.Name("didLinkAccount")
     static let cashIsEmptyChanged = Notification.Name("noCashAccounts")
     static let creditCardsIsEmptyChanged = Notification.Name("noCreditCardAccounts")
 }
