@@ -139,7 +139,7 @@ class PlaidManager {
                 self.storageManager.accessTokens.removeValue(forKey: accessToken)
                 // TODO: Notify user of no valid account types
             } else {
-                NotificationCenter.default.post(name: .didLinkAccount, object: self, userInfo: ["accessToken": accessToken])
+                NotificationCenter.default.post(name: .updatedAccounts, object: self)
             }
         }
     }
