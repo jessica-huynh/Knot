@@ -70,16 +70,22 @@ class AccountDetailsViewModel: NSObject {
             
             if accountType == .depository {
                 self.sections.append(AccountDetailsViewModelTransactions(title: "Transactions", transactions: transactions))
-            } else {
-                var pendingTransactions: [Transaction] = []
+                NotificationCenter.default.post(name: .updatedTransactions, object: nil)
+                return
+            }
+            
+            // If account is a credit card:
+            var pendingTransactions: [Transaction] = []
+            if !transactions.isEmpty {
                 for index in 0...transactions.count - 1 {
                     if transactions[index].pending {
                         pendingTransactions.append(transactions.remove(at: index))
                     }
                 }
-                self.sections.append(AccountDetailsViewModelPendingTransactions(transactions: pendingTransactions))
-                self.sections.append(AccountDetailsViewModelTransactions(title: "Posted Transactions", transactions: transactions))
             }
+            
+            self.sections.append(AccountDetailsViewModelPendingTransactions(transactions: pendingTransactions))
+            self.sections.append(AccountDetailsViewModelTransactions(title: "Posted Transactions", transactions: transactions))
             
             NotificationCenter.default.post(name: .updatedTransactions, object: nil)
         }
