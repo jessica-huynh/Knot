@@ -22,7 +22,11 @@
 		C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */; };
 		C8502E6E241AA709007A6266 /* TransactionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */; };
 		C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */; };
+		C850FFFE24301E2F0054DF35 /* FilterTransactionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C850FFFD24301E2E0054DF35 /* FilterTransactionsCell.swift */; };
 		C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86AAD382418657B00168D3A /* ProfileViewModel.swift */; };
+		C86B9FAB24313DB400167CA9 /* NoSelectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B9FAA24313DB300167CA9 /* NoSelectTextField.swift */; };
+		C86B9FAD243142E400167CA9 /* Date+StartEndOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B9FAC243142E400167CA9 /* Date+StartEndOfMonth.swift */; };
+		C86B9FAF2431435100167CA9 /* AccountDetailsViewModel+FilterTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B9FAE2431435100167CA9 /* AccountDetailsViewModel+FilterTransactions.swift */; };
 		C86D5EED24199A5300D70126 /* AccountDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EEC24199A5200D70126 /* AccountDetailsViewModel.swift */; };
 		C86D5EEF2419A72400D70126 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EEE2419A72400D70126 /* AccountCell.swift */; };
 		C86D5EF12419A74C00D70126 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EF02419A74C00D70126 /* TransactionCell.swift */; };
@@ -72,7 +76,11 @@
 		C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
 		C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCollectionCell.xib; sourceTree = "<group>"; };
 		C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionCell.swift; sourceTree = "<group>"; };
+		C850FFFD24301E2E0054DF35 /* FilterTransactionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionsCell.swift; sourceTree = "<group>"; };
 		C86AAD382418657B00168D3A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C86B9FAA24313DB300167CA9 /* NoSelectTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSelectTextField.swift; sourceTree = "<group>"; };
+		C86B9FAC243142E400167CA9 /* Date+StartEndOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartEndOfMonth.swift"; sourceTree = "<group>"; };
+		C86B9FAE2431435100167CA9 /* AccountDetailsViewModel+FilterTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountDetailsViewModel+FilterTransactions.swift"; sourceTree = "<group>"; };
 		C86D5EEC24199A5200D70126 /* AccountDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewModel.swift; sourceTree = "<group>"; };
 		C86D5EEE2419A72400D70126 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		C86D5EF02419A74C00D70126 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
@@ -167,6 +175,7 @@
 		C84BEB68241851310022D84D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C850FFFD24301E2E0054DF35 /* FilterTransactionsCell.swift */,
 				C89EDF1F24193E460075052D /* AccountCard.swift */,
 				C86D5EEE2419A72400D70126 /* AccountCell.swift */,
 				C86D5EF02419A74C00D70126 /* TransactionCell.swift */,
@@ -174,6 +183,7 @@
 				C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */,
 				C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */,
 				C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */,
+				C86B9FAA24313DB300167CA9 /* NoSelectTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +218,7 @@
 				C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */,
 				C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */,
 				C8D041C0242EC70500C144F3 /* UIViewController+PlaidDelegate.swift */,
+				C86B9FAC243142E400167CA9 /* Date+StartEndOfMonth.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -279,6 +290,7 @@
 			children = (
 				C86D5EEC24199A5200D70126 /* AccountDetailsViewModel.swift */,
 				C8D041BE242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift */,
+				C86B9FAE2431435100167CA9 /* AccountDetailsViewModel+FilterTransactions.swift */,
 				C86AAD382418657B00168D3A /* ProfileViewModel.swift */,
 				C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */,
 			);
@@ -409,6 +421,7 @@
 				C8AE604A2425890800595773 /* PlaidAPI.swift in Sources */,
 				C805A8B42426AC900091180F /* Account.swift in Sources */,
 				C89EDF222419528C0075052D /* AccountCardViewController.swift in Sources */,
+				C86B9FAF2431435100167CA9 /* AccountDetailsViewModel+FilterTransactions.swift in Sources */,
 				C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */,
 				C86D5EF12419A74C00D70126 /* TransactionCell.swift in Sources */,
 				C8D041BD242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift in Sources */,
@@ -422,11 +435,13 @@
 				C805A8B224267DCB0091180F /* Institution.swift in Sources */,
 				C8D041BF242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift in Sources */,
 				C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */,
+				C86B9FAD243142E400167CA9 /* Date+StartEndOfMonth.swift in Sources */,
 				C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */,
 				C8D7EA4A24171AAD000195AC /* ProfileViewController.swift in Sources */,
 				C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */,
 				C8AE604C2425899000595773 /* PlaidManager.swift in Sources */,
 				C86D5EEF2419A72400D70126 /* AccountCell.swift in Sources */,
+				C850FFFE24301E2F0054DF35 /* FilterTransactionsCell.swift in Sources */,
 				C8B584B224201A7500DA28D9 /* HomeViewController+BalanceChart.swift in Sources */,
 				C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */,
 				C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */,
@@ -438,6 +453,7 @@
 				C8B584B424201C9100DA28D9 /* HomeViewController+Transactions.swift in Sources */,
 				C86EBF0E24296DCB00EE3E27 /* GetTransactionsResponse.swift in Sources */,
 				C897CBE0242933BD00B2D150 /* Transaction.swift in Sources */,
+				C86B9FAB24313DB400167CA9 /* NoSelectTextField.swift in Sources */,
 				C836F7E7242D6C6D00B77515 /* RecentTransactionCell.swift in Sources */,
 				C8E221E02426D758008624F9 /* GetAccountsResponse.swift in Sources */,
 				C89EDF2024193E460075052D /* AccountCard.swift in Sources */,

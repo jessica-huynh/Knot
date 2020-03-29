@@ -20,9 +20,9 @@ extension AccountDetailsViewModel: UITableViewDataSource {
         
         if sectionType == .accounts { return 1 }
         
-        if sections[section].rowCount == 0 { return 1 }
+        if sectionType == .postedTransactions { return sections[section].rowCount + 2}
         
-        if sectionType == .postedTransactions { return sections[section].rowCount + 1 }
+        if sections[section].rowCount == 0 { return 1 }
         
         return sections[section].rowCount
     }
@@ -43,24 +43,28 @@ extension AccountDetailsViewModel: UITableViewDataSource {
             
         case .postedTransactions:
             let section = section as! AccountDetailsViewModelTransactions
-            if section.transactions.isEmpty {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "NoTransactionsFoundCell") as! TransactionCell
+            if section.transactions.isEmpty && indexPath.row == 1 {
+                return tableView.dequeueReusableCell(withIdentifier: "NoTransactionsFoundCell")!
+            }
+            
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTransactionsCell") as! FilterTransactionsCell
+                cell.delegate = self
                 return cell
             }
             
-            if indexPath.row == section.transactions.count {
+            if indexPath.row == section.transactions.count + 1 {
                 return tableView.dequeueReusableCell(withIdentifier: "ReachedEndCell")!
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell") as! TransactionCell
-            cell.configure(using: section.transactions[indexPath.row])
+            cell.configure(using: section.transactions[indexPath.row - 1])
             return cell
             
         case .pendingTransactions:
             let section = section as! AccountDetailsViewModelPendingTransactions
             if section.transactions.isEmpty {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "NoPendingTransactionsCell") as! TransactionCell
-                return cell
+                return tableView.dequeueReusableCell(withIdentifier: "NoPendingTransactionsCell")!
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell") as! TransactionCell
