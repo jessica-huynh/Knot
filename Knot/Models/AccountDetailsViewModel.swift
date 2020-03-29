@@ -54,7 +54,7 @@ class AccountDetailsViewModel: NSObject {
         for account in accounts {
             dispatch.enter()
             
-            PlaidManager.instance.request(for: .getTransactions(accessToken: account.accessToken, accountIDs: [account.id])) {
+            PlaidManager.instance.request(for: .getTransactions(accessToken: account.accessToken, startDate: Date(), endDate: Date(), accountIDs: [account.id])) {
                 response in
                 
                 let response = try GetTransactionsResponse(data: response.data)

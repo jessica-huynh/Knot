@@ -13,9 +13,15 @@ enum PlaidAPI {
     static let secret = PlaidManager.instance.secret
     static let environment = PlaidManager.instance.environment
     
+    static var dateFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter
+    }
+    
     case exchangeTokens(publicToken: String)
     case getAccounts(accessToken: String)
-    case getTransactions(accessToken: String, startDate: String = "2020-02-25", endDate: String = "2020-03-25", accountIDs: [String]? = nil)
+    case getTransactions(accessToken: String, startDate: Date, endDate: Date, accountIDs: [String]? = nil)
 }
 
 extension PlaidAPI: TargetType {
@@ -66,8 +72,8 @@ extension PlaidAPI: TargetType {
                 "client_id": PlaidAPI.clientID,
                 "secret": PlaidAPI.secret,
                 "access_token": accessToken,
-                "start_date": startDate,
-                "end_date": endDate,
+                "start_date": PlaidAPI.dateFormatter.string(from: startDate),
+                "end_date": PlaidAPI.dateFormatter.string(from: endDate),
                 "options": [
                     "count": 500,
                     "account_ids": accountIDs as Any]],

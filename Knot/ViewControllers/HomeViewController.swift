@@ -113,11 +113,13 @@ class HomeViewController: UITableViewController {
     func updateRecentTransactions() {
         var transactions: [Transaction] = []
         let dispatch = DispatchGroup()
+        let today = Date()
+        let startDate = Calendar.current.date(byAdding: DateComponents(day: -30), to: today)!
         
         for (accessToken, accountIDs) in storageManager.accessTokens {
             dispatch.enter()
             
-            PlaidManager.instance.request(for: .getTransactions(accessToken: accessToken, accountIDs: accountIDs)) {
+            PlaidManager.instance.request(for: .getTransactions(accessToken: accessToken, startDate: startDate, endDate: today, accountIDs: accountIDs)) {
                 response in
                 
                 let response = try GetTransactionsResponse(data: response.data)

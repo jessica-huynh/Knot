@@ -17,9 +17,7 @@ struct Transaction: Codable, CustomStringConvertible {
         return (accountType == Account.AccountType.credit) ? _amount : _amount * -1
     }
     var date: Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.date(from: _date)!
+        return PlaidAPI.dateFormatter.date(from: _date)!
     }
 
     enum CodingKeys: String, CodingKey {
