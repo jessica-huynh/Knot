@@ -148,4 +148,56 @@ class PlaidManager {
             }
         }
     }
+    
+    // MARK: - Helper functions to fetch transactions
+    func getAllTransactions(startDate: Date, endDate: Date, completionHandler: @escaping ([Transaction]) -> Void) {
+        var transactions: [Transaction] = []
+        let dispatch = DispatchGroup()
+        
+        for (accessToken, accountIDs) in storageManager.accessTokens {
+            dispatch.enter()
+            
+            request(for: .getTransactions(accessToken: accessToken, startDate: startDate, endDate: endDate, accountIDs: accountIDs)) {
+                response in
+                
+                let response = try GetTransactionsResponse(data: response.data)
+                
+                transactions.append(contentsOf: response.transactions)
+                dispatch.leave()
+                
+                }
+        }
+        
+        dispatch.notify(queue: .main) {
+            transactions.sort(by: >)
+            completionHandler(transactions)
+        }
+    }
+    
+    func getTransactions(for accounts: [Account],
+                         startDate: Date,
+                         endDate: Date,
+                         completionHandler: @escaping ([Transaction]) -> Void) {
+        var transactions: [Transaction] = []
+        let dispatch = DispatchGroup()
+        
+        for account in accounts {
+            dispatch.enter()
+            
+            PlaidManager.instance.request(for: .getTransactions(accessToken: account.accessToken, startDate: startDate, endDate: endDate, accountIDs: [account.id])) {
+                response in
+                
+                let response = try GetTransactionsResponse(data: response.data)
+                
+                transactions.append(contentsOf: response.transactions)
+                dispatch.leave()
+                
+                }
+        }
+        
+        dispatch.notify(queue: .main) {
+            transactions.sort(by: >)
+            completionHandler(transactions)
+        }
+    }
 }

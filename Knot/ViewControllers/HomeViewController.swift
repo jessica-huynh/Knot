@@ -111,27 +111,13 @@ class HomeViewController: UITableViewController {
     }
     
     func updateRecentTransactions() {
-        var transactions: [Transaction] = []
-        let dispatch = DispatchGroup()
         let today = Date()
         let startDate = Calendar.current.date(byAdding: DateComponents(day: -30), to: today)!
         
-        for (accessToken, accountIDs) in storageManager.accessTokens {
-            dispatch.enter()
+        plaidManager.getAllTransactions(startDate: startDate, endDate: today) {
+            [weak self] transactions in
+            guard let self = self else { return }
             
-            PlaidManager.instance.request(for: .getTransactions(accessToken: accessToken, startDate: startDate, endDate: today, accountIDs: accountIDs)) {
-                response in
-                
-                let response = try GetTransactionsResponse(data: response.data)
-                
-                transactions.append(contentsOf: response.transactions)
-                dispatch.leave()
-                
-                }
-        }
-        
-        dispatch.notify(queue: .main) {
-            transactions.sort(by: >)
             self.recentTransactions = transactions
             self.noTransactionsFoundLabel.isHidden = self.recentTransactions.isEmpty ? false : true
             self.transactionCollectionView.reloadData()
@@ -141,9 +127,9 @@ class HomeViewController: UITableViewController {
      // MARK: - Table View Delegates
      override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if indexPath == IndexPath(row: 0, section: 1) && storageManager.cashAccounts.isEmpty {
-            return nil
+            return indexPath // TOOD Change back to nil
         } else if indexPath == IndexPath(row: 1, section: 1) && storageManager.creditAccounts.isEmpty {
-            return nil
+            return indexPath // TOOD Change back to nil
         }
         return indexPath
      }
