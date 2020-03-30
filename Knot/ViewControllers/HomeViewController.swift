@@ -48,15 +48,11 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onCashAccountsIsEmptyChanged(_:)), name: .cashIsEmptyChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onCreditCardAccountIsEmptyChanged(_:)), name: .creditCardsIsEmptyChanged, object: nil)
         
         navigationController?.navigationBar.shadowImage = UIImage()
         
         setupBalanceChart()
         updateLabels()
-        resetBalanceCell(for: .depository)
-        resetBalanceCell(for: .credit)
         setupTransactionCollectionVew()
     }
     
@@ -74,6 +70,9 @@ class HomeViewController: UITableViewController {
         netBalanceLabel.text = netBalance.toCurrency()!
         cashBalanceLabel.text = cashBalance.toCurrency()!
         creditCardsBalanceLabel.text = creditBalance.toCurrency()!
+        
+        resetBalanceCell(for: .depository)
+        resetBalanceCell(for: .credit)
     }
     
     func calculateBalance(for accounts: [Account]) -> Double {
@@ -157,19 +156,9 @@ class HomeViewController: UITableViewController {
         updateLabels()
         updateRecentTransactions()
     }
-    
-    @objc func onCashAccountsIsEmptyChanged(_ notification:Notification) {
-        resetBalanceCell(for: .depository)
-    }
-    
-    @objc func onCreditCardAccountIsEmptyChanged(_ notification:Notification) {
-        resetBalanceCell(for: .credit)
-    }
 }
 
 // MARK: - Notification Names
 extension Notification.Name {
     static let updatedAccounts = Notification.Name("didLinkAccount")
-    static let cashIsEmptyChanged = Notification.Name("noCashAccounts")
-    static let creditCardsIsEmptyChanged = Notification.Name("noCreditCardAccounts")
 }

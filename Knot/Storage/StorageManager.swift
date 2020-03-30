@@ -16,25 +16,8 @@ class StorageManager {
     // all acounts
     var accessTokens: [String : [String]] = [:]
     var institutionsByID: [String : Institution] = [:]
-    
-    var cashAccounts: [Account] = [] {
-        didSet {
-            if (oldValue.isEmpty && !cashAccounts.isEmpty)
-                || (!oldValue.isEmpty && cashAccounts.isEmpty) {
-                NotificationCenter.default.post(name: .cashIsEmptyChanged, object: nil)
-            }
-        }
-    }
-    
-    var creditAccounts: [Account] = [] {
-        didSet {
-            if (oldValue.isEmpty && !creditAccounts.isEmpty)
-                || (!oldValue.isEmpty && creditAccounts.isEmpty) {
-                NotificationCenter.default.post(name: .creditCardsIsEmptyChanged, object: nil)
-            }
-        }
-    }
-    
+    var cashAccounts: [Account] = []
+    var creditAccounts: [Account] = []
     var accounts: [Account] { return cashAccounts + creditAccounts }
     
     private init() {
