@@ -10,6 +10,6 @@ import Foundation
 
 extension AccountDetailsViewModel: FilterTransactionsCellDelegate {
     func filterTransactionsCell(_: FilterTransactionsCell, didUpdateTimeFrame timeFrame: DateInterval) {
-        print("start: \(timeFrame.start), end: \(timeFrame.end)")
+        updatePostedTransactions(startDate: timeFrame.start, endDate: timeFrame.end)
     }
 }
