@@ -32,6 +32,14 @@ class AccountDetailsViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FilterTransactions",
+            let navigationController = segue.destination as? UINavigationController,
+            let controller = navigationController.topViewController as? FilterTransactionsViewController {
+            controller.accounts = viewModel.accounts
+        }
+    }
+    
     @objc func onUpdatedAccounts(_ notification:Notification) {
         viewModel = AccountDetailsViewModel(for: accountType)
         tableView.dataSource = viewModel

@@ -39,6 +39,7 @@
 		C8AE60472425864500595773 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C8AE60462425864500595773 /* .gitignore */; };
 		C8AE604A2425890800595773 /* PlaidAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE60492425890800595773 /* PlaidAPI.swift */; };
 		C8AE604C2425899000595773 /* PlaidManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE604B2425899000595773 /* PlaidManager.swift */; };
+		C8AFE36D24327C420085047A /* FilterTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFE36C24327C420085047A /* FilterTransactionsViewController.swift */; };
 		C8B47247241F0C2D00E9A85A /* UIView+FadeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B47246241F0C2D00E9A85A /* UIView+FadeAnimation.swift */; };
 		C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */; };
 		C8B584B224201A7500DA28D9 /* HomeViewController+BalanceChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */; };
@@ -93,6 +94,7 @@
 		C8AE60462425864500595773 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C8AE60492425890800595773 /* PlaidAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidAPI.swift; sourceTree = "<group>"; };
 		C8AE604B2425899000595773 /* PlaidManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidManager.swift; sourceTree = "<group>"; };
+		C8AFE36C24327C420085047A /* FilterTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTransactionsViewController.swift; sourceTree = "<group>"; };
 		C8B47246241F0C2D00E9A85A /* UIView+FadeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FadeAnimation.swift"; sourceTree = "<group>"; };
 		C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceChartDataSet.swift; sourceTree = "<group>"; };
 		C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+BalanceChart.swift"; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				C8371C812418088600519346 /* AccountDetailsViewController.swift */,
 				C89EDF212419528C0075052D /* AccountCardViewController.swift */,
 				C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */,
+				C8AFE36C24327C420085047A /* FilterTransactionsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */,
 				C8AE604C2425899000595773 /* PlaidManager.swift in Sources */,
 				C86D5EEF2419A72400D70126 /* AccountCell.swift in Sources */,
+				C8AFE36D24327C420085047A /* FilterTransactionsViewController.swift in Sources */,
 				C850FFFE24301E2F0054DF35 /* FilterTransactionsCell.swift in Sources */,
 				C8B584B224201A7500DA28D9 /* HomeViewController+BalanceChart.swift in Sources */,
 				C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */,
