@@ -271,12 +271,49 @@
                                                 <constraint firstAttribute="height" constant="180" id="XRj-rw-YF7"/>
                                             </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="f0T-nH-GPl">
-                                                <size key="itemSize" width="80" height="170"/>
+                                                <size key="itemSize" width="150" height="170"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
-                                            <cells/>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="AddAccountCollectionCell" id="axZ-do-IZ4">
+                                                    <rect key="frame" x="0.0" y="5.5" width="150" height="169"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="q6q-98-o3m">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="169"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fr1-J3-1gw">
+                                                                <rect key="frame" x="62" y="46.5" width="26" height="21"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="26" id="2Pc-lI-Fgg"/>
+                                                                    <constraint firstAttribute="height" constant="25" id="huf-GP-AzS"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xo-ye-Ym6">
+                                                                <rect key="frame" x="38" y="76" width="74" height="54"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="74" id="Ooh-qP-k0t"/>
+                                                                    <constraint firstAttribute="height" constant="54" id="u5V-Db-a7u"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="5xo-ye-Ym6" firstAttribute="leading" secondItem="q6q-98-o3m" secondAttribute="leading" constant="38" id="IlH-Sg-m4I"/>
+                                                            <constraint firstAttribute="trailing" secondItem="fr1-J3-1gw" secondAttribute="trailing" constant="62" id="MX0-NW-Zg6"/>
+                                                            <constraint firstItem="fr1-J3-1gw" firstAttribute="leading" secondItem="q6q-98-o3m" secondAttribute="leading" constant="62" id="N7q-N6-a3B"/>
+                                                            <constraint firstItem="fr1-J3-1gw" firstAttribute="top" secondItem="q6q-98-o3m" secondAttribute="top" constant="44.5" id="Q22-HF-3dJ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="5xo-ye-Ym6" secondAttribute="trailing" constant="38" id="VfW-DJ-hM5"/>
+                                                            <constraint firstItem="5xo-ye-Ym6" firstAttribute="top" secondItem="fr1-J3-1gw" secondAttribute="bottom" constant="6.5" id="flB-87-3rz"/>
+                                                            <constraint firstAttribute="bottom" secondItem="5xo-ye-Ym6" secondAttribute="bottom" constant="39" id="jXK-OZ-aHw"/>
+                                                        </constraints>
+                                                    </collectionViewCellContentView>
+                                                </collectionViewCell>
+                                            </cells>
                                         </collectionView>
                                     </subviews>
                                     <constraints>
@@ -291,10 +328,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" id="5nd-YT-yQJ" customClass="TransactionCell" customModule="Knot" customModuleProvider="target">
-                                <rect key="frame" x="20" y="235.5" width="374" height="78.5"/>
+                                <rect key="frame" x="20" y="235.5" width="374" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5nd-YT-yQJ" id="wYj-i5-wAd">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="78.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="78"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;description&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-FP-lvN">
@@ -304,13 +341,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;amount&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaS-Yr-0G0">
-                                            <rect key="frame" x="274" y="27" width="80" height="21.5"/>
+                                            <rect key="frame" x="274" y="27" width="80" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;date&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8E-e3-7qP">
-                                            <rect key="frame" x="13" y="45.5" width="50" height="18"/>
+                                            <rect key="frame" x="13" y="45" width="50" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -333,7 +370,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoTransactionsFoundCell" rowHeight="71" id="6r0-lm-GPB">
-                                <rect key="frame" x="20" y="314" width="374" height="71"/>
+                                <rect key="frame" x="20" y="313.5" width="374" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6r0-lm-GPB" id="cjF-2y-TvS">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
@@ -357,7 +394,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoPendingTransactionsCell" rowHeight="71" id="FSI-3O-wdT">
-                                <rect key="frame" x="20" y="385" width="374" height="71"/>
+                                <rect key="frame" x="20" y="384.5" width="374" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FSI-3O-wdT" id="FvX-1M-Z4e">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
@@ -381,7 +418,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterTransactionsCell" rowHeight="70" id="0MG-kz-W6r" customClass="FilterTransactionsCell" customModule="Knot" customModuleProvider="target">
-                                <rect key="frame" x="20" y="456" width="374" height="70"/>
+                                <rect key="frame" x="20" y="455.5" width="374" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0MG-kz-W6r" id="LdI-NA-FMh">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
@@ -448,13 +485,7 @@
                             <outlet property="delegate" destination="cac-Hu-VUt" id="x3O-dg-wKj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="lfC-Tn-d7y">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LcU-Vv-28h">
-                            <connections>
-                                <action selector="addButtonTapped:" destination="cac-Hu-VUt" id="shN-ub-cta"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="lfC-Tn-d7y"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZF-9Z-Qi9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -749,6 +780,7 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
     </resources>
 </document>

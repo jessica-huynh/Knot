@@ -13,8 +13,9 @@ class AccountCell: UITableViewCell {
     //MARK: - Outlets
     @IBOutlet weak var accountCollectionView: UICollectionView!
     
-    func setupAccountCollectionView(with dataSource: UICollectionViewDataSource) {
-        accountCollectionView.dataSource = dataSource
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
         accountCollectionView.showsHorizontalScrollIndicator = false
         accountCollectionView.register(
             UINib(nibName: "AccountCollectionCell", bundle: nil),

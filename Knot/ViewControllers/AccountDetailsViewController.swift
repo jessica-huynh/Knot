@@ -18,6 +18,7 @@ class AccountDetailsViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedTransactions(_:)), name: .updatedTransactions, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onAddAccountTapped(_:)), name: .addAccountTapped, object: nil)
         
         let cellNib = UINib(nibName: "ReachedEndCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "ReachedEndCell")
@@ -31,10 +32,6 @@ class AccountDetailsViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-        presentPlaidLink()
-    }
-    
     @objc func onUpdatedAccounts(_ notification:Notification) {
         viewModel = AccountDetailsViewModel(for: accountType)
         tableView.dataSource = viewModel
@@ -44,9 +41,14 @@ class AccountDetailsViewController: UITableViewController {
     @objc func onUpdatedTransactions(_ notification:Notification) {
         tableView.reloadData()
     }
+    
+    @objc func onAddAccountTapped(_ notification:Notification) {
+        presentPlaidLink()
+    }
 }
 
 // MARK: - Notification Names
 extension Notification.Name {
     static let updatedTransactions = Notification.Name("updatedTransactions")
+    static let addAccountTapped = Notification.Name("addAccountTapped")
 }
