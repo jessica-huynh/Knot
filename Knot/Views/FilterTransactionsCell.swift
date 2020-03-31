@@ -18,6 +18,7 @@ class FilterTransactionsCell: UITableViewCell {
 
     let today = Date()
     var timeFrames: [DateInterval] = []
+    let picker: UIPickerView = UIPickerView()
     var pickerOptions: [String] = []
     var rowPicked: Int = 0
     var previousRowPicked: Int = 0
@@ -33,9 +34,15 @@ class FilterTransactionsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
+        
         setupTimeFrames()
-        createTimeFramePicker()
+        setupPicker()
         createToolbar()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Picker Setup
@@ -56,8 +63,7 @@ class FilterTransactionsCell: UITableViewCell {
         }
     }
 
-    func createTimeFramePicker() {
-        let picker = UIPickerView()
+    func setupPicker() {
         picker.delegate = self
         picker.backgroundColor = .white
         timeFrameField.inputView = picker
@@ -84,6 +90,12 @@ class FilterTransactionsCell: UITableViewCell {
             delegate?.filterTransactionsCell(self, didUpdateTimeFrame: timeFrames[rowPicked])
             previousRowPicked = rowPicked
         }
+    }
+    
+    @objc func onUpdatedAccounts(_ notification:Notification) {
+        picker.selectRow(0, inComponent: 0, animated: true)
+        timeFrameField.text = pickerOptions[0]
+        previousRowPicked = 0
     }
 }
 
