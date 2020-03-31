@@ -53,8 +53,6 @@ class AccountDetailsViewModel: NSObject {
         }
         
         sections.insert(AccountDetailsViewModelAccounts(accounts: accounts), at: 0)
-        
-        
         updatePostedTransactions()
     }
     
@@ -67,13 +65,7 @@ class AccountDetailsViewModel: NSObject {
             [weak self] transactions in
             guard let self = self else { return }
 
-            var pendingTransactions: [Transaction] = []
-            for transaction in transactions {
-                if transaction.pending {
-                    pendingTransactions.append(transaction)
-                }
-            }
-            
+            let pendingTransactions = transactions.filter({ $0.pending })
             let pendingTransactionsSection = self.sections[1] as! AccountDetailsViewModelPendingTransactions
             pendingTransactionsSection.unfilteredTransactions = pendingTransactions
             
@@ -84,12 +76,10 @@ class AccountDetailsViewModel: NSObject {
     
     func updatePostedTransactions() {
         PlaidManager.instance.getTransactions(for: accounts, startDate: timeFrame.start, endDate: timeFrame.end) {
-            [weak self] response in
+            [weak self] transactions in
             guard let self = self else { return }
             
-            var transactions = response
             if self.accountType == .depository {
-                transactions.sort(by: >)
                 let transactionsSection = self.sections[1] as! AccountDetailsViewModelTransactions
                 transactionsSection.unfilteredTransactions = transactions
                 
@@ -100,17 +90,8 @@ class AccountDetailsViewModel: NSObject {
             // If account is a credit card:
             let cutoffDate = Calendar.current.date(byAdding: DateComponents(day: -14), to: Date())!
             let mightIncludePendingTransactions = self.timeFrame.end > cutoffDate
-            
-            var postedTransactions: [Transaction] = []
-            if mightIncludePendingTransactions {
-                for transaction in transactions {
-                    if !transaction.pending {
-                        postedTransactions.append(transaction)
-                    }
-                }
-            } else {
-                postedTransactions = transactions
-            }
+            let postedTransactions = mightIncludePendingTransactions ?
+                    transactions.filter({ !$0.pending }) : transactions
 
             let postedTransactionsSection = self.sections[2] as! AccountDetailsViewModelTransactions
             postedTransactionsSection.unfilteredTransactions = postedTransactions
