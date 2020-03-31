@@ -17,6 +17,7 @@ class FilterTransactionsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
