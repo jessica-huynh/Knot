@@ -17,8 +17,10 @@ protocol AccountDetailsViewModelSection {
 
 class AccountDetailsViewModel: NSObject {
     let storageManager = StorageManager.instance
-    var accounts: [Account] = []
     var accountType: Account.AccountType
+    var accounts: [Account] = []
+    var timeFrame: DateInterval
+    var accountFilterItems: [AccountFilterItem] = []
     
     enum SectionType: Int {
         case accounts
@@ -29,6 +31,9 @@ class AccountDetailsViewModel: NSObject {
     var sections = [AccountDetailsViewModelSection]()
     
     init(for accountType: Account.AccountType) {
+        let today = Date()
+        let startDate = Calendar.current.date(byAdding: DateComponents(day: -30), to: today)!
+        self.timeFrame = DateInterval(start: startDate, end: today)
         self.accountType = accountType
         super.init()
         
@@ -43,11 +48,14 @@ class AccountDetailsViewModel: NSObject {
             updatePendingTransactions()
         }
  
+        for account in accounts {
+            accountFilterItems.append(AccountFilterItem(account: account, isChecked: true))
+        }
+        
         sections.insert(AccountDetailsViewModelAccounts(accounts: accounts), at: 0)
         
-        let today = Date()
-        let startDate = Calendar.current.date(byAdding: DateComponents(day: -30), to: today)!
-        updatePostedTransactions(startDate: startDate, endDate: today)
+        
+        updatePostedTransactions()
     }
     
     // MARK:- Fetch Transactions
@@ -67,15 +75,15 @@ class AccountDetailsViewModel: NSObject {
             }
             
             let pendingTransactionsSection = self.sections[1] as! AccountDetailsViewModelPendingTransactions
-            pendingTransactionsSection.transactions = pendingTransactions
+            pendingTransactionsSection.unfilteredTransactions = pendingTransactions
             
-            NotificationCenter.default.post(name: .updatedTransactions, object: nil)
+            self.filterTransactions()
         }
     }
     
     
-    func updatePostedTransactions(startDate: Date, endDate: Date) {
-        PlaidManager.instance.getTransactions(for: accounts, startDate: startDate, endDate: endDate) {
+    func updatePostedTransactions() {
+        PlaidManager.instance.getTransactions(for: accounts, startDate: timeFrame.start, endDate: timeFrame.end) {
             [weak self] response in
             guard let self = self else { return }
             
@@ -83,15 +91,15 @@ class AccountDetailsViewModel: NSObject {
             if self.accountType == .depository {
                 transactions.sort(by: >)
                 let transactionsSection = self.sections[1] as! AccountDetailsViewModelTransactions
-                transactionsSection.transactions = transactions
+                transactionsSection.unfilteredTransactions = transactions
                 
-                NotificationCenter.default.post(name: .updatedTransactions, object: nil)
+                self.filterTransactions()
                 return
             }
             
             // If account is a credit card:
             let cutoffDate = Calendar.current.date(byAdding: DateComponents(day: -14), to: Date())!
-            let mightIncludePendingTransactions = endDate > cutoffDate
+            let mightIncludePendingTransactions = self.timeFrame.end > cutoffDate
             
             var postedTransactions: [Transaction] = []
             if mightIncludePendingTransactions {
@@ -105,9 +113,9 @@ class AccountDetailsViewModel: NSObject {
             }
 
             let postedTransactionsSection = self.sections[2] as! AccountDetailsViewModelTransactions
-            postedTransactionsSection.transactions = postedTransactions
+            postedTransactionsSection.unfilteredTransactions = postedTransactions
             
-            NotificationCenter.default.post(name: .updatedTransactions, object: nil)
+            self.filterTransactions()
         }
     }
 }
@@ -135,24 +143,25 @@ class AccountDetailsViewModelAccounts: AccountDetailsViewModelSection {
 
 class AccountDetailsViewModelTransactions: AccountDetailsViewModelSection {
     var title: String
-    var transactions: [Transaction]
+    var unfilteredTransactions: [Transaction] = []
+    var filteredTransactions: [Transaction] = []
     
     var type: AccountDetailsViewModel.SectionType {
         return .postedTransactions
     }
     
     var rowCount: Int {
-        return transactions.count
+        return filteredTransactions.count
     }
     
-    init(title: String, transactions: [Transaction] = []) {
+    init(title: String) {
         self.title = title
-        self.transactions = transactions
     }
 }
 
 class AccountDetailsViewModelPendingTransactions: AccountDetailsViewModelSection {
-    var transactions: [Transaction]
+    var unfilteredTransactions: [Transaction] = []
+    var filteredTransactions: [Transaction] = []
     
     var type: AccountDetailsViewModel.SectionType {
         return .pendingTransactions
@@ -163,10 +172,6 @@ class AccountDetailsViewModelPendingTransactions: AccountDetailsViewModelSection
     }
     
     var rowCount: Int {
-        return transactions.count
-    }
-    
-    init(transactions: [Transaction] = []) {
-        self.transactions = transactions
+        return filteredTransactions.count
     }
 }

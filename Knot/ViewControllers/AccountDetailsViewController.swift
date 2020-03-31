@@ -36,7 +36,8 @@ class AccountDetailsViewController: UITableViewController {
         if segue.identifier == "FilterTransactions",
             let navigationController = segue.destination as? UINavigationController,
             let controller = navigationController.topViewController as? FilterTransactionsViewController {
-            controller.accounts = viewModel.accounts
+            controller.delegate = viewModel
+            controller.accountFilterItems = viewModel.accountFilterItems
         }
     }
     

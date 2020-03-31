@@ -44,7 +44,7 @@ extension AccountDetailsViewModel: UITableViewDataSource {
             
         case .postedTransactions:
             let section = section as! AccountDetailsViewModelTransactions
-            if section.transactions.isEmpty && indexPath.row == 1 {
+            if section.filteredTransactions.isEmpty && indexPath.row == 1 {
                 return tableView.dequeueReusableCell(withIdentifier: "NoTransactionsFoundCell")!
             }
             
@@ -54,22 +54,22 @@ extension AccountDetailsViewModel: UITableViewDataSource {
                 return cell
             }
             
-            if indexPath.row == section.transactions.count + 1 {
+            if indexPath.row == section.filteredTransactions.count + 1 {
                 return tableView.dequeueReusableCell(withIdentifier: "ReachedEndCell")!
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell") as! TransactionCell
-            cell.configure(using: section.transactions[indexPath.row - 1])
+            cell.configure(using: section.filteredTransactions[indexPath.row - 1])
             return cell
             
         case .pendingTransactions:
             let section = section as! AccountDetailsViewModelPendingTransactions
-            if section.transactions.isEmpty {
+            if section.filteredTransactions.isEmpty {
                 return tableView.dequeueReusableCell(withIdentifier: "NoPendingTransactionsCell")!
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell") as! TransactionCell
-            cell.configure(using: section.transactions[indexPath.row])
+            cell.configure(using: section.filteredTransactions[indexPath.row])
             return cell
         }
     }

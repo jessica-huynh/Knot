@@ -23,6 +23,7 @@
 		C8502E6E241AA709007A6266 /* TransactionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */; };
 		C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */; };
 		C850FFFE24301E2F0054DF35 /* FilterTransactionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C850FFFD24301E2E0054DF35 /* FilterTransactionsCell.swift */; };
+		C865C6B72433E49F0094123A /* AccountFilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865C6B62433E49F0094123A /* AccountFilterItem.swift */; };
 		C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86AAD382418657B00168D3A /* ProfileViewModel.swift */; };
 		C86B9FAB24313DB400167CA9 /* NoSelectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B9FAA24313DB300167CA9 /* NoSelectTextField.swift */; };
 		C86B9FAD243142E400167CA9 /* Date+StartEndOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B9FAC243142E400167CA9 /* Date+StartEndOfMonth.swift */; };
@@ -78,6 +79,7 @@
 		C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCollectionCell.xib; sourceTree = "<group>"; };
 		C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionCell.swift; sourceTree = "<group>"; };
 		C850FFFD24301E2E0054DF35 /* FilterTransactionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionsCell.swift; sourceTree = "<group>"; };
+		C865C6B62433E49F0094123A /* AccountFilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFilterItem.swift; sourceTree = "<group>"; };
 		C86AAD382418657B00168D3A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C86B9FAA24313DB300167CA9 /* NoSelectTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSelectTextField.swift; sourceTree = "<group>"; };
 		C86B9FAC243142E400167CA9 /* Date+StartEndOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartEndOfMonth.swift"; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				C86B9FAE2431435100167CA9 /* AccountDetailsViewModel+FilterTransactions.swift */,
 				C86AAD382418657B00168D3A /* ProfileViewModel.swift */,
 				C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */,
+				C865C6B62433E49F0094123A /* AccountFilterItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				C897CBE0242933BD00B2D150 /* Transaction.swift in Sources */,
 				C86B9FAB24313DB400167CA9 /* NoSelectTextField.swift in Sources */,
 				C836F7E7242D6C6D00B77515 /* RecentTransactionCell.swift in Sources */,
+				C865C6B72433E49F0094123A /* AccountFilterItem.swift in Sources */,
 				C8E221E02426D758008624F9 /* GetAccountsResponse.swift in Sources */,
 				C89EDF2024193E460075052D /* AccountCard.swift in Sources */,
 			);
