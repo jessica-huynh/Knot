@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol FilterTransactionsCellDelegate: class {
-    func filterTransactionsCell(_ : FilterTransactionsCell, didUpdateTimeFrame timeFrame: DateInterval)
+protocol TransactionsHeaderCellDelegate: class {
+    func transactionsHeaderCell(_ : TransactionsHeaderCell, didUpdateTimeFrame timeFrame: DateInterval)
 }
 
-class FilterTransactionsCell: UITableViewCell {
+class TransactionsHeaderCell: UITableViewCell {
 
-    weak var delegate: FilterTransactionsCellDelegate?
+    weak var delegate: TransactionsHeaderCellDelegate?
 
     let today = Date()
     var timeFrames: [DateInterval] = []
@@ -87,7 +87,7 @@ class FilterTransactionsCell: UITableViewCell {
         endEditing(true)
         let didChangeTimeFrame = (rowPicked != previousRowPicked)
         if didChangeTimeFrame {
-            delegate?.filterTransactionsCell(self, didUpdateTimeFrame: timeFrames[rowPicked])
+            delegate?.transactionsHeaderCell(self, didUpdateTimeFrame: timeFrames[rowPicked])
             previousRowPicked = rowPicked
         }
     }
@@ -100,7 +100,7 @@ class FilterTransactionsCell: UITableViewCell {
 }
 
 // MARK: - PickerView Delegate and Data Source
-extension FilterTransactionsCell: UIPickerViewDelegate, UIPickerViewDataSource {
+extension TransactionsHeaderCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

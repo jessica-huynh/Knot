@@ -49,7 +49,7 @@ extension AccountDetailsViewModel: UITableViewDataSource {
             }
             
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTransactionsCell") as! FilterTransactionsCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTransactionsCell") as! TransactionsHeaderCell
                 cell.delegate = self
                 return cell
             }

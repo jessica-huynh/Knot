@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK: - Delegate for time frame picker
-extension AccountDetailsViewModel: FilterTransactionsCellDelegate {
-    func filterTransactionsCell(_: FilterTransactionsCell, didUpdateTimeFrame timeFrame: DateInterval) {
+// MARK: - Delegate for time frame picker (
+extension AccountDetailsViewModel: TransactionsHeaderCellDelegate {
+    func transactionsHeaderCell(_: TransactionsHeaderCell, didUpdateTimeFrame timeFrame: DateInterval) {
         self.timeFrame = timeFrame
         updatePostedTransactions()
     }
