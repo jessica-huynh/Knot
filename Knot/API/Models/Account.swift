@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Account: Codable, CustomStringConvertible {
+struct Account: Codable, CustomStringConvertible, Equatable {
     let id, name, subtype: String
     let type: AccountType
     let mask, officialName: String?
@@ -31,6 +31,10 @@ struct Account: Codable, CustomStringConvertible {
     
     var description: String {
         return "Account ID: \(id), name: \(name), type: \(type), balance: \(balance.current)"
+    }
+    
+    static func == (lhs: Account, rhs: Account) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 
