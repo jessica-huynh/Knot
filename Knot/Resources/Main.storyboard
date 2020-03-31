@@ -335,7 +335,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;description&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-FP-lvN">
-                                            <rect key="frame" x="13" y="16" width="107" height="21"/>
+                                            <rect key="frame" x="36" y="17" width="107" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -346,8 +346,15 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Tb-Xv-dVK">
+                                            <rect key="frame" x="20" y="23.5" width="8" height="8"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="9" id="U6s-Qc-fog"/>
+                                                <constraint firstAttribute="width" constant="8" id="tKW-zU-Osd"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;date&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8E-e3-7qP">
-                                            <rect key="frame" x="13" y="45" width="50" height="18"/>
+                                            <rect key="frame" x="36" y="38.5" width="50" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -356,17 +363,20 @@
                                     <constraints>
                                         <constraint firstItem="CaS-Yr-0G0" firstAttribute="trailing" secondItem="wYj-i5-wAd" secondAttribute="trailingMargin" id="0xV-Cz-Mwd"/>
                                         <constraint firstItem="CaS-Yr-0G0" firstAttribute="top" secondItem="wYj-i5-wAd" secondAttribute="topMargin" constant="16" id="3eI-85-B8c"/>
-                                        <constraint firstItem="T8E-e3-7qP" firstAttribute="leading" secondItem="wYj-i5-wAd" secondAttribute="leading" constant="13" id="3wm-CX-Umf"/>
+                                        <constraint firstItem="T8E-e3-7qP" firstAttribute="leading" secondItem="wYj-i5-wAd" secondAttribute="leading" constant="36" id="3wm-CX-Umf"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="CaS-Yr-0G0" secondAttribute="bottom" constant="19" id="56E-pI-hDK"/>
-                                        <constraint firstItem="RiF-FP-lvN" firstAttribute="leading" secondItem="wYj-i5-wAd" secondAttribute="leading" constant="13" id="ODV-wA-POe"/>
-                                        <constraint firstAttribute="bottom" secondItem="T8E-e3-7qP" secondAttribute="bottom" constant="15" id="WIr-8t-QUl"/>
-                                        <constraint firstItem="RiF-FP-lvN" firstAttribute="top" secondItem="wYj-i5-wAd" secondAttribute="top" constant="16" id="d5z-Fi-ee9"/>
+                                        <constraint firstItem="RiF-FP-lvN" firstAttribute="leading" secondItem="9Tb-Xv-dVK" secondAttribute="trailing" constant="8" id="IND-qa-ZRB"/>
+                                        <constraint firstItem="9Tb-Xv-dVK" firstAttribute="top" secondItem="wYj-i5-wAd" secondAttribute="topMargin" constant="12" id="OTt-BZ-WbK"/>
+                                        <constraint firstAttribute="bottom" secondItem="T8E-e3-7qP" secondAttribute="bottom" constant="21.5" id="WIr-8t-QUl"/>
+                                        <constraint firstItem="9Tb-Xv-dVK" firstAttribute="leading" secondItem="wYj-i5-wAd" secondAttribute="leadingMargin" id="bPs-Eu-hJe"/>
+                                        <constraint firstItem="RiF-FP-lvN" firstAttribute="top" secondItem="wYj-i5-wAd" secondAttribute="top" constant="17" id="d5z-Fi-ee9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="amountLabel" destination="CaS-Yr-0G0" id="kHm-1W-CPW"/>
                                     <outlet property="dateLabel" destination="T8E-e3-7qP" id="4Fe-lp-lw8"/>
                                     <outlet property="descriptionLabel" destination="RiF-FP-lvN" id="gXb-6Z-zDk"/>
+                                    <outlet property="institutionColour" destination="9Tb-Xv-dVK" id="3pv-Pj-eIH"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoTransactionsFoundCell" rowHeight="71" id="6r0-lm-GPB">
@@ -850,6 +860,7 @@
     <resources>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>

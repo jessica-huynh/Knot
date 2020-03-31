@@ -14,6 +14,7 @@ class TransactionCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var institutionColour: UIImageView!
 
     func configure(using transaction: Transaction) {
         let dateFormatter = DateFormatter()
