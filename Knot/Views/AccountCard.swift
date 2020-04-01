@@ -35,15 +35,35 @@ class AccountCard: UIView {
         contentView.frame = self.bounds    
     }
     
-    override func draw(_ rect: CGRect) {
-        let boxWidth: CGFloat = bounds.size.width - 1
-        let boxHeight: CGFloat = bounds.size.height - 1
-      
-        let boxRect = CGRect(x: 0, y: 0, width: boxWidth, height: boxHeight)
-        let roundedRect = UIBezierPath(roundedRect: boxRect, cornerRadius: 10)
-        UIColor.systemRed.setStroke()
-        roundedRect.stroke()
+    func draw(with colour: UIColor) {
+        let border = CAShapeLayer()
+        border.frame = self.contentView.bounds
+        border.fillColor = nil
+        border.strokeColor = colour.cgColor
+        border.lineWidth = 1.0
+        border.path = UIBezierPath(roundedRect: self.contentView.bounds, cornerRadius: 10).cgPath
+        self.contentView.layer.addSublayer(border)
     }
 
-
+    func updateCard(using account: Account) {
+        institutionLabel.text = account.institution.name
+        accountTypeLabel.text = account.officialName ?? account.name
+        
+        if let mask = account.mask {
+            accountNumberLabel.text = "**** **** **** \(mask)"
+        } else {
+            accountNumberLabel.text = ""
+        }
+        
+        // TODO
+        nameLabel.text = "Jane Doe"
+        logoImage.image = UIImage(named: "Logo")
+        
+        if let hexColour = account.institution.primaryColour {
+            draw(with: UIColor(hexString: hexColour))
+        } else {
+            draw(with: UIColor.lightGray)
+        }
+        
+    }
 }

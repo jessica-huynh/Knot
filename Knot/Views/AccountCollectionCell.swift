@@ -26,17 +26,21 @@ class AccountCollectionCell: UICollectionViewCell {
         nameLabel.text = account.name
         balanceLabel.text = account.balance.current.toCurrency()!
         
-        switch account.type {
-        case .credit:
-            detailsLabel.text = "Limit: \(account.balance.limit!.toCurrency()!)"
-        case .depository:
-            var holds: Double = 0
-            if let availableBalance = account.balance.available {
-                holds = account.balance.current - availableBalance
-            }
-            detailsLabel.text = "Holds: \(holds.toCurrency()!)"
-        default:
-            break
+        if let hexColour = account.institution.primaryColour {
+            sidebar.backgroundColor = UIColor(hexString: hexColour)
+        } else {
+            sidebar.backgroundColor = UIColor.clear
         }
+        
+        if account.type == .credit {
+            detailsLabel.text = "Limit: \(account.balance.limit!.toCurrency()!)"
+            return
+        }
+        // If account type is cash:
+        var holds: Double = 0
+        if let availableBalance = account.balance.available {
+            holds = account.balance.current - availableBalance
+        }
+        detailsLabel.text = "Holds: \(holds.toCurrency()!)"
     }
 }

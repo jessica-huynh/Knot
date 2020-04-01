@@ -25,7 +25,7 @@ class AccountCardViewController: UIViewController {
         let dateAdded = dateFormatter.string(from: account.dateAdded)
         dateAddedLabel.text = "Added on \(dateAdded)"
         
-        updateCard()
+        accountCard.updateCard(using: account)
     }
     
     // MARK: - Actions
@@ -47,20 +47,4 @@ class AccountCardViewController: UIViewController {
     @IBAction func closeButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-    func updateCard() {
-        accountCard.institutionLabel.text = account.institution.name
-        accountCard.accountTypeLabel.text = account.officialName ?? account.name
-        
-        if let mask = account.mask {
-            accountCard.accountNumberLabel.text = "**** **** **** \(mask)"
-        } else {
-            accountCard.accountNumberLabel.text = ""
-        }
-        
-        // TODO
-        accountCard.nameLabel.text = "Jane Doe"
-        accountCard.logoImage.image = UIImage(named: "Logo")
-    }
-
 }
