@@ -1,5 +1,5 @@
 //
-//  TransactionsFilterCell.swift
+//  TransactionsHeaderCell.swift
 //  Knot
 //
 //  Created by Jessica Huynh on 2020-03-28.
