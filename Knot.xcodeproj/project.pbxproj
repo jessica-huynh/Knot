@@ -24,6 +24,8 @@
 		C8502E70241AADA2007A6266 /* TransactionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */; };
 		C865C6B72433E49F0094123A /* AccountFilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865C6B62433E49F0094123A /* AccountFilterItem.swift */; };
 		C865C6B924340CBA0094123A /* TransactionsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865C6B824340CBA0094123A /* TransactionsHeaderCell.swift */; };
+		C865C6BB243414D50094123A /* GetInstitutionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865C6BA243414D50094123A /* GetInstitutionResponse.swift */; };
+		C865C6BD24341CAB0094123A /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865C6BC24341CAA0094123A /* UIColor+Hex.swift */; };
 		C86AAD392418657B00168D3A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86AAD382418657B00168D3A /* ProfileViewModel.swift */; };
 		C86B9FAB24313DB400167CA9 /* NoSelectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B9FAA24313DB300167CA9 /* NoSelectTextField.swift */; };
 		C86B9FAD243142E400167CA9 /* Date+StartEndOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B9FAC243142E400167CA9 /* Date+StartEndOfMonth.swift */; };
@@ -80,6 +82,8 @@
 		C8502E6F241AADA2007A6266 /* TransactionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionCell.swift; sourceTree = "<group>"; };
 		C865C6B62433E49F0094123A /* AccountFilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFilterItem.swift; sourceTree = "<group>"; };
 		C865C6B824340CBA0094123A /* TransactionsHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsHeaderCell.swift; sourceTree = "<group>"; };
+		C865C6BA243414D50094123A /* GetInstitutionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInstitutionResponse.swift; sourceTree = "<group>"; };
+		C865C6BC24341CAA0094123A /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		C86AAD382418657B00168D3A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C86B9FAA24313DB300167CA9 /* NoSelectTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSelectTextField.swift; sourceTree = "<group>"; };
 		C86B9FAC243142E400167CA9 /* Date+StartEndOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartEndOfMonth.swift"; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				C836F7E8242D7A0800B77515 /* ExchangeTokenResponse.swift */,
 				C8E221DF2426D758008624F9 /* GetAccountsResponse.swift */,
 				C86EBF0D24296DCB00EE3E27 /* GetTransactionsResponse.swift */,
+				C865C6BA243414D50094123A /* GetInstitutionResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */,
 				C8D041C0242EC70500C144F3 /* UIViewController+PlaidDelegate.swift */,
 				C86B9FAC243142E400167CA9 /* Date+StartEndOfMonth.swift */,
+				C865C6BC24341CAA0094123A /* UIColor+Hex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 				C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */,
 				C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */,
 				C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */,
+				C865C6BD24341CAB0094123A /* UIColor+Hex.swift in Sources */,
 				C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */,
 				C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */,
 				C8B47247241F0C2D00E9A85A /* UIView+FadeAnimation.swift in Sources */,
@@ -464,6 +471,7 @@
 				C836F7E7242D6C6D00B77515 /* RecentTransactionCell.swift in Sources */,
 				C865C6B72433E49F0094123A /* AccountFilterItem.swift in Sources */,
 				C8E221E02426D758008624F9 /* GetAccountsResponse.swift in Sources */,
+				C865C6BB243414D50094123A /* GetInstitutionResponse.swift in Sources */,
 				C89EDF2024193E460075052D /* AccountCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
