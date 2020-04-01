@@ -91,15 +91,22 @@ class PlaidManager {
             [weak self] response in
             guard let self = self else { return }
             
-            let response = try ExchangeTokenResponse(data: response.data)
+            let exchangeTokenResponse = try ExchangeTokenResponse(data: response.data)
             
             if let data = try? JSONSerialization.data(
                 withJSONObject: metadata!["institution"]!,
                 options: []) {
                 do {
-                    let institution = try Institution(data: data)
-                    self.setupAccounts(using: response.accessToken, for: institution)
+                    let partialInstitutionData = try Institution(data: data)
                     
+                    self.request(for: .getInstitution(institutionID: partialInstitutionData.id)) {
+                        [weak self] institutionResponse in
+                        guard let self = self else { return }
+                        
+                        let institutionResponse = try GetInstitutionResponse(data: institutionResponse.data)
+                        self.setupAccounts(using: exchangeTokenResponse.accessToken, for: institutionResponse.institution)
+                    }
+            
                 } catch {
                     print("Could not parse JSON: \(error)")
                 }

@@ -9,6 +9,7 @@ import Foundation
 import Moya
 
 enum PlaidAPI {
+    static let publicKey = PlaidManager.instance.publicKey
     static let clientID = PlaidManager.instance.clientID
     static let secret = PlaidManager.instance.secret
     static let environment = PlaidManager.instance.environment
@@ -22,6 +23,7 @@ enum PlaidAPI {
     case exchangeTokens(publicToken: String)
     case getAccounts(accessToken: String)
     case getTransactions(accessToken: String, startDate: Date, endDate: Date, accountIDs: [String]? = nil)
+    case getInstitution(institutionID: String)
 }
 
 extension PlaidAPI: TargetType {
@@ -37,6 +39,8 @@ extension PlaidAPI: TargetType {
             return "/accounts/get"
         case .getTransactions:
             return "/transactions/get"
+        case .getInstitution:
+            return "/institutions/get_by_id"
         }
     }
 
@@ -77,6 +81,13 @@ extension PlaidAPI: TargetType {
                 "options": [
                     "count": 500,
                     "account_ids": accountIDs as Any]],
+            encoding: JSONEncoding.default)
+        case .getInstitution(let institutionID):
+            return .requestParameters(
+            parameters: [
+                "institution_id": institutionID,
+                "public_key": PlaidAPI.publicKey,
+                "options": ["include_optional_metadata": true]],
             encoding: JSONEncoding.default)
         }
     }

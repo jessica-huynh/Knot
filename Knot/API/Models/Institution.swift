@@ -10,10 +10,12 @@ import Foundation
 
 struct Institution: Codable {
     let name, id: String
+    let primaryColour, logo: String?
 
     enum CodingKeys: String, CodingKey {
-        case name
+        case name, logo
         case id = "institution_id"
+        case primaryColour = "primary_color"
     }
 }
 
