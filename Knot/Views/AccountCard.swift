@@ -57,7 +57,7 @@ class AccountCard: UIView {
         
         // TODO
         nameLabel.text = "Jane Doe"
-        logoImage.image = UIImage(named: "Logo")
+        logoImage.image = UIImage.base64Convert(base64String: account.institution.logo)
         
         if let hexColour = account.institution.primaryColour {
             draw(with: UIColor(hexString: hexColour))

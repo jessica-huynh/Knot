@@ -13,6 +13,7 @@
 		C805A8B42426AC900091180F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B32426AC900091180F /* Account.swift */; };
 		C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44724282E6C00AEC207 /* StorageManager.swift */; };
 		C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */; };
+		C82493F7243550130093A209 /* UIImage+Base64Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82493F6243550130093A209 /* UIImage+Base64Convert.swift */; };
 		C836F7E3242D68D000B77515 /* ReachedEndCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C836F7E2242D68D000B77515 /* ReachedEndCell.xib */; };
 		C836F7E5242D691B00B77515 /* RecentTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */; };
 		C836F7E7242D6C6D00B77515 /* RecentTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836F7E6242D6C6D00B77515 /* RecentTransactionCell.swift */; };
@@ -71,6 +72,7 @@
 		C805A8B32426AC900091180F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		C810D44724282E6C00AEC207 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SolidColour.swift"; sourceTree = "<group>"; };
+		C82493F6243550130093A209 /* UIImage+Base64Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Base64Convert.swift"; sourceTree = "<group>"; };
 		C836F7E2242D68D000B77515 /* ReachedEndCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReachedEndCell.xib; sourceTree = "<group>"; };
 		C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTransactionsViewController.swift; sourceTree = "<group>"; };
 		C836F7E6242D6C6D00B77515 /* RecentTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTransactionCell.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				C8B47246241F0C2D00E9A85A /* UIView+FadeAnimation.swift */,
+				C82493F6243550130093A209 /* UIImage+Base64Convert.swift */,
 				C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */,
 				C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */,
 				C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */,
@@ -462,6 +465,7 @@
 				C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */,
 				C865C6BD24341CAB0094123A /* UIColor+Hex.swift in Sources */,
 				C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */,
+				C82493F7243550130093A209 /* UIImage+Base64Convert.swift in Sources */,
 				C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */,
 				C8B47247241F0C2D00E9A85A /* UIView+FadeAnimation.swift in Sources */,
 				C8B584B424201C9100DA28D9 /* HomeViewController+Transactions.swift in Sources */,
