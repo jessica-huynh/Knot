@@ -17,7 +17,6 @@ class AccountCollectionCell: UICollectionViewCell {
     @IBOutlet weak var institutionLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var sidebar: UIView!
-    @IBOutlet weak var logo: UIImageView!
     
     func configure(for account: Account) {
         self.drawBorder()
