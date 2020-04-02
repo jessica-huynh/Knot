@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Account: Codable, CustomStringConvertible, Equatable {
+class Account: Codable, CustomStringConvertible, Equatable {
     let id, name: String
     let type: AccountType
     let mask, officialName: String?
@@ -29,6 +29,15 @@ struct Account: Codable, CustomStringConvertible, Equatable {
         case investment, credit, depository, loan, other
     }
     
+    init(id: String, name: String, type: AccountType, mask: String?, officialName: String?, balance: Balance) {
+        self.id = id
+        self.name = name
+        self.type = type
+        self.mask = mask
+        self.officialName = officialName
+        self.balance = balance
+    }
+    
     var description: String {
         return "Account ID: \(id), name: \(name), type: \(type), balance: \(balance.current)"
     }
@@ -39,7 +48,13 @@ struct Account: Codable, CustomStringConvertible, Equatable {
 }
 
 extension Account {
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(Account.self, from: data)
+    convenience init(data: Data) throws {
+        let account = try JSONDecoder().decode(Account.self, from: data)
+        self.init(id: account.id,
+                  name: account.name,
+                  type: account.type,
+                  mask: account.mask,
+                  officialName: account.officialName,
+                  balance: account.balance)
     }
 }

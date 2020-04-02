@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Institution: Codable {
+class Institution: Codable {
     let name, id: String
     let primaryColour, logo: String?
 
@@ -17,10 +17,21 @@ struct Institution: Codable {
         case id = "institution_id"
         case primaryColour = "primary_color"
     }
+    
+    init(name: String, id: String, primaryColour: String?, logo: String?) {
+        self.name = name
+        self.id = id
+        self.primaryColour = primaryColour
+        self.logo = logo
+    }
 }
 
 extension Institution {
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(Institution.self, from: data)
+    convenience init(data: Data) throws {
+        let institution = try JSONDecoder().decode(Institution.self, from: data)
+        self.init(name: institution.name,
+                  id: institution.id,
+                  primaryColour: institution.primaryColour,
+                  logo: institution.logo)
     }
 }
