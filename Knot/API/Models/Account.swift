@@ -9,7 +9,7 @@
 import Foundation
 
 struct Account: Codable, CustomStringConvertible, Equatable {
-    let id, name, subtype: String
+    let id, name: String
     let type: AccountType
     let mask, officialName: String?
     let balance: Balance
@@ -19,7 +19,7 @@ struct Account: Codable, CustomStringConvertible, Equatable {
     var accessToken: String { return StorageManager.instance.accessToken(for: self.id)! }
     
     enum CodingKeys: String, CodingKey {
-        case name, mask, type, subtype
+        case name, mask, type
         case id = "account_id"
         case officialName = "official_name"
         case balance = "balances"

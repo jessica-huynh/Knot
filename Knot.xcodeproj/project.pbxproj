@@ -278,11 +278,11 @@
 				C8D7EA3F2416F5E7000195AC /* HomeViewController.swift */,
 				C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */,
 				C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */,
-				C8D7EA4924171AAD000195AC /* ProfileViewController.swift */,
 				C8371C812418088600519346 /* AccountDetailsViewController.swift */,
+				C8D7EA4924171AAD000195AC /* ProfileViewController.swift */,
 				C89EDF212419528C0075052D /* AccountCardViewController.swift */,
-				C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */,
 				C8AFE36C24327C420085047A /* FilterTransactionsViewController.swift */,
+				C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
