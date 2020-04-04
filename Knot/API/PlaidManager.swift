@@ -149,6 +149,7 @@ class PlaidManager {
                 // TODO: Notify user of no valid account types
             } else {
                 NotificationCenter.default.post(name: .updatedAccounts, object: self)
+                self.storageManager.saveData()
             }
         }
     }

@@ -21,7 +21,8 @@ class StorageManager {
     var accounts: [Account] { return cashAccounts + creditAccounts }
     
     private init() {
-        // Load from CoreData here
+        print("Data path: \(dataFilePath())")
+        loadData()
     }
     
     // MARK: - Helper Functions
@@ -67,5 +68,50 @@ class StorageManager {
             creditAccounts.removeAll { $0.id == account.id }
         }
         NotificationCenter.default.post(name: .updatedAccounts, object: self)
+    }
+    
+    // MARK: - plist data storage
+    private struct Storage: Codable {
+        let accessTokens: [String : [String]]
+        let institutionsByID: [String : Institution]
+        let cashAccounts: [Account]
+        let creditAccounts: [Account]
+    }
+    
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Knot.plist")
+    }
+    
+    func loadData() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                let storage = try decoder.decode(Storage.self, from: data)
+                accessTokens = storage.accessTokens
+                institutionsByID = storage.institutionsByID
+                cashAccounts = storage.cashAccounts
+                creditAccounts = storage.creditAccounts
+            } catch {
+                print("Load data error: \(error)")
+            }
+        }
+    }
+    
+    func saveData() {
+        let storage = Storage(accessTokens: accessTokens, institutionsByID: institutionsByID, cashAccounts: cashAccounts, creditAccounts: creditAccounts)
+        
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(storage)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+        } catch {
+            print("Save data error: \(error)")
+        }
     }
 }
