@@ -129,7 +129,8 @@ class PlaidManager {
                     print("\n----FOUND DUPLICATE ACCOUNT---\n")
                     continue
                 }
-                print(account)
+                
+                let account = account.updateDateAdded()
                 if account.type == .depository || account.type == .credit {
                     self.storageManager.accessTokens[accessToken]!.append(account.id)
                     self.storageManager.institutionsByID[account.id] = institution
@@ -141,10 +142,6 @@ class PlaidManager {
                     self.storageManager.creditAccounts.append(account)
                 }
             }
-            
-            print("\nAccess token: \(accessToken)\n")
-            print("CASH: \(self.storageManager.cashAccounts)")
-            print("CREDIT: \(self.storageManager.creditAccounts)")
             
             // If no accounts types were added, remove the access token from storage
             if self.storageManager.accessTokens[accessToken]!.isEmpty {

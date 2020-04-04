@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct Account: Codable, CustomStringConvertible, Equatable {
+struct Account: Codable, CustomStringConvertible {
     let id, name: String
     let type: AccountType
     let mask, officialName: String?
     let balance: Balance
     
-    var dateAdded: Date = Date()
+    let dateAdded: Date?
     var institution: Institution { return StorageManager.instance.institutionsByID[self.id]! }
     var accessToken: String { return StorageManager.instance.accessToken(for: self.id)! }
     
     enum CodingKeys: String, CodingKey {
-        case name, mask, type
+        case name, mask, type, dateAdded
         case id = "account_id"
         case officialName = "official_name"
         case balance = "balances"
@@ -32,14 +32,25 @@ struct Account: Codable, CustomStringConvertible, Equatable {
     var description: String {
         return "Account ID: \(id), name: \(name), type: \(type), balance: \(balance.current)"
     }
+}
+
+extension Account: Equatable {
+    init(data: Data) throws {
+        self = try JSONDecoder().decode(Account.self, from: data)
+    }
+    
+    func updateDateAdded() -> Account {
+        return Account(
+            id: self.id,
+            name: self.name,
+            type: self.type,
+            mask: self.mask,
+            officialName: self.officialName,
+            balance: self.balance,
+            dateAdded: Date())
+    }
     
     static func == (lhs: Account, rhs: Account) -> Bool {
         return lhs.id == rhs.id
-    }
-}
-
-extension Account {
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(Account.self, from: data)
     }
 }

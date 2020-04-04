@@ -22,7 +22,7 @@ class AccountCardViewController: UIViewController {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EE, MMM dd, YYYY"
-        let dateAdded = dateFormatter.string(from: account.dateAdded)
+        let dateAdded = dateFormatter.string(from: account.dateAdded!)
         dateAddedLabel.text = "Added on \(dateAdded)"
         
         accountCard.updateCard(using: account)
