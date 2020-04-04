@@ -15,7 +15,6 @@ class AccountCard: UIView {
     @IBOutlet weak var institutionLabel: UILabel!
     @IBOutlet weak var accountTypeLabel: UILabel!
     @IBOutlet weak var accountNumberLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var logoImage: UIImageView!
     
     
@@ -55,8 +54,6 @@ class AccountCard: UIView {
             accountNumberLabel.text = ""
         }
         
-        // TODO
-        nameLabel.text = "Jane Doe"
         logoImage.image = UIImage.base64Convert(base64String: account.institution.logo)
         
         if let hexColour = account.institution.primaryColour {

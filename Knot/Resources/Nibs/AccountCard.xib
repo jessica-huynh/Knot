@@ -13,7 +13,6 @@
                 <outlet property="contentView" destination="0aM-F7-L5h" id="15y-cJ-x5R"/>
                 <outlet property="institutionLabel" destination="nHh-C4-qfa" id="e3q-es-7M4"/>
                 <outlet property="logoImage" destination="aBh-lP-nJg" id="wGh-3Q-niK"/>
-                <outlet property="nameLabel" destination="9Kb-Tr-7oe" id="SUk-i0-H7a"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -39,16 +38,6 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kb-Tr-7oe">
-                    <rect key="frame" x="43" y="155" width="197" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="9Kb-Tr-7oe" secondAttribute="height" multiplier="239:21" constant="-42" id="8NH-C9-6af"/>
-                        <constraint firstAttribute="width" constant="197" id="zFy-xv-o7a"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;account #&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohK-WP-6ud">
@@ -80,10 +69,8 @@
                 <constraint firstItem="aBh-lP-nJg" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="114.5" id="DDs-Yd-rAW"/>
                 <constraint firstItem="nHh-C4-qfa" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="1.5" id="GJA-w8-9mu"/>
                 <constraint firstItem="xP3-WO-A5Q" firstAttribute="centerY" secondItem="0aM-F7-L5h" secondAttribute="centerY" constant="-26" id="NY2-Ay-LwG"/>
-                <constraint firstItem="9Kb-Tr-7oe" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="-38" id="NuB-MW-1Bf"/>
                 <constraint firstItem="aBh-lP-nJg" firstAttribute="centerY" secondItem="0aM-F7-L5h" secondAttribute="centerY" constant="45.5" id="Y9O-EZ-66s"/>
                 <constraint firstItem="ohK-WP-6ud" firstAttribute="centerX" secondItem="0aM-F7-L5h" secondAttribute="centerX" constant="1.5" id="fPE-YA-59z"/>
-                <constraint firstItem="9Kb-Tr-7oe" firstAttribute="centerY" secondItem="0aM-F7-L5h" secondAttribute="centerY" constant="58.5" id="rau-uC-hgm"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
