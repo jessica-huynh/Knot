@@ -36,10 +36,17 @@ class ProfileViewController: UITableViewController {
     }
     
     @IBAction func eraseAllData(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Are you sure you want to proceed?",
-                                      message: "This will remove all data including any linked account(s).",
+        let alert = UIAlertController(title: "Erase All Data",
+                                      message: "Are you sure you want to proceed? This will remove all linked accounts.",
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+        let deleteAction = UIAlertAction(title: "Yes", style: .default) {
+            [weak self] _ in
+            guard let self = self else { return }
+            StorageManager.instance.eraseAllAccounts()
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(deleteAction)
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }

@@ -68,6 +68,16 @@ class StorageManager {
             creditAccounts.removeAll { $0.id == account.id }
         }
         NotificationCenter.default.post(name: .updatedAccounts, object: self)
+        saveData()
+    }
+    
+    func eraseAllAccounts() {
+        accessTokens = [:]
+        institutionsByID = [:]
+        cashAccounts = []
+        creditAccounts = []
+        NotificationCenter.default.post(name: .updatedAccounts, object: self)
+        saveData()
     }
     
     // MARK: - plist data storage
