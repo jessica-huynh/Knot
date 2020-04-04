@@ -42,7 +42,7 @@ class ProfileViewController: UITableViewController {
         let deleteAction = UIAlertAction(title: "Yes", style: .default) {
             [weak self] _ in
             guard let self = self else { return }
-            StorageManager.instance.eraseAllAccounts()
+            StorageManager.instance.deleteAllAccounts()
             self.dismiss(animated: true, completion: nil)
         }
         

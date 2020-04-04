@@ -71,7 +71,7 @@ class StorageManager {
         saveData()
     }
     
-    func eraseAllAccounts() {
+    func deleteAllAccounts() {
         accessTokens = [:]
         institutionsByID = [:]
         cashAccounts = []
