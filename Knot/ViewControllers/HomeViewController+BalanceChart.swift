@@ -10,9 +10,8 @@ import Foundation
 import Charts
 
 extension HomeViewController: ChartViewDelegate {
-    // MARK: - Initial chart setup
+    // MARK: - Initial Chart Setup
     func setupBalanceChart() {
-        setupChartEntries()
         balanceChartView.delegate = self
         
         balanceIndicatorLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 82, height: 21))
@@ -40,8 +39,8 @@ extension HomeViewController: ChartViewDelegate {
         drawChart()
     }
     
-    // MARK: - Chart entries setup
-    func setupChartEntries() {
+    // MARK: - Chart Entries Helper Functions
+    func updateChartEntries() {
         var netBalance = calculateBalance(for: storageManager.cashAccounts) - calculateBalance(for: storageManager.creditAccounts)
         let startDate = Calendar.current.date(byAdding: DateComponents(year: -1), to: Date.today)!
         
@@ -197,8 +196,8 @@ extension HomeViewController: ChartViewDelegate {
     
     // MARK: - Chart Delegate Functions
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        timeIndicatorLabel.center = CGPoint(x: highlight.xPx + 45, y: -7)
-        balanceIndicatorLabel.center = CGPoint(x: highlight.xPx + 45, y: 10)
+        timeIndicatorLabel.center = CGPoint(x: highlight.xPx + 40, y: -15)
+        balanceIndicatorLabel.center = CGPoint(x: highlight.xPx + 40, y: 2)
  
         timeIndicatorLabel.text = entry.data as? String
         

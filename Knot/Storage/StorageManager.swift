@@ -25,6 +25,40 @@ class StorageManager {
         loadData()
     }
     
+    func fetchData() {
+        var updatedCashAccounts: [Account] = []
+        var updatedCreditAccounts: [Account] = []
+        let dispatch = DispatchGroup()
+        
+        for account in accounts {
+            dispatch.enter()
+            PlaidManager.instance.request(for: .getAccounts(accessToken: account.accessToken, accountIDs: [account.id])) {
+                response in
+                
+                let response = try GetAccountsResponse(data: response.data)
+                let accountType = response.accounts[0].type
+                let balance = response.accounts[0].balance
+                let updatedAccount = account.updateBalance(balance: balance)
+                
+                if accountType == .depository {
+                    updatedCashAccounts.append(updatedAccount)
+                } else {
+                    updatedCreditAccounts.append(updatedAccount)
+                }
+                dispatch.leave()
+            }
+        }
+        
+        dispatch.notify(queue: .main) {
+            [weak self] in
+            guard let self = self else { return }
+            
+            self.cashAccounts = updatedCashAccounts
+            self.creditAccounts = updatedCreditAccounts
+            NotificationCenter.default.post(name: .updatedAccounts, object: self)
+        }
+    }
+    
     // MARK: - Helper Functions
     func accessToken(for accountID: String) -> String? {
         for (accessToken, accountIDs) in accessTokens {

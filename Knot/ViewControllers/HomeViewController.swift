@@ -53,8 +53,9 @@ class HomeViewController: UITableViewController {
         
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        setupBalanceChart()
         updateLabels()
+        storageManager.fetchData()
+        setupBalanceChart()
         setupTransactionCollectionVew()
     }
     
@@ -158,6 +159,7 @@ class HomeViewController: UITableViewController {
     
     // MARK: - Notification Selectors
     @objc func onUpdatedAccounts(_ notification:Notification) {
+        updateChartEntries()
         updateLabels()
         updateRecentTransactions()
     }
