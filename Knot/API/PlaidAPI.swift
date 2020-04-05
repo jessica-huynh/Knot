@@ -21,7 +21,7 @@ enum PlaidAPI {
     }
     
     case exchangeTokens(publicToken: String)
-    case getAccounts(accessToken: String)
+    case getAccounts(accessToken: String, accountIDs: [String]? = nil)
     case getTransactions(accessToken: String, startDate: Date, endDate: Date, accountIDs: [String]? = nil)
     case getInstitution(institutionID: String)
 }
@@ -33,10 +33,10 @@ extension PlaidAPI: TargetType {
 
     public var path: String {
         switch self {
-        case .exchangeTokens(_):
+        case .exchangeTokens:
             return "/item/public_token/exchange"
-        case .getAccounts(_):
-            return "/accounts/get"
+        case .getAccounts:
+            return "/accounts/balance/get"
         case .getTransactions:
             return "/transactions/get"
         case .getInstitution:
@@ -62,12 +62,14 @@ extension PlaidAPI: TargetType {
                     "public_token": publicToken],
                 encoding: JSONEncoding.default)
             
-        case .getAccounts(let accessToken):
+        case .getAccounts(let accessToken, let accountIDs):
             return .requestParameters(
             parameters: [
                 "client_id": PlaidAPI.clientID,
                 "secret": PlaidAPI.secret,
-                "access_token": accessToken],
+                "access_token": accessToken,
+                "options": [
+                    "account_ids": accountIDs as Any]],
             encoding: JSONEncoding.default)
             
         case .getTransactions(let accessToken, let startDate, let endDate, let accountIDs):
