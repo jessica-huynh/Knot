@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.0.4)
+  - Alamofire (5.1.0)
   - Charts (3.4.0):
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
@@ -8,7 +8,7 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
-  - Plaid (1.1.27)
+  - Plaid (1.1.29)
 
 DEPENDENCIES:
   - Charts
@@ -28,11 +28,11 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
-  Alamofire: 0fe5fd24b4298dc377a6550da7d5f1b30e286fcb
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  Plaid: af02cc6a5d16d7eca0bc602c439d0e6827372cf1
+  Plaid: 8cebd80f77f400568028b6d66c97827b76c675f4
 
 PODFILE CHECKSUM: f3dc30da93e16f728d2b96170642f8088bb4caa7
 
