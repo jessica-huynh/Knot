@@ -50,6 +50,17 @@ extension Account: Equatable {
             dateAdded: Date())
     }
     
+    func updateBalance(balance: Balance) -> Account {
+        return Account(
+            id: self.id,
+            name: self.name,
+            type: self.type,
+            mask: self.mask,
+            officialName: self.officialName,
+            balance: balance,
+            dateAdded: self.dateAdded)
+    }
+    
     static func == (lhs: Account, rhs: Account) -> Bool {
         return lhs.id == rhs.id
     }
