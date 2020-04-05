@@ -12,8 +12,10 @@ struct Transaction: Codable, CustomStringConvertible {
     let id, accountID, name, _date: String
     let _amount: Double
     let pending: Bool
+    var accountType: Account.AccountType {
+        return StorageManager.instance.account(for: accountID)!.type
+    }
     var amount: Double {
-        let accountType = StorageManager.instance.account(for: accountID)?.type
         return (accountType == Account.AccountType.credit) ? _amount : _amount * -1
     }
     var date: Date {
