@@ -10,33 +10,9 @@ import Foundation
 import Charts
 
 extension HomeViewController: ChartViewDelegate {
-    func balanceChartData(for timePeriod: ChartTimePeriod) -> BalanceChartDataSet {
-        let balances: [Double]
-        
-        switch timePeriod {
-        case .week:
-            balances = [32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000]
-        case .month:
-            balances = [320500, 500000, 500000, 250000, 250000, 800000, 32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000, 32050, 100000, 500000, 250000, 20000, 20000, 400000]
-        case .threeMonth:
-            balances = [32050, 500000, 100000, 250000, 250000, 800000, 20000]
-        case .sixMonth:
-            balances = [32050, 500000, 500000, 250000, 250000, 800000, 616000]
-        case .year:
-            balances = [3205000, 5000000, 9000000, 2500000, 2500000, 11800000, 11800000]
-        }
-        
-        var lineChartEntry = [ChartDataEntry]()
-
-        for i in 0..<balances.count {
-            let value = ChartDataEntry(x: Double(i), y: Double(balances[i]), data: "Jan 30, 2020")
-            lineChartEntry.append(value)
-        }
-        
-        return BalanceChartDataSet(entries: lineChartEntry)
-    }
-    
+    // MARK: - Initial chart setup
     func setupBalanceChart() {
+        setupChartEntries()
         balanceChartView.delegate = self
         
         balanceIndicatorLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 82, height: 21))
@@ -64,6 +40,79 @@ extension HomeViewController: ChartViewDelegate {
         drawChart()
     }
     
+    // MARK: - Chart entries setup
+    func setupChartEntries() {
+        var netBalance = calculateBalance(for: storageManager.cashAccounts) - calculateBalance(for: storageManager.creditAccounts)
+        let startDate = Calendar.current.date(byAdding: DateComponents(year: -1), to: Date.today)!
+        
+        plaidManager.getAllTransactions(startDate: startDate, endDate: Date.today.previousDay()) {
+            [weak self] transactions in
+            guard let self = self else { return }
+            
+            var daysBalanceChanged: [(date: Date, balance: Double)] = []
+            var currentDate = Date.today
+            for transaction in transactions {
+                if transaction.date != currentDate {
+                    daysBalanceChanged.append((currentDate, netBalance))
+                    currentDate = transaction.date
+                }
+                netBalance = netBalance + (transaction.accountType == .credit ? -transaction.amount : transaction.amount)
+            }
+            daysBalanceChanged.append((currentDate, netBalance))
+            daysBalanceChanged.reverse()
+            
+            let balanceHistory = self.completeBalanceHistory(from: startDate, with: daysBalanceChanged)
+
+            var chartEntries = [ChartDataEntry]()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EE, MMM d, YYYY"
+            
+            for i in 0..<balanceHistory.count {
+                let value = ChartDataEntry(x: Double(i),
+                                           y: Double(balanceHistory[i].balance),
+                                           data: dateFormatter.string(from: balanceHistory[i].date))
+                chartEntries.append(value)
+            }
+            self.balanceChartEntries = chartEntries
+            NotificationCenter.default.post(name: .updatedBalanceChartEntries, object: self)
+        }
+    }
+    
+    func completeBalanceHistory(from startDate: Date,
+                                with daysBalanceChanged: [(date: Date, balance: Double)])
+        -> [(date: Date, balance: Double)] {
+        var daysBalanceChanged = daysBalanceChanged
+        var balanceHistory: [(date: Date, balance: Double)] = []
+        
+        while daysBalanceChanged.count != 1 {
+            let lastDataPoint = daysBalanceChanged.removeLast()
+            let secoundLastDataPoint = daysBalanceChanged.last!
+            let partialBalanceHistory = self.generateDataPoints(from: secoundLastDataPoint.date.nextDay(), to: lastDataPoint.date, with: lastDataPoint.balance)
+            balanceHistory = partialBalanceHistory + balanceHistory
+        }
+        
+        if daysBalanceChanged.count == 1 && daysBalanceChanged[0].date != startDate {
+            let partialBalanceHistory = self.generateDataPoints(from: startDate, to: daysBalanceChanged[0].date, with: daysBalanceChanged[0].balance)
+            balanceHistory = partialBalanceHistory + balanceHistory
+        } else {
+            balanceHistory = [daysBalanceChanged[0]] + balanceHistory
+        }
+        
+        return balanceHistory
+    }
+    
+    func generateDataPoints(from startDate: Date, to endDate: Date, with balance: Double) -> [(date: Date, balance: Double)] {
+        var dataPoints: [(date: Date, balance: Double)] = []
+        var currentDate = startDate
+
+        while currentDate <= endDate {
+            dataPoints.append((currentDate, balance))
+            currentDate = currentDate.nextDay()
+        }
+        return dataPoints
+    }
+    
+    // MARK: - Chart Customization
     func customize(balanceChart: LineChartView) {
         balanceChart.xAxis.enabled = false
         balanceChart.leftAxis.enabled = false
@@ -113,13 +162,12 @@ extension HomeViewController: ChartViewDelegate {
         balanceChartView.highlightValue(highlight, callDelegate: true)
     }
     
-    // MARK: - Actions
-    @IBAction func chartSegmentChanged(_ sender: UISegmentedControl) {
+    // MARK: - Reload Chart
+    func reloadChart() {
         timeIndicatorLabel.fadeOut()
         balanceIndicatorLabel.fadeOut()
         
         if let timePeriod = ChartTimePeriod(rawValue: chartSegmentedControl.selectedSegmentIndex) {
-            
             var newChartData: BalanceChartDataSet
             
             switch timePeriod {
@@ -144,6 +192,7 @@ extension HomeViewController: ChartViewDelegate {
             
             drawChart()
         }
+
     }
     
     // MARK: - Chart Delegate Functions
@@ -161,11 +210,5 @@ extension HomeViewController: ChartViewDelegate {
 
         timeIndicatorLabel.fadeIn()
         balanceIndicatorLabel.fadeIn()
-    }
-    
-    func chartViewDidEndPanning(_ chartView: ChartViewBase) {
-        timeIndicatorLabel.fadeOut()
-        balanceIndicatorLabel.fadeOut()
-        chartView.highlightValue(nil)
     }
 }

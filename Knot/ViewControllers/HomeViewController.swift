@@ -19,11 +19,12 @@ class HomeViewController: UITableViewController {
     
     var recentTransactions: [Transaction] = []
     
-    lazy var balanceChartData_1w = balanceChartData(for: ChartTimePeriod.week)
-    lazy var balanceChartData_1m = balanceChartData(for: ChartTimePeriod.month)
-    lazy var balanceChartData_3m = balanceChartData(for: ChartTimePeriod.threeMonth)
-    lazy var balanceChartData_6m = balanceChartData(for: ChartTimePeriod.sixMonth)
-    lazy var balanceChartData_1y = balanceChartData(for: ChartTimePeriod.year)
+    var balanceChartEntries: [ChartDataEntry] = []
+    var balanceChartData_1w = BalanceChartDataSet()
+    var balanceChartData_1m = BalanceChartDataSet()
+    var balanceChartData_3m = BalanceChartDataSet()
+    var balanceChartData_6m = BalanceChartDataSet()
+    var balanceChartData_1y = BalanceChartDataSet()
     
     enum ChartTimePeriod: Int {
         case week
@@ -48,6 +49,7 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedBalanceChartEntries(_:)), name: .updatedBalanceChartEntries, object: nil)
         
         navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -59,6 +61,10 @@ class HomeViewController: UITableViewController {
     // MARK: - Actions
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         presentPlaidLink()
+    }
+    
+    @IBAction func chartSegmentChanged(_ sender: UISegmentedControl) {
+        reloadChart()
     }
     
     // MARK: - Helper Functions
@@ -110,10 +116,9 @@ class HomeViewController: UITableViewController {
     }
     
     func updateRecentTransactions() {
-        let today = Date()
-        let startDate = Calendar.current.date(byAdding: DateComponents(day: -30), to: today)!
+        let startDate = Calendar.current.date(byAdding: DateComponents(day: -30), to: Date.today)!
         
-        plaidManager.getAllTransactions(startDate: startDate, endDate: today) {
+        plaidManager.getAllTransactions(startDate: startDate, endDate: Date.today) {
             [weak self] transactions in
             guard let self = self else { return }
             
@@ -156,9 +161,26 @@ class HomeViewController: UITableViewController {
         updateLabels()
         updateRecentTransactions()
     }
+    
+    @objc func onUpdatedBalanceChartEntries(_ notification:Notification) {
+        let daysInYear = 365
+        balanceChartData_1w =
+            BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 7)...]))
+        balanceChartData_1m =
+            BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 30)...]))
+        balanceChartData_3m =
+            BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 90)...]))
+        balanceChartData_6m =
+            BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 180)...]))
+        balanceChartData_1y =
+            BalanceChartDataSet(entries: balanceChartEntries)
+        
+        reloadChart()
+    }
 }
 
 // MARK: - Notification Names
 extension Notification.Name {
-    static let updatedAccounts = Notification.Name("didLinkAccount")
+    static let updatedAccounts = Notification.Name("updatedAccount")
+    static let updatedBalanceChartEntries = Notification.Name("updatedBalanceHistory")
 }
