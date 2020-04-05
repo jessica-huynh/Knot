@@ -16,7 +16,6 @@ class TransactionsHeaderCell: UITableViewCell {
 
     weak var delegate: TransactionsHeaderCellDelegate?
 
-    let today = Date()
     var timeFrames: [DateInterval] = []
     let picker: UIPickerView = UIPickerView()
     var pickerOptions: [String] = []
@@ -50,14 +49,14 @@ class TransactionsHeaderCell: UITableViewCell {
         let recentDays = [30, 60, 90]
         for numberOfDaysToSubtract in recentDays {
             let dayComponent = DateComponents(day: -numberOfDaysToSubtract)
-            let startDate = Calendar.current.date(byAdding: dayComponent, to: today)!
-            timeFrames.append(DateInterval(start: startDate, end: today))
+            let startDate = Calendar.current.date(byAdding: dayComponent, to: Date.today)!
+            timeFrames.append(DateInterval(start: startDate, end: Date.today))
             pickerOptions.append("Last \(numberOfDaysToSubtract) Days")
         }
         
         for numberOfMonthsToSubtract in 0...12 {
             let monthComponent = DateComponents(month: -numberOfMonthsToSubtract)
-            let date = Calendar.current.date(byAdding: monthComponent, to: today)!
+            let date = Calendar.current.date(byAdding: monthComponent, to: Date.today)!
             timeFrames.append(DateInterval(start: date.startOfMonth(), end: date.endOfMonth()))
             pickerOptions.append(dateFormatter.string(from: date))
         }

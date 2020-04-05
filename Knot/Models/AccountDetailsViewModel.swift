@@ -31,9 +31,8 @@ class AccountDetailsViewModel: NSObject {
     var sections = [AccountDetailsViewModelSection]()
     
     init(for accountType: Account.AccountType) {
-        let today = Date()
-        let startDate = Calendar.current.date(byAdding: DateComponents(day: -30), to: today)!
-        self.timeFrame = DateInterval(start: startDate, end: today)
+        let startDate = Calendar.current.date(byAdding: DateComponents(day: -30), to: Date.today)!
+        self.timeFrame = DateInterval(start: startDate, end: Date.today)
         self.accountType = accountType
         super.init()
         
@@ -58,10 +57,9 @@ class AccountDetailsViewModel: NSObject {
     
     // MARK:- Fetch Transactions
     func updatePendingTransactions() {
-        let today = Date()
-        let startDate = Calendar.current.date(byAdding: DateComponents(day: -14), to: today)!
+        let startDate = Calendar.current.date(byAdding: DateComponents(day: -14), to: Date.today)!
         
-        PlaidManager.instance.getTransactions(for: accounts, startDate: startDate, endDate: today) {
+        PlaidManager.instance.getTransactions(for: accounts, startDate: startDate, endDate: Date.today) {
             [weak self] transactions in
             guard let self = self else { return }
 
