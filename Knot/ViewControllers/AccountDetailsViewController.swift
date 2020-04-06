@@ -26,6 +26,7 @@ class AccountDetailsViewController: UITableViewController {
         title = navTitle
         viewModel = AccountDetailsViewModel(for: accountType)
         tableView.dataSource = viewModel
+        tableView.delegate = viewModel
     }
     
     deinit {
@@ -44,6 +45,7 @@ class AccountDetailsViewController: UITableViewController {
     @objc func onUpdatedAccounts(_ notification:Notification) {
         viewModel = AccountDetailsViewModel(for: accountType)
         tableView.dataSource = viewModel
+        tableView.delegate = viewModel
         tableView.reloadData()
     }
     

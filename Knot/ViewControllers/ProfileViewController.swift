@@ -20,6 +20,7 @@ class ProfileViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
         
         tableView.dataSource = viewModel
+        tableView.delegate = viewModel
     }
     
     deinit {
@@ -61,6 +62,7 @@ class ProfileViewController: UITableViewController {
     @objc func onUpdatedAccounts(_ notification:Notification) {
         viewModel = ProfileViewModel()
         tableView.dataSource = viewModel
+        tableView.delegate = viewModel
         tableView.reloadData()
     }
 }

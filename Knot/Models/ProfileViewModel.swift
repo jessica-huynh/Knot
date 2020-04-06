@@ -34,7 +34,7 @@ class ProfileViewModel: NSObject {
 }
 
 // MARK: - Table View Data Source
-extension ProfileViewModel: UITableViewDataSource {
+extension ProfileViewModel: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -74,6 +74,10 @@ extension ProfileViewModel: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].title
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: - Table View Data Source
-extension AccountDetailsViewModel: UITableViewDataSource {
+extension AccountDetailsViewModel: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }

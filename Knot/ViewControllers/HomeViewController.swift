@@ -129,17 +129,6 @@ class HomeViewController: UITableViewController {
         }
     }
     
-     // MARK: - Table View Delegates
-     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath == IndexPath(row: 0, section: 1) && storageManager.cashAccounts.isEmpty {
-            return indexPath // TOOD Change back to nil
-        } else if indexPath == IndexPath(row: 1, section: 1) && storageManager.creditAccounts.isEmpty {
-            return indexPath // TOOD Change back to nil
-        }
-        return indexPath
-     }
-     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? AccountDetailsViewController {
             controller.navTitle = segue.identifier
@@ -155,6 +144,24 @@ class HomeViewController: UITableViewController {
             let controller = segue.destination as! RecentTransactionsViewController
             controller.recentTransactions = recentTransactions
         }
+    }
+    
+     // MARK: - Table View Delegates
+     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 0 || indexPath.section == 2 {
+            return nil
+        }
+        
+        if indexPath == IndexPath(row: 0, section: 1) && storageManager.cashAccounts.isEmpty {
+            return nil
+        } else if indexPath == IndexPath(row: 1, section: 1) && storageManager.creditAccounts.isEmpty {
+            return nil
+        }
+        return indexPath
+     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - Notification Selectors
