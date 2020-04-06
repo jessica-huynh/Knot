@@ -23,6 +23,7 @@ class TransactionCell: UITableViewCell {
         dateLabel.text = dateFormatter.string(from: transaction.date)
         descriptionLabel.text = transaction.name
         amountLabel.text = transaction.amount.toCurrency()!
+        amountLabel.textColor = transaction.amount > 0 ? UIColor.systemGreen : UIColor.black
         
         let account = StorageManager.instance.account(for: transaction.accountID)!
         if let hexColour = account.institution.primaryColour {

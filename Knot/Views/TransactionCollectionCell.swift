@@ -23,5 +23,6 @@ class TransactionCollectionCell: UICollectionViewCell {
         amountLabel.text = absAmount.toCurrency()!
         descriptionLabel.text = transaction.name
         accountLabel.text = StorageManager.instance.account(for: transaction.accountID)?.name
+        icon.tintColor = transaction.amount > 0 ? UIColor.systemGreen : UIColor.systemRed
     }
 }
