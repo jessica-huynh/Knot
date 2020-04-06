@@ -30,20 +30,22 @@ class StorageManager {
         var updatedCreditAccounts: [Account] = []
         let dispatch = DispatchGroup()
         
-        for account in accounts {
+        for (accessToken, accountIDs) in accessTokens {
             dispatch.enter()
-            PlaidManager.instance.request(for: .getAccounts(accessToken: account.accessToken, accountIDs: [account.id])) {
-                response in
+            PlaidManager.instance.request(for: .getAccounts(accessToken: accessToken, accountIDs: accountIDs)) {
+                [weak self] response in
+                guard let self = self else { return }
                 
-                let response = try GetAccountsResponse(data: response.data)
-                let accountType = response.accounts[0].type
-                let balance = response.accounts[0].balance
-                let updatedAccount = account.updateBalance(balance: balance)
-                
-                if accountType == .depository {
-                    updatedCashAccounts.append(updatedAccount)
-                } else {
-                    updatedCreditAccounts.append(updatedAccount)
+                let accounts = try GetAccountsResponse(data: response.data).accounts
+                for account in accounts {
+                    let oldAccount = self.account(for: account.id)!
+                    let updatedAccount = oldAccount.updateBalance(balance: account.balance)
+                    
+                    if account.type == .depository {
+                        updatedCashAccounts.append(updatedAccount)
+                    } else {
+                        updatedCreditAccounts.append(updatedAccount)
+                    }
                 }
                 dispatch.leave()
             }
