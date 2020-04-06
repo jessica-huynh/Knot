@@ -48,6 +48,7 @@
 		C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */; };
 		C8B584B224201A7500DA28D9 /* HomeViewController+BalanceChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */; };
 		C8B584B424201C9100DA28D9 /* HomeViewController+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */; };
+		C8C24DF9243BF24400E61CEE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24DF8243BF24400E61CEE /* UIViewController+SpinnerView.swift */; };
 		C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */; };
 		C8D041BB242E768000C144F3 /* AccountCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */; };
 		C8D041BD242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */; };
@@ -107,6 +108,7 @@
 		C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceChartDataSet.swift; sourceTree = "<group>"; };
 		C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+BalanceChart.swift"; sourceTree = "<group>"; };
 		C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Transactions.swift"; sourceTree = "<group>"; };
+		C8C24DF8243BF24400E61CEE /* UIViewController+SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SpinnerView.swift"; sourceTree = "<group>"; };
 		C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSegmentedControl.swift; sourceTree = "<group>"; };
 		C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionCell.swift; sourceTree = "<group>"; };
 		C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+DrawBorder.swift"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */,
 				C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */,
 				C8D041C0242EC70500C144F3 /* UIViewController+PlaidDelegate.swift */,
+				C8C24DF8243BF24400E61CEE /* UIViewController+SpinnerView.swift */,
 				C86B9FAC243142E400167CA9 /* Date+Helpers.swift */,
 				C865C6BC24341CAA0094123A /* UIColor+Hex.swift */,
 			);
@@ -463,6 +466,7 @@
 				C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */,
 				C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */,
 				C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */,
+				C8C24DF9243BF24400E61CEE /* UIViewController+SpinnerView.swift in Sources */,
 				C865C6BD24341CAB0094123A /* UIColor+Hex.swift in Sources */,
 				C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */,
 				C82493F7243550130093A209 /* UIImage+Base64Convert.swift in Sources */,

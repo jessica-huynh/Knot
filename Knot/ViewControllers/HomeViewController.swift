@@ -14,6 +14,9 @@ class HomeViewController: UITableViewController {
     let plaidManager = PlaidManager.instance
     let storageManager = StorageManager.instance
     
+    var spinnerView: UIView!
+    var isLoading: Bool = false
+    
     var balanceIndicatorLabel: UILabel!
     var timeIndicatorLabel: UILabel!
     
@@ -50,13 +53,21 @@ class HomeViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedBalanceChartEntries(_:)), name: .updatedBalanceChartEntries, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSuccessfulLinking(_:)), name: .successfulLinking, object: nil)
         
         navigationController?.navigationBar.shadowImage = UIImage()
         
+        spinnerView = createSpinnerView()
+        startSpinner()
         updateLabels()
         storageManager.fetchData()
         setupBalanceChart()
         setupTransactionCollectionVew()
+    }
+    
+    func startSpinner() {
+        showSpinner(spinnerView: spinnerView)
+        isLoading = true
     }
     
     // MARK: - Actions
@@ -165,7 +176,14 @@ class HomeViewController: UITableViewController {
     }
     
     // MARK: - Notification Selectors
+    @objc func onSuccessfulLinking(_ notification:Notification) {
+        startSpinner()
+    }
+    
     @objc func onUpdatedAccounts(_ notification:Notification) {
+        if !isLoading {
+            startSpinner()
+        }
         updateChartEntries()
         updateLabels()
         updateRecentTransactions()
@@ -184,12 +202,17 @@ class HomeViewController: UITableViewController {
         balanceChartData_1y =
             BalanceChartDataSet(entries: balanceChartEntries)
         
+        // Updating chart entries is the slowest task so we assume the spinner can always be
+        // removed at this point:
+        removeSpinner(spinnerView: spinnerView)
+        isLoading = false
         reloadChart()
     }
 }
 
 // MARK: - Notification Names
 extension Notification.Name {
+    static let successfulLinking = Notification.Name("successfulLinking")
     static let updatedAccounts = Notification.Name("updatedAccount")
     static let updatedBalanceChartEntries = Notification.Name("updatedBalanceHistory")
 }

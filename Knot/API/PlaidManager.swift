@@ -87,6 +87,8 @@ class PlaidManager {
     
     // MARK: - Linked Account Setup
     func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
+        NotificationCenter.default.post(name: .successfulLinking, object: self)
+        
         request(for: .exchangeTokens(publicToken: publicToken)) {
             [weak self] response in
             guard let self = self else { return }
