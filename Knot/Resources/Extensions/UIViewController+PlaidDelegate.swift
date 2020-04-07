@@ -11,9 +11,10 @@ import UIKit
 import LinkKit
 
 extension UIViewController: PLKPlaidLinkViewDelegate {
-    func presentPlaidLink() {
+    func presentPlaidLink(with presentationStyle: UIModalPresentationStyle = .fullScreen) {
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(configuration: PlaidManager.instance.linkKitConfiguration, delegate: linkViewDelegate)
+        linkViewController.modalPresentationStyle = presentationStyle
         
         self.present(linkViewController, animated: true)
     }
