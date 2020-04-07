@@ -13,6 +13,7 @@ extension AccountDetailsViewModel: TransactionsHeaderCellDelegate {
     func transactionsHeaderCell(_: TransactionsHeaderCell, didUpdateTimeFrame timeFrame: DateInterval) {
         self.timeFrame = timeFrame
         updatePostedTransactions()
+        isLoading = true
     }
 }
 
@@ -24,6 +25,7 @@ extension AccountDetailsViewModel: FilterTransactionsViewControllerDelegate {
             return
         }
         
+        isLoading = true
         self.accountFilterItems = accountFilterItems
         filterTransactions()
     }
@@ -47,7 +49,7 @@ extension AccountDetailsViewModel: FilterTransactionsViewControllerDelegate {
             let postedTransactionsSection = sections.last as! AccountDetailsViewModelTransactions
             postedTransactionsSection.filteredTransactions = postedTransactionsSection.unfilteredTransactions
             
-            NotificationCenter.default.post(name: .updatedTransactions, object: nil)
+            isLoading = false
             return
         }
         
@@ -57,7 +59,7 @@ extension AccountDetailsViewModel: FilterTransactionsViewControllerDelegate {
         }
         
         filterPostedTransactions(using: selectedAccountIDs)
-        NotificationCenter.default.post(name: .updatedTransactions, object: nil)
+        isLoading = false
     }
     
     func filterPendingTransactions(using selectedAccountIDs: [String]) {

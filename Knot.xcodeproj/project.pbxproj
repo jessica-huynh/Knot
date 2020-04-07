@@ -49,6 +49,8 @@
 		C8B584B224201A7500DA28D9 /* HomeViewController+BalanceChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */; };
 		C8B584B424201C9100DA28D9 /* HomeViewController+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */; };
 		C8C24DF9243BF24400E61CEE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24DF8243BF24400E61CEE /* UIViewController+SpinnerView.swift */; };
+		C8C24DFB243BF9D000E61CEE /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C24DFA243BF9D000E61CEE /* LoadingCell.xib */; };
+		C8C24DFD243BFA1C00E61CEE /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24DFC243BFA1C00E61CEE /* LoadingCell.swift */; };
 		C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */; };
 		C8D041BB242E768000C144F3 /* AccountCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */; };
 		C8D041BD242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */; };
@@ -109,6 +111,8 @@
 		C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+BalanceChart.swift"; sourceTree = "<group>"; };
 		C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Transactions.swift"; sourceTree = "<group>"; };
 		C8C24DF8243BF24400E61CEE /* UIViewController+SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SpinnerView.swift"; sourceTree = "<group>"; };
+		C8C24DFA243BF9D000E61CEE /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		C8C24DFC243BFA1C00E61CEE /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSegmentedControl.swift; sourceTree = "<group>"; };
 		C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionCell.swift; sourceTree = "<group>"; };
 		C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+DrawBorder.swift"; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */,
 				C86B9FAA24313DB300167CA9 /* NoSelectTextField.swift */,
 				C865C6B824340CBA0094123A /* TransactionsHeaderCell.swift */,
+				C8C24DFC243BFA1C00E61CEE /* LoadingCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				C8502E6D241AA709007A6266 /* TransactionCollectionCell.xib */,
 				C836F7E2242D68D000B77515 /* ReachedEndCell.xib */,
 				C8049825242E58E300EA61F6 /* AccountCollectionCell.xib */,
+				C8C24DFA243BF9D000E61CEE /* LoadingCell.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 				C8D7EA452416F5F6000195AC /* LaunchScreen.storyboard in Resources */,
 				C89EDF1E24193ADF0075052D /* AccountCard.xib in Resources */,
 				C836F7E3242D68D000B77515 /* ReachedEndCell.xib in Resources */,
+				C8C24DFB243BF9D000E61CEE /* LoadingCell.xib in Resources */,
 				C8502E6E241AA709007A6266 /* TransactionCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +445,7 @@
 			files = (
 				C8AE604A2425890800595773 /* PlaidAPI.swift in Sources */,
 				C805A8B42426AC900091180F /* Account.swift in Sources */,
+				C8C24DFD243BFA1C00E61CEE /* LoadingCell.swift in Sources */,
 				C865C6B924340CBA0094123A /* TransactionsHeaderCell.swift in Sources */,
 				C89EDF222419528C0075052D /* AccountCardViewController.swift in Sources */,
 				C86B9FAF2431435100167CA9 /* AccountDetailsViewModel+FilterTransactions.swift in Sources */,

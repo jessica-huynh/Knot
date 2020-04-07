@@ -10,6 +10,7 @@ import UIKit
 
 class AccountDetailsViewController: UITableViewController {
     var navTitle: String!
+    var spinnerView: UIView!
     var accountType: Account.AccountType!
     var viewModel: AccountDetailsViewModel!
     
@@ -17,12 +18,16 @@ class AccountDetailsViewController: UITableViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedTransactions(_:)), name: .updatedTransactions, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onLoadingChanged(_:)), name: .loadingChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onAddAccountTapped(_:)), name: .addAccountTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSuccessfulLinking(_:)), name: .successfulLinking, object: nil)
         
-        let cellNib = UINib(nibName: "ReachedEndCell", bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: "ReachedEndCell")
+        let reachedEndCell = UINib(nibName: "ReachedEndCell", bundle: nil)
+        let loadingCell = UINib(nibName: "LoadingCell", bundle: nil)
+        tableView.register(reachedEndCell, forCellReuseIdentifier: "ReachedEndCell")
+        tableView.register(loadingCell, forCellReuseIdentifier: "LoadingCell")
         
+        spinnerView = createSpinnerView()
         title = navTitle
         viewModel = AccountDetailsViewModel(for: accountType)
         tableView.dataSource = viewModel
@@ -42,14 +47,20 @@ class AccountDetailsViewController: UITableViewController {
         }
     }
     
+    // MARK: - Notification Selectors
+    @objc func onSuccessfulLinking(_ notification:Notification) {
+        showSpinner(spinnerView: spinnerView)
+    }
+    
     @objc func onUpdatedAccounts(_ notification:Notification) {
         viewModel = AccountDetailsViewModel(for: accountType)
         tableView.dataSource = viewModel
         tableView.delegate = viewModel
         tableView.reloadData()
+        removeSpinner(spinnerView: spinnerView)
     }
     
-    @objc func onUpdatedTransactions(_ notification:Notification) {
+    @objc func onLoadingChanged(_ notification:Notification) {
         tableView.reloadData()
     }
     
@@ -60,6 +71,6 @@ class AccountDetailsViewController: UITableViewController {
 
 // MARK: - Notification Names
 extension Notification.Name {
-    static let updatedTransactions = Notification.Name("updatedTransactions")
+    static let loadingChanged = Notification.Name("loadingChanged")
     static let addAccountTapped = Notification.Name("addAccountTapped")
 }

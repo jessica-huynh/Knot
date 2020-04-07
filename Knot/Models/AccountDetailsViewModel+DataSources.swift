@@ -19,15 +19,15 @@ extension AccountDetailsViewModel: UITableViewDataSource, UITableViewDelegate {
         let sectionType = sections[section].type
         
         if sectionType == .accounts { return 1 }
-        
+        if sectionType == .postedTransactions && isLoading { return 2 }
         if sectionType == .postedTransactions { return sections[section].rowCount + 2}
-        
         if sections[section].rowCount == 0 { return 1 }
         
         return sections[section].rowCount
     }
     
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath)
+        -> IndexPath? {
         return nil
     }
     
@@ -44,6 +44,12 @@ extension AccountDetailsViewModel: UITableViewDataSource, UITableViewDelegate {
             
         case .postedTransactions:
             let section = section as! AccountDetailsViewModelTransactions
+            if isLoading && indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell") as! LoadingCell
+                cell.spinner.startAnimating()
+                return cell
+            }
+            
             if section.filteredTransactions.isEmpty && indexPath.row == 1 {
                 return tableView.dequeueReusableCell(withIdentifier: "NoTransactionsFoundCell")!
             }

@@ -21,6 +21,11 @@ class AccountDetailsViewModel: NSObject {
     var accounts: [Account] = []
     var timeFrame: DateInterval
     var accountFilterItems: [AccountFilterItem] = []
+    var isLoading: Bool = false {
+        didSet {
+            NotificationCenter.default.post(name: .loadingChanged, object: self)
+        }
+    }
     
     enum SectionType: Int {
         case accounts
@@ -36,6 +41,7 @@ class AccountDetailsViewModel: NSObject {
         self.accountType = accountType
         super.init()
         
+        isLoading = true
         if accountType == .depository {
             accounts = storageManager.cashAccounts
             sections.append(AccountDetailsViewModelTransactions(title: "Transactions"))
@@ -66,8 +72,6 @@ class AccountDetailsViewModel: NSObject {
             let pendingTransactions = transactions.filter({ $0.pending })
             let pendingTransactionsSection = self.sections[1] as! AccountDetailsViewModelPendingTransactions
             pendingTransactionsSection.unfilteredTransactions = pendingTransactions
-            
-            self.filterTransactions()
         }
     }
     
