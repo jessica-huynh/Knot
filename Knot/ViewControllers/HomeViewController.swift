@@ -17,6 +17,8 @@ class HomeViewController: UITableViewController {
     var spinnerView: UIView!
     var isLoading: Bool = false
     
+    var isRefreshing: Bool = false
+    
     var balanceIndicatorLabel: UILabel!
     var timeIndicatorLabel: UILabel!
     
@@ -66,6 +68,11 @@ class HomeViewController: UITableViewController {
     
     @IBAction func chartSegmentChanged(_ sender: UISegmentedControl) {
         reloadChart()
+    }
+    
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        isRefreshing = true
+        storageManager.fetchData()
     }
     
     // MARK: - Helper Functions
@@ -175,7 +182,7 @@ class HomeViewController: UITableViewController {
     }
     
     @objc func onUpdatedAccounts(_ notification:Notification) {
-        if !isLoading {
+        if !isLoading && !isRefreshing {
             startSpinner()
         }
         updateChartEntries()
@@ -184,10 +191,16 @@ class HomeViewController: UITableViewController {
     }
     
     @objc func onUpdatedBalanceChartEntries(_ notification:Notification) {
-        // Updating chart entries is the slowest task so we assume the spinner can always be
-        // removed at this point:
-        removeSpinner(spinnerView: spinnerView)
-        isLoading = false
+        // Updating chart entries is always the slowest task so we can remove the spinner or end
+        // refreshing at this point
+        if isLoading {
+            removeSpinner(spinnerView: spinnerView)
+            isLoading = false
+        } else if isRefreshing {
+            refreshControl?.endRefreshing()
+            isRefreshing = false
+        }
+        
         reloadChart()
     }
 }

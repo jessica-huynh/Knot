@@ -309,6 +309,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="gCS-HB-j4Q">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="1Lz-rZ-Lcl" eventType="valueChanged" id="Vug-tf-ObN"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="balanceChartView" destination="6Y1-oz-iPc" id="123-N5-ctD"/>
                         <outlet property="cashBalanceLabel" destination="tNX-h0-L0T" id="ehW-qc-EHV"/>
@@ -405,10 +411,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" id="5nd-YT-yQJ" customClass="TransactionCell" customModule="Knot" customModuleProvider="target">
-                                <rect key="frame" x="20" y="235.5" width="374" height="78.5"/>
+                                <rect key="frame" x="20" y="235.5" width="374" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5nd-YT-yQJ" id="wYj-i5-wAd">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="78.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="78"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;description&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-FP-lvN">
@@ -418,7 +424,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;amount&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaS-Yr-0G0">
-                                            <rect key="frame" x="274" y="27" width="80" height="21.5"/>
+                                            <rect key="frame" x="274" y="27" width="80" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -431,7 +437,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;date&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8E-e3-7qP">
-                                            <rect key="frame" x="36" y="39" width="50" height="18"/>
+                                            <rect key="frame" x="36" y="38.5" width="50" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -457,7 +463,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoTransactionsFoundCell" rowHeight="71" id="6r0-lm-GPB">
-                                <rect key="frame" x="20" y="314" width="374" height="71"/>
+                                <rect key="frame" x="20" y="313.5" width="374" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6r0-lm-GPB" id="cjF-2y-TvS">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
@@ -481,7 +487,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoPendingTransactionsCell" rowHeight="71" id="FSI-3O-wdT">
-                                <rect key="frame" x="20" y="385" width="374" height="71"/>
+                                <rect key="frame" x="20" y="384.5" width="374" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FSI-3O-wdT" id="FvX-1M-Z4e">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
@@ -505,7 +511,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterTransactionsCell" rowHeight="70" id="0MG-kz-W6r" customClass="TransactionsHeaderCell" customModule="Knot" customModuleProvider="target">
-                                <rect key="frame" x="20" y="456" width="374" height="70"/>
+                                <rect key="frame" x="20" y="455.5" width="374" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0MG-kz-W6r" id="LdI-NA-FMh">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
