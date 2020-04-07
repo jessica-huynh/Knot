@@ -30,12 +30,12 @@ extension HomeViewController: ChartViewDelegate {
         timeIndicatorLabel.alpha = 0
         
         let data = LineChartData()
-        data.addDataSet(balanceChartData_1w)
+        data.addDataSet(BalanceChartDataSet())
         balanceChartView.data = data
         
         customize(balanceChart: balanceChartView)
-        customize(lineChartDataSet: balanceChartData_1w)
-        balanceChartData_1w.isCustomized = true
+        //customize(lineChartDataSet: balanceChartData_1w)
+        //balanceChartData_1w.isCustomized = true
         drawChart()
     }
     
@@ -166,20 +166,25 @@ extension HomeViewController: ChartViewDelegate {
         timeIndicatorLabel.fadeOut()
         balanceIndicatorLabel.fadeOut()
         
+        let daysInYear = 365
         if let timePeriod = ChartTimePeriod(rawValue: chartSegmentedControl.selectedSegmentIndex) {
             var newChartData: BalanceChartDataSet
             
             switch timePeriod {
             case ChartTimePeriod.week:
-                newChartData = balanceChartData_1w
+                newChartData =
+                    BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 7)...]))
             case ChartTimePeriod.month:
-                newChartData = balanceChartData_1m
+                newChartData =
+                    BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 30)...]))
             case ChartTimePeriod.threeMonth:
-                newChartData = balanceChartData_3m
+                newChartData =
+                    BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 90)...]))
             case ChartTimePeriod.sixMonth:
-                newChartData = balanceChartData_6m
+                newChartData =
+                    BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 180)...]))
             case ChartTimePeriod.year:
-                newChartData = balanceChartData_1y
+                newChartData = BalanceChartDataSet(entries: balanceChartEntries)
             }
             
             balanceChartView.data?.dataSets[0] = newChartData

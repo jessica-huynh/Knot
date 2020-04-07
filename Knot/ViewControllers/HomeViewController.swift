@@ -23,11 +23,6 @@ class HomeViewController: UITableViewController {
     var recentTransactions: [Transaction] = []
     
     var balanceChartEntries: [ChartDataEntry] = []
-    var balanceChartData_1w = BalanceChartDataSet()
-    var balanceChartData_1m = BalanceChartDataSet()
-    var balanceChartData_3m = BalanceChartDataSet()
-    var balanceChartData_6m = BalanceChartDataSet()
-    var balanceChartData_1y = BalanceChartDataSet()
     
     enum ChartTimePeriod: Int {
         case week
@@ -189,18 +184,6 @@ class HomeViewController: UITableViewController {
     }
     
     @objc func onUpdatedBalanceChartEntries(_ notification:Notification) {
-        let daysInYear = 365
-        balanceChartData_1w =
-            BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 7)...]))
-        balanceChartData_1m =
-            BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 30)...]))
-        balanceChartData_3m =
-            BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 90)...]))
-        balanceChartData_6m =
-            BalanceChartDataSet(entries: Array(balanceChartEntries[(daysInYear - 180)...]))
-        balanceChartData_1y =
-            BalanceChartDataSet(entries: balanceChartEntries)
-        
         // Updating chart entries is the slowest task so we assume the spinner can always be
         // removed at this point:
         removeSpinner(spinnerView: spinnerView)
