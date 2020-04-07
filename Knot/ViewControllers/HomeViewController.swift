@@ -60,7 +60,6 @@ class HomeViewController: UITableViewController {
         spinnerView = createSpinnerView()
         startSpinner()
         updateLabels()
-        storageManager.fetchData()
         setupBalanceChart()
         setupTransactionCollectionVew()
     }
