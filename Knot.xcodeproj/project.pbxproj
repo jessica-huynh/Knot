@@ -52,6 +52,8 @@
 		C8C24DFB243BF9D000E61CEE /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C24DFA243BF9D000E61CEE /* LoadingCell.xib */; };
 		C8C24DFD243BFA1C00E61CEE /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24DFC243BFA1C00E61CEE /* LoadingCell.swift */; };
 		C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */; };
+		C8CF35F7243CDA1C0083C54B /* GettingStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF35F6243CDA1C0083C54B /* GettingStartedViewController.swift */; };
+		C8CF35F9243CDBD30083C54B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF35F8243CDBD30083C54B /* LaunchViewController.swift */; };
 		C8D041BB242E768000C144F3 /* AccountCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */; };
 		C8D041BD242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */; };
 		C8D041BF242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D041BE242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift */; };
@@ -59,7 +61,6 @@
 		C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA292416F336000195AC /* AppDelegate.swift */; };
 		C8D7EA2C2416F336000195AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA2B2416F336000195AC /* SceneDelegate.swift */; };
 		C8D7EA402416F5E7000195AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA3F2416F5E7000195AC /* HomeViewController.swift */; };
-		C8D7EA452416F5F6000195AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D7EA422416F5F6000195AC /* LaunchScreen.storyboard */; };
 		C8D7EA462416F5F6000195AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8D7EA432416F5F6000195AC /* Assets.xcassets */; };
 		C8D7EA472416F5F6000195AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D7EA442416F5F6000195AC /* Main.storyboard */; };
 		C8D7EA4A24171AAD000195AC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA4924171AAD000195AC /* ProfileViewController.swift */; };
@@ -114,6 +115,8 @@
 		C8C24DFA243BF9D000E61CEE /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		C8C24DFC243BFA1C00E61CEE /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSegmentedControl.swift; sourceTree = "<group>"; };
+		C8CF35F6243CDA1C0083C54B /* GettingStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedViewController.swift; sourceTree = "<group>"; };
+		C8CF35F8243CDBD30083C54B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		C8D041BA242E768000C144F3 /* AccountCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionCell.swift; sourceTree = "<group>"; };
 		C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+DrawBorder.swift"; sourceTree = "<group>"; };
 		C8D041BE242E9FAA00C144F3 /* AccountDetailsViewModel+DataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountDetailsViewModel+DataSources.swift"; sourceTree = "<group>"; };
@@ -123,7 +126,6 @@
 		C8D7EA2B2416F336000195AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C8D7EA372416F33D000195AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8D7EA3F2416F5E7000195AC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		C8D7EA422416F5F6000195AC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Knot/Resources/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		C8D7EA432416F5F6000195AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8D7EA442416F5F6000195AC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C8D7EA4924171AAD000195AC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +294,8 @@
 				C89EDF212419528C0075052D /* AccountCardViewController.swift */,
 				C8AFE36C24327C420085047A /* FilterTransactionsViewController.swift */,
 				C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */,
+				C8CF35F8243CDBD30083C54B /* LaunchViewController.swift */,
+				C8CF35F6243CDA1C0083C54B /* GettingStartedViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -300,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				C8D7EA442416F5F6000195AC /* Main.storyboard */,
-				C8D7EA422416F5F6000195AC /* LaunchScreen.storyboard */,
 				C8D7EA432416F5F6000195AC /* Assets.xcassets */,
 				C8B47245241F0BD700E9A85A /* Extensions */,
 				C89EDF1A241939300075052D /* Nibs */,
@@ -386,7 +389,6 @@
 				C8AE60472425864500595773 /* .gitignore in Resources */,
 				C890B974241D96390087FC3E /* Podfile in Resources */,
 				C8D7EA462416F5F6000195AC /* Assets.xcassets in Resources */,
-				C8D7EA452416F5F6000195AC /* LaunchScreen.storyboard in Resources */,
 				C89EDF1E24193ADF0075052D /* AccountCard.xib in Resources */,
 				C836F7E3242D68D000B77515 /* ReachedEndCell.xib in Resources */,
 				C8C24DFB243BF9D000E61CEE /* LoadingCell.xib in Resources */,
@@ -474,6 +476,7 @@
 				C83EB0C22427D24900FC39E5 /* Balance.swift in Sources */,
 				C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */,
 				C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */,
+				C8CF35F9243CDBD30083C54B /* LaunchViewController.swift in Sources */,
 				C8C24DF9243BF24400E61CEE /* UIViewController+SpinnerView.swift in Sources */,
 				C865C6BD24341CAB0094123A /* UIColor+Hex.swift in Sources */,
 				C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */,
@@ -482,6 +485,7 @@
 				C8B47247241F0C2D00E9A85A /* UIView+FadeAnimation.swift in Sources */,
 				C8B584B424201C9100DA28D9 /* HomeViewController+Transactions.swift in Sources */,
 				C86EBF0E24296DCB00EE3E27 /* GetTransactionsResponse.swift in Sources */,
+				C8CF35F7243CDA1C0083C54B /* GettingStartedViewController.swift in Sources */,
 				C897CBE0242933BD00B2D150 /* Transaction.swift in Sources */,
 				C86B9FAB24313DB400167CA9 /* NoSelectTextField.swift in Sources */,
 				C836F7E7242D6C6D00B77515 /* RecentTransactionCell.swift in Sources */,
