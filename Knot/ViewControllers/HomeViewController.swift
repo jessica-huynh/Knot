@@ -65,11 +65,6 @@ class HomeViewController: UITableViewController {
         setupTransactionCollectionVew()
     }
     
-    func startSpinner() {
-        showSpinner(spinnerView: spinnerView)
-        isLoading = true
-    }
-    
     // MARK: - Actions
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         presentPlaidLink()
@@ -80,6 +75,11 @@ class HomeViewController: UITableViewController {
     }
     
     // MARK: - Helper Functions
+    func startSpinner() {
+        showSpinner(spinnerView: spinnerView)
+        isLoading = true
+    }
+    
     func updateLabels() {
         let cashBalance = calculateBalance(for: storageManager.cashAccounts)
         let creditBalance = calculateBalance(for: storageManager.creditAccounts)
