@@ -35,13 +35,13 @@ class AccountCard: UIView {
     }
     
     func draw(with colour: UIColor) {
-        let border = CAShapeLayer()
-        border.frame = self.contentView.bounds
-        border.fillColor = nil
-        border.strokeColor = colour.cgColor
-        border.lineWidth = 1.0
-        border.path = UIBezierPath(roundedRect: self.contentView.bounds, cornerRadius: 10).cgPath
-        self.contentView.layer.addSublayer(border)
+        let cardLayer = CAShapeLayer()
+        cardLayer.frame = self.contentView.bounds
+        cardLayer.fillColor = colour.cgColor
+        cardLayer.strokeColor = colour.cgColor
+        cardLayer.lineWidth = 1.0
+        cardLayer.path = UIBezierPath(roundedRect: self.contentView.bounds, cornerRadius: 10).cgPath
+        self.contentView.layer.insertSublayer(cardLayer, at: 0)
     }
 
     func updateCard(using account: Account) {
@@ -55,12 +55,6 @@ class AccountCard: UIView {
         }
         
         logoImage.image = UIImage.base64Convert(base64String: account.institution.logo)
-        
-        if let hexColour = account.institution.primaryColour {
-            draw(with: UIColor(hexString: hexColour))
-        } else {
-            draw(with: UIColor.lightGray)
-        }
-        
+        draw(with: UIColor(hexString: account.institution.colour))
     }
 }
