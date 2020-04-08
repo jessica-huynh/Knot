@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UITableViewCell {
-    static let lighGrayBackgroundView: UIView = {
+    static let lightGrayBackgroundView: UIView = {
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor(hexString: "#fafafa")
         return backgroundView

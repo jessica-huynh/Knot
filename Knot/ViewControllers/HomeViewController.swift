@@ -173,7 +173,7 @@ class HomeViewController: UITableViewController {
      }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.selectedBackgroundView = UITableViewCell.lighGrayBackgroundView
+        cell.selectedBackgroundView = UITableViewCell.lightGrayBackgroundView
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -64,7 +64,7 @@ extension ProfileViewModel: UITableViewDataSource, UITableViewDelegate {
             }
             
             cell.detailTextLabel?.text = section.accounts[indexPath.row].name
-            cell.selectedBackgroundView = UITableViewCell.lighGrayBackgroundView
+            cell.selectedBackgroundView = UITableViewCell.lightGrayBackgroundView
             
             return cell
             

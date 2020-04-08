@@ -57,7 +57,7 @@ class FilterTransactionsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccountFilterCell", for: indexPath)
         let account = accountFilterItems[indexPath.row].account
         
-        cell.selectedBackgroundView = UITableViewCell.lighGrayBackgroundView
+        cell.selectedBackgroundView = UITableViewCell.lightGrayBackgroundView
         cell.textLabel?.text = account.name
         
         if let mask = account.mask {
