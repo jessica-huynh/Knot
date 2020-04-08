@@ -11,6 +11,9 @@ import Foundation
 struct Institution: Codable {
     let name, id: String
     let primaryColour, logo: String?
+    var colour: String {
+        return (primaryColour == nil || primaryColour! == "#ffffff") ? "#dddddd" : primaryColour!
+    }
 
     enum CodingKeys: String, CodingKey {
         case name, logo
