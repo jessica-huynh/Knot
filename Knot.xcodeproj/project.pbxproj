@@ -12,6 +12,7 @@
 		C805A8B224267DCB0091180F /* Institution.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B124267DCB0091180F /* Institution.swift */; };
 		C805A8B42426AC900091180F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805A8B32426AC900091180F /* Account.swift */; };
 		C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44724282E6C00AEC207 /* StorageManager.swift */; };
+		C8148D8B243E893200B2C321 /* UIColor+Adjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8148D8A243E893200B2C321 /* UIColor+Adjust.swift */; };
 		C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */; };
 		C82493F7243550130093A209 /* UIImage+Base64Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82493F6243550130093A209 /* UIImage+Base64Convert.swift */; };
 		C836F7E3242D68D000B77515 /* ReachedEndCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C836F7E2242D68D000B77515 /* ReachedEndCell.xib */; };
@@ -76,6 +77,7 @@
 		C805A8B124267DCB0091180F /* Institution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Institution.swift; sourceTree = "<group>"; };
 		C805A8B32426AC900091180F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		C810D44724282E6C00AEC207 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		C8148D8A243E893200B2C321 /* UIColor+Adjust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Adjust.swift"; sourceTree = "<group>"; };
 		C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SolidColour.swift"; sourceTree = "<group>"; };
 		C82493F6243550130093A209 /* UIImage+Base64Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Base64Convert.swift"; sourceTree = "<group>"; };
 		C836F7E2242D68D000B77515 /* ReachedEndCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReachedEndCell.xib; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				C8C24DF8243BF24400E61CEE /* UIViewController+SpinnerView.swift */,
 				C86B9FAC243142E400167CA9 /* Date+Helpers.swift */,
 				C865C6BC24341CAA0094123A /* UIColor+Hex.swift */,
+				C8148D8A243E893200B2C321 /* UIColor+Adjust.swift */,
 				C874DE31243E30DF00A77429 /* UITableViewCell+SelectedBackgroundView.swift */,
 			);
 			path = Extensions;
@@ -472,6 +475,7 @@
 				C8D7EA2A2416F336000195AC /* AppDelegate.swift in Sources */,
 				C8D7EA4A24171AAD000195AC /* ProfileViewController.swift in Sources */,
 				C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */,
+				C8148D8B243E893200B2C321 /* UIColor+Adjust.swift in Sources */,
 				C8AE604C2425899000595773 /* PlaidManager.swift in Sources */,
 				C86D5EEF2419A72400D70126 /* AccountCell.swift in Sources */,
 				C8AFE36D24327C420085047A /* FilterTransactionsViewController.swift in Sources */,
