@@ -24,12 +24,7 @@ class AccountCollectionCell: UICollectionViewCell {
         institutionLabel.text = account.institution.name
         nameLabel.text = account.name
         balanceLabel.text = account.balance.current.toCurrency()!
-        
-        if let hexColour = account.institution.primaryColour {
-            institutionColour.tintColor = UIColor(hexString: hexColour)
-        } else {
-            institutionColour.tintColor = UIColor.clear
-        }
+        institutionColour.tintColor = UIColor(hexString: account.institution.colour)
         
         if account.type == .credit {
             detailsLabel.text = "Limit: \(account.balance.limit!.toCurrency()!)"
