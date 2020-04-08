@@ -9,7 +9,7 @@
 import Foundation
 
 extension Date {
-    static let today: Date = Date()
+    static let today: Date = Date().startOfDay()
     
     func nextDay() -> Date {
         return Calendar.current.date(byAdding: DateComponents(day: 1), to: self)!
@@ -25,5 +25,9 @@ extension Date {
 
     func endOfMonth() -> Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+    }
+    
+    func startOfDay() -> Date {
+      return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self))!
     }
 }
