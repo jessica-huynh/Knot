@@ -64,6 +64,8 @@ extension ProfileViewModel: UITableViewDataSource, UITableViewDelegate {
             }
             
             cell.detailTextLabel?.text = section.accounts[indexPath.row].name
+            cell.selectedBackgroundView = UITableViewCell.lighGrayBackgroundView
+            
             return cell
             
         case .eraseData:
