@@ -17,7 +17,6 @@ class PlaidManager {
     let storageManager = StorageManager.instance
     
     let publicKey: String, clientID: String, secret: String, environment: Environment
-    var state: State = .ready
     
     enum Environment: String {
         case sandbox, development
@@ -28,11 +27,6 @@ class PlaidManager {
             case .development: return .development
             }
         }
-    }
-    
-    enum State {
-        case ready
-        case loading
     }
     
     private init() {
@@ -148,7 +142,6 @@ class PlaidManager {
             // If no accounts types were added, remove the access token from storage
             if self.storageManager.accessTokens[accessToken]!.isEmpty {
                 self.storageManager.accessTokens.removeValue(forKey: accessToken)
-                // TODO: Notify user of no valid account types
             } else {
                 NotificationCenter.default.post(name: .updatedAccounts, object: self)
                 self.storageManager.saveData()
