@@ -172,10 +172,6 @@ class HomeViewController: UITableViewController {
         return indexPath
      }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     // MARK: - Notification Selectors
     @objc func onSuccessfulLinking(_ notification:Notification) {
         startSpinner()

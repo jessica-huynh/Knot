@@ -41,7 +41,6 @@ class FilterTransactionsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if checkedAccounts.count == 1 && checkedAccounts.contains(accountFilterItems[indexPath.row])  {
-            tableView.deselectRow(at: indexPath, animated: true)
             return
         }
         
@@ -50,7 +49,6 @@ class FilterTransactionsViewController: UITableViewController {
             accountFilterItems[indexPath.row] = filterItem.with(account: filterItem.account, isChecked: !filterItem.isChecked)
             configureCheckmark(for: cell, at: indexPath)
         }
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
