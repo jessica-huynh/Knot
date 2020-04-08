@@ -16,7 +16,7 @@ class AccountCollectionCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var institutionLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
-    @IBOutlet weak var sidebar: UIView!
+    @IBOutlet weak var institutionColour: UIImageView!
     
     func configure(for account: Account) {
         self.drawBorder()
@@ -26,9 +26,9 @@ class AccountCollectionCell: UICollectionViewCell {
         balanceLabel.text = account.balance.current.toCurrency()!
         
         if let hexColour = account.institution.primaryColour {
-            sidebar.backgroundColor = UIColor(hexString: hexColour)
+            institutionColour.tintColor = UIColor(hexString: hexColour)
         } else {
-            sidebar.backgroundColor = UIColor.clear
+            institutionColour.tintColor = UIColor.clear
         }
         
         if account.type == .credit {
