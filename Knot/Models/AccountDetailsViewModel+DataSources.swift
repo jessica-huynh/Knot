@@ -55,8 +55,9 @@ extension AccountDetailsViewModel: UITableViewDataSource, UITableViewDelegate {
             }
             
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTransactionsCell") as! TransactionsHeaderCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionsHeaderCell") as! TransactionsHeaderCell
                 cell.delegate = self
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.width);
                 return cell
             }
             
