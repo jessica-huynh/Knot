@@ -14,6 +14,10 @@ extension HomeViewController: ChartViewDelegate {
     func setupBalanceChart() {
         balanceChartView.delegate = self
         
+        indicatorPoint = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        indicatorPoint.image = UIImage(systemName: "circle.fill")
+        balanceChartView.addSubview(indicatorPoint)
+        
         balanceIndicatorLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 82, height: 21))
         balanceIndicatorLabel.font = UIFont.systemFont(ofSize: 14)
         balanceIndicatorLabel.textColor = UIColor.systemGray
@@ -28,14 +32,13 @@ extension HomeViewController: ChartViewDelegate {
         
         balanceIndicatorLabel.alpha = 0
         timeIndicatorLabel.alpha = 0
+        indicatorPoint.alpha = 0
         
         let data = LineChartData()
         data.addDataSet(BalanceChartDataSet())
         balanceChartView.data = data
         
         customize(balanceChart: balanceChartView)
-        //customize(lineChartDataSet: balanceChartData_1w)
-        //balanceChartData_1w.isCustomized = true
         drawChart()
     }
     
@@ -165,6 +168,7 @@ extension HomeViewController: ChartViewDelegate {
     func reloadChart() {
         timeIndicatorLabel.fadeOut()
         balanceIndicatorLabel.fadeOut()
+        indicatorPoint.fadeOut()
         
         let daysInYear = 365
         if let timePeriod = ChartTimePeriod(rawValue: chartSegmentedControl.selectedSegmentIndex) {
@@ -203,6 +207,7 @@ extension HomeViewController: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         timeIndicatorLabel.center = CGPoint(x: highlight.xPx + 40, y: -15)
         balanceIndicatorLabel.center = CGPoint(x: highlight.xPx + 40, y: 2)
+        indicatorPoint.center = CGPoint(x: highlight.xPx, y: highlight.yPx)
  
         timeIndicatorLabel.text = entry.data as? String
         
@@ -214,5 +219,6 @@ extension HomeViewController: ChartViewDelegate {
 
         timeIndicatorLabel.fadeIn()
         balanceIndicatorLabel.fadeIn()
+        indicatorPoint.fadeIn()
     }
 }

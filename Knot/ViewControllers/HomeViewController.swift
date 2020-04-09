@@ -21,6 +21,7 @@ class HomeViewController: UITableViewController {
     
     var balanceIndicatorLabel: UILabel!
     var timeIndicatorLabel: UILabel!
+    var indicatorPoint: UIImageView!
     
     var recentTransactions: [Transaction] = []
     
