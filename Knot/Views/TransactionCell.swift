@@ -14,7 +14,6 @@ class TransactionCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var institutionColour: UIImageView!
 
     func configure(using transaction: Transaction) {
         let dateFormatter = DateFormatter()
@@ -25,7 +24,5 @@ class TransactionCell: UITableViewCell {
         amountLabel.text = transaction.amount.toCurrency()!
         amountLabel.textColor = transaction.amount > 0 ? UIColor.systemGreen : UIColor.black
         
-        let account = StorageManager.instance.account(for: transaction.accountID)!
-        institutionColour.tintColor = UIColor(hexString: account.institution.colour)
     }
 }
