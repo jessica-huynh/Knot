@@ -10,31 +10,34 @@ import UIKit
 
 class AccountCollectionCell: UICollectionViewCell {
     
-    //MARK: - Outlets
-    
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var institutionLabel: UILabel!
-    @IBOutlet weak var detailsLabel: UILabel!
-    @IBOutlet weak var institutionColour: UIImageView!
     
     func configure(for account: Account) {
-        self.drawBorder()
-        
-        institutionLabel.text = account.institution.name
+        drawCard(with: UIColor(hexString: account.institution.colour).darken(by: 10))
         nameLabel.text = account.name
         balanceLabel.text = account.balance.current.toCurrency()!
-        institutionColour.tintColor = UIColor(hexString: account.institution.colour)
+        institutionLabel.text = account.institution.name.uppercased()
+    }
+    
+    func drawCard(with colour: UIColor) {
+        contentView.layer.cornerRadius = 10
+        contentView.layer.masksToBounds = true
         
-        if account.type == .credit {
-            detailsLabel.text = "Limit: \(account.balance.limit!.toCurrency()!)"
-            return
+        let layerName = "cardLayer"
+        let cardLayer = CAShapeLayer()
+        cardLayer.name = layerName
+        cardLayer.frame = self.contentView.bounds
+        cardLayer.fillColor = colour.cgColor
+        cardLayer.strokeColor = colour.cgColor
+        cardLayer.lineWidth = 1.0
+        cardLayer.path = UIBezierPath(roundedRect: self.contentView.bounds, cornerRadius: 10).cgPath
+        
+        if let sublayer = sublayer(with: layerName) {
+            contentView.layer.replaceSublayer(sublayer, with: cardLayer)
+        } else {
+            contentView.layer.insertSublayer(cardLayer, at: 0)
         }
-        // If account type is cash:
-        var holds: Double = 0
-        if let availableBalance = account.balance.available {
-            holds = account.balance.current - availableBalance
-        }
-        detailsLabel.text = "Holds: \(holds.toCurrency()!)"
     }
 }
