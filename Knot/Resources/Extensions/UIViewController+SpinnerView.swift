@@ -13,9 +13,9 @@ extension UIViewController {
     func createSpinnerView() -> UIView {
         let spinnerView = UIView(frame: view.bounds)
         spinnerView.backgroundColor = UIColor.white
-        let spinner = UIActivityIndicatorView.init(style: .medium)
+        let spinner = UIActivityIndicatorView.init(style: .large)
         spinner.startAnimating()
-        spinner.center = CGPoint(x: spinnerView.center.x, y: spinnerView.center.y - 44)
+        spinner.center = spinnerView.center
         spinnerView.addSubview(spinner)
         return spinnerView
     }
