@@ -112,7 +112,7 @@ class AccountDetailsViewModelAccounts: AccountDetailsViewModelSection {
     }
     
     var title: String {
-        return "Accounts"
+        return ""
     }
     
     var rowCount: Int {
