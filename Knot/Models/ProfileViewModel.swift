@@ -29,7 +29,9 @@ class ProfileViewModel: NSObject {
         super.init()
         
         sections.append(ProfileViewModelAccounts(accounts: storageManager.accounts))
-        sections.append(ProfileViewModelEraseData())
+        if !storageManager.accounts.isEmpty {
+            sections.append(ProfileViewModelEraseData())
+        }
     }
 }
 
