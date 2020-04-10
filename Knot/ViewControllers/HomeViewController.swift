@@ -20,7 +20,7 @@ class HomeViewController: UITableViewController {
     var isRefreshing: Bool = false
     
     var balanceIndicatorLabel: UILabel!
-    var timeIndicatorLabel: UILabel!
+    var dateIndicatorLabel: UILabel!
     var indicatorPoint: UIImageView!
     
     var recentTransactions: [Transaction] = []
@@ -74,6 +74,41 @@ class HomeViewController: UITableViewController {
     @IBAction func refresh(_ sender: UIRefreshControl) {
         isRefreshing = true
         storageManager.fetchData()
+    }
+    
+    // MARK: - Table View Delegates
+     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 0 || indexPath.section == 2 {
+            return nil
+        }
+        
+        if indexPath == IndexPath(row: 0, section: 1) && storageManager.cashAccounts.isEmpty {
+            return nil
+        } else if indexPath == IndexPath(row: 1, section: 1) && storageManager.creditAccounts.isEmpty {
+            return nil
+        }
+        return indexPath
+     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectedBackgroundView = UITableViewCell.lightGrayBackgroundView
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionTitle: UILabel = UILabel()
+        sectionTitle.frame = CGRect(x: 30, y: 0, width: 320, height: 30)
+        sectionTitle.font = UIFont.boldSystemFont(ofSize: 18)
+        sectionTitle.textColor = UIColor.black
+        sectionTitle.text = self.tableView(tableView, titleForHeaderInSection: section)
+
+        let headerView = UIView()
+        headerView.addSubview(sectionTitle)
+
+        return headerView
     }
     
     // MARK: - Helper Functions
@@ -157,28 +192,6 @@ class HomeViewController: UITableViewController {
             let controller = segue.destination as! RecentTransactionsViewController
             controller.recentTransactions = recentTransactions
         }
-    }
-    
-     // MARK: - Table View Delegates
-     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.section == 0 || indexPath.section == 2 {
-            return nil
-        }
-        
-        if indexPath == IndexPath(row: 0, section: 1) && storageManager.cashAccounts.isEmpty {
-            return nil
-        } else if indexPath == IndexPath(row: 1, section: 1) && storageManager.creditAccounts.isEmpty {
-            return nil
-        }
-        return indexPath
-     }
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.selectedBackgroundView = UITableViewCell.lightGrayBackgroundView
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - Notification Selectors

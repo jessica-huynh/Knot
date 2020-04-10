@@ -75,6 +75,7 @@ class TransactionsHeaderCell: UITableViewCell {
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.finishedPicking))
+        doneButton.tintColor = UIColor(hexString: "#63BBD7")
         
         toolBar.setItems([flexibleSpace, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true

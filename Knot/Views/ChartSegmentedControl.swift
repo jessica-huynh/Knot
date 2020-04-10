@@ -33,6 +33,6 @@ class ChartSegmentedControl: UISegmentedControl {
         
         setTitleTextAttributes([.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)], for: .normal)
  
-        setTitleTextAttributes([.foregroundColor: tintColor!, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)], for: .selected)
+        setTitleTextAttributes([.foregroundColor: UIColor.init(hexString: "#63BBD7"), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)], for: .selected)
     }
 }

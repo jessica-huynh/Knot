@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,66 +10,64 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Knot" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TransactionCollectionCell" id="3L2-Wr-6Jm" customClass="TransactionCollectionCell" customModule="Knot" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="107" height="126"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tBO-1H-g5p">
-                <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="107" height="126"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;payment description&gt;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feL-Ih-2gz">
-                        <rect key="frame" x="8" y="74" width="84" height="36"/>
+                        <rect key="frame" x="8" y="76" width="88" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="84" id="lob-nd-pYR"/>
-                            <constraint firstAttribute="height" constant="36" id="yUH-o2-CE6"/>
+                            <constraint firstAttribute="width" constant="88" id="5V0-bK-mod"/>
+                            <constraint firstAttribute="height" constant="34" id="WzT-4N-8xh"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cBT-sQ-4bA">
-                        <rect key="frame" x="40" y="17.5" width="20" height="19"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cBT-sQ-4bA">
+                        <rect key="frame" x="43" y="15.5" width="20" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="3rP-ff-EJy"/>
+                            <constraint firstAttribute="height" constant="20" id="jM4-a9-dlE"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;amt&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="9Du-Mq-8KX">
-                        <rect key="frame" x="8" y="45" width="84" height="21"/>
+                        <rect key="frame" x="9" y="43" width="88" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="84" id="6oS-xj-sh7"/>
+                            <constraint firstAttribute="height" constant="25" id="uXt-aQ-9DK"/>
+                            <constraint firstAttribute="width" constant="88" id="vi3-37-RBt"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;account&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iQ-ty-cqo">
-                        <rect key="frame" x="8" y="118" width="84" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="84" id="Lgb-mQ-eeJ"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="9Du-Mq-8KX" firstAttribute="centerX" secondItem="tBO-1H-g5p" secondAttribute="centerX" id="8b0-Hz-K8T"/>
-                    <constraint firstItem="9Du-Mq-8KX" firstAttribute="centerY" secondItem="tBO-1H-g5p" secondAttribute="centerY" constant="-19.5" id="CjC-Qs-rYW"/>
-                    <constraint firstItem="feL-Ih-2gz" firstAttribute="centerY" secondItem="tBO-1H-g5p" secondAttribute="centerY" constant="17" id="SVz-pK-9TS"/>
-                    <constraint firstItem="7iQ-ty-cqo" firstAttribute="centerX" secondItem="tBO-1H-g5p" secondAttribute="centerX" id="Wn9-x1-jAM"/>
-                    <constraint firstItem="cBT-sQ-4bA" firstAttribute="centerX" secondItem="tBO-1H-g5p" secondAttribute="centerX" id="duA-RB-DvM"/>
-                    <constraint firstItem="feL-Ih-2gz" firstAttribute="centerX" secondItem="tBO-1H-g5p" secondAttribute="centerX" id="nGL-as-x53"/>
-                    <constraint firstItem="cBT-sQ-4bA" firstAttribute="centerY" secondItem="tBO-1H-g5p" secondAttribute="centerY" constant="-48" id="oVa-4h-6RV"/>
-                    <constraint firstAttribute="bottom" secondItem="7iQ-ty-cqo" secondAttribute="bottom" constant="18" id="r9C-OM-bG4"/>
+                    <constraint firstAttribute="bottom" secondItem="feL-Ih-2gz" secondAttribute="bottom" constant="16" id="Dbt-gw-mxY"/>
+                    <constraint firstAttribute="trailing" secondItem="cBT-sQ-4bA" secondAttribute="trailing" constant="44" id="Nua-Dc-Axu"/>
+                    <constraint firstItem="cBT-sQ-4bA" firstAttribute="top" secondItem="tBO-1H-g5p" secondAttribute="top" constant="15" id="PbZ-mB-B6v"/>
+                    <constraint firstItem="feL-Ih-2gz" firstAttribute="top" secondItem="9Du-Mq-8KX" secondAttribute="bottom" constant="8" id="V2u-h2-HXY"/>
+                    <constraint firstItem="cBT-sQ-4bA" firstAttribute="leading" secondItem="tBO-1H-g5p" secondAttribute="leading" constant="43" id="ZgQ-dZ-si3"/>
+                    <constraint firstAttribute="trailing" secondItem="feL-Ih-2gz" secondAttribute="trailing" constant="11" id="dJy-1o-23s"/>
+                    <constraint firstItem="9Du-Mq-8KX" firstAttribute="top" secondItem="cBT-sQ-4bA" secondAttribute="bottom" constant="8" id="dht-hI-oZV"/>
+                    <constraint firstItem="feL-Ih-2gz" firstAttribute="leading" secondItem="tBO-1H-g5p" secondAttribute="leading" constant="8" id="evc-yt-eO9"/>
+                    <constraint firstItem="9Du-Mq-8KX" firstAttribute="leading" secondItem="tBO-1H-g5p" secondAttribute="leading" constant="9" id="w4K-re-jR5"/>
+                    <constraint firstAttribute="trailing" secondItem="9Du-Mq-8KX" secondAttribute="trailing" constant="10" id="wah-hZ-HiC"/>
                 </constraints>
             </collectionViewCellContentView>
+            <size key="customSize" width="107" height="126"/>
             <connections>
-                <outlet property="accountLabel" destination="7iQ-ty-cqo" id="4e6-1g-5jq"/>
                 <outlet property="amountLabel" destination="9Du-Mq-8KX" id="qF9-dJ-kaF"/>
                 <outlet property="descriptionLabel" destination="feL-Ih-2gz" id="pkl-6J-7Dv"/>
                 <outlet property="icon" destination="cBT-sQ-4bA" id="TtY-lp-u9J"/>
             </connections>
-            <point key="canvasLocation" x="86.956521739130437" y="40.848214285714285"/>
+            <point key="canvasLocation" x="92.028985507246389" y="30.133928571428569"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="plus.circle" catalog="system" width="64" height="60"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

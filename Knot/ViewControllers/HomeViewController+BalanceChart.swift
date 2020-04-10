@@ -16,6 +16,7 @@ extension HomeViewController: ChartViewDelegate {
         
         indicatorPoint = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
         indicatorPoint.image = UIImage(systemName: "circle.fill")
+        indicatorPoint.tintColor = UIColor(hexString: "#63BBD7")
         balanceChartView.addSubview(indicatorPoint)
         
         balanceIndicatorLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 82, height: 21))
@@ -24,14 +25,14 @@ extension HomeViewController: ChartViewDelegate {
         balanceIndicatorLabel.adjustsFontSizeToFitWidth = true
         balanceChartView.addSubview(balanceIndicatorLabel)
         
-        timeIndicatorLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 82, height: 21))
-        timeIndicatorLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
-        timeIndicatorLabel.textColor = UIColor.systemBlue
-        timeIndicatorLabel.adjustsFontSizeToFitWidth = true
-        balanceChartView.addSubview(timeIndicatorLabel)
+        dateIndicatorLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 82, height: 21))
+        dateIndicatorLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
+        dateIndicatorLabel.textColor = UIColor(hexString: "#63BBD7")
+        dateIndicatorLabel.adjustsFontSizeToFitWidth = true
+        balanceChartView.addSubview(dateIndicatorLabel)
         
         balanceIndicatorLabel.alpha = 0
-        timeIndicatorLabel.alpha = 0
+        dateIndicatorLabel.alpha = 0
         indicatorPoint.alpha = 0
         
         let data = LineChartData()
@@ -125,7 +126,7 @@ extension HomeViewController: ChartViewDelegate {
     }
     
     func customize(lineChartDataSet: LineChartDataSet) {
-        lineChartDataSet.colors = [UIColor.systemBlue]
+        lineChartDataSet.colors = [UIColor(hexString: "#63BBD7")]
         lineChartDataSet.lineWidth = 2.0
         lineChartDataSet.drawCirclesEnabled = false
         lineChartDataSet.drawValuesEnabled = false
@@ -135,7 +136,7 @@ extension HomeViewController: ChartViewDelegate {
         lineChartDataSet.highlightLineWidth = 2
         lineChartDataSet.highlightLineDashLengths = [2.0]
         
-        drawGradient(for: lineChartDataSet, using: UIColor.systemBlue, bottomColour: UIColor.white)
+        drawGradient(for: lineChartDataSet, using: UIColor(hexString: "#63BBD7"), bottomColour: UIColor.white)
     }
     
     func drawGradient(for lineChart: LineChartDataSet, using topColour: UIColor, bottomColour: UIColor) {
@@ -166,7 +167,7 @@ extension HomeViewController: ChartViewDelegate {
     
     // MARK: - Reload Chart
     func reloadChart() {
-        timeIndicatorLabel.fadeOut()
+        dateIndicatorLabel.fadeOut()
         balanceIndicatorLabel.fadeOut()
         indicatorPoint.fadeOut()
         
@@ -205,11 +206,11 @@ extension HomeViewController: ChartViewDelegate {
     
     // MARK: - Chart Delegate Functions
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        timeIndicatorLabel.center = CGPoint(x: highlight.xPx + 40, y: -15)
+        dateIndicatorLabel.center = CGPoint(x: highlight.xPx + 40, y: -15)
         balanceIndicatorLabel.center = CGPoint(x: highlight.xPx + 40, y: 2)
         indicatorPoint.center = CGPoint(x: highlight.xPx, y: highlight.yPx)
  
-        timeIndicatorLabel.text = entry.data as? String
+        dateIndicatorLabel.text = entry.data as? String
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -217,7 +218,7 @@ extension HomeViewController: ChartViewDelegate {
             balanceIndicatorLabel.text = "\(balance)"
         }
 
-        timeIndicatorLabel.fadeIn()
+        dateIndicatorLabel.fadeIn()
         balanceIndicatorLabel.fadeIn()
         indicatorPoint.fadeIn()
     }

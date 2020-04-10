@@ -14,7 +14,6 @@ class TransactionCollectionCell: UICollectionViewCell {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var accountLabel: UILabel!
     
     func configure(for transaction: Transaction) {
         self.drawBorder()
@@ -22,7 +21,7 @@ class TransactionCollectionCell: UICollectionViewCell {
         let absAmount = abs(transaction.amount)
         amountLabel.text = absAmount.toCurrency()!
         descriptionLabel.text = transaction.name
-        accountLabel.text = StorageManager.instance.account(for: transaction.accountID)?.name
-        icon.tintColor = transaction.amount > 0 ? UIColor.systemGreen : UIColor.systemRed
+        icon.tintColor = transaction.amount > 0 ? UIColor(hexString: "#7ec290") : UIColor(hexString: "#eb7171")
+        icon.image = transaction.amount > 0 ? UIImage(systemName: "plus.circle.fill") : UIImage(systemName: "minus.circle.fill")
     }
 }
