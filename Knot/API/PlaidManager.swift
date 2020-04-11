@@ -33,7 +33,7 @@ class PlaidManager {
         let keys = KnotKeys()
         publicKey = keys.publicKey
         clientID = keys.clientID
-        environment = .sandbox // Change Plaid environment from here
+        environment = .development // Change Plaid environment from here
         secret = (environment == .sandbox) ? keys.secret_sandbox : keys.secret_development
     }
     
