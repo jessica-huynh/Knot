@@ -59,7 +59,7 @@ extension HomeViewController: ChartViewDelegate {
                     daysBalanceChanged.append((currentDate, netBalance))
                     currentDate = transaction.date
                 }
-                netBalance = netBalance + (transaction.accountType == .credit ? -transaction.amount : transaction.amount)
+                netBalance = netBalance + (transaction.accountType == .credit ? transaction.amount : -transaction.amount)
             }
             daysBalanceChanged.append((currentDate, netBalance))
             daysBalanceChanged.reverse()
