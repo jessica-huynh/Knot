@@ -100,51 +100,12 @@ class PlaidManager {
                         guard let self = self else { return }
                         
                         let institutionResponse = try GetInstitutionResponse(data: institutionResponse.data)
-                        self.setupAccounts(using: exchangeTokenResponse.accessToken, for: institutionResponse.institution)
+                        self.storageManager.addAccounts(using: exchangeTokenResponse.accessToken, for: institutionResponse.institution)
                     }
             
                 } catch {
                     print("Could not parse JSON: \(error)")
                 }
-            }
-        }
-    }
-    
-    func setupAccounts(using accessToken: String, for institution: Institution) {
-        storageManager.accessTokens.updateValue([], forKey: accessToken)
-        
-        request(for: .getAccounts(accessToken: accessToken)) {
-            [weak self] response in
-            guard let self = self else { return }
-            
-            let response = try GetAccountsResponse(data: response.data)
-            let accounts = response.accounts
-            
-            for account in accounts {
-                if self.storageManager.accounts.contains(where: { $0.id == account.id }) {
-                    print("\n----FOUND DUPLICATE ACCOUNT---\n")
-                    continue
-                }
-                
-                let account = account.updateDateAdded()
-                if account.type == .depository || account.type == .credit {
-                    self.storageManager.accessTokens[accessToken]!.append(account.id)
-                    self.storageManager.institutionsByID[account.id] = institution
-                }
-                
-                if account.type == .depository {
-                    self.storageManager.cashAccounts.append(account)
-                } else if account.type == .credit {
-                    self.storageManager.creditAccounts.append(account)
-                }
-            }
-            
-            // If no accounts types were added, remove the access token from storage
-            if self.storageManager.accessTokens[accessToken]!.isEmpty {
-                self.storageManager.accessTokens.removeValue(forKey: accessToken)
-            } else {
-                NotificationCenter.default.post(name: .updatedAccounts, object: self)
-                self.storageManager.saveData()
             }
         }
     }

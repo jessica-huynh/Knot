@@ -86,6 +86,45 @@ class StorageManager {
         return nil
     }
     
+    func addAccounts(using accessToken: String, for institution: Institution) {
+        accessTokens.updateValue([], forKey: accessToken)
+        
+        PlaidManager.instance.request(for: .getAccounts(accessToken: accessToken)) {
+            [weak self] response in
+            guard let self = self else { return }
+            
+            let response = try GetAccountsResponse(data: response.data)
+            let accounts = response.accounts
+            
+            for account in accounts {
+                if self.accounts.contains(where: { $0.id == account.id }) {
+                    print("\n----FOUND DUPLICATE ACCOUNT---\n")
+                    continue
+                }
+                
+                let account = account.updateDateAdded()
+                if account.type == .depository || account.type == .credit {
+                    self.accessTokens[accessToken]!.append(account.id)
+                    self.institutionsByID[account.id] = institution
+                }
+                
+                if account.type == .depository {
+                    self.cashAccounts.append(account)
+                } else if account.type == .credit {
+                    self.creditAccounts.append(account)
+                }
+            }
+            
+            // If no accounts types were added, remove the access token from storage
+            if self.accessTokens[accessToken]!.isEmpty {
+                self.accessTokens.removeValue(forKey: accessToken)
+            } else {
+                NotificationCenter.default.post(name: .updatedAccounts, object: self)
+                self.saveData()
+            }
+        }
+    }
+    
     func deleteAccount(account: Account) {
         let oldAccountIDs = accessTokens[account.accessToken]!
         let newAccountIDs = oldAccountIDs.filter { $0 != account.id }
