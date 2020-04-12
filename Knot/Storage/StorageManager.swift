@@ -98,7 +98,7 @@ class StorageManager {
             
             for account in accounts {
                 if self.accounts.contains(where: { $0.id == account.id }) {
-                    print("\n----FOUND DUPLICATE ACCOUNT---\n")
+                    // Ignore duplicate accounts
                     continue
                 }
                 
