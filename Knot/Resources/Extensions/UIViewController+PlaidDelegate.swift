@@ -21,7 +21,7 @@ extension UIViewController: PLKPlaidLinkViewDelegate {
     
     func handleError(_ error: Error) {
         let alert = UIAlertController(title: "Woops something went wrong!",
-                                      message: error.localizedDescription,
+                                      message: "Please try again later.",
                                       preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
