@@ -16,22 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K N O T" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZ6-GL-Ni8">
-                                <rect key="frame" x="160" y="431" width="94" height="34"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="LbY-Dc-EqN">
+                                <rect key="frame" x="144" y="384" width="126" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="CM1-La-jlT"/>
-                                    <constraint firstAttribute="width" constant="94" id="uOd-HU-Mib"/>
+                                    <constraint firstAttribute="width" constant="126" id="75L-ai-lsu"/>
+                                    <constraint firstAttribute="height" constant="128" id="vP6-F9-64c"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <color key="tintColor" red="1" green="0.49539377449999999" blue="0.28634844879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.1019478217" green="0.10196910050000001" blue="0.1019431427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jZ6-GL-Ni8" firstAttribute="centerX" secondItem="IbS-Oe-4Nt" secondAttribute="centerX" id="6dg-wv-zwd"/>
-                            <constraint firstItem="E4Y-US-qu6" firstAttribute="bottom" secondItem="jZ6-GL-Ni8" secondAttribute="bottom" constant="397" id="qYz-2a-REK"/>
+                            <constraint firstItem="E4Y-US-qu6" firstAttribute="bottom" secondItem="LbY-Dc-EqN" secondAttribute="bottom" constant="350" id="GHF-SD-Rnj"/>
+                            <constraint firstItem="LbY-Dc-EqN" firstAttribute="centerX" secondItem="IbS-Oe-4Nt" secondAttribute="centerX" id="xUf-as-cge"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E4Y-US-qu6"/>
                     </view>
@@ -48,45 +44,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Knot ties all your bank accounts into one single app. Link your accounts today to get started." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxv-8G-Fp4">
-                                <rect key="frame" x="47" y="477" width="320" height="113"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="5IN-O2-4Zo"/>
-                                    <constraint firstAttribute="height" constant="113" id="lIV-2n-QFi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chs-19-CJF">
-                                <rect key="frame" x="148.5" y="713" width="117" height="41"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                <rect key="frame" x="147.5" y="711" width="119" height="43"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="22"/>
                                 <state key="normal" title="Get Started">
-                                    <color key="titleColor" red="0.38968857019999997" green="0.73333333329999995" blue="0.84211793660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="gettingStartedTapped:" destination="ths-hG-ae1" eventType="touchUpInside" id="sWL-Co-FK1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K N O T" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L40-gh-cJe">
-                                <rect key="frame" x="160" y="431" width="94" height="34"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="CNX-5g-At1">
+                                <rect key="frame" x="144" y="384" width="126" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="94" id="Rah-eI-OIb"/>
-                                    <constraint firstAttribute="height" constant="34" id="Wng-59-alo"/>
+                                    <constraint firstAttribute="width" constant="126" id="KTt-Ep-Ckr"/>
+                                    <constraint firstAttribute="height" constant="128" id="cDd-zR-tLk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <nil key="textColor"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Knot ties all your bank accounts into one single app. Link your accounts today to get started." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxv-8G-Fp4">
+                                <rect key="frame" x="47" y="506" width="320" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="5IN-O2-4Zo"/>
+                                    <constraint firstAttribute="height" constant="94" id="lIV-2n-QFi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.1019478217" green="0.10196910050000001" blue="0.1019431427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AJB-7s-ZGX" firstAttribute="bottom" secondItem="chs-19-CJF" secondAttribute="bottom" constant="108" id="3PH-I7-VoM"/>
-                            <constraint firstItem="Mxv-8G-Fp4" firstAttribute="top" secondItem="L40-gh-cJe" secondAttribute="bottom" constant="12" id="Nn0-Jr-Trk"/>
+                            <constraint firstItem="chs-19-CJF" firstAttribute="top" secondItem="CNX-5g-At1" secondAttribute="bottom" constant="199" id="4j8-NL-w1r"/>
                             <constraint firstItem="Mxv-8G-Fp4" firstAttribute="centerX" secondItem="v3u-ap-HDc" secondAttribute="centerX" id="QNm-ma-zgM"/>
-                            <constraint firstItem="L40-gh-cJe" firstAttribute="centerX" secondItem="v3u-ap-HDc" secondAttribute="centerX" id="R3h-yc-SsS"/>
+                            <constraint firstItem="CNX-5g-At1" firstAttribute="centerX" secondItem="v3u-ap-HDc" secondAttribute="centerX" id="Tm5-73-OYp"/>
                             <constraint firstItem="chs-19-CJF" firstAttribute="centerX" secondItem="v3u-ap-HDc" secondAttribute="centerX" id="V7Z-Hi-aTX"/>
-                            <constraint firstItem="chs-19-CJF" firstAttribute="top" secondItem="Mxv-8G-Fp4" secondAttribute="bottom" constant="123" id="hXb-5q-gZb"/>
+                            <constraint firstItem="chs-19-CJF" firstAttribute="top" secondItem="Mxv-8G-Fp4" secondAttribute="bottom" constant="111" id="hXb-5q-gZb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AJB-7s-ZGX"/>
                     </view>
@@ -307,7 +300,7 @@
                             <outlet property="delegate" destination="1Lz-rZ-Lcl" id="w2W-XK-NYL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="K N O T" id="0eu-ha-V6q">
+                    <navigationItem key="navigationItem" id="0eu-ha-V6q">
                         <barButtonItem key="backBarButtonItem" title=" " id="jAp-ou-KBH"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="person" catalog="system" id="EaX-xM-UQy">
                             <connections>
@@ -424,10 +417,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" id="5nd-YT-yQJ" customClass="TransactionCell" customModule="Knot" customModuleProvider="target">
-                                <rect key="frame" x="20" y="235.5" width="374" height="78.5"/>
+                                <rect key="frame" x="20" y="235.5" width="374" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5nd-YT-yQJ" id="wYj-i5-wAd">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="78.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="78"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;description&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-FP-lvN">
@@ -440,13 +433,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;amount&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaS-Yr-0G0">
-                                            <rect key="frame" x="240" y="27" width="114" height="21.5"/>
+                                            <rect key="frame" x="240" y="27" width="114" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;date&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8E-e3-7qP">
-                                            <rect key="frame" x="20" y="39" width="50" height="18"/>
+                                            <rect key="frame" x="20" y="38.5" width="50" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -470,7 +463,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoTransactionsFoundCell" rowHeight="71" id="6r0-lm-GPB">
-                                <rect key="frame" x="20" y="314" width="374" height="71"/>
+                                <rect key="frame" x="20" y="313.5" width="374" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6r0-lm-GPB" id="cjF-2y-TvS">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
@@ -494,7 +487,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoPendingTransactionsCell" rowHeight="71" id="FSI-3O-wdT">
-                                <rect key="frame" x="20" y="385" width="374" height="71"/>
+                                <rect key="frame" x="20" y="384.5" width="374" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FSI-3O-wdT" id="FvX-1M-Z4e">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
@@ -518,7 +511,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionsHeaderCell" rowHeight="70" id="0MG-kz-W6r" customClass="TransactionsHeaderCell" customModule="Knot" customModuleProvider="target">
-                                <rect key="frame" x="20" y="456" width="374" height="70"/>
+                                <rect key="frame" x="20" y="455.5" width="374" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0MG-kz-W6r" id="LdI-NA-FMh">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
@@ -984,6 +977,7 @@
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="logo" width="1080" height="1080"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
