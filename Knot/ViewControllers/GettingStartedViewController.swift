@@ -10,6 +10,13 @@ import UIKit
 
 class GettingStartedViewController: UIViewController {
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let parent = parent as? LaunchViewController {
+            parent.statusBarStyle = .lightContent
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onSuccessfulLinking(_:)), name: .successfulLinking, object: nil)
@@ -32,6 +39,9 @@ class GettingStartedViewController: UIViewController {
     
     @objc func onSuccessfulLinking(_ notification:Notification) {
         NotificationCenter.default.removeObserver(self)
+        if let parent = parent as? LaunchViewController {
+            parent.statusBarStyle = .default
+        }
         showHomePage()
         UserDefaults.standard.set(false, forKey: "isFirstLinking")
     }

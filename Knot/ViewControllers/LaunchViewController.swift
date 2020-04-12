@@ -10,6 +10,16 @@ import UIKit
 
 class LaunchViewController: UIViewController {
 
+    var statusBarStyle: UIStatusBarStyle = .default {
+        didSet {
+          setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return statusBarStyle
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +34,7 @@ class LaunchViewController: UIViewController {
         view.addSubview(viewController.view)
         viewController.didMove(toParent: self)
         
-        if !isFirstLinking { StorageManager.instance.fetchData() }
+        StorageManager.instance.fetchData()
     }
 
 }
