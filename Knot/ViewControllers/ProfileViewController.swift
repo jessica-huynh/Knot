@@ -37,7 +37,7 @@ class ProfileViewController: UITableViewController {
     }
     
     @IBAction func eraseAllData(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Erase All Data",
+        let alert = UIAlertController(title: "Delete All Accounts",
                                       message: "Are you sure you want to proceed? This will remove all linked accounts.",
                                       preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Yes", style: .default) {
