@@ -14,6 +14,7 @@ extension Double {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         if let string = formatter.string(from: self as NSNumber) {
+            if string == "-$0.00" { return "$0.00" }
             return string
         }
         return nil

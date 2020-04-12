@@ -211,12 +211,7 @@ extension HomeViewController: ChartViewDelegate {
         indicatorPoint.center = CGPoint(x: highlight.xPx, y: highlight.yPx)
  
         dateIndicatorLabel.text = entry.data as? String
-        
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        if let balance = formatter.string(from: highlight.y as NSNumber) {
-            balanceIndicatorLabel.text = "\(balance)"
-        }
+        balanceIndicatorLabel.text = "\(highlight.y.toCurrency()!)"
 
         dateIndicatorLabel.fadeIn()
         balanceIndicatorLabel.fadeIn()
