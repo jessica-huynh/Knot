@@ -40,6 +40,7 @@ class FilterTransactionsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Users must select at least one account item
         if checkedAccounts.count == 1 && checkedAccounts.contains(accountFilterItems[indexPath.row])  {
             tableView.deselectRow(at: indexPath, animated: true)
             return

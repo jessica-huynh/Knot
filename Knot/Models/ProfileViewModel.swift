@@ -9,21 +9,14 @@
 import Foundation
 import UIKit
 
-protocol ProfileViewModelSection {
-    var type: ProfileViewModel.SectionType { get }
-    var title: String { get }
-    var rowCount: Int { get }
-}
-
 class ProfileViewModel: NSObject {
     let storageManager = StorageManager.instance
+    var sections = [ProfileViewModelSection]()
     
     enum SectionType {
         case accounts
         case eraseData
     }
-    
-    var sections = [ProfileViewModelSection]()
     
     override init() {
         super.init()
@@ -86,6 +79,12 @@ extension ProfileViewModel: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - View Model Data
+protocol ProfileViewModelSection {
+    var type: ProfileViewModel.SectionType { get }
+    var title: String { get }
+    var rowCount: Int { get }
+}
+
 class ProfileViewModelAccounts: ProfileViewModelSection {
     var accounts: [Account]
     

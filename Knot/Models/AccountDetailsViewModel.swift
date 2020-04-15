@@ -9,22 +9,15 @@
 import Foundation
 import UIKit
 
-protocol AccountDetailsViewModelSection {
-    var type: AccountDetailsViewModel.SectionType { get }
-    var title: String { get }
-    var rowCount: Int { get }
-}
-
 class AccountDetailsViewModel: NSObject {
     let storageManager = StorageManager.instance
     var accountType: Account.AccountType
+    var sections = [AccountDetailsViewModelSection]()
     var accounts: [Account] = []
     var timeFrame: DateInterval
     var accountFilterItems: [AccountFilterItem] = []
     var isLoading: Bool = false {
-        didSet {
-            NotificationCenter.default.post(name: .loadingChanged, object: self)
-        }
+        didSet { NotificationCenter.default.post(name: .loadingChanged, object: self) }
     }
     
     enum SectionType: Int {
@@ -32,8 +25,6 @@ class AccountDetailsViewModel: NSObject {
         case pendingTransactions
         case postedTransactions
     }
-    
-    var sections = [AccountDetailsViewModelSection]()
     
     init(for accountType: Account.AccountType) {
         let startDate = Calendar.current.date(byAdding: DateComponents(day: -30), to: Date.today)!
@@ -104,6 +95,12 @@ class AccountDetailsViewModel: NSObject {
 }
 
 // MARK: - View Model Data
+protocol AccountDetailsViewModelSection {
+    var type: AccountDetailsViewModel.SectionType { get }
+    var title: String { get }
+    var rowCount: Int { get }
+}
+
 class AccountDetailsViewModelAccounts: AccountDetailsViewModelSection {
     var accounts: [Account]
     

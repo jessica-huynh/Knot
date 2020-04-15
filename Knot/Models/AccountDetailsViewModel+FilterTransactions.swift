@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Delegate for time frame picker (
+// MARK: Delegate for time frame picker
 extension AccountDetailsViewModel: TransactionsHeaderCellDelegate {
     func transactionsHeaderCell(_: TransactionsHeaderCell, didUpdateTimeFrame timeFrame: DateInterval) {
         self.timeFrame = timeFrame
@@ -32,6 +32,7 @@ extension AccountDetailsViewModel: FilterTransactionsViewControllerDelegate {
     
     // MARK: - Helper function to filter transactions
     func filterTransactions() {
+        // Make list of user's selected accounts
         var selectedAccountIDs: [String] = []
         for accountItem in accountFilterItems {
             if accountItem.isChecked {
