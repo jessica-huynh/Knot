@@ -16,8 +16,9 @@ class HomeViewController: UITableViewController {
     
     var spinnerView: UIView!
     var isLoading: Bool = false
-    
     var isRefreshing: Bool = false
+    var chartSpinnerView: UIView!
+    var chartSpinnerViewIsShown: Bool = false
     
     var balanceIndicatorLabel: UILabel!
     var dateIndicatorLabel: UILabel!
@@ -25,14 +26,10 @@ class HomeViewController: UITableViewController {
     
     var recentTransactions: [Transaction] = []
     
-    var balanceChartEntries: [ChartDataEntry] = []
+    var chartTimePeriods: [ChartTimePeriod] = []
     
-    enum ChartTimePeriod: Int {
-        case week
-        case month
-        case threeMonth
-        case sixMonth
-        case year
+    enum ChartSegment: Int, CaseIterable {
+        case week, month, threeMonth, sixMonth, year
     }
     
     // MARK: - Outlets
@@ -55,9 +52,11 @@ class HomeViewController: UITableViewController {
         
         navigationController?.navigationBar.shadowImage = UIImage()
         
+        setupChartTimePeriods()
         spinnerView = createSpinnerView()
+        chartSpinnerView = balanceChartView.createSpinnerView(at: CGPoint(x: balanceChartView.bounds.width/2 + 48,
+                                                                          y: balanceChartView.bounds.height/2))
         startSpinner()
-        updateLabels()
         setupBalanceChart()
         setupTransactionCollectionVew()
     }
@@ -68,6 +67,14 @@ class HomeViewController: UITableViewController {
     }
     
     @IBAction func chartSegmentChanged(_ sender: UISegmentedControl) {
+        let segmentIndex = chartSegmentedControl.selectedSegmentIndex
+        let chart = chartTimePeriods[segmentIndex]
+        
+        if !chartSpinnerViewIsShown && chart.isLoading {
+            startChartSpinner()
+        } else if chartSpinnerViewIsShown && !chart.isLoading {
+            stopChartSpinner()
+        }
         reloadChart()
     }
     
@@ -75,46 +82,12 @@ class HomeViewController: UITableViewController {
         isRefreshing = true
         storageManager.fetchData()
     }
-    
-    // MARK: - Table View Delegates
-     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.section == 0 || indexPath.section == 2 {
-            return nil
-        }
-        
-        if indexPath == IndexPath(row: 0, section: 1) && storageManager.cashAccounts.isEmpty {
-            return nil
-        } else if indexPath == IndexPath(row: 1, section: 1) && storageManager.creditAccounts.isEmpty {
-            return nil
-        }
-        return indexPath
-     }
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.selectedBackgroundView = UITableViewCell.lightGrayBackgroundView
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionTitle: UILabel = UILabel()
-        sectionTitle.frame = CGRect(x: 30, y: 0, width: 320, height: 30)
-        sectionTitle.font = UIFont.boldSystemFont(ofSize: 18)
-        sectionTitle.textColor = UIColor.black
-        sectionTitle.text = self.tableView(tableView, titleForHeaderInSection: section)
-
-        let headerView = UIView()
-        headerView.addSubview(sectionTitle)
-
-        return headerView
-    }
-    
+     
     // MARK: - Helper Functions
-    func startSpinner() {
-        showSpinner(spinnerView: spinnerView)
-        isLoading = true
+    func setupChartTimePeriods() {
+        for segment in ChartSegment.allCases {
+            chartTimePeriods.append(ChartTimePeriod(segment: segment))
+        }
     }
     
     func updateLabels() {
@@ -177,6 +150,30 @@ class HomeViewController: UITableViewController {
         }
     }
     
+    // MARK: Spinner Helpers
+    func startSpinner() {
+        showSpinner(spinnerView: spinnerView)
+        isLoading = true
+    }
+    
+    func stopSpinner() {
+        removeSpinner(spinnerView: spinnerView)
+        isLoading = false
+    }
+    
+    func startChartSpinner() {
+        hideIndicators()
+        balanceChartView.showSpinner(spinnerView: chartSpinnerView)
+        chartSpinnerViewIsShown = true
+    }
+    
+    func stopChartSpinner() {
+        balanceChartView.removeSpinner(spinnerView: chartSpinnerView)
+        chartSpinnerViewIsShown = false
+        showIndicators()
+    }
+    
+    // MARK: Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? AccountDetailsViewController {
             controller.navTitle = segue.identifier
@@ -200,26 +197,35 @@ class HomeViewController: UITableViewController {
     }
     
     @objc func onUpdatedAccounts(_ notification:Notification) {
-        if !isLoading && !isRefreshing {
-            startSpinner()
+        startChartSpinner()
+        for chart in chartTimePeriods {
+            chart.isLoading = true
         }
+        
         updateChartEntries()
         updateLabels()
         updateRecentTransactions()
-    }
-    
-    @objc func onUpdatedBalanceChartEntries(_ notification:Notification) {
-        // Updating chart entries is always the slowest task so we can remove the spinner or end
-        // refreshing at this point
+        
+        // Remove full screen view spinner at this point
         if isLoading {
-            removeSpinner(spinnerView: spinnerView)
-            isLoading = false
+            stopSpinner()
         } else if isRefreshing {
             refreshControl?.endRefreshing()
             isRefreshing = false
         }
+    }
+    
+    @objc func onUpdatedBalanceChartEntries(_ notification:Notification) {
+        guard let sender = notification.object as? ChartTimePeriod else { return }
+        sender.isLoading = false
         
-        reloadChart()
+        let segmentIndex = chartSegmentedControl.selectedSegmentIndex
+        let selectedChart = chartTimePeriods[segmentIndex]
+        
+        if sender === selectedChart {
+            stopChartSpinner()
+            reloadChart()
+        }
     }
 }
 
