@@ -18,6 +18,7 @@ class AccountDetailsViewController: UITableViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onNoValidAccountsAdded(_:)), name: .noValidAccountsAdded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onLoadingChanged(_:)), name: .loadingChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onAddAccountTapped(_:)), name: .addAccountTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSuccessfulLinking(_:)), name: .successfulLinking, object: nil)
@@ -50,6 +51,10 @@ class AccountDetailsViewController: UITableViewController {
     // MARK: - Notification Selectors
     @objc func onSuccessfulLinking(_ notification:Notification) {
         showSpinner(spinnerView: spinnerView)
+    }
+    
+    @objc func onNoValidAccountsAdded(_ notification:Notification) {
+        removeSpinner(spinnerView: spinnerView)
     }
     
     @objc func onUpdatedAccounts(_ notification:Notification) {
