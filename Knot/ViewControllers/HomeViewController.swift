@@ -25,12 +25,7 @@ class HomeViewController: UITableViewController {
     var indicatorPoint: UIImageView!
     
     var recentTransactions: [Transaction] = []
-    
-    var chartTimePeriods: [ChartTimePeriod] = []
-    
-    enum ChartSegment: Int, CaseIterable {
-        case week, month, threeMonth, sixMonth, year
-    }
+    var balanceCharts: [BalanceChart] = []
     
     // MARK: - Outlets
     @IBOutlet weak var netBalanceLabel: UILabel!
@@ -47,15 +42,15 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedBalanceChartEntries(_:)), name: .updatedBalanceChartEntries, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedBalanceChart(_:)), name: .updatedBalanceChart, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSuccessfulLinking(_:)), name: .successfulLinking, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onNoValidAccountsAdded(_:)), name: .noValidAccountsAdded, object: nil)
         
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        setupChartTimePeriods()
         spinnerView = createSpinnerView()
-        chartSpinnerView = balanceChartView.createSpinnerView(at: CGPoint(x: balanceChartView.bounds.width/2 + 48,
-                                                                          y: balanceChartView.bounds.height/2))
+        let chartCenter = CGPoint(x: balanceChartView.bounds.width/2 + 48, y: balanceChartView.bounds.height/2)
+        chartSpinnerView = balanceChartView.createSpinnerView(at: chartCenter)
         startSpinner()
         setupBalanceChart()
         setupTransactionCollectionVew()
@@ -67,12 +62,12 @@ class HomeViewController: UITableViewController {
     }
     
     @IBAction func chartSegmentChanged(_ sender: UISegmentedControl) {
-        let segmentIndex = chartSegmentedControl.selectedSegmentIndex
-        let chart = chartTimePeriods[segmentIndex]
+        let selectedIndex = chartSegmentedControl.selectedSegmentIndex
+        let selectedChart = balanceCharts[selectedIndex]
         
-        if !chartSpinnerViewIsShown && chart.isLoading {
+        if !chartSpinnerViewIsShown && selectedChart.isLoading {
             startChartSpinner()
-        } else if chartSpinnerViewIsShown && !chart.isLoading {
+        } else if chartSpinnerViewIsShown && !selectedChart.isLoading {
             stopChartSpinner()
         }
         reloadChart()
@@ -80,16 +75,10 @@ class HomeViewController: UITableViewController {
     
     @IBAction func refresh(_ sender: UIRefreshControl) {
         isRefreshing = true
-        storageManager.fetchData()
+        storageManager.fetchAccountUpdates()
     }
      
     // MARK: - Helper Functions
-    func setupChartTimePeriods() {
-        for segment in ChartSegment.allCases {
-            chartTimePeriods.append(ChartTimePeriod(segment: segment))
-        }
-    }
-    
     func updateLabels() {
         let cashBalance = calculateBalance(for: storageManager.cashAccounts)
         let creditBalance = calculateBalance(for: storageManager.creditAccounts)
@@ -128,7 +117,7 @@ class HomeViewController: UITableViewController {
         }
         
         if accounts.isEmpty {
-            balanceLabel.text = "---\t"
+            balanceLabel.text = "---"
             balanceCell.accessoryType = .none
             balanceCell.contentView.alpha = 0.3
         } else {
@@ -196,9 +185,13 @@ class HomeViewController: UITableViewController {
         startSpinner()
     }
     
+    @objc func onNoValidAccountsAdded(_ notification:Notification) {
+        stopSpinner()
+    }
+    
     @objc func onUpdatedAccounts(_ notification:Notification) {
         startChartSpinner()
-        for chart in chartTimePeriods {
+        for chart in balanceCharts {
             chart.isLoading = true
         }
         
@@ -206,7 +199,7 @@ class HomeViewController: UITableViewController {
         updateLabels()
         updateRecentTransactions()
         
-        // Remove full screen view spinner at this point
+        // Remove refresh spinner/full screen view spinner at this point
         if isLoading {
             stopSpinner()
         } else if isRefreshing {
@@ -215,12 +208,12 @@ class HomeViewController: UITableViewController {
         }
     }
     
-    @objc func onUpdatedBalanceChartEntries(_ notification:Notification) {
-        guard let sender = notification.object as? ChartTimePeriod else { return }
+    @objc func onUpdatedBalanceChart(_ notification:Notification) {
+        guard let sender = notification.object as? BalanceChart else { return }
         sender.isLoading = false
         
-        let segmentIndex = chartSegmentedControl.selectedSegmentIndex
-        let selectedChart = chartTimePeriods[segmentIndex]
+        let selectedIndex = chartSegmentedControl.selectedSegmentIndex
+        let selectedChart = balanceCharts[selectedIndex]
         
         if sender === selectedChart {
             stopChartSpinner()
@@ -232,6 +225,7 @@ class HomeViewController: UITableViewController {
 // MARK: - Notification Names
 extension Notification.Name {
     static let successfulLinking = Notification.Name("successfulLinking")
-    static let updatedAccounts = Notification.Name("updatedAccount")
-    static let updatedBalanceChartEntries = Notification.Name("updatedBalanceHistory")
+    static let updatedAccounts = Notification.Name("updatedAccounts")
+    static let noValidAccountsAdded = Notification.Name("noValidAccountsAdded")
+    static let updatedBalanceChart = Notification.Name("updatedBalanceChart")
 }

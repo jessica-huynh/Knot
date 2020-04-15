@@ -12,6 +12,10 @@ import Charts
 extension HomeViewController: ChartViewDelegate {
     // MARK: - Initial Chart Setup
     func setupBalanceChart() {
+        for timePeriod in BalanceChart.TimePeriod.allCases {
+            balanceCharts.append(BalanceChart(timePeriod: timePeriod))
+        }
+        
         balanceChartView.delegate = self
         
         indicatorPoint = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
@@ -47,7 +51,8 @@ extension HomeViewController: ChartViewDelegate {
     func updateChartEntries() {
         var netBalance = calculateBalance(for: storageManager.cashAccounts) - calculateBalance(for: storageManager.creditAccounts)
         let startDate = Calendar.current.date(byAdding: DateComponents(year: -1), to: Date.today)!
-        var unfinishedCharts = chartTimePeriods
+        var unfinishedCharts = balanceCharts
+        
         plaidManager.getAllTransactions(startDate: startDate.nextDay(), endDate: Date.today) {
             [weak self] transactions in
             guard let self = self else { return }
@@ -60,7 +65,7 @@ extension HomeViewController: ChartViewDelegate {
                     daysBalanceChanged.append((currentDate.previousDay(), netBalance))
                     currentDate = transaction.date
                     
-                    // Try to update chart entires as we go through transactions
+                    // Update chart entries as we go through transactions
                     if unfinishedCharts.contains(where: { transaction.date <= $0.startDate }){
                         let finishedCharts = unfinishedCharts.filter{ transaction.date <= $0.startDate }
                         unfinishedCharts.removeAll{ transaction.date <= $0.startDate }
@@ -79,7 +84,7 @@ extension HomeViewController: ChartViewDelegate {
         }
     }
     
-    func updateCharts(charts: [ChartTimePeriod], with daysBalancedChanged: [(date: Date, balance: Double)]) {
+    func updateCharts(charts: [BalanceChart], with daysBalancedChanged: [(date: Date, balance: Double)]) {
         for chart in charts {
             chart.daysBalanceChanged = daysBalancedChanged
         }
@@ -151,8 +156,8 @@ extension HomeViewController: ChartViewDelegate {
     // MARK: - Reload Chart
     func reloadChart() {
         hideIndicators()
-        let segmentIndex = chartSegmentedControl.selectedSegmentIndex
-        let newChartData = BalanceChartDataSet(entries: chartTimePeriods[segmentIndex].chartEntries)
+        let selectedIndex = chartSegmentedControl.selectedSegmentIndex
+        let newChartData = BalanceChartDataSet(entries: balanceCharts[selectedIndex].chartEntries)
         balanceChartView.data?.dataSets[0] = newChartData
         
         if !newChartData.isCustomized {

@@ -58,7 +58,7 @@ class BalanceChart {
             chartEntries.append(value)
         }
         self.chartEntries = chartEntries
-        NotificationCenter.default.post(name: .updatedBalanceChartEntries, object: self)
+        NotificationCenter.default.post(name: .updatedBalanceChart, object: self)
     }
     
     func completeBalanceHistory(from startDate: Date,
