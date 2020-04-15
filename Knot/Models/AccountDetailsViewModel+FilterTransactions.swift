@@ -12,8 +12,12 @@ import Foundation
 extension AccountDetailsViewModel: TransactionsHeaderCellDelegate {
     func transactionsHeaderCell(_: TransactionsHeaderCell, didUpdateTimeFrame timeFrame: DateInterval) {
         self.timeFrame = timeFrame
-        updatePostedTransactions()
         isLoading = true
+        updatePostedTransactions {
+            [weak self] in
+            guard let self = self else { return }
+            self.filterTransactions()
+        }
     }
 }
 

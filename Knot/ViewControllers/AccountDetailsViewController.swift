@@ -19,7 +19,7 @@ class AccountDetailsViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onNoValidAccountsAdded(_:)), name: .noValidAccountsAdded, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onLoadingChanged(_:)), name: .loadingChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onViewModelUpdated(_:)), name: .viewModelUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onAddAccountTapped(_:)), name: .addAccountTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSuccessfulLinking(_:)), name: .successfulLinking, object: nil)
         
@@ -65,7 +65,7 @@ class AccountDetailsViewController: UITableViewController {
         removeSpinner(spinnerView: spinnerView)
     }
     
-    @objc func onLoadingChanged(_ notification:Notification) {
+    @objc func onViewModelUpdated(_ notification:Notification) {
         tableView.reloadData()
     }
     
@@ -76,6 +76,6 @@ class AccountDetailsViewController: UITableViewController {
 
 // MARK: - Notification Names
 extension Notification.Name {
-    static let loadingChanged = Notification.Name("loadingChanged")
+    static let viewModelUpdated = Notification.Name("viewModelUpdated")
     static let addAccountTapped = Notification.Name("addAccountTapped")
 }

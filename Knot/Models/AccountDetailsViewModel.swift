@@ -16,8 +16,12 @@ class AccountDetailsViewModel: NSObject {
     var accounts: [Account] = []
     var timeFrame: DateInterval
     var accountFilterItems: [AccountFilterItem] = []
+    /**
+     Indicates whether the posted transactions section is loading.
+     - Note: There is no loading indicator for the pending transactions section.
+     */
     var isLoading: Bool = false {
-        didSet { NotificationCenter.default.post(name: .loadingChanged, object: self) }
+        didSet { NotificationCenter.default.post(name: .viewModelUpdated, object: self) }
     }
     
     enum SectionType: Int {
@@ -41,7 +45,9 @@ class AccountDetailsViewModel: NSObject {
             accounts = storageManager.creditAccounts
             sections.append(AccountDetailsViewModelPendingTransactions())
             sections.append(AccountDetailsViewModelTransactions(title: "Posted Transactions"))
-            updatePendingTransactions()
+            updatePendingTransactions {
+                NotificationCenter.default.post(name: .viewModelUpdated, object: self)
+            }
         }
  
         for account in accounts {
@@ -49,11 +55,15 @@ class AccountDetailsViewModel: NSObject {
         }
         
         sections.insert(AccountDetailsViewModelAccounts(accounts: accounts), at: 0)
-        updatePostedTransactions()
+        updatePostedTransactions {
+            [weak self] in
+            guard let self = self else { return }
+            self.isLoading = false
+        }
     }
     
     // MARK:- Fetch Transactions
-    func updatePendingTransactions() {
+    func updatePendingTransactions(completionHandler: @escaping () -> Void) {
         let startDate = Calendar.current.date(byAdding: DateComponents(day: -14), to: Date.today)!
         
         PlaidManager.instance.getTransactions(for: accounts, startDate: startDate, endDate: Date.today) {
@@ -63,11 +73,13 @@ class AccountDetailsViewModel: NSObject {
             let pendingTransactions = transactions.filter({ $0.pending })
             let pendingTransactionsSection = self.sections[1] as! AccountDetailsViewModelPendingTransactions
             pendingTransactionsSection.unfilteredTransactions = pendingTransactions
+            pendingTransactionsSection.filteredTransactions = pendingTransactions
+            completionHandler()
         }
     }
     
     
-    func updatePostedTransactions() {
+    func updatePostedTransactions(completionHandler: @escaping () -> Void) {
         PlaidManager.instance.getTransactions(for: accounts, startDate: timeFrame.start, endDate: timeFrame.end) {
             [weak self] transactions in
             guard let self = self else { return }
@@ -75,8 +87,8 @@ class AccountDetailsViewModel: NSObject {
             if self.accountType == .depository {
                 let transactionsSection = self.sections[1] as! AccountDetailsViewModelTransactions
                 transactionsSection.unfilteredTransactions = transactions
-                
-                self.filterTransactions()
+                transactionsSection.filteredTransactions = transactions
+                completionHandler()
                 return
             }
             
@@ -88,8 +100,8 @@ class AccountDetailsViewModel: NSObject {
 
             let postedTransactionsSection = self.sections[2] as! AccountDetailsViewModelTransactions
             postedTransactionsSection.unfilteredTransactions = postedTransactions
-            
-            self.filterTransactions()
+            postedTransactionsSection.filteredTransactions = postedTransactions
+            completionHandler()
         }
     }
 }
