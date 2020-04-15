@@ -61,6 +61,7 @@ extension HomeViewController: ChartViewDelegate {
             var currentDate = Date.today.nextDay()
             
             for transaction in transactions {
+                if transaction.pending { continue }
                 if transaction.date != currentDate {
                     daysBalanceChanged.append((currentDate.previousDay(), netBalance))
                     currentDate = transaction.date
