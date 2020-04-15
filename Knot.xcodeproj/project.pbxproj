@@ -50,7 +50,7 @@
 		C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */; };
 		C8B584B224201A7500DA28D9 /* HomeViewController+BalanceChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */; };
 		C8B584B424201C9100DA28D9 /* HomeViewController+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */; };
-		C8C24DF9243BF24400E61CEE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24DF8243BF24400E61CEE /* UIViewController+SpinnerView.swift */; };
+		C8C24DF9243BF24400E61CEE /* UIView+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24DF8243BF24400E61CEE /* UIView+SpinnerView.swift */; };
 		C8C24DFB243BF9D000E61CEE /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C24DFA243BF9D000E61CEE /* LoadingCell.xib */; };
 		C8C24DFD243BFA1C00E61CEE /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24DFC243BFA1C00E61CEE /* LoadingCell.swift */; };
 		C8C732972420458500DDBE69 /* ChartSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */; };
@@ -66,6 +66,8 @@
 		C8D7EA462416F5F6000195AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8D7EA432416F5F6000195AC /* Assets.xcassets */; };
 		C8D7EA472416F5F6000195AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D7EA442416F5F6000195AC /* Main.storyboard */; };
 		C8D7EA4A24171AAD000195AC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D7EA4924171AAD000195AC /* ProfileViewController.swift */; };
+		C8DD46122446561800623032 /* ChartTimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD46112446561800623032 /* ChartTimePeriod.swift */; };
+		C8DD461424467B4600623032 /* HomeViewController+TableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD461324467B4600623032 /* HomeViewController+TableViewDelegates.swift */; };
 		C8E221E02426D758008624F9 /* GetAccountsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E221DF2426D758008624F9 /* GetAccountsResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -115,7 +117,7 @@
 		C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceChartDataSet.swift; sourceTree = "<group>"; };
 		C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+BalanceChart.swift"; sourceTree = "<group>"; };
 		C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Transactions.swift"; sourceTree = "<group>"; };
-		C8C24DF8243BF24400E61CEE /* UIViewController+SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SpinnerView.swift"; sourceTree = "<group>"; };
+		C8C24DF8243BF24400E61CEE /* UIView+SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SpinnerView.swift"; sourceTree = "<group>"; };
 		C8C24DFA243BF9D000E61CEE /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		C8C24DFC243BFA1C00E61CEE /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		C8C732962420458500DDBE69 /* ChartSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSegmentedControl.swift; sourceTree = "<group>"; };
@@ -133,6 +135,8 @@
 		C8D7EA432416F5F6000195AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8D7EA442416F5F6000195AC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C8D7EA4924171AAD000195AC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C8DD46112446561800623032 /* ChartTimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTimePeriod.swift; sourceTree = "<group>"; };
+		C8DD461324467B4600623032 /* HomeViewController+TableViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TableViewDelegates.swift"; sourceTree = "<group>"; };
 		C8E221DF2426D758008624F9 /* GetAccountsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAccountsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,7 +248,7 @@
 				C83EB0C32427F0F100FC39E5 /* Double+Currency.swift */,
 				C8D041BC242E9C0500C144F3 /* UICollectionViewCell+DrawBorder.swift */,
 				C8D041C0242EC70500C144F3 /* UIViewController+PlaidDelegate.swift */,
-				C8C24DF8243BF24400E61CEE /* UIViewController+SpinnerView.swift */,
+				C8C24DF8243BF24400E61CEE /* UIView+SpinnerView.swift */,
 				C86B9FAC243142E400167CA9 /* Date+Helpers.swift */,
 				C865C6BC24341CAA0094123A /* UIColor+Hex.swift */,
 				C8148D8A243E893200B2C321 /* UIColor+Adjust.swift */,
@@ -294,6 +298,7 @@
 			children = (
 				C8D7EA3F2416F5E7000195AC /* HomeViewController.swift */,
 				C8B584B124201A7500DA28D9 /* HomeViewController+BalanceChart.swift */,
+				C8DD461324467B4600623032 /* HomeViewController+TableViewDelegates.swift */,
 				C8B584B324201C9100DA28D9 /* HomeViewController+Transactions.swift */,
 				C8371C812418088600519346 /* AccountDetailsViewController.swift */,
 				C8D7EA4924171AAD000195AC /* ProfileViewController.swift */,
@@ -326,6 +331,7 @@
 				C86AAD382418657B00168D3A /* ProfileViewModel.swift */,
 				C8B584AF2420185D00DA28D9 /* BalanceChartDataSet.swift */,
 				C865C6B62433E49F0094123A /* AccountFilterItem.swift */,
+				C8DD46112446561800623032 /* ChartTimePeriod.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -485,7 +491,8 @@
 				C8371C822418088600519346 /* AccountDetailsViewController.swift in Sources */,
 				C8B584B02420185D00DA28D9 /* BalanceChartDataSet.swift in Sources */,
 				C8CF35F9243CDBD30083C54B /* LaunchViewController.swift in Sources */,
-				C8C24DF9243BF24400E61CEE /* UIViewController+SpinnerView.swift in Sources */,
+				C8DD461424467B4600623032 /* HomeViewController+TableViewDelegates.swift in Sources */,
+				C8C24DF9243BF24400E61CEE /* UIView+SpinnerView.swift in Sources */,
 				C865C6BD24341CAB0094123A /* UIColor+Hex.swift in Sources */,
 				C83EB0C42427F0F100FC39E5 /* Double+Currency.swift in Sources */,
 				C82493F7243550130093A209 /* UIImage+Base64Convert.swift in Sources */,
@@ -499,6 +506,7 @@
 				C836F7E7242D6C6D00B77515 /* RecentTransactionCell.swift in Sources */,
 				C865C6B72433E49F0094123A /* AccountFilterItem.swift in Sources */,
 				C8E221E02426D758008624F9 /* GetAccountsResponse.swift in Sources */,
+				C8DD46122446561800623032 /* ChartTimePeriod.swift in Sources */,
 				C865C6BB243414D50094123A /* GetInstitutionResponse.swift in Sources */,
 				C89EDF2024193E460075052D /* AccountCard.swift in Sources */,
 			);
