@@ -11,21 +11,23 @@ import Foundation
 class StorageManager {
     static let instance = StorageManager()
     
-    // <key, value>: <access token, associated account IDs>
-    // Reduces number of requests to Plaid when fetching transactions for
-    // all acounts
+    /// Plaid access token -> associated account IDs
     var accessTokens: [String : [String]] = [:]
+    /// accound ID -> institution
     var institutionsByID: [String : Institution] = [:]
+    /// Cash accounts that belong to the user
     var cashAccounts: [Account] = []
+    /// Credit accounts that belong to the user
     var creditAccounts: [Account] = []
+    /// All accounts including cash and credit accounts that belong to the user
     var accounts: [Account] { return cashAccounts + creditAccounts }
     
     private init() {
-        print("Data path: \(dataFilePath())")
         loadData()
     }
     
-    func fetchData() {
+    /// Fetches account updates including the current account balance from Plaid
+    func fetchAccountUpdates() {
         var updatedCashAccounts: [Account] = []
         var updatedCreditAccounts: [Account] = []
         let dispatch = DispatchGroup()
@@ -62,6 +64,7 @@ class StorageManager {
     }
     
     // MARK: - Helper Functions
+    /// Returns the access token for a given account ID
     func accessToken(for accountID: String) -> String? {
         for (accessToken, accountIDs) in accessTokens {
             if accountIDs.contains(accountID) {
@@ -71,14 +74,9 @@ class StorageManager {
         return nil
     }
     
+    /// Returns the account object for a given account ID
     func account(for accountID: String) -> Account? {
-        for account in cashAccounts {
-            if account.id == accountID {
-                return account
-            }
-        }
-        
-        for account in creditAccounts {
+        for account in accounts {
             if account.id == accountID {
                 return account
             }
@@ -115,9 +113,10 @@ class StorageManager {
                 }
             }
             
-            // If no accounts types were added, remove the access token from storage
+            // If no valid accounts were added, remove the access token from storage
             if self.accessTokens[accessToken]!.isEmpty {
                 self.accessTokens.removeValue(forKey: accessToken)
+                NotificationCenter.default.post(name: .noValidAccountsAdded, object: self)
             } else {
                 NotificationCenter.default.post(name: .updatedAccounts, object: self)
                 self.saveData()

@@ -9,11 +9,8 @@
 import UIKit
 
 class LaunchViewController: UIViewController {
-
     var statusBarStyle: UIStatusBarStyle = .default {
-        didSet {
-          setNeedsStatusBarAppearanceUpdate()
-        }
+        didSet { setNeedsStatusBarAppearanceUpdate() }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -34,7 +31,7 @@ class LaunchViewController: UIViewController {
         view.addSubview(viewController.view)
         viewController.didMove(toParent: self)
         
-        StorageManager.instance.fetchData()
+        StorageManager.instance.fetchAccountUpdates()
     }
 
 }
