@@ -9,16 +9,19 @@
 import UIKit
 
 class ProfileViewController: UITableViewController {
-
     var viewModel = ProfileViewModel()
+    var spinnerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.shadowImage = UIImage()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onNoValidAccountsAdded(_:)), name: .noValidAccountsAdded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedAccounts(_:)), name: .updatedAccounts, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSuccessfulLinking(_:)), name: .successfulLinking, object: nil)
         
+        spinnerView = createSpinnerView()
         tableView.dataSource = viewModel
         tableView.delegate = viewModel
     }
@@ -27,6 +30,13 @@ class ProfileViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? AccountCardViewController, let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+            let section = viewModel.sections[indexPath.section] as! ProfileViewModelAccounts
+            controller.account = section.accounts[indexPath.row]
+        }
+    }
+    
     // MARK: - Actions
     @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
@@ -52,11 +62,13 @@ class ProfileViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? AccountCardViewController, let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-            let section = viewModel.sections[indexPath.section] as! ProfileViewModelAccounts
-            controller.account = section.accounts[indexPath.row]
-        }
+    // MARK: - Notification Selectors
+    @objc func onSuccessfulLinking(_ notification:Notification) {
+        showSpinner(spinnerView: spinnerView)
+    }
+    
+    @objc func onNoValidAccountsAdded(_ notification:Notification) {
+        removeSpinner(spinnerView: spinnerView)
     }
     
     @objc func onUpdatedAccounts(_ notification:Notification) {
@@ -64,5 +76,6 @@ class ProfileViewController: UITableViewController {
         tableView.dataSource = viewModel
         tableView.delegate = viewModel
         tableView.reloadData()
+        removeSpinner(spinnerView: spinnerView)
     }
 }
