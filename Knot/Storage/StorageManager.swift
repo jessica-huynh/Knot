@@ -113,8 +113,8 @@ class StorageManager {
                 }
             }
             
-            // If no valid accounts were added, remove the access token from storage
             if self.accessTokens[accessToken]!.isEmpty {
+                // If no valid accounts were added, remove the access token from storage
                 self.accessTokens.removeValue(forKey: accessToken)
                 NotificationCenter.default.post(name: .noValidAccountsAdded, object: self)
             } else {
