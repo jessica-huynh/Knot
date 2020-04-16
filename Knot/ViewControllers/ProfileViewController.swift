@@ -32,7 +32,7 @@ class ProfileViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? AccountCardViewController, let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-            let section = viewModel.sections[indexPath.section] as! ProfileViewModelAccounts
+            let section = viewModel.sections[indexPath.section] as! ProfileViewModel.AccountsSection
             controller.account = section.accounts[indexPath.row]
         }
     }

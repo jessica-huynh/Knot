@@ -43,7 +43,7 @@ extension AccountDetailsViewModel: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case .postedTransactions:
-            let section = section as! AccountDetailsViewModelTransactions
+            let section = section as! PostedTransactionsSection
             if isLoading && indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell") as! LoadingCell
                 cell.spinner.startAnimating()
@@ -70,7 +70,7 @@ extension AccountDetailsViewModel: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case .pendingTransactions:
-            let section = section as! AccountDetailsViewModelPendingTransactions
+            let section = section as! PendingTransactionsSection
             if section.filteredTransactions.isEmpty {
                 return tableView.dequeueReusableCell(withIdentifier: "NoPendingTransactionsCell")!
             }
@@ -98,7 +98,7 @@ extension AccountDetailsViewModel: UICollectionViewDataSource, UICollectionViewD
             cell.drawBorder(lineDashPattern: [2, 2])
             return cell
         }
-        let section = sections.first as! AccountDetailsViewModelAccounts
+        let section = sections.first as! AccountsSection
         let account = section.accounts[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AccountCollectionCell", for: indexPath) as! AccountCollectionCell
         cell.configure(for: account)

@@ -11,19 +11,18 @@ import UIKit
 
 class ProfileViewModel: NSObject {
     let storageManager = StorageManager.instance
-    var sections = [ProfileViewModelSection]()
+    var sections: [ProfileViewModelSection] = []
     
     enum SectionType {
-        case accounts
-        case eraseData
+        case accounts, deleteAccounts
     }
     
     override init() {
         super.init()
         
-        sections.append(ProfileViewModelAccounts(accounts: storageManager.accounts))
+        sections.append(AccountsSection(accounts: storageManager.accounts))
         if !storageManager.accounts.isEmpty {
-            sections.append(ProfileViewModelEraseData())
+            sections.append(DeleteAccountsSection())
         }
     }
 }
@@ -49,7 +48,7 @@ extension ProfileViewModel: UITableViewDataSource, UITableViewDelegate {
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccountNumberCell", for: indexPath)
-            let section = section as! ProfileViewModelAccounts
+            let section = section as! AccountsSection
             let account = section.accounts[indexPath.row]
             
             cell.textLabel?.text = (account.institution.name)
@@ -63,8 +62,8 @@ extension ProfileViewModel: UITableViewDataSource, UITableViewDelegate {
             
             return cell
             
-        case .eraseData:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EraseDataCell", for: indexPath)
+        case .deleteAccounts:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteAccountsCell", for: indexPath)
             return cell
         }
     }
@@ -85,36 +84,38 @@ protocol ProfileViewModelSection {
     var rowCount: Int { get }
 }
 
-class ProfileViewModelAccounts: ProfileViewModelSection {
-    var accounts: [Account]
-    
-    var type: ProfileViewModel.SectionType {
-        return .accounts
+extension ProfileViewModel {
+    class AccountsSection: ProfileViewModelSection {
+        var accounts: [Account]
+        
+        var type: ProfileViewModel.SectionType {
+            return .accounts
+        }
+        
+        var title: String {
+            return "Accounts"
+        }
+        
+        var rowCount: Int {
+            return accounts.count
+        }
+        
+        init(accounts: [Account]) {
+            self.accounts = accounts
+        }
     }
-    
-    var title: String {
-        return "Accounts"
-    }
-    
-    var rowCount: Int {
-        return accounts.count
-    }
-    
-    init(accounts: [Account]) {
-        self.accounts = accounts
-    }
-}
 
-class ProfileViewModelEraseData: ProfileViewModelSection {
-    var type: ProfileViewModel.SectionType {
-        return .eraseData
-    }
-    
-    var title: String {
-        return " "
-    }
-    
-    var rowCount: Int {
-        return 1
+    class DeleteAccountsSection: ProfileViewModelSection {
+        var type: ProfileViewModel.SectionType {
+            return .deleteAccounts
+        }
+        
+        var title: String {
+            return " "
+        }
+        
+        var rowCount: Int {
+            return 1
+        }
     }
 }

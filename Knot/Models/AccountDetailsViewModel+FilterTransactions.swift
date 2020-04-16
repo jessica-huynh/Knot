@@ -47,11 +47,11 @@ extension AccountDetailsViewModel: FilterTransactionsViewControllerDelegate {
         if accounts.count == selectedAccountIDs.count {
             // User is not filtering any accounts so filtered = unfiltered
             if accountType == .credit {
-                 let pendingTransactionsSection = sections[1] as! AccountDetailsViewModelPendingTransactions
+                 let pendingTransactionsSection = sections[1] as! PendingTransactionsSection
                 pendingTransactionsSection.filteredTransactions = pendingTransactionsSection.unfilteredTransactions
             }
             
-            let postedTransactionsSection = sections.last as! AccountDetailsViewModelTransactions
+            let postedTransactionsSection = sections.last as! PostedTransactionsSection
             postedTransactionsSection.filteredTransactions = postedTransactionsSection.unfilteredTransactions
             
             isLoading = false
@@ -68,7 +68,7 @@ extension AccountDetailsViewModel: FilterTransactionsViewControllerDelegate {
     }
     
     func filterPendingTransactions(using selectedAccountIDs: [String]) {
-        let pendingTransactionsSection = sections[1] as! AccountDetailsViewModelPendingTransactions
+        let pendingTransactionsSection = sections[1] as! PendingTransactionsSection
         let unfilteredTransactions = pendingTransactionsSection.unfilteredTransactions
         
         pendingTransactionsSection.filteredTransactions = unfilteredTransactions.filter {
@@ -77,7 +77,7 @@ extension AccountDetailsViewModel: FilterTransactionsViewControllerDelegate {
     }
     
     func filterPostedTransactions(using selectedAccountIDs: [String]) {
-        let postedTransactionsSection = sections.last as! AccountDetailsViewModelTransactions
+        let postedTransactionsSection = sections.last as! PostedTransactionsSection
         let unfilteredTransactions = postedTransactionsSection.unfilteredTransactions
         
         postedTransactionsSection.filteredTransactions = unfilteredTransactions.filter {

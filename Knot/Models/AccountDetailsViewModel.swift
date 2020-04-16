@@ -12,22 +12,22 @@ import UIKit
 class AccountDetailsViewModel: NSObject {
     let storageManager = StorageManager.instance
     var accountType: Account.AccountType
-    var sections = [AccountDetailsViewModelSection]()
+    var sections: [AccountDetailsViewModelSection] = []
     var accounts: [Account] = []
-    var timeFrame: DateInterval
-    var accountFilterItems: [AccountFilterItem] = []
     /**
-     Indicates whether the posted transactions section is loading.
-     - Note: There is no loading indicator for the pending transactions section.
+     Time frame of the displayed *posted* transactions.
+     - Note: Pending transactions are not subject to changing time frames as this app assumes that pending transactions always fall within the last 14 days.
      */
+    var timeFrame: DateInterval
+    /// Keeps track of which accounts the user is and isn't using to filter the displayed transactions.
+    var accountFilterItems: [AccountFilterItem] = []
+    /// Indicates whether the *posted* transactions section is loading.
     var isLoading: Bool = false {
         didSet { NotificationCenter.default.post(name: .viewModelUpdated, object: self) }
     }
     
-    enum SectionType: Int {
-        case accounts
-        case pendingTransactions
-        case postedTransactions
+    enum SectionType {
+        case accounts, pendingTransactions, postedTransactions
     }
     
     init(for accountType: Account.AccountType) {
@@ -39,12 +39,12 @@ class AccountDetailsViewModel: NSObject {
         isLoading = true
         if accountType == .depository {
             accounts = storageManager.cashAccounts
-            sections.append(AccountDetailsViewModelTransactions(title: "Transactions"))
+            sections.append(PostedTransactionsSection(title: "Transactions"))
             
         } else if accountType == .credit {
             accounts = storageManager.creditAccounts
-            sections.append(AccountDetailsViewModelPendingTransactions())
-            sections.append(AccountDetailsViewModelTransactions(title: "Posted Transactions"))
+            sections.append(PendingTransactionsSection())
+            sections.append(PostedTransactionsSection(title: "Posted Transactions"))
             updatePendingTransactions {
                 NotificationCenter.default.post(name: .viewModelUpdated, object: self)
             }
@@ -54,7 +54,7 @@ class AccountDetailsViewModel: NSObject {
             accountFilterItems.append(AccountFilterItem(account: account, isChecked: true))
         }
         
-        sections.insert(AccountDetailsViewModelAccounts(accounts: accounts), at: 0)
+        sections.insert(AccountsSection(accounts: accounts), at: 0)
         updatePostedTransactions {
             [weak self] in
             guard let self = self else { return }
@@ -71,7 +71,7 @@ class AccountDetailsViewModel: NSObject {
             guard let self = self else { return }
 
             let pendingTransactions = transactions.filter({ $0.pending })
-            let pendingTransactionsSection = self.sections[1] as! AccountDetailsViewModelPendingTransactions
+            let pendingTransactionsSection = self.sections[1] as! PendingTransactionsSection
             pendingTransactionsSection.unfilteredTransactions = pendingTransactions
             pendingTransactionsSection.filteredTransactions = pendingTransactions
             completionHandler()
@@ -84,21 +84,16 @@ class AccountDetailsViewModel: NSObject {
             [weak self] transactions in
             guard let self = self else { return }
             
-            if self.accountType == .depository {
-                let transactionsSection = self.sections[1] as! AccountDetailsViewModelTransactions
-                transactionsSection.unfilteredTransactions = transactions
-                transactionsSection.filteredTransactions = transactions
-                completionHandler()
-                return
+            var postedTransactions = transactions
+            if self.accountType == .credit {
+                let cutoffDate = Calendar.current.date(byAdding: DateComponents(day: -14), to: Date())!
+                let mightIncludePendingTransactions = self.timeFrame.end > cutoffDate
+                if mightIncludePendingTransactions {
+                    postedTransactions = transactions.filter({ !$0.pending })
+                }
             }
-            
-            // If account is a credit card:
-            let cutoffDate = Calendar.current.date(byAdding: DateComponents(day: -14), to: Date())!
-            let mightIncludePendingTransactions = self.timeFrame.end > cutoffDate
-            let postedTransactions = mightIncludePendingTransactions ?
-                    transactions.filter({ !$0.pending }) : transactions
 
-            let postedTransactionsSection = self.sections[2] as! AccountDetailsViewModelTransactions
+            let postedTransactionsSection = self.sections.last! as! PostedTransactionsSection
             postedTransactionsSection.unfilteredTransactions = postedTransactions
             postedTransactionsSection.filteredTransactions = postedTransactions
             completionHandler()
@@ -113,57 +108,59 @@ protocol AccountDetailsViewModelSection {
     var rowCount: Int { get }
 }
 
-class AccountDetailsViewModelAccounts: AccountDetailsViewModelSection {
-    var accounts: [Account]
-    
-    var type: AccountDetailsViewModel.SectionType {
-        .accounts
+extension AccountDetailsViewModel {
+    class AccountsSection: AccountDetailsViewModelSection {
+        var accounts: [Account]
+        
+        var type: AccountDetailsViewModel.SectionType {
+            .accounts
+        }
+        
+        var title: String {
+            return ""
+        }
+        
+        var rowCount: Int {
+            return accounts.count
+        }
+        
+        init(accounts: [Account] = []) {
+            self.accounts = accounts
+        }
     }
-    
-    var title: String {
-        return ""
-    }
-    
-    var rowCount: Int {
-        return accounts.count
-    }
-    
-    init(accounts: [Account] = []) {
-        self.accounts = accounts
-    }
-}
 
-class AccountDetailsViewModelTransactions: AccountDetailsViewModelSection {
-    var title: String
-    var unfilteredTransactions: [Transaction] = []
-    var filteredTransactions: [Transaction] = []
-    
-    var type: AccountDetailsViewModel.SectionType {
-        return .postedTransactions
+    class PostedTransactionsSection: AccountDetailsViewModelSection {
+        var title: String
+        var unfilteredTransactions: [Transaction] = []
+        var filteredTransactions: [Transaction] = []
+        
+        var type: AccountDetailsViewModel.SectionType {
+            return .postedTransactions
+        }
+        
+        var rowCount: Int {
+            return filteredTransactions.count
+        }
+        
+        init(title: String) {
+            self.title = title
+        }
     }
-    
-    var rowCount: Int {
-        return filteredTransactions.count
-    }
-    
-    init(title: String) {
-        self.title = title
-    }
-}
 
-class AccountDetailsViewModelPendingTransactions: AccountDetailsViewModelSection {
-    var unfilteredTransactions: [Transaction] = []
-    var filteredTransactions: [Transaction] = []
-    
-    var type: AccountDetailsViewModel.SectionType {
-        return .pendingTransactions
-    }
-    
-    var title: String {
-        return "Pending Transactions"
-    }
-    
-    var rowCount: Int {
-        return filteredTransactions.count
+    class PendingTransactionsSection: AccountDetailsViewModelSection {
+        var unfilteredTransactions: [Transaction] = []
+        var filteredTransactions: [Transaction] = []
+        
+        var type: AccountDetailsViewModel.SectionType {
+            return .pendingTransactions
+        }
+        
+        var title: String {
+            return "Pending Transactions"
+        }
+        
+        var rowCount: Int {
+            return filteredTransactions.count
+        }
     }
 }
