@@ -73,9 +73,3 @@ class AccountDetailsViewController: UITableViewController {
         presentPlaidLink()
     }
 }
-
-// MARK: - Notification Names
-extension Notification.Name {
-    static let viewModelUpdated = Notification.Name("viewModelUpdated")
-    static let addAccountTapped = Notification.Name("addAccountTapped")
-}

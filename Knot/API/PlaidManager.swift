@@ -162,3 +162,8 @@ class PlaidManager {
         }
     }
 }
+
+// MARK: - Notification Names
+extension Notification.Name {
+    static let successfulLinking = Notification.Name("successfulLinking")
+}

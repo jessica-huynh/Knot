@@ -47,8 +47,8 @@ extension HomeViewController: ChartViewDelegate {
         drawChart()
     }
     
-    // MARK: - Chart Entries Helper Functions
-    func updateChartEntries() {
+    // MARK: - Update Charts
+    func updateBalanceCharts() {
         var netBalance = calculateBalance(for: storageManager.cashAccounts) - calculateBalance(for: storageManager.creditAccounts)
         let startDate = Calendar.current.date(byAdding: DateComponents(year: -1), to: Date.today)!
         var unfinishedCharts = balanceCharts
@@ -66,12 +66,12 @@ extension HomeViewController: ChartViewDelegate {
                     daysBalanceChanged.append((currentDate.previousDay(), netBalance))
                     currentDate = transaction.date
                     
-                    // Update chart entries as we go through transactions
+                    // Update charts as we go through transactions
                     if unfinishedCharts.contains(where: { transaction.date <= $0.startDate }){
                         let finishedCharts = unfinishedCharts.filter{ transaction.date <= $0.startDate }
                         unfinishedCharts.removeAll{ transaction.date <= $0.startDate }
 
-                        self.updateCharts(charts: finishedCharts, with: daysBalanceChanged)
+                        self.update(charts: finishedCharts, with: daysBalanceChanged)
                     }
                 }
                 // Backtrack by using each transaction to calculate a past net balance
@@ -80,12 +80,12 @@ extension HomeViewController: ChartViewDelegate {
             
             daysBalanceChanged.append((currentDate.previousDay(), netBalance))
             if !unfinishedCharts.isEmpty {
-                self.updateCharts(charts: unfinishedCharts, with: daysBalanceChanged)
+                self.update(charts: unfinishedCharts, with: daysBalanceChanged)
             }
         }
     }
     
-    func updateCharts(charts: [BalanceChart], with daysBalancedChanged: [(date: Date, balance: Double)]) {
+    func update(charts: [BalanceChart], with daysBalancedChanged: [(date: Date, balance: Double)]) {
         for chart in charts {
             chart.daysBalanceChanged = daysBalancedChanged
         }

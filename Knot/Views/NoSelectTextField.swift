@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A   `UITextField` with all possible user interaction disabled.
 class NoSelectTextField: UITextField {
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return false

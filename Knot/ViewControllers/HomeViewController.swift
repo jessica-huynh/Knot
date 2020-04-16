@@ -195,7 +195,7 @@ class HomeViewController: UITableViewController {
             chart.isLoading = true
         }
         
-        updateChartEntries()
+        updateBalanceCharts()
         updateLabels()
         updateRecentTransactions()
         
@@ -220,12 +220,4 @@ class HomeViewController: UITableViewController {
             reloadChart()
         }
     }
-}
-
-// MARK: - Notification Names
-extension Notification.Name {
-    static let successfulLinking = Notification.Name("successfulLinking")
-    static let updatedAccounts = Notification.Name("updatedAccounts")
-    static let noValidAccountsAdded = Notification.Name("noValidAccountsAdded")
-    static let updatedBalanceChart = Notification.Name("updatedBalanceChart")
 }

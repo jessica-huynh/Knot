@@ -8,12 +8,7 @@
 
 import UIKit
 
-protocol TransactionsHeaderCellDelegate: class {
-    func transactionsHeaderCell(_ : TransactionsHeaderCell, didUpdateTimeFrame timeFrame: DateInterval)
-}
-
 class TransactionsHeaderCell: UITableViewCell {
-
     weak var delegate: TransactionsHeaderCellDelegate?
 
     var timeFrames: [DateInterval] = []
@@ -85,7 +80,7 @@ class TransactionsHeaderCell: UITableViewCell {
     
     @objc func finishedPicking() {
         endEditing(true)
-        let didChangeTimeFrame = (rowPicked != previousRowPicked)
+        let didChangeTimeFrame = rowPicked != previousRowPicked
         if didChangeTimeFrame {
             delegate?.transactionsHeaderCell(self, didUpdateTimeFrame: timeFrames[rowPicked])
             previousRowPicked = rowPicked
@@ -120,4 +115,9 @@ extension TransactionsHeaderCell: UIPickerViewDelegate, UIPickerViewDataSource {
         timeFrameField.text = pickerOptions[row]
         rowPicked = row
     }
+}
+
+// MARK: - Delegate Protocol
+protocol TransactionsHeaderCellDelegate: class {
+    func transactionsHeaderCell(_ : TransactionsHeaderCell, didUpdateTimeFrame timeFrame: DateInterval)
 }

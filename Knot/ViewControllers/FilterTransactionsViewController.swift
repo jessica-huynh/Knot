@@ -10,7 +10,9 @@ import UIKit
 
 class FilterTransactionsViewController: UITableViewController {
     var delegate: FilterTransactionsViewControllerDelegate?
+    /// Keeps track of which accounts the user is and isn't using to filter the displayed transactions.
     var accountFilterItems: [AccountFilterItem] = []
+    /// The specific accounts that the user wants to filter.
     var checkedAccounts: [AccountFilterItem] {
         return accountFilterItems.filter { $0.isChecked }
     }

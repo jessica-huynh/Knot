@@ -199,3 +199,9 @@ class StorageManager {
         }
     }
 }
+
+// MARK: - Notification Names
+extension Notification.Name {
+    static let updatedAccounts = Notification.Name("updatedAccounts")
+    static let noValidAccountsAdded = Notification.Name("noValidAccountsAdded")
+}

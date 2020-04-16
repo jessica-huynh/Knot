@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UICollectionViewCell {
+    /// Returns the sublayer with the given `name` and `nil` if the sublayer does not exist.
     func sublayer(with name: String) -> CALayer? {
         guard let sublayers = contentView.layer.sublayers else { return nil }
         for sublayer in sublayers {
