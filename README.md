@@ -1,8 +1,7 @@
 # Knot
 
-An iOS app that lets you keep track of your account balances and transactions from bank accounts belonging to differing financial institutions.
+An iOS app that lets you keep track of your account balances and transactions from bank accounts belonging to various financial institutions.
 
-**Note:** This project is made for personal use only. 
 
 ![Screenshots](/Assets/Screenshots.png)
 
@@ -21,4 +20,5 @@ This app uses [Plaid](https://www.plaid.com) to link your bank accounts and fetc
 6. Build and run the app. 
 
 
+**Note:** This project is made for personal use only. 
 
