@@ -14,6 +14,7 @@
 		C810D44824282E6C00AEC207 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C810D44724282E6C00AEC207 /* StorageManager.swift */; };
 		C8148D8B243E893200B2C321 /* UIColor+Adjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8148D8A243E893200B2C321 /* UIColor+Adjust.swift */; };
 		C8176CDA2421265C00D1C139 /* UIImage+SolidColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */; };
+		C81EA12D2449FAE2008E5E12 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C81EA12C2449FAE2008E5E12 /* README.md */; };
 		C82493F7243550130093A209 /* UIImage+Base64Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82493F6243550130093A209 /* UIImage+Base64Convert.swift */; };
 		C836F7E3242D68D000B77515 /* ReachedEndCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C836F7E2242D68D000B77515 /* ReachedEndCell.xib */; };
 		C836F7E5242D691B00B77515 /* RecentTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */; };
@@ -82,6 +83,7 @@
 		C8148D8A243E893200B2C321 /* UIColor+Adjust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Adjust.swift"; sourceTree = "<group>"; };
 		C8176CD92421265C00D1C139 /* UIImage+SolidColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SolidColour.swift"; sourceTree = "<group>"; };
 		C81EA12A2449FA4F008E5E12 /* Screenshots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshots.png; sourceTree = "<group>"; };
+		C81EA12C2449FAE2008E5E12 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C82493F6243550130093A209 /* UIImage+Base64Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Base64Convert.swift"; sourceTree = "<group>"; };
 		C836F7E2242D68D000B77515 /* ReachedEndCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReachedEndCell.xib; sourceTree = "<group>"; };
 		C836F7E4242D691B00B77515 /* RecentTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTransactionsViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		C8D7EA1D2416F336000195AC = {
 			isa = PBXGroup;
 			children = (
+				C81EA12C2449FAE2008E5E12 /* README.md */,
 				C8D7EA282416F336000195AC /* Knot */,
 				C8D7EA272416F336000195AC /* Products */,
 				52410FFDDF7E9826645AA51D /* Pods */,
@@ -408,6 +411,7 @@
 			files = (
 				C8049826242E58E300EA61F6 /* AccountCollectionCell.xib in Resources */,
 				C8D7EA472416F5F6000195AC /* Main.storyboard in Resources */,
+				C81EA12D2449FAE2008E5E12 /* README.md in Resources */,
 				C8AE60472425864500595773 /* .gitignore in Resources */,
 				C890B974241D96390087FC3E /* Podfile in Resources */,
 				C8D7EA462416F5F6000195AC /* Assets.xcassets in Resources */,
