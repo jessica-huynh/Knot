@@ -9,7 +9,7 @@
 import Foundation
 import Charts
 
-/// An object representing the data for a graph that displays a user's net balance accross all their linked accounts for any given time period
+/// An object representing the data for a graph that displays a user's net balance across all their linked accounts for any given time period
 class BalanceChart {
     var timePeriod: TimePeriod
     var isLoading: Bool = false
