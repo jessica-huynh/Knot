@@ -41,7 +41,7 @@ class PlaidManager {
     var linkKitConfiguration: PLKConfiguration {
         let configuration = PLKConfiguration(key: publicKey, env: environment.linkKitValue, product: .transactions)
         configuration.clientName = (Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String)
-        configuration.countryCodes = ["CA"]
+        configuration.countryCodes = ["US", "CA"]
         return configuration
     }
     
