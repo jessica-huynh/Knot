@@ -43,6 +43,7 @@
 		C89EDF1E24193ADF0075052D /* AccountCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = C89EDF1D24193ADF0075052D /* AccountCard.xib */; };
 		C89EDF2024193E460075052D /* AccountCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EDF1F24193E460075052D /* AccountCard.swift */; };
 		C89EDF222419528C0075052D /* AccountCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EDF212419528C0075052D /* AccountCardViewController.swift */; };
+		C8A7955624661E0200A5C1B1 /* StorageManager+Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A7955524661E0200A5C1B1 /* StorageManager+Fetching.swift */; };
 		C8AE60472425864500595773 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C8AE60462425864500595773 /* .gitignore */; };
 		C8AE604A2425890800595773 /* PlaidAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE60492425890800595773 /* PlaidAPI.swift */; };
 		C8AE604C2425899000595773 /* PlaidManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE604B2425899000595773 /* PlaidManager.swift */; };
@@ -112,6 +113,7 @@
 		C89EDF1D24193ADF0075052D /* AccountCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCard.xib; sourceTree = "<group>"; };
 		C89EDF1F24193E460075052D /* AccountCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCard.swift; sourceTree = "<group>"; };
 		C89EDF212419528C0075052D /* AccountCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCardViewController.swift; sourceTree = "<group>"; };
+		C8A7955524661E0200A5C1B1 /* StorageManager+Fetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageManager+Fetching.swift"; sourceTree = "<group>"; };
 		C8AE60462425864500595773 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C8AE60492425890800595773 /* PlaidAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidAPI.swift; sourceTree = "<group>"; };
 		C8AE604B2425899000595773 /* PlaidManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidManager.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				C810D44724282E6C00AEC207 /* StorageManager.swift */,
+				C8A7955524661E0200A5C1B1 /* StorageManager+Fetching.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				C8B584B424201C9100DA28D9 /* HomeViewController+Transactions.swift in Sources */,
 				C86EBF0E24296DCB00EE3E27 /* GetTransactionsResponse.swift in Sources */,
 				C8CF35F7243CDA1C0083C54B /* GettingStartedViewController.swift in Sources */,
+				C8A7955624661E0200A5C1B1 /* StorageManager+Fetching.swift in Sources */,
 				C897CBE0242933BD00B2D150 /* Transaction.swift in Sources */,
 				C86B9FAB24313DB400167CA9 /* NoSelectTextField.swift in Sources */,
 				C836F7E7242D6C6D00B77515 /* RecentTransactionCell.swift in Sources */,

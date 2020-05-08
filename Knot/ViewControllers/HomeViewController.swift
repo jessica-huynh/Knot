@@ -45,6 +45,7 @@ class HomeViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onUpdatedBalanceChart(_:)), name: .updatedBalanceChart, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSuccessfulLinking(_:)), name: .successfulLinking, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onNoValidAccountsAdded(_:)), name: .noValidAccountsAdded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onBeganFetchUpdates), name: .beganFetchUpdates, object: nil)
         
         navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -218,6 +219,23 @@ class HomeViewController: UITableViewController {
         if sender === selectedChart {
             stopChartSpinner()
             reloadChart()
+        }
+    }
+    
+    @objc func onBeganFetchUpdates() {
+        isLoading = true
+        showSpinner(spinnerView: spinnerView)
+        
+        // Dismiss all view controllers
+        navigationController?.popToRootViewController(animated: false)
+        
+        for scene in UIApplication.shared.connectedScenes {
+            (scene as! UIWindowScene).windows.forEach {
+                if $0.isKeyWindow {
+                    $0.rootViewController?.dismiss(animated: false, completion: nil)
+                    return
+                }
+            }
         }
     }
 }

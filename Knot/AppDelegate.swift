@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BackgroundTasks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.register(defaults: ["isFirstLinking": true])
         PlaidManager.instance.setupPlaid()
+        
+        BGTaskScheduler.shared.register(
+            forTaskWithIdentifier: "startAppRefresh",
+            using: nil
+        ) { task in
+            StorageManager.instance.startAppRefresh(task as! BGAppRefreshTask)
+        }
+        
+        UserDefaults.standard.register(defaults: ["isFirstLaunch": true])
+        let isFirstLaunch = UserDefaults.standard.bool(forKey: "isFirstLaunch")
+        if isFirstLaunch {
+            UserDefaults.standard.set(Date(), forKey: "lastFetchUpdate")
+            UserDefaults.standard.set(false, forKey: "isFirstLaunch")
+        }
         
         return true
     }

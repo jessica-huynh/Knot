@@ -10,6 +10,7 @@ import Foundation
 
 class StorageManager {
     static let instance = StorageManager()
+    var isFetchingUpdates = false
     
     /// Plaid access token -> associated account IDs
     var accessTokens: [String : [String]] = [:]
@@ -24,43 +25,6 @@ class StorageManager {
     
     private init() {
         loadData()
-    }
-    
-    /// Fetches account updates including the current account balance from Plaid
-    func fetchAccountUpdates() {
-        var updatedCashAccounts: [Account] = []
-        var updatedCreditAccounts: [Account] = []
-        let dispatch = DispatchGroup()
-        
-        for (accessToken, accountIDs) in accessTokens {
-            dispatch.enter()
-            PlaidManager.instance.request(for: .getAccounts(accessToken: accessToken, accountIDs: accountIDs)) {
-                [weak self] response in
-                guard let self = self else { return }
-                
-                let accounts = try GetAccountsResponse(data: response.data).accounts
-                for account in accounts {
-                    let oldAccount = self.account(for: account.id)!
-                    let updatedAccount = oldAccount.updateBalance(balance: account.balance)
-                    
-                    if account.type == .depository {
-                        updatedCashAccounts.append(updatedAccount)
-                    } else {
-                        updatedCreditAccounts.append(updatedAccount)
-                    }
-                }
-                dispatch.leave()
-            }
-        }
-        
-        dispatch.notify(queue: .main) {
-            [weak self] in
-            guard let self = self else { return }
-            
-            self.cashAccounts = updatedCashAccounts
-            self.creditAccounts = updatedCreditAccounts
-            NotificationCenter.default.post(name: .updatedAccounts, object: self)
-        }
     }
     
     // MARK: - Helper Functions
