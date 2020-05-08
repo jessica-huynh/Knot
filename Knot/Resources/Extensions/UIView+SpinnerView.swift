@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func createSpinnerView(at position: CGPoint? = nil) -> UIView {
+    func createSpinnerView(at position: CGPoint? = nil, with backgroundColour: UIColor = .white) -> UIView {
         let spinnerView = UIView(frame: self.bounds)
-        spinnerView.backgroundColor = UIColor.white
+        spinnerView.backgroundColor = backgroundColour
         let spinner = UIActivityIndicatorView.init(style: .medium)
         spinner.startAnimating()
         spinner.center = position ?? spinnerView.center
@@ -20,8 +20,13 @@ extension UIView {
         return spinnerView
     }
     
-    func showSpinner(spinnerView: UIView) {
-        self.addSubview(spinnerView)
+    func showSpinner(spinnerView: UIView, below subview: UIView? = nil) {
+        if self.subviews.contains(spinnerView) { return }
+        if let subview = subview {
+            self.insertSubview(spinnerView, belowSubview: subview)
+        } else {
+            self.addSubview(spinnerView)
+        }
     }
     
     func removeSpinner(spinnerView: UIView) {
@@ -30,13 +35,14 @@ extension UIView {
 }
 
 extension UIViewController {
-    func createSpinnerView(at position: CGPoint? = nil) -> UIView {
-        return view.createSpinnerView(at: position)
+    func createSpinnerView(at position: CGPoint? = nil, with backgroundColour: UIColor = .white) -> UIView {
+        return view.createSpinnerView(at: position, with: backgroundColour)
     }
     
-    func showSpinner(spinnerView: UIView) {
+    func showSpinner(spinnerView: UIView, belowNavBar: Bool = false) {
         if let navigationController = navigationController {
-            navigationController.view.insertSubview(spinnerView, belowSubview: navigationController.navigationBar)
+            navigationController.view.showSpinner(spinnerView: spinnerView,
+                                                  below: belowNavBar ? navigationController.navigationBar : nil)
         } else {
             view.showSpinner(spinnerView: spinnerView)
         }

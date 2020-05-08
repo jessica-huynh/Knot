@@ -64,7 +64,7 @@ class ProfileViewController: UITableViewController {
     
     // MARK: - Notification Selectors
     @objc func onSuccessfulLinking(_ notification:Notification) {
-        showSpinner(spinnerView: spinnerView)
+        showSpinner(spinnerView: spinnerView, belowNavBar: true)
     }
     
     @objc func onNoValidAccountsAdded(_ notification:Notification) {
