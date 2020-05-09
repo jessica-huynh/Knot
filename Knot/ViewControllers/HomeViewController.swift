@@ -223,6 +223,7 @@ class HomeViewController: UITableViewController {
     }
     
     @objc func onBeganFetchUpdates() {
+        if isRefreshing { return }
         isLoading = true
         showSpinner(spinnerView: spinnerView)
         
