@@ -10,7 +10,6 @@ target 'Knot' do
     :project => "Knot",
     :target => "Knot",
     :keys => [
-      "publicKey",
       "clientID",
       "secret_sandbox",
       "secret_development"

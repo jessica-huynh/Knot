@@ -9,7 +9,6 @@ import Foundation
 import Moya
 
 enum PlaidAPI {
-    static let publicKey = PlaidManager.instance.publicKey
     static let clientID = PlaidManager.instance.clientID
     static let secret = PlaidManager.instance.secret
     static let environment = PlaidManager.instance.environment
@@ -20,6 +19,7 @@ enum PlaidAPI {
         return dateFormatter
     }
     
+    case createLinkToken
     case exchangeTokens(publicToken: String)
     case getAccounts(accessToken: String, accountIDs: [String]? = nil)
     case getTransactions(accessToken: String, startDate: Date, endDate: Date, accountIDs: [String]? = nil)
@@ -33,6 +33,8 @@ extension PlaidAPI: TargetType {
 
     public var path: String {
         switch self {
+        case .createLinkToken:
+            return "/link/token/create"
         case .exchangeTokens:
             return "/item/public_token/exchange"
         case .getAccounts:
@@ -54,6 +56,17 @@ extension PlaidAPI: TargetType {
 
     public var task: Task {
         switch self {
+        case .createLinkToken:
+            return .requestParameters(
+                parameters: [
+                    "client_id": PlaidAPI.clientID,
+                    "secret": PlaidAPI.secret,
+                    "client_name": (Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String),
+                    "language": "en",
+                    "country_codes": ["CA", "US"],
+                    "user": ["client_user_id": "me"],
+                    "products": ["transactions"]],
+                encoding: JSONEncoding.default)
         case .exchangeTokens(let publicToken):
             return .requestParameters(
                 parameters: [
@@ -88,7 +101,8 @@ extension PlaidAPI: TargetType {
             return .requestParameters(
             parameters: [
                 "institution_id": institutionID,
-                "public_key": PlaidAPI.publicKey,
+                "client_id": PlaidAPI.clientID,
+                "secret": PlaidAPI.secret,
                 "options": ["include_optional_metadata": true]],
             encoding: JSONEncoding.default)
         }

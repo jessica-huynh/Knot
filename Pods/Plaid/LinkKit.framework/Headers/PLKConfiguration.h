@@ -59,6 +59,12 @@ PLK_EXTERN NSString* const kPLKTestKey DEPRECATED_MSG_ATTRIBUTE("the legacy API 
 /// A Plaid public_key that can be used for testing longtail when using the legacy API and PLKEnvironmentTartan.
 PLK_EXTERN NSString* const kPLKTestKeyLongtailAuth DEPRECATED_MSG_ATTRIBUTE("the legacy API is no longer supported. Use APIv2 and PLKEnvironmentSandbox with your own public key instead");
 
+/// A Plaid public_key to use when using the item-add flow.
+PLK_EXTERN NSString* const kPLKUseItemAddTokenInsteadOfPublicKey DEPRECATED_MSG_ATTRIBUTE("please use kPLKUseTokenInsteadOfPublicKey instead");
+
+/// A Plaid public_key to use when using the link token flow.
+PLK_EXTERN NSString* const kPLKUseTokenInsteadOfPublicKey;
+
 // Keys customizing panes, see customizeWithDictionary:
 /// This pane is shown at the end of an successful update flow.
 PLK_EXTERN NSString* const kPLKConnectedPaneKey;
@@ -135,7 +141,8 @@ PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
 /// A list of ISO 3166-1 alpha-2 country codes, used to select institutions available in the given countries.
 @property (copy,nonatomic) NSArray<NSString*>* _Nullable countryCodes;
 
-/// A map of account types and subtypes, used to select institutions with support for the requested subtypes.
+/// A map of account types and subtypes, used to filter accounts so only the desired account types/subtypes are returned
+/// and only institutions that support the requested subtypes are displayed in Link.
 @property (copy,nonatomic) NSDictionary<NSString*, NSArray<NSString*>*>* _Nullable accountSubtypes;
 
 /**
@@ -170,7 +177,9 @@ PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
 
 /**
  The singleton instance of the PLKConfiguration class initialized with the values
- from the PLKPlaidLinkConfiguration entry in the applications Info.plist.
+ from the PLKPlaidLinkConfiguration entry in the applications Info.plist. Note that
+ if you want to use Link tokens to integrate with Plaid, you cannot use sharedConfiguration.
+ To learn more about Link tokens, visit https://plaid.com/docs/link-token-migration-guide/.
 
  @return Returns the shared instance of the PLKConfiguration class
          or throws an exception if the provided values are invalid.
@@ -185,6 +194,7 @@ PLK_EMPTY_INIT_UNAVAILABLE;
  it initializes a PLKConfiguration object with the provided arguments.
 
  @param key The public_key associated with your account. Available from https://dashboard.plaid.com/account/keys.
+            For link token based flows use `kPLKUseTokenInsteadOfPublicKey`.
  @param env The Plaid API environment on which to create user accounts
  @param product The Plaid products you wish to use.
  @param selectAccount The selectAccount parameter controls whether or not your Link integration uses the Select Account view.
@@ -206,6 +216,7 @@ PLK_EMPTY_INIT_UNAVAILABLE;
  Initializes a PLKConfiguration object with the provided arguments.
 
  @param key The public_key associated with your account. Available from https://dashboard.plaid.com/account/keys.
+            For link token based flows use `kPLKUseTokenInsteadOfPublicKey`.
  @param env The Plaid API environment on which to create user accounts
  @param product The Plaid products you wish to use.
  @return A PLKConfiguration object initialized with the given arguments.
@@ -214,6 +225,15 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 - (instancetype)initWithKey:(NSString*)key
                         env:(PLKEnvironment)env
                     product:(PLKProduct)product;
+
+/**
+  Initializes a PLKConfiguration object with the provided arguments
+ 
+  @param linkToken A link_token received from /link/token/create.
+  @return A PLKConfiguration object initialized with the link_token environment and the kPLKUseTokenInsteadOfPublicKey key.
+  @throws NSInvalidArgumentException
+ */
+- (instancetype)initWithLinkToken:(NSString*)linkToken;
 
 /**
  Change the text of certain user interface elements.

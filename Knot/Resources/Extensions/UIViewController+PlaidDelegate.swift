@@ -12,11 +12,31 @@ import LinkKit
 
 extension UIViewController: PLKPlaidLinkViewDelegate {
     func presentPlaidLink(with presentationStyle: UIModalPresentationStyle = .fullScreen) {
-        let linkViewDelegate = self
-        let linkViewController = PLKPlaidLinkViewController(configuration: PlaidManager.instance.linkKitConfiguration, delegate: linkViewDelegate)
-        linkViewController.modalPresentationStyle = presentationStyle
-        
-        self.present(linkViewController, animated: true)
+        PlaidManager.instance.request(for: .createLinkToken) {
+            [weak self] response in
+            guard let self = self else { return }
+            
+            do {
+                let createLinkTokenResponse = try CreateLinkTokenResponse(data: response.data)
+                
+                let linkToken = createLinkTokenResponse.linkToken
+                let configuration = PLKConfiguration(linkToken: linkToken)
+                let linkViewDelegate = self
+                
+                let linkViewController = PLKPlaidLinkViewController(
+                    linkToken: linkToken,
+                    configuration: configuration,
+                    delegate: linkViewDelegate)
+                
+                linkViewController.modalPresentationStyle = presentationStyle
+                
+                print("Plaid Link setup was successful")
+                self.present(linkViewController, animated: true)
+            } catch {
+                print("Unable to setup Plaid Link")
+                self.handleError(error)
+            }
+        }
     }
     
     func handleError(_ error: Error) {
@@ -26,6 +46,7 @@ extension UIViewController: PLKPlaidLinkViewDelegate {
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        print(error)
     }
     
     // MARK: - Plaid Link View Delegate

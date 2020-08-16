@@ -38,6 +38,7 @@
 		C86D5EF12419A74C00D70126 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D5EF02419A74C00D70126 /* TransactionCell.swift */; };
 		C86EBF0E24296DCB00EE3E27 /* GetTransactionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86EBF0D24296DCB00EE3E27 /* GetTransactionsResponse.swift */; };
 		C874DE32243E30DF00A77429 /* UITableViewCell+SelectedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C874DE31243E30DF00A77429 /* UITableViewCell+SelectedBackgroundView.swift */; };
+		C884F70E24E9B0CA00544637 /* CreateLinkTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C884F70D24E9B0CA00544637 /* CreateLinkTokenResponse.swift */; };
 		C890B974241D96390087FC3E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C890B973241D96390087FC3E /* Podfile */; };
 		C897CBE0242933BD00B2D150 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897CBDF242933BD00B2D150 /* Transaction.swift */; };
 		C89EDF1E24193ADF0075052D /* AccountCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = C89EDF1D24193ADF0075052D /* AccountCard.xib */; };
@@ -108,6 +109,7 @@
 		C86D5EF02419A74C00D70126 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		C86EBF0D24296DCB00EE3E27 /* GetTransactionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransactionsResponse.swift; sourceTree = "<group>"; };
 		C874DE31243E30DF00A77429 /* UITableViewCell+SelectedBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+SelectedBackgroundView.swift"; sourceTree = "<group>"; };
+		C884F70D24E9B0CA00544637 /* CreateLinkTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLinkTokenResponse.swift; sourceTree = "<group>"; };
 		C890B973241D96390087FC3E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C897CBDF242933BD00B2D150 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		C89EDF1D24193ADF0075052D /* AccountCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCard.xib; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				C836F7E8242D7A0800B77515 /* ExchangeTokenResponse.swift */,
 				C8E221DF2426D758008624F9 /* GetAccountsResponse.swift */,
+				C884F70D24E9B0CA00544637 /* CreateLinkTokenResponse.swift */,
 				C86EBF0D24296DCB00EE3E27 /* GetTransactionsResponse.swift */,
 				C865C6BA243414D50094123A /* GetInstitutionResponse.swift */,
 			);
@@ -476,6 +479,7 @@
 			files = (
 				C8AE604A2425890800595773 /* PlaidAPI.swift in Sources */,
 				C805A8B42426AC900091180F /* Account.swift in Sources */,
+				C884F70E24E9B0CA00544637 /* CreateLinkTokenResponse.swift in Sources */,
 				C8C24DFD243BFA1C00E61CEE /* LoadingCell.swift in Sources */,
 				C865C6B924340CBA0094123A /* TransactionsHeaderCell.swift in Sources */,
 				C89EDF222419528C0075052D /* AccountCardViewController.swift in Sources */,
